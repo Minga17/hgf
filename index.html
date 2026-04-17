@@ -501,10 +501,6 @@
             <div class="wm-item-icon">🎽</div>
             <div class="wm-item-text"><strong>40-Player Squad Ready</strong><span>View the full 2026 roster →</span></div>
           </div>
-          <div class="wm-item">
-            <div class="wm-item-icon">🤖</div>
-            <div class="wm-item-text"><strong>AI Club Assistant Live</strong><span>Chat with our AI — ask anything about the club!</span></div>
-          </div>
         </div>
         <div class="wm-actions">
           <button class="wm-cta" onclick="closeWelcome()">LET'S GO! 🔥</button>
@@ -597,7 +593,7 @@
       <h3>📊 Season 2026 at a Glance</h3>
       <div class="stats-row">
         <div class="stat-item"><div class="stat-num counter" data-target="7">0</div><div class="stat-label">Matches Played</div></div>
-        <div class="stat-item"><div class="stat-num counter" data-target="4">0</div><div class="stat-label">Wins</div></div>
+        <div class="stat-item"><div class="stat-num counter" data-target="1">0</div><div class="stat-label">Wins</div></div>
         <div class="stat-item"><div class="stat-num counter" data-target="1">0</div><div class="stat-label">Draws</div></div>
         <div class="stat-item"><div class="stat-num counter" data-target="21">0</div><div class="stat-label">Goals Scored</div></div>
         <div class="stat-item"><div class="stat-num counter" data-target="40">40</div><div class="stat-label">Squad Players</div></div>
@@ -767,22 +763,6 @@
       <div class="feature-card"><span class="feature-icon">📱</span><h3>Follow Our Journey</h3><p>From training sessions to match days — follow Super Stars FC across Facebook, Instagram, X, and YouTube as the story unfolds.</p></div>
     </div>
 
-    <div class="section-divider reveal">💬</div>
-
-    <!-- ====== FAN WALL ====== -->
-    <div id="fan-wall-section" class="reveal" style="margin-bottom:16px">
-      <div class="section-title">Fan Wall</div>
-      <div class="section-sub">Show your support — leave a message for the squad. All messages saved locally.</div>
-    </div>
-    <div class="fan-wall reveal">
-      <div class="fan-input-row">
-        <input type="text" class="fan-name-input" id="fanName" placeholder="Your name" maxlength="22">
-        <input type="text" class="fan-msg-input" id="fanMsg" placeholder="Leave a message for the squad... 🔥" maxlength="140" onkeydown="if(event.key==='Enter')postFanMsg()">
-        <button class="fan-post-btn" onclick="postFanMsg()">POST</button>
-      </div>
-      <div class="fan-messages" id="fanMessages"></div>
-    </div>
-
     <div class="section-divider reveal">🤝</div>
 
     <!-- PARTNERS STRIP -->
@@ -935,46 +915,6 @@
     }
     document.getElementById('goalsTable').innerHTML = buildTable(scorers, 'goals');
     document.getElementById('appsTable').innerHTML = buildTable(appearances, 'apps');
-
-    // =================== FAN WALL ===================
-    const fanKey = 'ssfc_fan_messages';
-    const defaultMsgs = [
-      { name: 'Omaha Fan', msg: 'SSFC all day! Born in Omaha, built from the streets! 🔥', time: '2 days ago' },
-      { name: 'Super Stars', msg: 'Best squad in Nebraska! Let\'s go boys! 💪', time: '3 days ago' },
-      { name: 'Soccer Mom', msg: 'My son trains with this team — the coaches are amazing! So proud. 🙌', time: '5 days ago' },
-    ];
-    let fanMsgs = JSON.parse(localStorage.getItem(fanKey) || 'null') || defaultMsgs;
-    function renderFanWall() {
-      const container = document.getElementById('fanMessages');
-      if (!fanMsgs.length) { container.innerHTML = '<div class="fan-no-msgs">Be the first to leave a message! 👇</div>'; return; }
-      container.innerHTML = fanMsgs.map(m => `
-        <div class="fan-msg-card">
-          <div class="fan-msg-avatar">${m.name[0].toUpperCase()}</div>
-          <div><div class="fan-msg-name">${m.name}</div><div class="fan-msg-text">${m.msg}</div><div class="fan-msg-time">${m.time}</div></div>
-        </div>`).join('');
-      container.scrollTop = container.scrollHeight;
-    }
-    function postFanMsg() {
-      const name = document.getElementById('fanName').value.trim() || 'Anonymous Fan';
-      const msg = document.getElementById('fanMsg').value.trim();
-      if (!msg) { showToast('Write something first!'); return; }
-      fanMsgs.unshift({ name, msg, time: 'Just now' });
-      if (fanMsgs.length > 20) fanMsgs.pop();
-      localStorage.setItem(fanKey, JSON.stringify(fanMsgs));
-      document.getElementById('fanMsg').value = '';
-      renderFanWall();
-      showToast('Message posted! 🔥');
-    }
-    renderFanWall();
-
-    // =================== NEWSLETTER ===================
-    function subscribeNl() {
-      const email = document.getElementById('nlEmail').value.trim();
-      if (!email || !email.includes('@')) { showToast('Enter a valid email address!'); return; }
-      localStorage.setItem('ssfc_nl_sub', email);
-      showToast('You\'re in! Welcome to the movement 📬');
-      document.getElementById('nlEmail').value = '';
-    }
 
     // =================== SHARE ===================
     function sharePage() {

@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta name="theme-color" content="#0b1020">
+  <title>Our Home: Super Stars FC Announces Official Home Stadium | Super Stars FC</title>
+  <meta name="description" content="Super Stars FC officially announces its home stadium — a landmark moment for the club and the Omaha community. Season 2025.">
+  <link rel="shortcut icon" href="image0.jpeg" type="image/jpeg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #0f1724;
+      --accent-red: #b62a2d;
+      --accent-blue: #1c5da4;
+      --muted: #9aa4b2;
+      --max-w: 1100px;
+      --article-w: 760px;
+      --radius: 12px;
+      --font-size: 1rem;
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: linear-gradient(180deg, var(--bg), #071021);
+      color: #e6eef8;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.light-mode {
+      background: #f0f4fa;
+      color: #1a2233;
+      --bg: #f0f4fa;
+      --card: #ffffff;
+      --muted: #556070;
+    }
+
+    a { color: var(--accent-blue); text-decoration: none; font-weight: 700; }
+    a:hover { color: var(--accent-red); }
+
+    /* ====== PROGRESS BAR ====== */
+    #progress-bar {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-red));
+      z-index: 9999; transition: width 0.1s linear;
+    }
+
+    /* ====== HEADER ====== */
+    .site-header {
+      padding: 15px 28px;
+      display: flex; justify-content: space-between; align-items: center;
+      background: rgba(11,16,32,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      position: sticky; top: 0; z-index: 200;
+    }
+    body.light-mode .site-header { background: rgba(240,244,250,0.93); border-bottom-color: rgba(0,0,0,0.08); }
+
+    .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; color: inherit; }
+
+    .logo {
+      width: 40px; height: 40px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 800; font-size: 0.88rem;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.45);
+    }
+
+    .header-right { display: flex; align-items: center; gap: 14px; }
+    .header-right a { color: var(--muted); font-weight: 600; font-size: 0.86rem; transition: color 0.2s; text-decoration: none; }
+    .header-right a:hover { color: var(--accent-blue); }
+
+    .cta-btn {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      color: #fff !important; padding: 8px 16px; border-radius: 8px; font-weight: 700 !important;
+    }
+
+    .reading-controls { display: flex; gap: 5px; }
+
+    .ctrl-btn {
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+      color: var(--muted); width: 31px; height: 31px; border-radius: 6px;
+      cursor: pointer; font-size: 0.76rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s; font-family: inherit;
+    }
+    .ctrl-btn:hover { border-color: var(--accent-blue); color: #e6eef8; }
+    body.light-mode .ctrl-btn { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.1); color: #556070; }
+
+    /* ====== QUOTE BANNER ====== */
+    .qotd-banner {
+      background: linear-gradient(135deg, rgba(28,93,164,0.15), rgba(182,42,45,0.15));
+      border-top: 2px solid var(--accent-blue); border-bottom: 2px solid var(--accent-red);
+      padding: 13px 28px; text-align: center; font-size: 0.86rem; color: #c8d3e0; font-style: italic;
+    }
+    body.light-mode .qotd-banner { color: #334155; }
+    .qotd-banner strong { color: var(--accent-blue); font-style: normal; }
+
+    /* ====== HERO ====== */
+    .article-hero {
+      position: relative; height: 520px; overflow: hidden;
+      display: flex; align-items: flex-end;
+    }
+
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, #071830 0%, #0d1f3c 35%, #12090f 100%);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Stadium field SVG illustration background */
+    .hero-field-art {
+      position: absolute; inset: 0; opacity: 0.18;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 38px, rgba(28,93,164,0.3) 38px, rgba(28,93,164,0.3) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 38px, rgba(28,93,164,0.15) 38px, rgba(28,93,164,0.15) 40px);
+    }
+
+    .hero-glow {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 700px; height: 400px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(28,93,164,0.25) 0%, rgba(182,42,45,0.10) 50%, transparent 75%);
+      pointer-events: none;
+    }
+
+    /* Pitch outline */
+    .hero-pitch {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      pointer-events: none; opacity: 0.22;
+    }
+
+    .hero-pitch svg { width: min(700px, 90vw); height: auto; }
+
+    .hero-img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      filter: brightness(0.38) saturate(0.7);
+    }
+
+    .hero-gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(7,16,33,0.2) 0%, rgba(7,16,33,0.5) 50%, rgba(7,16,33,0.97) 100%);
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      width: 100%; max-width: var(--max-w);
+      margin: auto; padding: 0 28px 42px;
+    }
+
+    .breaking-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--accent-red); color: #fff;
+      font-size: 0.68rem; font-weight: 800; letter-spacing: 2.5px;
+      text-transform: uppercase; padding: 5px 14px; border-radius: 20px;
+      margin-bottom: 14px; animation: pulse-badge 2s infinite;
+    }
+
+    @keyframes pulse-badge {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(182,42,45,0.5); }
+      50% { box-shadow: 0 0 0 8px rgba(182,42,45,0); }
+    }
+
+    .hero-content h1 {
+      font-size: clamp(1.7rem, 4.5vw, 3rem); font-weight: 900;
+      line-height: 1.12; color: #fff; margin-bottom: 16px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+      max-width: 820px;
+    }
+
+    .hero-meta-row {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      font-size: 0.8rem; color: rgba(255,255,255,0.65);
+    }
+
+    .hero-meta-row span { display: flex; align-items: center; gap: 5px; }
+    .hero-meta-row .dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); }
+
+    /* ====== LAYOUT ====== */
+    .page-wrap { max-width: var(--max-w); margin: auto; padding: 0 20px 60px; display: grid; grid-template-columns: 1fr 280px; gap: 32px; margin-top: 36px; }
+
+    @media (max-width: 900px) { .page-wrap { grid-template-columns: 1fr; } .sidebar { order: 2; } }
+
+    /* ====== ARTICLE BODY ====== */
+    .article-body { min-width: 0; }
+
+    /* ====== STATS PANEL ====== */
+    .stats-panel {
+      background: var(--card); border-radius: var(--radius); padding: 20px 24px;
+      border: 1px solid rgba(255,255,255,0.05); border-top: 3px solid var(--accent-blue);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35); margin-bottom: 32px;
+    }
+    body.light-mode .stats-panel { background: #fff; border-color: rgba(0,0,0,0.06); }
+    .stats-panel h3 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-blue); margin-bottom: 16px; }
+    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 1.9rem; font-weight: 800; background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+    .stat-label { font-size: 0.67rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+    /* ====== TOOLBAR ====== */
+    .page-toolbar {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 10px; padding: 12px 0; margin-bottom: 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    body.light-mode .page-toolbar { border-color: rgba(0,0,0,0.08); }
+
+    .like-btn {
+      display: flex; align-items: center; gap: 7px;
+      background: var(--card); border: 1.5px solid rgba(255,255,255,0.07);
+      color: var(--muted); padding: 7px 15px; border-radius: 8px;
+      cursor: pointer; font-size: 0.83rem; font-weight: 700; font-family: inherit; transition: all 0.2s;
+    }
+    .like-btn:hover, .like-btn.liked { border-color: var(--accent-red); color: var(--accent-red); }
+
+    .share-group { display: flex; gap: 7px; flex-wrap: wrap; }
+
+    .share-btn {
+      display: flex; align-items: center; gap: 5px;
+      background: var(--card); border: 1.5px solid rgba(255,255,255,0.07);
+      color: var(--muted); padding: 7px 13px; border-radius: 8px;
+      cursor: pointer; font-size: 0.8rem; font-weight: 700; font-family: inherit; transition: all 0.2s;
+    }
+    .share-btn:hover { border-color: var(--accent-blue); color: #e6eef8; }
+
+    /* ====== TABLE OF CONTENTS ====== */
+    .toc {
+      background: var(--card); border-radius: var(--radius); padding: 20px 22px;
+      border: 1px solid rgba(255,255,255,0.05); border-left: 4px solid var(--accent-blue);
+      margin-bottom: 32px;
+    }
+    body.light-mode .toc { background: #fff; border-color: rgba(0,0,0,0.06); }
+    .toc h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-blue); margin-bottom: 14px; }
+    .toc ol { padding-left: 18px; }
+    .toc li { margin-bottom: 8px; }
+    .toc a { color: var(--muted); font-weight: 600; font-size: 0.88rem; transition: color 0.2s; }
+    .toc a:hover, .toc a.active { color: var(--accent-blue); }
+
+    /* ====== ARTICLE PROSE ====== */
+    .prose { font-size: 1rem; line-height: 1.8; color: #d0dcea; }
+    body.light-mode .prose { color: #2e3d52; }
+
+    .prose h2 {
+      font-size: 1.45rem; font-weight: 800; color: #e6eef8; margin: 36px 0 14px;
+      display: flex; align-items: center; gap: 10px;
+      scroll-margin-top: 90px;
+    }
+    body.light-mode .prose h2 { color: #1a2233; }
+    .prose h2::before {
+      content: ''; display: inline-block; width: 4px; height: 1.1em;
+      background: linear-gradient(180deg, var(--accent-blue), var(--accent-red));
+      border-radius: 2px; flex-shrink: 0;
+    }
+
+    .prose p { margin-bottom: 18px; }
+
+    .prose strong { color: #e6eef8; font-weight: 700; }
+    body.light-mode .prose strong { color: #1a2233; }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 4px solid var(--accent-blue); background: rgba(28,93,164,0.08);
+      border-radius: 0 10px 10px 0; padding: 16px 22px; margin: 24px 0;
+      font-size: 1.05rem; font-style: italic; color: #b8cde4; line-height: 1.65;
+    }
+    .pull-quote.red { border-left-color: var(--accent-red); background: rgba(182,42,45,0.08); color: #e0b0b0; }
+    body.light-mode .pull-quote { color: #334155; background: rgba(28,93,164,0.06); }
+    body.light-mode .pull-quote.red { background: rgba(182,42,45,0.05); color: #7a2228; }
+    .pull-quote cite { display: block; margin-top: 8px; font-size: 0.8rem; font-style: normal; color: var(--muted); font-weight: 700; }
+
+    /* Callout box */
+    .callout {
+      background: linear-gradient(135deg, rgba(28,93,164,0.12), rgba(28,93,164,0.06));
+      border: 1px solid rgba(28,93,164,0.25); border-radius: var(--radius);
+      padding: 16px 20px; margin: 20px 0;
+      font-size: 0.9rem; color: #b8cde4; line-height: 1.65;
+    }
+    .callout.red { background: linear-gradient(135deg, rgba(182,42,45,0.12), rgba(182,42,45,0.05)); border-color: rgba(182,42,45,0.25); color: #e0b0b0; }
+    body.light-mode .callout { color: #2e4a6a; background: rgba(28,93,164,0.05); }
+    .callout strong { font-weight: 800; color: var(--accent-blue); }
+    .callout.red strong { color: var(--accent-red); }
+    .callout-icon { font-size: 1.1rem; margin-right: 6px; }
+
+    /* ====== STADIUM FEATURES GRID ====== */
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 24px 0 32px; }
+
+    @media (max-width: 640px) { .features-grid { grid-template-columns: 1fr 1fr; } }
+
+    .feature-card {
+      background: var(--card); border-radius: var(--radius); padding: 18px 16px;
+      border: 1px solid rgba(255,255,255,0.04); border-top: 3px solid var(--accent-blue);
+      transition: transform 0.25s, box-shadow 0.25s, border-top-color 0.25s;
+      opacity: 0; transform: translateY(20px);
+    }
+    .feature-card.visible { opacity: 1; transform: none; }
+    .feature-card:nth-child(even) { border-top-color: var(--accent-red); }
+    .feature-card:hover { transform: translateY(-5px); box-shadow: 0 12px 28px rgba(0,0,0,0.4); }
+    body.light-mode .feature-card { background: #fff; border-color: rgba(0,0,0,0.06); }
+
+    .fc-icon { font-size: 1.7rem; margin-bottom: 10px; display: block; }
+    .feature-card h4 { font-size: 0.92rem; font-weight: 700; color: var(--accent-blue); margin-bottom: 6px; }
+    .feature-card:nth-child(even) h4 { color: var(--accent-red); }
+    .feature-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+    /* ====== TIMELINE ====== */
+    .timeline { position: relative; padding-left: 28px; margin: 24px 0 32px; }
+
+    .timeline::before {
+      content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px;
+      background: linear-gradient(180deg, var(--accent-blue), var(--accent-red));
+      border-radius: 2px;
+    }
+
+    .tl-item {
+      position: relative; margin-bottom: 28px; padding-left: 20px;
+      opacity: 0; transform: translateX(-14px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .tl-item.visible { opacity: 1; transform: none; }
+
+    .tl-dot {
+      position: absolute; left: -24px; top: 4px;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--accent-blue); border: 2px solid var(--bg);
+      box-shadow: 0 0 0 3px rgba(28,93,164,0.3);
+    }
+    .tl-item:last-child .tl-dot { background: var(--accent-red); box-shadow: 0 0 0 3px rgba(182,42,45,0.3); }
+
+    .tl-date { font-size: 0.72rem; font-weight: 800; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
+    .tl-item:last-child .tl-date { color: var(--accent-red); }
+    .tl-title { font-size: 0.95rem; font-weight: 700; color: #e6eef8; margin-bottom: 4px; }
+    body.light-mode .tl-title { color: #1a2233; }
+    .tl-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+
+    /* ====== PHOTO GALLERY ====== */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 20px 0 32px; }
+
+    @media (max-width: 560px) { .gallery-grid { grid-template-columns: 1fr 1fr; } }
+
+    .gallery-item {
+      aspect-ratio: 4/3; border-radius: 8px; overflow: hidden;
+      cursor: pointer; position: relative;
+      opacity: 0; transform: scale(0.96);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .gallery-item.visible { opacity: 1; transform: none; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.35s ease; display: block; background: #0c1322; }
+    .gallery-item:hover img { transform: scale(1.08); }
+
+    /* Styled placeholder for gallery items without images */
+    .gallery-item .gallery-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px;
+      font-size: 0.8rem; color: var(--muted); text-align: center; padding: 10px;
+    }
+    .gallery-item .gallery-placeholder i { font-size: 1.8rem; opacity: 0.4; }
+
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(7,16,33,0.85));
+      opacity: 0; transition: opacity 0.3s;
+      display: flex; align-items: flex-end; padding: 10px;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay span { font-size: 0.76rem; color: #fff; font-weight: 700; display: flex; align-items: center; gap: 5px; }
+
+    /* ====== LIGHTBOX ====== */
+    .lightbox {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.93);
+      z-index: 9100; display: none; align-items: center; justify-content: center; padding: 20px;
+    }
+    .lightbox.active { display: flex; }
+
+    .lightbox-inner { position: relative; max-width: 900px; width: 100%; text-align: center; }
+
+    .lightbox-img {
+      max-width: 100%; max-height: 75vh; border-radius: 10px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8); display: block; margin: auto;
+      background: #0c1322; min-height: 200px; object-fit: contain;
+    }
+
+    .lightbox-close {
+      position: absolute; top: -16px; right: -16px;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--accent-red); border: none; color: #fff;
+      font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: transform 0.2s; font-family: inherit;
+    }
+    .lightbox-close:hover { transform: scale(1.1); }
+
+    .lightbox-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+      color: #fff; width: 40px; height: 40px; border-radius: 50%;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; transition: background 0.2s; font-family: inherit;
+    }
+    .lightbox-nav:hover { background: rgba(255,255,255,0.2); }
+    .lightbox-prev { left: -50px; }
+    .lightbox-next { right: -50px; }
+
+    @media (max-width: 700px) { .lightbox-prev { left: 0; } .lightbox-next { right: 0; } }
+
+    .lightbox-caption { color: rgba(255,255,255,0.65); font-size: 0.82rem; margin-top: 12px; }
+    .lightbox-counter { color: rgba(255,255,255,0.4); font-size: 0.75rem; margin-top: 5px; }
+
+    /* ====== LOCATION CARD ====== */
+    .location-card {
+      background: var(--card); border-radius: var(--radius); overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05); margin: 24px 0 32px;
+    }
+    body.light-mode .location-card { background: #fff; border-color: rgba(0,0,0,0.07); }
+
+    .location-map-placeholder {
+      height: 180px; background: linear-gradient(135deg, rgba(28,93,164,0.2), rgba(182,42,45,0.1));
+      display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;
+    }
+
+    /* Grid overlay for map feel */
+    .location-map-placeholder::before {
+      content: ''; position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(28,93,164,0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(28,93,164,0.2) 1px, transparent 1px);
+      background-size: 30px 30px;
+    }
+
+    .map-pin { font-size: 2.5rem; position: relative; z-index: 1; filter: drop-shadow(0 4px 12px rgba(28,93,164,0.5)); }
+
+    .location-details { padding: 18px 20px; }
+    .location-details h4 { font-size: 1rem; font-weight: 800; color: #e6eef8; margin-bottom: 10px; }
+    body.light-mode .location-details h4 { color: #1a2233; }
+    .loc-row { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 8px; font-size: 0.86rem; color: var(--muted); }
+    .loc-row i { color: var(--accent-blue); width: 15px; flex-shrink: 0; margin-top: 2px; }
+    .loc-actions { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+
+    .loc-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      color: #fff; padding: 9px 18px; border-radius: 8px; font-size: 0.83rem; font-weight: 700;
+      transition: opacity 0.2s;
+    }
+    .loc-btn:hover { opacity: 0.85; color: #fff; }
+
+    .loc-btn-outline {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--card); border: 1.5px solid rgba(255,255,255,0.09);
+      color: var(--muted); padding: 9px 18px; border-radius: 8px; font-size: 0.83rem; font-weight: 700;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .loc-btn-outline:hover { border-color: var(--accent-blue); color: #e6eef8; }
+    body.light-mode .loc-btn-outline { background: #f4f7fc; border-color: rgba(0,0,0,0.1); }
+
+    /* ====== "WHAT THIS MEANS" SECTION ====== */
+    .impact-section {
+      background: linear-gradient(135deg, rgba(28,93,164,0.1), rgba(182,42,45,0.08));
+      border: 1px solid rgba(28,93,164,0.2); border-radius: var(--radius);
+      padding: 24px; margin: 28px 0;
+    }
+    body.light-mode .impact-section { background: rgba(28,93,164,0.04); }
+    .impact-section h3 { font-size: 1.1rem; font-weight: 800; color: var(--accent-blue); margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+
+    .impact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (max-width: 520px) { .impact-grid { grid-template-columns: 1fr; } }
+
+    .impact-item { background: rgba(255,255,255,0.04); border-radius: 8px; padding: 12px 14px; }
+    body.light-mode .impact-item { background: rgba(0,0,0,0.04); }
+    .impact-item .ii-title { font-size: 0.82rem; font-weight: 700; color: #e6eef8; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+    body.light-mode .impact-item .ii-title { color: #1a2233; }
+    .impact-item .ii-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.55; }
+
+    /* ====== SECTION DIVIDER ====== */
+    .section-divider { display: flex; align-items: center; gap: 12px; margin: 10px 0 28px; color: var(--muted); font-size: 1rem; }
+    .section-divider::before, .section-divider::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.07); }
+    body.light-mode .section-divider::before, body.light-mode .section-divider::after { background: rgba(0,0,0,0.09); }
+
+    /* ====== REVEAL ====== */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ====== COMMENTS ====== */
+    .comments-section { margin-top: 36px; }
+    .comments-section h3 { font-size: 1.1rem; font-weight: 800; color: #e6eef8; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+    body.light-mode .comments-section h3 { color: #1a2233; }
+
+    .comment-form { background: var(--card); border-radius: var(--radius); padding: 20px; border: 1px solid rgba(255,255,255,0.05); margin-bottom: 22px; }
+    body.light-mode .comment-form { background: #fff; border-color: rgba(0,0,0,0.07); }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+    @media (max-width: 500px) { .form-row { grid-template-columns: 1fr; } }
+
+    .cf-input {
+      width: 100%; background: rgba(255,255,255,0.05); border: 1.5px solid rgba(255,255,255,0.08);
+      border-radius: 8px; color: #e6eef8; padding: 10px 14px;
+      font-size: 0.86rem; font-family: inherit; transition: border-color 0.2s;
+    }
+    body.light-mode .cf-input { background: #f4f7fc; border-color: rgba(0,0,0,0.1); color: #1a2233; }
+    .cf-input:focus { outline: none; border-color: var(--accent-blue); }
+    .cf-input::placeholder { color: var(--muted); }
+
+    .cf-textarea { resize: vertical; min-height: 90px; }
+
+    .cf-submit {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      color: #fff; border: none; padding: 10px 24px; border-radius: 8px;
+      font-size: 0.86rem; font-weight: 700; cursor: pointer; font-family: inherit;
+      transition: opacity 0.2s; display: inline-flex; align-items: center; gap: 7px;
+    }
+    .cf-submit:hover { opacity: 0.85; }
+
+    .comment-list { display: flex; flex-direction: column; gap: 14px; }
+
+    .comment-item { background: var(--card); border-radius: var(--radius); padding: 16px 18px; border: 1px solid rgba(255,255,255,0.04); }
+    body.light-mode .comment-item { background: #fff; border-color: rgba(0,0,0,0.06); }
+
+    .comment-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; gap: 10px; }
+    .comment-author { font-weight: 700; font-size: 0.88rem; color: var(--accent-blue); }
+    .comment-date { font-size: 0.74rem; color: var(--muted); }
+    .comment-text { font-size: 0.86rem; color: var(--muted); line-height: 1.6; }
+    body.light-mode .comment-text { color: #334155; }
+
+    .no-comments { text-align: center; color: var(--muted); font-size: 0.9rem; padding: 24px; }
+
+    /* ====== RELATED ARTICLES ====== */
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 18px; }
+    @media (max-width: 640px) { .related-grid { grid-template-columns: 1fr; } }
+
+    .related-card {
+      background: var(--card); border-radius: var(--radius); overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.04); text-decoration: none; color: inherit;
+      display: block; transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .related-card:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.4); border-color: rgba(28,93,164,0.25); color: inherit; }
+    body.light-mode .related-card { background: #fff; border-color: rgba(0,0,0,0.06); }
+
+    .related-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; background: #0c1322; }
+    .related-card-body { padding: 13px 14px; }
+    .rc-tag { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-blue); margin-bottom: 5px; }
+    .rc-title { font-size: 0.9rem; font-weight: 700; color: #e6eef8; line-height: 1.35; }
+    body.light-mode .rc-title { color: #1a2233; }
+
+    /* ====== SIDEBAR ====== */
+    .sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+    .sidebar-card { background: var(--card); border-radius: var(--radius); padding: 18px; border: 1px solid rgba(255,255,255,0.05); border-top: 3px solid var(--accent-blue); }
+    .sidebar-card.red-top { border-top-color: var(--accent-red); }
+    body.light-mode .sidebar-card { background: #fff; border-color: rgba(0,0,0,0.06); }
+
+    .sidebar-card h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-blue); margin-bottom: 14px; }
+    .sidebar-card.red-top h4 { color: var(--accent-red); }
+
+    /* Quick facts */
+    .qf-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: 0.84rem; }
+    body.light-mode .qf-item { border-color: rgba(0,0,0,0.06); }
+    .qf-item:last-child { border-bottom: none; }
+    .qf-label { color: var(--muted); }
+    .qf-value { font-weight: 700; color: #e6eef8; }
+    body.light-mode .qf-value { color: #1a2233; }
+
+    /* Sidebar share */
+    .sidebar-share-btns { display: flex; flex-direction: column; gap: 8px; }
+    .ssb {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07);
+      color: var(--muted); padding: 9px 14px; border-radius: 8px;
+      cursor: pointer; font-size: 0.83rem; font-weight: 700; font-family: inherit;
+      transition: all 0.2s; width: 100%;
+    }
+    .ssb:hover { border-color: var(--accent-blue); color: #e6eef8; }
+    body.light-mode .ssb { background: #f4f7fc; border-color: rgba(0,0,0,0.08); }
+
+    /* Sidebar next match */
+    .nm-row { display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 8px; }
+    .nm-row span:first-child { color: var(--muted); }
+    .nm-row span:last-child { font-weight: 700; color: #e6eef8; }
+    body.light-mode .nm-row span:last-child { color: #1a2233; }
+
+    .nm-cta {
+      display: block; text-align: center; margin-top: 12px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      color: #fff; padding: 9px; border-radius: 8px; font-size: 0.83rem; font-weight: 700;
+    }
+    .nm-cta:hover { opacity: 0.85; color: #fff; }
+
+    /* ====== FLOATING SHARE SIDEBAR ====== */
+    .float-share {
+      position: fixed; left: 16px; top: 50%; transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: 8px; z-index: 90;
+    }
+    .fs-btn {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--card); border: 1.5px solid rgba(255,255,255,0.07);
+      color: var(--muted); display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 0.88rem; transition: all 0.2s; font-family: inherit;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .fs-btn:hover { border-color: var(--accent-blue); color: #e6eef8; transform: scale(1.1); }
+
+    @media (max-width: 1300px) { .float-share { display: none; } }
+
+    /* ====== HIGHLIGHT SHARE ====== */
+    #highlight-popup {
+      position: fixed; display: none;
+      background: #1e3050; border: 1px solid var(--accent-blue); color: #e6eef8;
+      padding: 8px 14px; border-radius: 8px; font-size: 0.8rem; font-weight: 700;
+      cursor: pointer; z-index: 5000; box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+      gap: 8px; align-items: center; white-space: nowrap;
+    }
+
+    /* ====== TOAST ====== */
+    .toast {
+      position: fixed; bottom: 28px; right: 28px;
+      background: #1e3050; border: 1px solid var(--accent-blue); color: #e6eef8;
+      padding: 12px 20px; border-radius: 10px; font-size: 0.86rem; font-weight: 600;
+      z-index: 2000; transform: translateY(80px); opacity: 0;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* ====== SCROLL TOP ====== */
+    .scroll-top {
+      position: fixed; bottom: 28px; left: 28px;
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 999; border: none; font-size: 1rem; color: #fff;
+    }
+    .scroll-top.show { opacity: 1; pointer-events: all; }
+    .scroll-top:hover { transform: translateY(-3px) scale(1.05); }
+
+    /* ====== FOOTER ====== */
+    .site-footer {
+      background: linear-gradient(180deg, var(--bg), #060a18);
+      color: #e6eef8; padding: 36px 20px 20px; font-size: 14px;
+      border-top-left-radius: var(--radius); border-top-right-radius: var(--radius); margin-top: 40px;
+    }
+    .footer-container { max-width: var(--max-w); margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 36px; }
+    .footer-brand h3 { color: #fff; margin-bottom: 8px; }
+    .footer-brand p { color: var(--muted); line-height: 1.6; margin: 0 0 4px; }
+    .footer-links h4, .footer-contact h4, .footer-social h4 { color: #fff; margin-bottom: 12px; font-size: 15px; position: relative; }
+    .footer-links h4::after, .footer-contact h4::after, .footer-social h4::after { content: ""; display: block; width: 34px; height: 2px; margin-top: 6px; background: linear-gradient(90deg, var(--accent-red), var(--accent-blue)); }
+    .footer-links a { display: block; color: var(--muted); text-decoration: none; margin-bottom: 8px; font-weight: 500; transition: color 0.2s, transform 0.2s; }
+    .footer-links a:hover { color: #e6eef8; transform: translateX(4px); }
+    .footer-contact p { margin-bottom: 6px; color: var(--muted); }
+    .social-icons a { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin-right: 10px; border-radius: 50%; color: var(--muted); text-decoration: none; transition: color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s; }
+    .social-icons a svg { width: 18px; height: 18px; fill: currentColor; }
+    .social-icons a:hover { color: #fff; background: linear-gradient(135deg, var(--accent-red), var(--accent-blue)); transform: translateY(-2px) scale(1.08); box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
+    .social-icons a.icon-youtube:hover  { background: #ff0000; }
+    .social-icons a.icon-facebook:hover { background: #1c5da4; }
+    .social-icons a.icon-twitter:hover  { background: #000; }
+    .footer-bottom { margin-top: 32px; padding-top: 16px; text-align: center; color: var(--muted); position: relative; }
+    .footer-bottom::before { content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 70%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-red), var(--accent-blue), transparent); }
+
+    @media (max-width: 640px) { .header-right a:not(.cta-btn) { display: none; } }
+  </style>
+</head>
+<body>
+
+  <div id="progress-bar"></div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="#" class="brand">
+      <div class="logo">SS</div>
+      <div>
+        <div style="font-weight:800">Super Star FC</div>
+        <div style="font-size:0.74rem;color:var(--muted)">Official Club</div>
+      </div>
+    </a>
+    <div class="header-right">
+      <a href="./new.html">News</a>
+      <a href="./matches.html">Matches</a>
+      <a href="./roster.html">Roster</a>
+      <div class="reading-controls">
+        <button class="ctrl-btn" onclick="changeFontSize(-1)" title="Decrease text">A-</button>
+        <button class="ctrl-btn" onclick="changeFontSize(1)" title="Increase text">A+</button>
+        <button class="ctrl-btn" id="modeToggle" onclick="toggleMode()">🌙</button>
+      </div>
+      <a href="index.html" class="cta-btn">Main</a>
+    </div>
+  </header>
+
+  <!-- QUOTE BANNER -->
+  <div class="qotd-banner">
+    <strong>Club Director:</strong> "This ground is ours. Every match from here on, every roar from the stands, this is where the Super Stars FC story grows." — Super Stars FC
+  </div>
+
+  <!-- HERO -->
+  <div class="article-hero">
+    <div class="hero-bg">
+      <div class="hero-field-art"></div>
+      <div class="hero-glow"></div>
+      <!-- Football pitch outline -->
+      <div class="hero-pitch">
+        <svg viewBox="0 0 800 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="20" width="760" height="460" rx="4" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
+          <line x1="400" y1="20" x2="400" y2="480" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
+          <circle cx="400" cy="250" r="70" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
+          <circle cx="400" cy="250" r="5" fill="rgba(255,255,255,0.7)"/>
+          <rect x="20" y="160" width="120" height="180" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
+          <rect x="20" y="195" width="60" height="110" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
+          <rect x="660" y="160" width="120" height="180" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
+          <rect x="720" y="195" width="60" height="110" stroke="rgba(255,255,255,0.7)" stroke-width="2"/>
+          <circle cx="140" cy="250" r="5" fill="rgba(255,255,255,0.7)"/>
+          <circle cx="660" cy="250" r="5" fill="rgba(255,255,255,0.7)"/>
+          <path d="M20 270 A 60 60 0 0 0 20 230" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" fill="none"/>
+          <path d="M780 270 A 60 60 0 0 1 780 230" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" fill="none"/>
+        </svg>
+      </div>
+    </div>
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <div class="breaking-badge"><i class="fas fa-bolt"></i> Breaking Announcement</div>
+      <h1>Our Home: Super Stars FC Officially Announces Its Home Stadium</h1>
+      <div class="hero-meta-row">
+        <span><i class="fas fa-calendar"></i> March 2026</span>
+        <div class="dot"></div>
+        <span><i class="fas fa-user"></i> Super Stars FC Staff</span>
+        <div class="dot"></div>
+        <span><i class="fas fa-clock"></i> 8 min read</span>
+        <div class="dot"></div>
+        <span><i class="fas fa-eye"></i> <span id="viewCount">–</span> views</span>
+        <div class="dot"></div>
+        <span><i class="fas fa-tag"></i> Club News</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE WRAP -->
+  <div class="page-wrap">
+
+    <!-- ===== MAIN ARTICLE ===== -->
+    <main class="article-body">
+
+      <!-- STATS PANEL -->
+      <div class="stats-panel reveal">
+        <h3>🏟️ Stadium at a Glance</h3>
+        <div class="stats-row">
+          <div class="stat-item">
+            <div class="stat-num counter" data-target="1500">0</div>
+            <div class="stat-label">Fan Capacity</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num counter" data-target="115">0</div>
+            <div class="stat-label">Field Length (yds)</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num counter" data-target="75">0</div>
+            <div class="stat-label">Field Width (yds)</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num counter" data-target="2026">0</div>
+            <div class="stat-label">Year Opened</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num counter" data-target="0">0</div>
+            <div class="stat-label">Home Matches</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num counter" data-target="68107">0</div>
+            <div class="stat-label">Omaha Zip Code</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOLBAR -->
+      <div class="page-toolbar reveal">
+        <button class="like-btn" id="likeBtn" onclick="toggleLike()">
+          <i class="fas fa-heart"></i> <span id="likeCount">0</span> Likes
+        </button>
+      </div>
+
+      <!-- TABLE OF CONTENTS -->
+      <div class="toc reveal">
+        <h4><i class="fas fa-list"></i> &nbsp;Table of Contents</h4>
+        <ol>
+          <li><a href="#announcement" class="toc-link">The Announcement</a></li>
+          <li><a href="#ground" class="toc-link">Our Ground | South High School Stadium</a></li>
+          <li><a href="#features" class="toc-link">Stadium Features & Facilities</a></li>
+          <li><a href="#timeline" class="toc-link">Road to Home | Club Timeline</a></li>
+          <li><a href="#impact" class="toc-link">What This Means for the Club</a></li>
+          <li><a href="#location" class="toc-link">Location & Getting Here</a></li>
+        </ol>
+      </div>
+
+      <!-- ARTICLE PROSE -->
+      <div class="prose">
+
+        <!-- SECTION 1 -->
+        <h2 id="announcement">The Announcement</h2>
+
+        <p>Today marks one of the most significant moments in the short but powerful history of Super Stars FC. Founded just months ago in June 2025, our club has officially confirmed its permanent home, a dedicated stadium base from which we will build everything this club is destined to become.</p>
+
+        <div class="pull-quote">
+          "Every great club in the world started somewhere. Today, we plant our flag. This is our home, our fortress, and the place where the Super Stars FC story will be written for generations."
+          <cite>— Club Director, Super Stars FC</cite>
+        </div>
+
+        <p>This announcement comes after months of scouting, negotiation, and community engagement, a process that has reflected the values of Super Stars FC at every step: patient, purposeful, and always rooted in the city of Omaha. From the first day of training to today's announcement, the club has been building with intention.</p>
+
+        <p>The decision was not taken lightly. The leadership team assessed multiple locations across Omaha before identifying the site that best represents the club's identity, a ground that is accessible, established within the community, and capable of growing alongside the club as we push higher through the UPSL and beyond.</p>
+
+        <div class="callout">
+          <span class="callout-icon">📍</span>
+          <strong>Official Home Ground:</strong> South High School Stadium, 4519 S 24th St, Omaha, NE 68107 | the official home venue of Super Stars FC for Season 2026 and beyond.
+        </div>
+
+        <div class="section-divider">🏟️</div>
+
+        <!-- SECTION 2 -->
+        <h2 id="ground">Our Ground | South High School Stadium</h2>
+
+        <p>South High School Stadium is more than a venue. Situated in the heart of the South neighborhood in southeast Omaha, it is a ground with history, with character, and with the kind of community energy that a club like Super Stars FC was built to be part of.</p>
+
+        <p>Super Stars FC has officially announced South High School Stadium as the club’s new home venue for the upcoming 2026 UPSL season. The move marks an important step for the club as it prepares for its first-ever campaign in the United Premier Soccer League.</p>
+
+        <p>Last season, the team hosted all seven of its home matches at Benson High Stadium while continuing to grow its presence in the Omaha soccer community. As the club prepares for the challenges of UPSL competition, finding the right long-term home became a top priority.</p>
+
+        <p>Following discussions with the South High School administration, the club successfully reached an agreement that will allow Super Stars FC to host its home league matches at South High School Stadium beginning this season. The venue will now serve as the stage for the club’s next chapter.</p>
+
+        <div class="pull-quote red">
+          "This stadium represents a new step for our club. We’re grateful for the opportunity and excited to welcome our supporters to a place we hope will become a true home for Super Stars FC."
+          <cite>— Super Stars FC Representative</cite>
+        </div>
+
+        <p>South High School Stadium features a full-size pitch, lighting for evening matches, player facilities, and space for supporters to gather and celebrate the game. With a matchday capacity of approximately 1,500, the stadium provides an exciting environment as the club begins its first UPSL season.</p>
+
+        <p>While the team built many memories at Benson High Stadium last year, the move to South High School Stadium signals growth and a commitment to building a stronger future for the club and its supporters.</p>
+
+        <div class="callout red">
+          <span class="callout-icon">⚽</span>
+          <strong>New Home for 2026:</strong> South High School Stadium will host Super Stars FC’s UPSL home matches this season as the club begins a new chapter in its history.
+        </div>
+
+        <div class="section-divider">⚽</div>
+
+        <!-- SECTION 3 — FEATURES -->
+        <h2 id="features">Stadium Features & Facilities</h2>
+
+        <p>South High School Stadium has been equipped and prepared to give Super Stars FC the professional home environment the squad deserves. Here's a full breakdown of what fans and players can expect:</p>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <span class="fc-icon">🌿</span>
+            <h4>Premium Pitch</h4>
+            <p>Full-size natural grass surface maintained to UPSL standard. 115 × 75 yards of genuine football turf; fast, true, and built for the beautiful game.</p>
+          </div>
+          <div class="feature-card">
+            <span class="fc-icon">💡</span>
+            <h4>Floodlights</h4>
+            <p>High-powered floodlights enabling evening fixtures and midweek matches, perfect for the atmosphere that Super Stars FC deserves.</p>
+          </div>
+          <div class="feature-card">
+            <span class="fc-icon">🪑</span>
+            <h4>Fan Seating</h4>
+            <p>Capacity of 1,500 spectators with standing and seating areas, designed to create an atmosphere that gets behind the team from the first whistle.</p>
+          </div>
+          <div class="feature-card">
+            <span class="fc-icon">🚿</span>
+            <h4>Locker Rooms</h4>
+            <p>Full changing facilities for both home and away teams, built to the standard our players have earned through their dedication this season.</p>
+          </div>
+          <div class="feature-card">
+            <span class="fc-icon">🍔</span>
+            <h4>Fan Zone</h4>
+            <p>Concessions, merchandise, and community gathering space, a place for Super Stars fans to come together before, during, and after every match.</p>
+          </div>
+          <div class="feature-card">
+            <span class="fc-icon">♿</span>
+            <h4>Accessibility</h4>
+            <p>Accessible entrances, viewing areas, and facilities to ensure that every single supporter can experience Super Stars FC, regardless of ability.</p>
+          </div>
+        </div>
+
+        <div class="section-divider">⏱️</div>
+
+        <!-- SECTION 4 — TIMELINE -->
+        <h2 id="timeline">Road to Home | Club Timeline</h2>
+
+        <p>From the day Super Stars FC was founded to the moment the club secured a new home for its UPSL journey, here is the path that brought us here:</p>
+
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">June 3, 2025 | Founding Day</div>
+            <div class="tl-title">Super Stars FC Is Born</div>
+            <div class="tl-desc">The club is officially founded in Omaha, Nebraska, built on a vision of community football, competitive spirit, and the belief that Omaha deserves its own story in the beautiful game.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">July 2025 | Pre-Season</div>
+            <div class="tl-title">Training Begins, Roster Takes Shape</div>
+            <div class="tl-desc">The squad comes together as training sessions begin and the team identity starts to form. Players such as John, Minga, Jackson, Sammy, and Joshua begin building the foundation of what will become Super Stars FC.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">August 16, 2025 | Match Day 1</div>
+            <div class="tl-title">First Competitive Match | Historic 8-Goal Victory</div>
+            <div class="tl-desc">Super Stars FC play their first official match, announcing themselves in dramatic fashion with an unforgettable 8 : 5 away victory over Togoless Soccer Association.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">August | October 2025</div>
+            <div class="tl-title">Home Matches at Benson High Stadium</div>
+            <div class="tl-desc">During the club’s first season, Super Stars FC hosts all seven of its home matches at Benson High Stadium, where supporters gather and begin building the club’s early matchday atmosphere.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-date">March 2026 | Official Announcement</div>
+            <div class="tl-title">South High School Stadium Confirmed as Permanent Home Ground</div>
+            <div class="tl-desc">As the club prepares for its first UPSL season, Super Stars FC reaches an agreement with South High School to host its home matches at South High School Stadium, marking an important new chapter in the club’s growth.</div>
+          </div>
+        </div>
+
+        <div class="section-divider">📸</div>
+
+        <!-- SECTION 6 — IMPACT -->
+        <h2 id="impact">What This Means for the Club</h2>
+
+        <p>The agreement to host matches at South High School Stadium represents an important step forward for Super Stars FC. While the club previously hosted its home games at Benson High Stadium, the move to South High School Stadium provides a new opportunity as the team prepares for its first season in the UPSL:</p>
+
+        <div class="impact-section">
+          <h3><i class="fas fa-chart-line" style="color:var(--accent-blue)"></i> Impact Across the Club</h3>
+          <div class="impact-grid">
+            <div class="impact-item">
+              <div class="ii-title"><span>⚽</span> Players</div>
+              <div class="ii-desc">A consistent home venue helps players prepare better for matches and develop stronger routines as the club enters UPSL competition.</div>
+            </div>
+            <div class="impact-item">
+              <div class="ii-title"><span>🏘️</span> Community</div>
+              <div class="ii-desc">Hosting matches at South High School Stadium brings the club closer to the local community and creates opportunities for fans, families, and young players to connect with Super Stars FC.</div>
+            </div>
+            <div class="impact-item">
+              <div class="ii-title"><span>🤝</span> Partnerships</div>
+              <div class="ii-desc">Having a confirmed match venue strengthens the club's ability to build relationships with partners such as WENDÔK and future sponsors who want to support the club’s development.</div>
+            </div>
+            <div class="impact-item">
+              <div class="ii-title"><span>📈</span> UPSL Progress</div>
+              <div class="ii-desc">A confirmed home venue is an important step for clubs competing in the UPSL. It provides stability for match scheduling and helps the organization grow within the league structure.</div>
+            </div>
+            <div class="impact-item">
+              <div class="ii-title"><span>👥</span> Supporters</div>
+              <div class="ii-desc">Supporters will now have a consistent location to watch matches, gather as a community, and follow the club throughout the UPSL season.</div>
+            </div>
+            <div class="impact-item">
+              <div class="ii-title"><span>🌍</span> Club Identity</div>
+              <div class="ii-desc">Playing at South High School Stadium gives Super Stars FC a stronger presence in Omaha as the club continues to grow and build its identity within the local football scene. A permanent home ground helps define the club's identity and creates a sense of belonging for players, staff, and supporters.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pull-quote">
+          "We didn't just find a stadium. We found a home. And everything we build from this point forward will have deeper roots because of it."
+          <cite>— Club Director, Super Stars FC</cite>
+        </div>
+
+        <div class="section-divider">📍</div>
+
+        <!-- SECTION 7 — LOCATION -->
+        <h2 id="location">Location & Getting Here</h2>
+
+        <p>South High School Stadium is located in the neighborhood of south Omaha, easily accessible by car, bus, and on foot from much of the metro area. Here's everything you need to plan your visit:</p>
+
+        <div class="location-card reveal">
+          <div class="location-map-placeholder">
+            <div class="map-pin">📍</div>
+          </div>
+          <div class="location-details">
+            <h4>South High School Stadium — Super Stars FC Home Ground</h4>
+            <div class="loc-row"><i class="fas fa-location-dot"></i><span>4519 S 24th St, Omaha, NE 68107</span></div>
+            <div class="loc-row"><i class="fas fa-train"></i><span>Accessible via Omaha Metro bus routes along Maple St corridor</span></div>
+            <div class="loc-row"><i class="fas fa-car"></i><span>Free parking available adjacent to the stadium on match days</span></div>
+            <div class="loc-row"><i class="fas fa-clock"></i><span>Gates open 60 minutes before kick-off on all home match days</span></div>
+            <div class="loc-actions">
+              <a href="https://maps.google.com/?q=4519+S+24th+St+Omaha+NE+68107" target="_blank" class="loc-btn"><i class="fas fa-map"></i> Open in Google Maps</a>
+              <a href="./matches.html" class="loc-btn-outline"><i class="fas fa-calendar"></i> Upcoming Home Matches</a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.prose -->
+
+      <div class="section-divider reveal">💬</div>
+
+      <!-- COMMENTS -->
+      <div class="comments-section reveal">
+        <h3><i class="fas fa-comments" style="color:var(--accent-blue)"></i> Community Comments</h3>
+
+        <div class="comment-form">
+          <div class="form-row">
+            <input type="text" id="commentName" class="cf-input" placeholder="Your name">
+            <input type="text" id="commentLocation" class="cf-input" placeholder="City (optional)">
+          </div>
+          <textarea id="commentText" class="cf-input cf-textarea" placeholder="Share your reaction to the stadium announcement..." style="margin-bottom:12px;display:block;width:100%"></textarea>
+          <button class="cf-submit" onclick="submitComment()"><i class="fas fa-paper-plane"></i> Post Comment</button>
+        </div>
+
+        <div class="comment-list" id="commentList">
+          <div class="no-comments" id="noComments">Be the first to comment on this announcement.</div>
+        </div>
+      </div>
+
+      <div class="section-divider reveal">📰</div>
+
+      <!-- RELATED ARTICLES -->
+      <div class="reveal">
+        <div style="font-size:1.1rem;font-weight:800;color:#e6eef8;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+          <span style="display:inline-block;width:4px;height:1.1em;background:linear-gradient(180deg,var(--accent-blue),var(--accent-red));border-radius:2px"></span>
+          Related Articles
+        </div>
+        <div class="related-grid">
+          <a href="./open.html" class="related-card">
+            <img src="ssf1.jpg" alt="Season Opener" onerror="this.style.height='80px';this.style.background='#0f1724';this.removeAttribute('src')">
+            <div class="related-card-body">
+              <div class="rc-tag">Match Report</div>
+              <div class="rc-title">Season Opener: Super Stars FC Starts Strong</div>
+            </div>
+          </a>
+          <a href="./captains-corner.html" class="related-card">
+            <img src="ssf7.jpg" alt="Captain's Corner" onerror="this.style.height='80px';this.style.background='#0f1724';this.removeAttribute('src')">
+            <div class="related-card-body">
+              <div class="rc-tag">Club News</div>
+              <div class="rc-title">Captain's Corner: Leadership On and Off the Field</div>
+            </div>
+          </a>
+          <a href="./wendok.html" class="related-card">
+            <img src="WENDOK SPORTSWEAR.jpg" alt="WENDÔK" onerror="this.style.height='80px';this.style.background='#0f1724';this.removeAttribute('src')">
+            <div class="related-card-body">
+              <div class="rc-tag">Official Partner</div>
+              <div class="rc-title">WENDÔK Sportswear — Official Kit Partner</div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+    </main><!-- /.article-body -->
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="sidebar">
+
+      <!-- Quick Facts -->
+      <div class="sidebar-card reveal">
+        <h4><i class="fas fa-bolt"></i> Quick Facts</h4>
+        <div class="qf-item"><span class="qf-label">Stadium</span><span class="qf-value">South High School Stadium</span></div>
+        <div class="qf-item"><span class="qf-label">Address</span><span class="qf-value">5419 S 24th St</span></div>
+        <div class="qf-item"><span class="qf-label">City</span><span class="qf-value">Omaha, NE 68107</span></div>
+        <div class="qf-item"><span class="qf-label">Floodlights</span><span class="qf-value">✅ Yes</span></div>
+        <div class="qf-item"><span class="qf-label">Announced</span><span class="qf-value">March 2026</span></div>
+        <div class="qf-item"><span class="qf-label">League</span><span class="qf-value">UPSL</span></div>
+      </div>
+
+      <!-- Next Home Match -->
+      <div class="sidebar-card red-top reveal">
+        <h4><i class="fas fa-calendar"></i> Next Home Match</h4>
+        <div class="nm-row"><span>Match</span><span>vs Heartland United FC</span></div>
+        <div class="nm-row"><span>Date</span><span>Sun, Apr 12</span></div>
+        <div class="nm-row"><span>Kick-off</span><span>8:00 PM</span></div>
+        <div class="nm-row"><span>Venue</span><span>South High School Stadium</span></div>
+        <a href="./matches.html" class="nm-cta">View All Matches →</a>
+      </div>
+
+      <!-- Club Stats -->
+      <div class="sidebar-card reveal">
+        <h4><i class="fas fa-chart-bar"></i> Season 2025 Record</h4>
+        <div class="qf-item"><span class="qf-label">Played</span><span class="qf-value">7</span></div>
+        <div class="qf-item"><span class="qf-label">Won</span><span class="qf-value" style="color:#5dd68a">3</span></div>
+        <div class="qf-item"><span class="qf-label">Drawn</span><span class="qf-value" style="color:#e0b84a">1</span></div>
+        <div class="qf-item"><span class="qf-label">Lost</span><span class="qf-value" style="color:var(--accent-red)">3</span></div>
+      </div>
+
+      <!-- Partners -->
+      <div class="sidebar-card red-top reveal">
+        <h4><i class="fas fa-handshake"></i> Official Partners</h4>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:2px">
+          <a href="#" style="display:flex;align-items:center;gap:8px;font-size:0.84rem;color:var(--muted);font-weight:600;padding:8px 10px;background:rgba(255,255,255,0.04);border-radius:7px;transition:color 0.2s" onmouseover="this.style.color='#7ab4e8'" onmouseout="this.style.color=''">
+            <i class="fas fa-star" style="color:var(--accent-blue)"></i> BLOOM | Community Partner
+          </a>
+          <a href="./wendok.html" style="display:flex;align-items:center;gap:8px;font-size:0.84rem;color:var(--muted);font-weight:600;padding:8px 10px;background:rgba(255,255,255,0.04);border-radius:7px;transition:color 0.2s" onmouseover="this.style.color='#e07a7c'" onmouseout="this.style.color=''">
+            <i class="fas fa-shirt" style="color:var(--accent-red)"></i> WENDÔK | Kit Partner
+          </a>
+          <a href="./Partners.html" style="display:block;text-align:center;font-size:0.8rem;color:var(--accent-blue);font-weight:700;margin-top:4px">All Partners →</a>
+        </div>
+      </div>
+
+    </aside><!-- /.sidebar -->
+
+  </div><!-- /.page-wrap -->
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+      <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)"><i class="fas fa-chevron-left"></i></button>
+      <img class="lightbox-img" id="lightboxImg" src="" alt="">
+      <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)"><i class="fas fa-chevron-right"></i></button>
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+      <div class="lightbox-counter" id="lightboxCounter"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>Super Star FC</h3>
+        <p>Founded June 3, 2025.</p>
+        <p>Building champions on and off the field.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="./bout.html">About Us</a>
+        <a href="./term.html">Terms</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./Privacy.html">Privacy Policy</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>Email: superstarfc25@gmail.com</p>
+        <p>Phone: +1 (531) 262-1982</p>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/profile.php?id=100077275385711" aria-label="Facebook" class="icon-facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2V12h2.2V9.8c0-2.2 1.3-3.4 3.3-3.4.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 2.9h-1.9v7A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="https://www.instagram.com/super_starsfc_fc?igsh=MWUyM3IxbHI1Y3p-sOQ==" aria-label="Instagram" class="icon-instagram"><svg viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zm5.8-2.1a1.3 1.3 0 1 1-1.3-1.3 1.3 1.3 0 0 1 1.3 1.3z"/></svg></a>
+          <a href="https://x.com/SuperStars75843?t=tZZoC1LvPfNGI-BKk15JG4g&S=09" aria-label="Twitter" class="icon-twitter"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.1.9A5.4 5.4 0 0 0 22.4 1a10.8 10.8 0 0 1-3.4 1.3A5.4 5.4 0 0 0 9.6 7a15.3 15.3 0 0 1-11.1-5.6 5.4 5.4 0 0 0 1.7 7.2A5.3 5.3 0 0 1 .8 8v.1a5.4 5.4 0 0 0 4.3 5.3 5.5 5.5 0 0 1-2.4.1 5.4 5.4 0 0 0 5 3.8A10.8 10.8 0 0 1 0 19.5 15.3 15.3 0 0 0 8.3 22c10 0 15.5-8.3 15.5-15.5v-.7A11 11 0 0 0 23 3z"/></svg></a>
+          <a href="https://youtube.com/@s.s.f.c?si=fV4gWuc4trgaRfF6" aria-label="YouTube" class="icon-youtube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5h0s-5.6 0-8.5.4c-.4.1-1.3.1-2.1 1C.7 4.6.5 6.2.5 6.2S0 8.1 0 10v2c0 1.9.5 3.8.5 3.8s.2 1.6.9 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.2.4 7.2.4s5.6 0 8.5-.4c.4-.1 1.3-.1 2.1-1 .7-.7.9-2.3.9-2.3s.5-1.9.5-3.8v-2c0-1.9-.5-3.8-.5-3.8zM9.8 14.5V9.5l4.8 2.5-4.8 2.5z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="year"></span> Super Star FC. All rights reserved.</div>
+  </footer>
+
+  <div id="highlight-popup" onclick="shareHighlight()">
+    <i class="fas fa-share-nodes"></i> Share Quote
+  </div>
+
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle" style="color:#3fa96a"></i>
+    <span id="toastMsg">Done!</span>
+  </div>
+
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // PROGRESS BAR + SCROLL TOP
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const total = document.body.scrollHeight - window.innerHeight;
+      document.getElementById('progress-bar').style.width = (scrolled / total * 100) + '%';
+      document.getElementById('scrollTop').classList.toggle('show', scrolled > 400);
+      updateActiveTOC();
+    });
+
+    // REVEAL
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // FEATURE CARDS STAGGER
+    const fcObserver = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 110); fcObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.feature-card').forEach(el => fcObserver.observe(el));
+
+    // GALLERY ITEMS STAGGER
+    const galleryObserver = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); galleryObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.gallery-item').forEach(el => galleryObserver.observe(el));
+
+    // TIMELINE STAGGER
+    const tlObserver = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 150); tlObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.tl-item').forEach(el => tlObserver.observe(el));
+
+    // COUNTERS
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.target);
+          if (isNaN(target)) return;
+          let current = 0;
+          const step = target / (1400 / 16);
+          const timer = setInterval(() => {
+            current = Math.min(current + step, target);
+            el.textContent = Math.round(current).toLocaleString();
+            if (current >= target) clearInterval(timer);
+          }, 16);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+    // FONT SIZE
+    let fontSize = 1;
+    function changeFontSize(dir) {
+      fontSize = Math.min(1.3, Math.max(0.82, fontSize + dir * 0.05));
+      document.documentElement.style.setProperty('--font-size', fontSize + 'rem');
+      showToast('Font size ' + (dir > 0 ? 'increased' : 'decreased'));
+    }
+
+    // LIGHT / DARK
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      document.getElementById('modeToggle').textContent = isLight ? '🌑' : '🌙';
+      localStorage.setItem('ssfc_mode', isLight ? 'light' : 'dark');
+    }
+    if (localStorage.getItem('ssfc_mode') === 'light') {
+      document.body.classList.add('light-mode');
+      document.getElementById('modeToggle').textContent = '🌑';
+    }
+
+    // VIEWS
+    const viewKey = 'ssfc_stadium_views';
+    let views = parseInt(localStorage.getItem(viewKey) || '0') + 1;
+    localStorage.setItem(viewKey, views);
+    document.getElementById('viewCount').textContent = views.toLocaleString();
+
+    // LIKES
+    const likeKey = 'ssfc_stadium_likes', likedKey = 'ssfc_stadium_liked';
+    let likes = parseInt(localStorage.getItem(likeKey) || '41');
+    let liked = localStorage.getItem(likedKey) === 'true';
+    const likeBtn = document.getElementById('likeBtn');
+    const likeFloatBtn = document.getElementById('likeFloatBtn');
+    const likeCount = document.getElementById('likeCount');
+    likeCount.textContent = likes;
+    if (liked) { likeBtn.classList.add('liked'); likeFloatBtn.style.color = 'var(--accent-red)'; }
+
+    function toggleLike() {
+      if (liked) { likes--; liked = false; likeBtn.classList.remove('liked'); likeFloatBtn.style.color = ''; }
+      else { likes++; liked = true; likeBtn.classList.add('liked'); likeFloatBtn.style.color = 'var(--accent-red)'; showToast('Thanks for the love! ❤️'); }
+      likeCount.textContent = likes;
+      localStorage.setItem(likeKey, likes);
+      localStorage.setItem(likedKey, liked);
+    }
+
+    // ACTIVE TOC
+    const sections = ['announcement','ground','features','timeline','gallery','impact','location'];
+    function updateActiveTOC() {
+      let current = '';
+      sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top < 120) current = id;
+      });
+      document.querySelectorAll('.toc-link').forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    }
+
+    // SMOOTH SCROLL FOR TOC
+    document.querySelectorAll('.toc-link').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    // GALLERY LIGHTBOX
+    const galleryImages = [
+      { src: 'ssf1.jpg', caption: 'Benson Stadium — Match Day' },
+      { src: 'ssfc0.jpg', caption: 'Super Stars FC in action' },
+      { src: 'image2.jpeg', caption: 'Training sessions at our new home' },
+      { src: 'ssf7.jpg', caption: 'The Super Stars FC squad — Season 2025' },
+      { src: 'ssc4.jpg', caption: 'Our supporters at Benson Stadium' },
+    ];
+    let currentImg = 0;
+
+    function openLightbox(index) {
+      currentImg = index;
+      renderLightbox();
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function navLightbox(dir) {
+      currentImg = (currentImg + dir + galleryImages.length) % galleryImages.length;
+      renderLightbox();
+    }
+
+    function renderLightbox() {
+      const item = galleryImages[currentImg];
+      document.getElementById('lightboxImg').src = item.src;
+      document.getElementById('lightboxCaption').textContent = item.caption;
+      document.getElementById('lightboxCounter').textContent = (currentImg + 1) + ' / ' + galleryImages.length;
+    }
+
+    document.getElementById('lightbox').addEventListener('click', e => {
+      if (e.target === document.getElementById('lightbox')) closeLightbox();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (document.getElementById('lightbox').classList.contains('active')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') navLightbox(-1);
+        if (e.key === 'ArrowRight') navLightbox(1);
+      }
+    });
+
+    // COMMENTS
+    const COMMENT_KEY = 'ssfc_stadium_comments';
+
+    function loadComments() {
+      const stored = JSON.parse(localStorage.getItem(COMMENT_KEY) || '[]');
+      const list = document.getElementById('commentList');
+      const none = document.getElementById('noComments');
+      if (stored.length === 0) { none.style.display = 'block'; return; }
+      none.style.display = 'none';
+      list.innerHTML = '';
+      [...stored].reverse().forEach(c => {
+        const div = document.createElement('div');
+        div.className = 'comment-item';
+        div.innerHTML = `
+          <div class="comment-header">
+            <span class="comment-author"><i class="fas fa-user-circle"></i> ${c.name}${c.location ? ' · ' + c.location : ''}</span>
+            <span class="comment-date">${c.date}</span>
+          </div>
+          <div class="comment-text">${c.text}</div>`;
+        list.appendChild(div);
+      });
+    }
+
+    function submitComment() {
+      const name = document.getElementById('commentName').value.trim();
+      const loc  = document.getElementById('commentLocation').value.trim();
+      const text = document.getElementById('commentText').value.trim();
+      if (!name || !text) { showToast('Please enter your name and a comment.'); return; }
+      const stored = JSON.parse(localStorage.getItem(COMMENT_KEY) || '[]');
+      stored.push({
+        name, location: loc, text,
+        date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+      });
+      localStorage.setItem(COMMENT_KEY, JSON.stringify(stored));
+      document.getElementById('commentName').value = '';
+      document.getElementById('commentLocation').value = '';
+      document.getElementById('commentText').value = '';
+      loadComments();
+      showToast('Comment posted! 💬');
+    }
+
+    loadComments();
+
+    // HIGHLIGHT SHARE
+    let highlightedText = '';
+    const popup = document.getElementById('highlight-popup');
+    document.addEventListener('mouseup', () => {
+      const sel = window.getSelection();
+      const text = sel ? sel.toString().trim() : '';
+      if (text.length > 20 && text.length < 280) {
+        highlightedText = text;
+        const range = sel.getRangeAt(0).getBoundingClientRect();
+        popup.style.display = 'flex';
+        popup.style.top = (window.scrollY + range.top - 48) + 'px';
+        popup.style.left = (range.left + range.width / 2 - 65) + 'px';
+      } else { popup.style.display = 'none'; }
+    });
+    function shareHighlight() {
+      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent('"' + highlightedText + '" — Super Stars FC')}`, '_blank');
+      popup.style.display = 'none';
+    }
+    document.addEventListener('mousedown', e => { if (e.target !== popup) popup.style.display = 'none'; });
+
+    // TOAST
+    function showToast(msg) {
+      document.getElementById('toastMsg').textContent = msg;
+      const t = document.getElementById('toast');
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+  </script>
+</body>
+</html>

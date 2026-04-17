@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta name="theme-color" content="#08101e">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Super Stars FC | Official Club Site</title>
+  <meta name="description" content="Super Stars FC — Born in Omaha. Built from the streets. Official team site for Season 2026.">
+  <link rel="shortcut icon" href="image0.jpeg" type="image/jpeg">
+  <link rel="icon" href="aaaaa.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #08101e;
+      --card: #0e1a2d;
+      --card2: #111f34;
+      --accent-red: #c0282b;
+      --accent-blue: #1555a0;
+      --accent-gold: #d4a32a;
+      --muted: #8899b4;
+      --max-w: 1100px;
+      --radius: 13px;
+      --font-size: 1rem;
+      font-family: 'Nunito', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: #dce8f5; -webkit-font-smoothing: antialiased; line-height: 1.5; }
+    body.light-mode { background: #eef3fa; color: #1a2233; --bg: #eef3fa; --card: #fff; --card2: #f3f7fd; --muted: #556070; }
+    a { color: var(--accent-blue); text-decoration: none; font-weight: 700; }
+    a:hover { color: var(--accent-red); }
+
+    /* ====== NEWS TICKER ====== */
+    .news-ticker {
+      background: linear-gradient(90deg, var(--accent-blue), #0c3472, var(--accent-red));
+      background-size: 200%;
+      animation: tickerGrad 5s ease infinite;
+      padding: 7px 0; overflow: hidden; position: relative; white-space: nowrap;
+    }
+    @keyframes tickerGrad { 0%,100%{background-position:0%} 50%{background-position:100%} }
+    .ticker-track {
+      display: inline-flex; gap: 60px; animation: tickerScroll 38s linear infinite;
+      font-size: 0.78rem; font-weight: 700; color: #fff; letter-spacing: 0.5px;
+      font-family: 'Barlow Condensed', sans-serif; font-size: 0.92rem; letter-spacing: 1px;
+    }
+    @keyframes tickerScroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .ticker-track:hover { animation-play-state: paused; }
+    .ticker-item { display: flex; align-items: center; gap: 8px; }
+    .ticker-item i { opacity: 0.8; }
+    .ticker-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.5); }
+
+    /* ====== PROGRESS BAR ====== */
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--accent-blue), var(--accent-gold), var(--accent-red)); z-index: 9999; transition: width 0.1s; }
+
+    /* ====== HEADER ====== */
+    .site-header {
+      padding: 14px 28px; display: flex; justify-content: space-between; align-items: center;
+      background: rgba(8,16,30,0.93); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.05); position: sticky; top: 0; z-index: 100;
+    }
+    body.light-mode .site-header { background: rgba(238,243,250,0.94); border-color: rgba(0,0,0,0.07); }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; flex-shrink: 0; }
+    .logo { width: 42px; height: 42px; border-radius: 10px; background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); display: flex; align-items: center; justify-content: center; color: #fff; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 0.88rem; box-shadow: 0 4px 16px rgba(0,0,0,0.5); letter-spacing: 1px; }
+    .brand-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.18rem; letter-spacing: 1px; }
+    .brand-sub { font-size: 0.7rem; color: var(--muted); }
+    .header-nav { display: flex; align-items: center; gap: 13px; flex-wrap: wrap; }
+    .header-nav a { color: var(--muted); font-weight: 700; font-size: 0.86rem; transition: color 0.2s; }
+    .header-nav a:hover { color: var(--accent-blue); }
+    .cta-btn { background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); color: #fff !important; padding: 9px 18px; border-radius: 9px; font-weight: 700 !important; display: inline-flex; align-items: center; justify-content: center; transition: opacity 0.2s; }
+    .cta-btn:hover { opacity: 0.88; color: #fff !important; }
+    .reading-controls { display: flex; gap: 5px; }
+    .ctrl-btn { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); color: var(--muted); width: 32px; height: 32px; border-radius: 7px; cursor: pointer; font-size: 0.78rem; display: flex; align-items: center; justify-content: center; transition: all 0.2s; font-family: inherit; }
+    .ctrl-btn:hover { border-color: var(--accent-blue); color: #dce8f5; }
+
+    /* ====== QUOTE BANNER ====== */
+    .qotd-banner { background: linear-gradient(135deg, rgba(21,85,160,0.14), rgba(192,40,43,0.14)); border-top: 2px solid var(--accent-blue); border-bottom: 2px solid var(--accent-red); padding: 12px 28px; text-align: center; font-size: 0.86rem; color: #a8bdd0; font-style: italic; }
+    body.light-mode .qotd-banner { color: #334155; }
+    .qotd-banner strong { color: var(--accent-blue); font-style: normal; }
+
+    /* ====== CONTAINER ====== */
+    .container { max-width: var(--max-w); margin: auto; padding: 32px 20px 60px; }
+
+    /* ====== REVEAL ====== */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ====== HERO ====== */
+    .hero {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
+      border: 1px solid rgba(255,255,255,0.04); backdrop-filter: blur(6px);
+      border-radius: var(--radius); padding: 36px;
+      display: grid; grid-template-columns: 1fr 340px; gap: 30px; align-items: start;
+      margin-bottom: 28px; position: relative; overflow: hidden;
+    }
+    .hero::before { content: ''; position: absolute; top: -60px; right: -60px; width: 280px; height: 280px; border-radius: 50%; background: radial-gradient(circle, rgba(21,85,160,0.12) 0%, transparent 70%); pointer-events: none; }
+    body.light-mode .hero { background: rgba(255,255,255,0.75); border-color: rgba(0,0,0,0.06); }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(21,85,160,0.2); border: 1px solid rgba(21,85,160,0.35); color: #6aadee; font-size: 0.7rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 16px; }
+    .hero h1 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 900; line-height: 1.1; margin-bottom: 14px; color: #dce8f5; letter-spacing: 1px; }
+    body.light-mode .hero h1 { color: #0e1a2d; }
+    .hero-tagline { font-size: 0.93rem; color: var(--muted); line-height: 1.75; margin-bottom: 22px; }
+    .hero-actions { display: flex; gap: 12px; align-items: center; margin-bottom: 20px; flex-wrap: wrap; }
+    .hero-link { color: var(--accent-blue); font-weight: 700; font-size: 0.9rem; transition: color 0.2s; }
+    .hero-link:hover { color: var(--accent-red); }
+    .hero-meta-badges { display: flex; gap: 9px; flex-wrap: wrap; }
+    .hero-meta-badge { padding: 6px 13px; border-radius: 9px; background: rgba(255,255,255,0.03); font-size: 0.8rem; font-weight: 700; border: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 6px; }
+    .hero-meta-badge.accent { color: var(--accent-red); }
+    .hero-meta-badge.muted { color: var(--muted); }
+    body.light-mode .hero-meta-badge { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.07); }
+
+    /* ====== HERO ASIDE ====== */
+    .hero-aside { display: flex; flex-direction: column; gap: 14px; }
+    .card { background: var(--card); border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.04); box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+    body.light-mode .card { background: #fff; border-color: rgba(0,0,0,0.07); }
+    .aside-card { padding: 16px; }
+    .aside-card-title { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 800; margin-bottom: 12px; font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; letter-spacing: 2px; }
+    .aside-card-title.blue { color: var(--accent-blue); }
+    .aside-card-title.red  { color: var(--accent-red); }
+    .aside-card-title.gold { color: var(--accent-gold); }
+    .countdown-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 6px; }
+    .cd-item { text-align: center; background: rgba(255,255,255,0.04); border-radius: 7px; padding: 8px 4px; }
+    body.light-mode .cd-item { background: #f0f4fa; }
+    .cd-num { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 900; background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+    .cd-lbl { font-size: 0.56rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 3px; }
+    .match-label { font-size: 0.86rem; font-weight: 800; color: #dce8f5; margin-bottom: 10px; }
+    body.light-mode .match-label { color: #1a2233; }
+    .match-detail { font-size: 0.74rem; color: var(--muted); margin-top: 8px; }
+    .roster-preview { display: flex; flex-direction: column; gap: 9px; }
+    .player-row { display: flex; gap: 10px; align-items: center; }
+    .player-avatar { width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0; object-fit: cover; border: 2px solid var(--accent-blue); background: #0c1322; }
+    .player-info .p-name { font-weight: 800; font-size: 0.88rem; color: #dce8f5; }
+    body.light-mode .player-info .p-name { color: #1a2233; }
+    .player-info .p-role { font-size: 0.74rem; color: var(--muted); }
+    .roster-cta { display: block; text-align: center; margin-top: 10px; font-size: 0.8rem; color: var(--accent-blue); font-weight: 700; }
+    .roster-cta:hover { color: var(--accent-red); }
+
+    /* ====== STATS PANEL ====== */
+    .stats-panel { background: var(--card); border-radius: var(--radius); padding: 20px 28px; border: 1px solid rgba(255,255,255,0.04); border-top: 3px solid var(--accent-blue); box-shadow: 0 4px 20px rgba(0,0,0,0.32); margin-bottom: 28px; }
+    body.light-mode .stats-panel { background: #fff; }
+    .stats-panel h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-blue); margin-bottom: 16px; }
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 12px; }
+    .stat-item { text-align: center; }
+    .stat-num { font-family: 'Barlow Condensed', sans-serif; font-size: 2.1rem; font-weight: 900; background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+    .stat-label { font-size: 0.66rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+    /* ====== TOOLBAR ====== */
+    .page-toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 14px 0; margin-bottom: 28px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    body.light-mode .page-toolbar { border-color: rgba(0,0,0,0.08); }
+    .toolbar-left, .toolbar-right { display: flex; gap: 9px; flex-wrap: wrap; align-items: center; }
+    .like-btn { display: flex; align-items: center; gap: 7px; background: var(--card); border: 1.5px solid rgba(255,255,255,0.07); color: var(--muted); padding: 8px 16px; border-radius: 9px; cursor: pointer; font-size: 0.83rem; font-weight: 700; font-family: inherit; transition: all 0.2s; }
+    .like-btn:hover, .like-btn.liked { border-color: var(--accent-red); color: var(--accent-red); }
+    .tool-btn { display: flex; align-items: center; gap: 6px; background: var(--card); border: 1.5px solid rgba(255,255,255,0.07); color: var(--muted); padding: 8px 14px; border-radius: 9px; cursor: pointer; font-size: 0.8rem; font-weight: 700; font-family: inherit; transition: all 0.2s; white-space: nowrap; }
+    .tool-btn:hover { border-color: var(--accent-blue); color: #dce8f5; }
+
+    /* ====== SECTION HEADING ====== */
+    .section-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1.45rem; font-weight: 900; color: #dce8f5; margin-bottom: 5px; display: flex; align-items: center; gap: 10px; letter-spacing: 1px; }
+    body.light-mode .section-title { color: #0e1a2d; }
+    .section-title::before { content: ''; display: inline-block; width: 4px; height: 1.1em; background: linear-gradient(180deg, var(--accent-blue), var(--accent-red)); border-radius: 2px; flex-shrink: 0; }
+    .section-sub { font-size: 0.86rem; color: var(--muted); margin-bottom: 20px; }
+    .section-divider { display: flex; align-items: center; gap: 12px; margin: 10px 0 32px; color: var(--muted); font-size: 1rem; }
+    .section-divider::before, .section-divider::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.06); }
+    body.light-mode .section-divider::before, body.light-mode .section-divider::after { background: rgba(0,0,0,0.08); }
+
+    /* ====== MATCH STRIP ====== */
+    .match-strip { display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 18px 22px; border-radius: var(--radius); background: linear-gradient(135deg, rgba(21,85,160,0.12), rgba(192,40,43,0.08)); border: 1px solid rgba(21,85,160,0.2); margin-bottom: 28px; flex-wrap: wrap; }
+    body.light-mode .match-strip { background: #fff; border-color: rgba(21,85,160,0.15); }
+    .ms-info h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-blue); margin-bottom: 5px; }
+    .ms-info .ms-match { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 900; color: #dce8f5; margin-bottom: 4px; letter-spacing: 0.5px; }
+    body.light-mode .ms-info .ms-match { color: #1a2233; }
+    .ms-info .ms-detail { font-size: 0.78rem; color: var(--muted); }
+    .ms-actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+    .ms-btn { display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); color: #fff; padding: 9px 18px; border-radius: 9px; font-size: 0.83rem; font-weight: 700; transition: opacity 0.2s; }
+    .ms-btn:hover { opacity: 0.85; color: #fff; }
+    .ms-link { color: var(--accent-blue); font-weight: 700; font-size: 0.83rem; padding: 9px 4px; }
+    .ms-link:hover { color: var(--accent-red); }
+
+    /* ====== RECENT RESULTS ====== */
+    .results-row { display: flex; flex-direction: column; gap: 10px; margin-bottom: 40px; }
+    .result-card {
+      background: var(--card); border-radius: 11px; padding: 14px 18px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      border: 1px solid rgba(255,255,255,0.04); transition: border-color 0.2s, transform 0.2s;
+      flex-wrap: wrap;
+    }
+    .result-card:hover { border-color: rgba(21,85,160,0.3); transform: translateX(4px); }
+    body.light-mode .result-card { background: #fff; }
+    .result-date { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; width: 68px; flex-shrink: 0; font-weight: 700; }
+    .result-teams { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 160px; }
+    .result-team { font-weight: 800; font-size: 0.9rem; color: #dce8f5; }
+    body.light-mode .result-team { color: #1a2233; }
+    .result-team.us { color: #6aadee; }
+    .result-score {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 900;
+      padding: 4px 14px; border-radius: 8px; letter-spacing: 2px; min-width: 60px; text-align: center;
+    }
+    .result-score.win  { background: rgba(46,122,60,0.18); color: #5ecf7a; border: 1px solid rgba(46,122,60,0.3); }
+    .result-score.loss { background: rgba(192,40,43,0.15); color: #e57a7c; border: 1px solid rgba(192,40,43,0.25); }
+    .result-score.draw { background: rgba(212,163,42,0.12); color: var(--accent-gold); border: 1px solid rgba(212,163,42,0.25); }
+    .result-badge { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; padding: 3px 9px; border-radius: 6px; }
+    .rb-win  { background: rgba(46,122,60,0.18); color: #5ecf7a; }
+    .rb-loss { background: rgba(192,40,43,0.15); color: #e57a7c; }
+    .rb-draw { background: rgba(212,163,42,0.12); color: var(--accent-gold); }
+
+    /* ====== LEADERBOARD ====== */
+    .leaderboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 40px; }
+    .leader-table { background: var(--card); border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.04); overflow: hidden; }
+    body.light-mode .leader-table { background: #fff; }
+    .lt-head { padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; }
+    body.light-mode .lt-head { border-color: rgba(0,0,0,0.07); }
+    .lt-head h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.88rem; font-weight: 900; text-transform: uppercase; letter-spacing: 1.5px; }
+    .lt-head h3.blue { color: var(--accent-blue); }
+    .lt-head h3.gold { color: var(--accent-gold); }
+    .lt-row { display: flex; align-items: center; gap: 12px; padding: 10px 18px; border-bottom: 1px solid rgba(255,255,255,0.03); transition: background 0.2s; }
+    .lt-row:last-child { border-bottom: none; }
+    .lt-row:hover { background: rgba(255,255,255,0.03); }
+    body.light-mode .lt-row { border-color: rgba(0,0,0,0.05); }
+    body.light-mode .lt-row:hover { background: rgba(0,0,0,0.025); }
+    .lt-rank { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 900; width: 22px; text-align: center; flex-shrink: 0; }
+    .lt-rank.gold { color: var(--accent-gold); }
+    .lt-rank.silver { color: #b0b8c8; }
+    .lt-rank.bronze { color: #c8815a; }
+    .lt-name { flex: 1; font-weight: 800; font-size: 0.86rem; color: #dce8f5; }
+    body.light-mode .lt-name { color: #1a2233; }
+    .lt-pos { font-size: 0.68rem; color: var(--muted); }
+    .lt-val { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 900; color: var(--accent-blue); }
+    .lt-bar-wrap { flex: 1; height: 5px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+    body.light-mode .lt-bar-wrap { background: rgba(0,0,0,0.07); }
+    .lt-bar { height: 100%; border-radius: 3px; background: linear-gradient(90deg, var(--accent-blue), var(--accent-gold)); transition: width 0.9s ease; }
+
+    /* ====== POLL ====== */
+    .poll-section { background: var(--card); border-radius: var(--radius); padding: 22px 24px; border: 1px solid rgba(255,255,255,0.04); border-top: 3px solid var(--accent-gold); margin-bottom: 28px; }
+    body.light-mode .poll-section { background: #fff; }
+    .poll-q { font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; font-weight: 900; color: #dce8f5; margin-bottom: 16px; letter-spacing: 0.5px; }
+    body.light-mode .poll-q { color: #0e1a2d; }
+    .poll-options { display: flex; flex-direction: column; gap: 10px; }
+    .poll-option {
+      background: rgba(255,255,255,0.04); border: 1.5px solid rgba(255,255,255,0.07);
+      border-radius: 9px; padding: 11px 16px; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+      transition: all 0.2s; font-family: inherit; color: #dce8f5; text-align: left;
+    }
+    body.light-mode .poll-option { background: #f3f7fd; border-color: rgba(0,0,0,0.08); color: #1a2233; }
+    .poll-option:hover { border-color: var(--accent-gold); }
+    .poll-option.voted { border-color: var(--accent-gold); background: rgba(212,163,42,0.1); }
+    .poll-option .po-label { font-weight: 700; font-size: 0.88rem; flex: 1; }
+    .poll-bar-wrap { width: 80px; height: 7px; background: rgba(255,255,255,0.06); border-radius: 4px; overflow: hidden; }
+    body.light-mode .poll-bar-wrap { background: rgba(0,0,0,0.07); }
+    .poll-bar { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--accent-gold), var(--accent-blue)); transition: width 0.8s ease; }
+    .poll-pct { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 0.95rem; color: var(--accent-gold); width: 36px; text-align: right; }
+    .poll-total { font-size: 0.72rem; color: var(--muted); margin-top: 12px; text-align: right; }
+
+    /* ====== MOTM VOTING ====== */
+    .motm-section { margin-bottom: 40px; }
+    .motm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
+    .motm-card {
+      background: var(--card); border-radius: 11px; border: 1.5px solid rgba(255,255,255,0.05);
+      padding: 16px 12px; text-align: center; cursor: pointer; transition: all 0.25s;
+    }
+    .motm-card:hover { border-color: var(--accent-gold); transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.4); }
+    .motm-card.voted-for { border-color: var(--accent-gold); background: rgba(212,163,42,0.08); }
+    body.light-mode .motm-card { background: #fff; }
+    .motm-card img { width: 58px; height: 58px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-blue); margin-bottom: 9px; background: #0c1322; }
+    .motm-card.voted-for img { border-color: var(--accent-gold); }
+    .motm-name { font-weight: 800; font-size: 0.82rem; color: #dce8f5; margin-bottom: 2px; }
+    body.light-mode .motm-name { color: #1a2233; }
+    .motm-pos { font-size: 0.68rem; color: var(--muted); margin-bottom: 8px; }
+    .motm-votes { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 900; color: var(--accent-gold); }
+    .motm-star { font-size: 0.7rem; color: var(--muted); }
+    .motm-voted-star { font-size: 0.7rem; color: var(--accent-gold); }
+
+    /* ====== NEWS GRID ====== */
+    .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 28px; }
+    .news-card { background: var(--card); border-radius: var(--radius); overflow: hidden; border: 1px solid rgba(255,255,255,0.04); box-shadow: 0 4px 14px rgba(0,0,0,0.28); transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s; display: block; color: inherit; text-decoration: none; }
+    .news-card:hover { transform: translateY(-5px); box-shadow: 0 14px 32px rgba(0,0,0,0.44); border-color: rgba(21,85,160,0.3); }
+    body.light-mode .news-card { background: #fff; }
+    .news-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; transition: transform 0.3s; }
+    .news-card:hover img { transform: scale(1.04); }
+    .news-card-body { padding: 14px 16px 18px; }
+    .nc-tag { font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent-blue); margin-bottom: 6px; }
+    .nc-title { font-size: 0.93rem; font-weight: 800; color: #dce8f5; line-height: 1.4; margin-bottom: 6px; }
+    body.light-mode .nc-title { color: #1a2233; }
+    .nc-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+
+    /* ====== FEATURES GRID ====== */
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
+    .feature-card { background: var(--card); padding: 22px 20px; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.04); border-top: 3px solid var(--accent-blue); transition: transform 0.25s, box-shadow 0.25s; }
+    .feature-card:nth-child(even) { border-top-color: var(--accent-red); }
+    .feature-card:hover { transform: translateY(-5px); box-shadow: 0 14px 32px rgba(0,0,0,0.4); border-top-color: var(--accent-red); }
+    body.light-mode .feature-card { background: #fff; }
+    .feature-icon { font-size: 1.9rem; margin-bottom: 12px; display: block; }
+    .feature-card h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 900; letter-spacing: 0.5px; color: var(--accent-blue); margin-bottom: 8px; }
+    .feature-card:nth-child(even) h3 { color: var(--accent-red); }
+    .feature-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.65; margin-bottom: 6px; }
+
+    /* ====== TIMELINE ====== */
+    .timeline { position: relative; padding-left: 28px; margin-bottom: 40px; }
+    .timeline::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(180deg, var(--accent-blue), var(--accent-red)); border-radius: 2px; }
+    .tl-item { position: relative; margin-bottom: 24px; }
+    .tl-dot { position: absolute; left: -34px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); border: 2px solid var(--bg); box-shadow: 0 0 0 3px rgba(21,85,160,0.25); }
+    .tl-date { font-family: 'Barlow Condensed', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+    .tl-title { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 900; color: #dce8f5; margin-bottom: 4px; letter-spacing: 0.5px; }
+    body.light-mode .tl-title { color: #1a2233; }
+    .tl-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; }
+
+    /* ====== FAN WALL ====== */
+    .fan-wall { margin-bottom: 40px; }
+    .fan-input-row { display: flex; gap: 10px; margin-bottom: 18px; }
+    .fan-name-input, .fan-msg-input {
+      background: var(--card); border: 1.5px solid rgba(255,255,255,0.07); border-radius: 9px;
+      color: #dce8f5; padding: 10px 14px; font-size: 0.86rem; font-family: inherit; transition: border-color 0.2s;
+    }
+    body.light-mode .fan-name-input, body.light-mode .fan-msg-input { background: #fff; border-color: rgba(0,0,0,0.1); color: #1a2233; }
+    .fan-name-input:focus, .fan-msg-input:focus { outline: none; border-color: var(--accent-blue); }
+    .fan-name-input::placeholder, .fan-msg-input::placeholder { color: var(--muted); }
+    .fan-name-input { width: 140px; flex-shrink: 0; }
+    .fan-msg-input { flex: 1; }
+    .fan-post-btn { background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); border: none; border-radius: 9px; color: #fff; padding: 10px 18px; font-weight: 800; font-family: 'Barlow Condensed', sans-serif; font-size: 0.95rem; letter-spacing: 1px; cursor: pointer; transition: opacity 0.2s; flex-shrink: 0; }
+    .fan-post-btn:hover { opacity: 0.85; }
+    .fan-messages { display: flex; flex-direction: column; gap: 10px; max-height: 320px; overflow-y: auto; }
+    .fan-msg-card { background: var(--card); border-radius: 10px; padding: 12px 16px; border: 1px solid rgba(255,255,255,0.04); display: flex; gap: 12px; align-items: flex-start; }
+    body.light-mode .fan-msg-card { background: #fff; }
+    .fan-msg-avatar { width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1rem; color: #fff; flex-shrink: 0; }
+    .fan-msg-name { font-weight: 800; font-size: 0.84rem; color: #dce8f5; margin-bottom: 3px; }
+    body.light-mode .fan-msg-name { color: #1a2233; }
+    .fan-msg-text { font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+    .fan-msg-time { font-size: 0.68rem; color: var(--muted); margin-top: 4px; }
+    .fan-no-msgs { text-align: center; padding: 28px 20px; color: var(--muted); font-size: 0.9rem; }
+
+    /* ====== NEWSLETTER ====== */
+    .newsletter-strip {
+      background: linear-gradient(135deg, rgba(21,85,160,0.18), rgba(192,40,43,0.12));
+      border: 1px solid rgba(21,85,160,0.25); border-radius: var(--radius);
+      padding: 28px 30px; margin-bottom: 40px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
+    }
+    .newsletter-strip .nl-text { flex: 1; min-width: 200px; }
+    .nl-text h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 900; color: #dce8f5; margin-bottom: 4px; letter-spacing: 0.5px; }
+    body.light-mode .nl-text h3 { color: #0e1a2d; }
+    .nl-text p { font-size: 0.84rem; color: var(--muted); }
+    .nl-form { display: flex; gap: 9px; flex-wrap: wrap; }
+    .nl-input { background: var(--card); border: 1.5px solid rgba(255,255,255,0.1); border-radius: 9px; color: #dce8f5; padding: 10px 16px; font-size: 0.86rem; font-family: inherit; width: 220px; transition: border-color 0.2s; }
+    body.light-mode .nl-input { background: #fff; border-color: rgba(0,0,0,0.12); color: #1a2233; }
+    .nl-input:focus { outline: none; border-color: var(--accent-blue); }
+    .nl-input::placeholder { color: var(--muted); }
+    .nl-btn { background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); border: none; border-radius: 9px; color: #fff; padding: 10px 22px; font-weight: 800; font-family: 'Barlow Condensed', sans-serif; font-size: 0.95rem; letter-spacing: 1px; cursor: pointer; transition: opacity 0.2s; white-space: nowrap; }
+    .nl-btn:hover { opacity: 0.85; }
+
+    /* ====== PARTNERS STRIP ====== */
+    .partners-strip { background: var(--card); border-radius: var(--radius); padding: 20px 24px; border: 1px solid rgba(255,255,255,0.04); margin-bottom: 40px; display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    body.light-mode .partners-strip { background: #fff; }
+    .partners-strip h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-blue); margin-bottom: 0; flex-shrink: 0; }
+    .partner-chips { display: flex; gap: 10px; flex-wrap: wrap; }
+    .partner-chip { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.07); padding: 8px 16px; border-radius: 8px; font-size: 0.83rem; font-weight: 700; color: #dce8f5; text-decoration: none; transition: border-color 0.2s, transform 0.2s; }
+    .partner-chip:hover { border-color: var(--accent-blue); transform: translateY(-2px); color: #dce8f5; }
+    body.light-mode .partner-chip { background: #f4f7fc; border-color: rgba(0,0,0,0.07); color: #1a2233; }
+
+    /* ====== AI CHATBOT ====== */
+    .ai-fab {
+      position: fixed; bottom: 84px; right: 28px;
+      width: 54px; height: 54px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      border: none; color: #fff; font-size: 1.3rem; cursor: pointer;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.5); z-index: 800;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.25s, box-shadow 0.25s;
+      animation: fabPulse 3s ease infinite;
+    }
+    .ai-fab:hover { transform: scale(1.1); box-shadow: 0 10px 32px rgba(0,0,0,0.6); animation: none; }
+    @keyframes fabPulse { 0%,100%{box-shadow:0 6px 24px rgba(0,0,0,0.5),0 0 0 0 rgba(21,85,160,0.4)} 50%{box-shadow:0 6px 24px rgba(0,0,0,0.5),0 0 0 10px rgba(21,85,160,0)} }
+    .ai-fab-label { position: absolute; right: 62px; white-space: nowrap; background: var(--card2); border: 1px solid rgba(255,255,255,0.1); color: #dce8f5; font-size: 0.75rem; font-weight: 700; padding: 5px 10px; border-radius: 7px; pointer-events: none; opacity: 0; transition: opacity 0.2s; }
+    .ai-fab:hover .ai-fab-label { opacity: 1; }
+
+    .ai-chat-panel {
+      position: fixed; bottom: 150px; right: 28px; width: 340px;
+      background: var(--card); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+      z-index: 799; display: none; flex-direction: column;
+      max-height: 460px; overflow: hidden;
+      animation: slideUp 0.3s ease;
+    }
+    .ai-chat-panel.open { display: flex; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
+    .acp-header { padding: 14px 18px; background: linear-gradient(135deg, var(--accent-blue), #0c3472); display: flex; align-items: center; justify-content: space-between; border-radius: 16px 16px 0 0; }
+    .acp-header-left { display: flex; align-items: center; gap: 10px; }
+    .acp-pulse { width: 9px; height: 9px; border-radius: 50%; background: #3ecf6a; box-shadow: 0 0 6px #3ecf6a; animation: pulse 1.5s ease infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .acp-title { font-family: 'Barlow Condensed', sans-serif; font-size: 0.95rem; font-weight: 900; color: #fff; letter-spacing: 1px; }
+    .acp-sub { font-size: 0.65rem; color: rgba(255,255,255,0.65); }
+    .acp-close { background: none; border: none; color: rgba(255,255,255,0.7); font-size: 1rem; cursor: pointer; font-family: inherit; transition: color 0.2s; }
+    .acp-close:hover { color: #fff; }
+    .acp-messages { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; min-height: 180px; }
+    .acp-msg { max-width: 88%; padding: 9px 13px; border-radius: 11px; font-size: 0.8rem; line-height: 1.5; }
+    .acp-msg.bot { background: rgba(21,85,160,0.14); border: 1px solid rgba(21,85,160,0.2); color: #dce8f5; align-self: flex-start; border-radius: 4px 11px 11px 11px; }
+    body.light-mode .acp-msg.bot { color: #1a2233; }
+    .acp-msg.user { background: linear-gradient(135deg, var(--accent-blue), #0d3a7a); color: #fff; align-self: flex-end; border-radius: 11px 11px 4px 11px; }
+    .acp-quick-wrap { padding: 0 12px 8px; display: flex; gap: 6px; flex-wrap: wrap; }
+    .acp-quick { background: rgba(21,85,160,0.1); border: 1px solid rgba(21,85,160,0.22); color: #6aadee; padding: 4px 9px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s; white-space: nowrap; }
+    .acp-quick:hover { background: rgba(21,85,160,0.2); }
+    .acp-input-row { padding: 12px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; gap: 8px; flex-shrink: 0; }
+    #acpInput { flex: 1; background: var(--card2); border: 1.5px solid rgba(255,255,255,0.07); border-radius: 8px; color: #dce8f5; padding: 8px 12px; font-size: 0.8rem; font-family: inherit; }
+    body.light-mode #acpInput { background: #f3f7fd; color: #1a2233; }
+    #acpInput:focus { outline: none; border-color: var(--accent-blue); }
+    #acpInput::placeholder { color: var(--muted); }
+    .acp-send { background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); border: none; border-radius: 8px; color: #fff; width: 34px; height: 34px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; transition: opacity 0.2s; flex-shrink: 0; }
+    .acp-send:hover { opacity: 0.85; }
+    .acp-typing { display: flex; gap: 3px; align-items: center; padding: 4px 2px; }
+    .acp-typing span { width: 5px; height: 5px; border-radius: 50%; background: var(--accent-blue); animation: typing 1.2s ease infinite; }
+    .acp-typing span:nth-child(2) { animation-delay: 0.2s; }
+    .acp-typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing { 0%,80%,100%{transform:scale(0.6);opacity:0.4} 40%{transform:scale(1);opacity:1} }
+
+    /* ====== WELCOME MODAL ====== */
+    .welcome-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 9500; padding: 20px; }
+    .welcome-modal.hidden { display: none; }
+    .welcome-content { background: var(--card); border-radius: 18px; width: 100%; max-width: 440px; border: 1px solid rgba(255,255,255,0.07); box-shadow: 0 24px 70px rgba(0,0,0,0.7); animation: popIn 0.35s ease; overflow: hidden; }
+    @keyframes popIn { from{transform:scale(0.9);opacity:0} to{transform:scale(1);opacity:1} }
+    .wm-banner { background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); padding: 28px 26px 22px; position: relative; }
+    .wm-badge { display: inline-flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.15); border-radius: 20px; padding: 4px 12px; font-size: 0.7rem; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 12px; font-family: 'Barlow Condensed', sans-serif; }
+    .wm-banner h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.9rem; font-weight: 900; color: #fff; letter-spacing: 1px; line-height: 1.15; margin-bottom: 6px; }
+    .wm-banner p { font-size: 0.84rem; color: rgba(255,255,255,0.8); }
+    .wm-body { padding: 22px 26px 24px; }
+    .wm-highlights { display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px; }
+    .wm-item { display: flex; align-items: center; gap: 12px; padding: 11px 14px; background: rgba(255,255,255,0.03); border-radius: 9px; border: 1px solid rgba(255,255,255,0.05); }
+    body.light-mode .wm-item { background: #f3f7fd; border-color: rgba(0,0,0,0.06); }
+    .wm-item-icon { font-size: 1.3rem; flex-shrink: 0; width: 28px; text-align: center; }
+    .wm-item-text strong { font-size: 0.88rem; color: #dce8f5; display: block; font-weight: 800; }
+    body.light-mode .wm-item-text strong { color: #1a2233; }
+    .wm-item-text span { font-size: 0.78rem; color: var(--muted); }
+    .wm-actions { display: flex; gap: 10px; }
+    .wm-cta { flex: 1; background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); border: none; border-radius: 10px; color: #fff; padding: 12px; font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 900; letter-spacing: 1px; cursor: pointer; transition: opacity 0.2s; }
+    .wm-cta:hover { opacity: 0.85; }
+    .wm-dismiss { background: none; border: 1.5px solid rgba(255,255,255,0.1); border-radius: 10px; color: var(--muted); padding: 12px 16px; font-family: inherit; font-size: 0.83rem; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+    .wm-dismiss:hover { border-color: var(--muted); }
+    body.light-mode .wm-dismiss { border-color: rgba(0,0,0,0.12); }
+
+    /* ====== TOAST ====== */
+    .toast { position: fixed; bottom: 28px; right: 28px; background: var(--card2); border: 1px solid var(--accent-blue); color: #dce8f5; padding: 12px 18px; border-radius: 11px; font-size: 0.86rem; font-weight: 600; z-index: 2000; transform: translateY(80px); opacity: 0; transition: transform 0.35s ease, opacity 0.35s ease; display: flex; align-items: center; gap: 9px; max-width: 280px; }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* ====== SCROLL TOP ====== */
+    .scroll-top { position: fixed; bottom: 28px; left: 28px; width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; z-index: 999; border: none; font-size: 1rem; color: #fff; }
+    .scroll-top.show { opacity: 1; pointer-events: all; }
+    .scroll-top:hover { transform: translateY(-3px) scale(1.05); }
+
+    /* ====== FOOTER ====== */
+    .site-footer { background: linear-gradient(180deg, var(--bg), #030712); color: #dce8f5; padding: 36px 20px 20px; font-size: 14px; border-top: 1px solid rgba(255,255,255,0.04); margin-top: 40px; }
+    .footer-container { max-width: var(--max-w); margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; }
+    .footer-brand h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 900; color: #fff; margin-bottom: 7px; letter-spacing: 1px; }
+    .footer-brand p { color: var(--muted); line-height: 1.6; margin: 0 0 4px; font-size: 0.86rem; }
+    .footer-links h4, .footer-contact h4, .footer-social h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 900; color: #fff; margin-bottom: 12px; letter-spacing: 1px; }
+    .footer-links h4::after, .footer-contact h4::after, .footer-social h4::after { content: ""; display: block; width: 28px; height: 2px; margin-top: 5px; background: linear-gradient(90deg, var(--accent-red), var(--accent-blue)); }
+    .footer-links a { display: block; color: var(--muted); text-decoration: none; margin-bottom: 7px; font-weight: 600; font-size: 0.86rem; transition: color 0.2s, transform 0.2s; }
+    .footer-links a:hover { color: #dce8f5; transform: translateX(4px); }
+    .footer-contact p { margin-bottom: 6px; color: var(--muted); font-size: 0.84rem; }
+    .social-icons a { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin-right: 8px; border-radius: 50%; color: var(--muted); text-decoration: none; transition: all 0.2s; }
+    .social-icons a svg { width: 17px; height: 17px; fill: currentColor; }
+    .social-icons a:hover { color: #fff; background: linear-gradient(135deg, var(--accent-red), var(--accent-blue)); transform: translateY(-2px) scale(1.08); }
+    .footer-bottom { margin-top: 28px; padding-top: 14px; text-align: center; color: var(--muted); font-size: 0.8rem; position: relative; }
+    .footer-bottom::before { content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 70%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-red), var(--accent-blue), transparent); }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 880px) {
+      .hero { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .news-grid { grid-template-columns: 1fr 1fr; }
+      .leaderboard-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .header-nav a:not(.cta-btn) { display: none; }
+      .features-grid { grid-template-columns: 1fr; }
+      .news-grid { grid-template-columns: 1fr; }
+      .hero { padding: 22px 18px; }
+      .match-strip { flex-direction: column; align-items: flex-start; }
+      .ms-actions { width: 100%; }
+      .ms-btn { flex: 1; justify-content: center; }
+      .ai-chat-panel { width: calc(100vw - 32px); right: 16px; }
+      .motm-grid { grid-template-columns: repeat(3, 1fr); }
+      .fan-input-row { flex-wrap: wrap; }
+      .fan-name-input { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="progress-bar"></div>
+
+  <!-- WELCOME MODAL -->
+  <div class="welcome-modal" id="welcomeModal">
+    <div class="welcome-content">
+      <div class="wm-banner">
+        <div class="wm-badge">🏆 Season 2026</div>
+        <h2>Welcome to Super Stars FC</h2>
+        <p>Born in Omaha. Built from the streets.</p>
+      </div>
+      <div class="wm-body">
+        <div class="wm-highlights">
+          <div class="wm-item">
+            <div class="wm-item-icon">⚽</div>
+            <div class="wm-item-text"><strong>Next Match: Apr 18</strong><span>vs. Worthington Community FC · Away · MN</span></div>
+          </div>
+          <div class="wm-item">
+            <div class="wm-item-icon">🎽</div>
+            <div class="wm-item-text"><strong>40-Player Squad Ready</strong><span>View the full 2026 roster →</span></div>
+          </div>
+          <div class="wm-item">
+            <div class="wm-item-icon">🤖</div>
+            <div class="wm-item-text"><strong>AI Club Assistant Live</strong><span>Chat with our AI — ask anything about the club!</span></div>
+          </div>
+        </div>
+        <div class="wm-actions">
+          <button class="wm-cta" onclick="closeWelcome()">LET'S GO! 🔥</button>
+          <button class="wm-dismiss" onclick="closeWelcomePermanent()">Don't show again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEWS TICKER -->
+  <div class="news-ticker">
+    <div class="ticker-track" id="tickerTrack">
+      <!-- items duplicated in JS for seamless loop -->
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="./index.html" class="brand">
+      <div class="logo">SS FC</div>
+      <div>
+        <div class="brand-name">Super Star FC</div>
+        <div class="brand-sub">Official Club · Omaha, NE</div>
+      </div>
+    </a>
+    <div class="header-nav">
+      <a href="./new.html">News</a>
+      <a href="./roster.html">Roster</a>
+      <a href="./matches.html">Matches</a>
+      <a href="./Partners.html">Partners</a>
+      <div class="reading-controls">
+        <button class="ctrl-btn" onclick="changeFontSize(-1)" title="Decrease text">A-</button>
+        <button class="ctrl-btn" onclick="changeFontSize(1)" title="Increase text">A+</button>
+        <button class="ctrl-btn" id="modeToggle" onclick="toggleMode()" title="Toggle theme">🌙</button>
+      </div>
+      <a href="#" class="cta-btn">Buy Gear</a>
+    </div>
+  </header>
+
+  <!-- QUOTE BANNER -->
+  <div class="qotd-banner">
+    <strong>Super Stars FC:</strong> "Born in Omaha. Built from the streets. This is more than a club — it's a movement." — Founded 2025
+  </div>
+
+  <div class="container">
+
+    <!-- HERO -->
+    <section class="hero reveal">
+      <div>
+        <div class="hero-badge"><i class="fas fa-futbol"></i>&nbsp; Season 2026</div>
+        <h1>Welcome to<br>Super Stars FC</h1>
+        <p class="hero-tagline">Born in Omaha. Built from the streets.<br>We play fearless football with pride, passion, and purpose. Follow our journey from match days to roster drops, UPSL tryouts, and exclusive gear. This is more than a club. It's a movement.</p>
+        <div class="hero-actions">
+          <a class="cta-btn" href="./Partners.html"><i class="fas fa-handshake" style="margin-right:7px"></i>Official Partners</a>
+          <a href="./new.html" class="hero-link">Latest News →</a>
+        </div>
+        <div class="hero-meta-badges">
+          <div class="hero-meta-badge accent"><i class="fas fa-star"></i> Founded: 2025</div>
+          <div class="hero-meta-badge muted"><i class="fas fa-location-dot"></i> Omaha, NE</div>
+          <div class="hero-meta-badge muted"><i class="fas fa-trophy"></i> UPSL</div>
+        </div>
+      </div>
+      <aside class="hero-aside">
+        <div class="aside-card card">
+          <div class="aside-card-title blue">⏱ Next Match Countdown</div>
+          <div class="match-label">Worthington Community FC vs Super Stars FC</div>
+          <div class="countdown-row">
+            <div class="cd-item"><div class="cd-num" id="cd-days">00</div><div class="cd-lbl">Days</div></div>
+            <div class="cd-item"><div class="cd-num" id="cd-hours">00</div><div class="cd-lbl">Hrs</div></div>
+            <div class="cd-item"><div class="cd-num" id="cd-mins">00</div><div class="cd-lbl">Mins</div></div>
+            <div class="cd-item"><div class="cd-num" id="cd-secs">00</div><div class="cd-lbl">Secs</div></div>
+          </div>
+          <div class="match-detail"><i class="fas fa-calendar"></i> Apr 18, 2026 &nbsp;|&nbsp; <i class="fas fa-clock"></i> 7:00 PM &nbsp;|&nbsp; Away, MN</div>
+        </div>
+        <div class="aside-card card">
+          <div class="aside-card-title red">🔴 Roster Preview</div>
+          <div class="roster-preview">
+            <div class="player-row"><img class="player-avatar" src="./john1.jpeg" alt="John" onerror="this.style.background='linear-gradient(135deg,#1555a0,#c0282b)';this.removeAttribute('src')"><div class="player-info"><div class="p-name">John</div><div class="p-role">⚽ Forward</div></div></div>
+            <div class="player-row"><img class="player-avatar" src="./yezi.jpeg" alt="Yezi" onerror="this.style.background='linear-gradient(135deg,#1555a0,#c0282b)';this.removeAttribute('src')"><div class="player-info"><div class="p-name">Yezi</div><div class="p-role">⚙️ Midfielder</div></div></div>
+            <div class="player-row"><img class="player-avatar" src="./Butoyi.jpg" alt="Butoyi" onerror="this.style.background='linear-gradient(135deg,#1555a0,#c0282b)';this.removeAttribute('src')"><div class="player-info"><div class="p-name">Butoyi</div><div class="p-role">🛡️ Defender</div></div></div>
+            <div class="player-row"><img class="player-avatar" src="./joshua.jpeg" alt="Joshua" onerror="this.style.background='linear-gradient(135deg,#1555a0,#c0282b)';this.removeAttribute('src')"><div class="player-info"><div class="p-name">Joshua</div><div class="p-role">🧤 Goalkeeper</div></div></div>
+          </div>
+          <a href="./roster.html" class="roster-cta">View Full 40-Player Roster →</a>
+        </div>
+      </aside>
+    </section>
+
+    <!-- STATS PANEL -->
+    <div class="stats-panel reveal">
+      <h3>📊 Season 2026 at a Glance</h3>
+      <div class="stats-row">
+        <div class="stat-item"><div class="stat-num counter" data-target="7">0</div><div class="stat-label">Matches Played</div></div>
+        <div class="stat-item"><div class="stat-num counter" data-target="4">0</div><div class="stat-label">Wins</div></div>
+        <div class="stat-item"><div class="stat-num counter" data-target="1">0</div><div class="stat-label">Draws</div></div>
+        <div class="stat-item"><div class="stat-num counter" data-target="21">0</div><div class="stat-label">Goals Scored</div></div>
+        <div class="stat-item"><div class="stat-num counter" data-target="40">40</div><div class="stat-label">Squad Players</div></div>
+        <div class="stat-item"><div class="stat-num counter" data-target="10">0</div><div class="stat-label">Nationalities</div></div>
+        <div class="stat-item"><div class="stat-num counter" data-target="2">0</div><div class="stat-label">Partners</div></div>
+        <div class="stat-item"><div class="stat-num counter" data-target="2025">0</div><div class="stat-label">Founded</div></div>
+      </div>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="page-toolbar reveal">
+      <div class="toolbar-left">
+        <button class="like-btn" id="likeBtn" onclick="toggleLike()"><i class="fas fa-heart"></i> <span id="likeCount">34</span> Likes</button>
+        <button class="tool-btn" onclick="sharePage()"><i class="fas fa-share-nodes"></i> Share</button>
+      </div>
+      <div class="toolbar-right">
+        <button class="tool-btn" onclick="window.print()"><i class="fas fa-print"></i> Print</button>
+        <button class="tool-btn" onclick="scrollToSection('fan-wall-section')"><i class="fas fa-comments"></i> Fan Wall</button>
+      </div>
+    </div>
+
+    <!-- MATCH STRIP -->
+    <div class="match-strip reveal">
+      <div class="ms-info">
+        <h3>🏟️ Upcoming Match</h3>
+        <div class="ms-match">Worthington Community FC vs Super Stars FC</div>
+        <div class="ms-detail"><i class="fas fa-calendar"></i> Sat, Apr 18 &nbsp;·&nbsp; <i class="fas fa-clock"></i> 7:00 PM &nbsp;·&nbsp; Away, MN</div>
+      </div>
+      <div class="ms-actions">
+        <a class="ms-btn" href="Super Stars FC Tickers.html"><i class="fas fa-ticket"></i> Get Tickets</a>
+        <a class="ms-btn" href="superstarsfcstreamaccess.html"><i class="fas fa-tv"></i> Live Stream</a>
+        <a href="./matches.html" class="ms-link">All Matches →</a>
+      </div>
+    </div>
+
+    <!-- ====== RECENT RESULTS ====== -->
+    <div class="reveal" style="margin-bottom:16px">
+      <div class="section-title">Recent Results</div>
+      <div class="section-sub">Our latest match outcomes — every result, every step of the journey.</div>
+    </div>
+    <div class="results-row reveal">
+      <div class="result-card">
+        <div class="result-date">Apr 12</div>
+        <div class="result-teams">
+          <span class="result-team us">Super Stars FC</span>
+          <div class="result-score win">2 – 1</div>
+          <span class="result-team">Heartland United FC</span>
+        </div>
+        <span class="result-badge rb-win">WIN</span>
+      </div>
+      <div class="result-card">
+        <div class="result-date">Apr 07</div>
+        <div class="result-teams">
+          <span class="result-team">CB Captains FC</span>
+          <div class="result-score draw">3 – 3</div>
+          <span class="result-team us">Super Stars FC</span>
+        </div>
+        <span class="result-badge rb-draw">DRAW</span>
+      </div>
+      <div class="result-card">
+        <div class="result-date">Apr 04</div>
+        <div class="result-teams">
+          <span class="result-team us">Super Stars FC</span>
+          <div class="result-score loss">2 – 4</div>
+          <span class="result-team">Yaidi FC</span>
+        </div>
+        <span class="result-badge rb-loss">LOSS</span>
+      </div>
+      <div class="result-card">
+        <div class="result-date">Mar 29</div>
+        <div class="result-teams">
+          <span class="result-team">Omaha Elite FC</span>
+          <div class="result-score loss">2 – 0</div>
+          <span class="result-team us">Super Stars FC</span>
+        </div>
+        <span class="result-badge rb-loss">LOSS</span>
+      </div>
+      <div class="result-card">
+        <div class="result-date">Mar 28</div>
+        <div class="result-teams">
+          <span class="result-team us">Super Stars FC</span>
+          <div class="result-score loss">1 – 3</div>
+          <span class="result-team">Leeds Omaha FC</span>
+        </div>
+        <span class="result-badge rb-loss">LOSS</span>
+      </div>
+    </div>
+    <div style="text-align:center;margin-bottom:40px"><a href="./matches.html" class="cta-btn"><i class="fas fa-calendar-days" style="margin-right:7px"></i>Full Schedule & Results</a></div>
+
+    <div class="section-divider reveal">📊</div>
+
+    <!-- ====== LEADERBOARD ====== -->
+    <div class="reveal" style="margin-bottom:16px">
+      <div class="section-title">Season Leaderboard</div>
+      <div class="section-sub">Top performers driving Super Stars FC's 2026 campaign.</div>
+    </div>
+    <div class="leaderboard-grid reveal">
+      <div class="leader-table">
+        <div class="lt-head"><h3 class="blue">⚽ Top Scorers</h3><span style="font-size:0.72rem;color:var(--muted)">Goals</span></div>
+        <div id="goalsTable"></div>
+      </div>
+    </div>
+
+    <div class="section-divider reveal">🏅</div>
+
+    <!-- NEWS PREVIEW -->
+    <div class="reveal" style="margin-bottom:16px">
+      <div class="section-title">Latest News</div>
+      <div class="section-sub">Match reports, player spotlights, and club announcements.</div>
+    </div>
+    <div class="news-grid reveal">
+      <a href="./open.html" class="news-card">
+        <img src="ssf1.jpg" alt="Season Opener" onerror="this.style.height='120px';this.style.background='#0e1a2d';this.removeAttribute('src')">
+        <div class="news-card-body">
+          <div class="nc-tag"><i class="fas fa-futbol"></i> Match Report</div>
+          <div class="nc-title">Season Opener: Super Stars FC Starts Strong</div>
+          <div class="nc-desc">In front of a packed Omaha crowd, the squad showed determination and hunger from the first whistle.</div>
+        </div>
+      </a>
+      <a href="./player-spotlight.html" class="news-card">
+        <img src="PHOTO-2025-09-08-00-27-51.jpg" alt="Player Spotlight" onerror="this.style.height='120px';this.style.background='#0e1a2d';this.removeAttribute('src')">
+        <div class="news-card-body">
+          <div class="nc-tag"><i class="fas fa-user"></i> Player Spotlight</div>
+          <div class="nc-title">Rising Midfielder Making His Mark This Season</div>
+          <div class="nc-desc">Every team has that one player whose growth runs parallel with the club's own evolution.</div>
+        </div>
+      </a>
+      <a href="./wendok.html" class="news-card">
+        <img src="WENDOK SPORTSWEAR.jpg" alt="WENDÔK Partnership" onerror="this.style.height='120px';this.style.background='#0e1a2d';this.removeAttribute('src')">
+        <div class="news-card-body">
+          <div class="nc-tag"><i class="fas fa-handshake"></i> Official Partner</div>
+          <div class="nc-title">WENDÔK Sportswear | Official Kit Partner</div>
+          <div class="nc-desc">United by football, community, and a shared belief in building futures through sport.</div>
+        </div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-bottom:40px"><a href="./new.html" class="cta-btn"><i class="fas fa-newspaper" style="margin-right:7px"></i>All News Articles</a></div>
+
+    <div class="section-divider reveal">📅</div>
+
+    <!-- ====== CLUB TIMELINE ====== -->
+    <div class="reveal" style="margin-bottom:16px">
+      <div class="section-title">Our Story</div>
+      <div class="section-sub">From an idea on the streets of Omaha to a full-squad competitive club.</div>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">June 3, 2025</div><div class="tl-title">Super Stars FC Is Born</div><div class="tl-desc">Founded in Omaha, Nebraska, with a vision to create competitive soccer rooted in community, culture, and passion. The founding squad assembled from the streets of Omaha.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Summer 2025</div><div class="tl-title">First Training Sessions & Kit Launch</div><div class="tl-desc">The squad came together for the first official training sessions. WENDÔK Sportswear stepped in as kit partner, outfitting the team in official Super Stars FC colors.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Fall 2025</div><div class="tl-title">BLOOM Partnership Announced</div><div class="tl-desc">Super Stars FC secured its first official community partner — BLOOM — sharing values of growth, inclusion, and opportunity for young people through sport.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Season Opener 2026</div><div class="tl-title">Competitive Season Kicks Off</div><div class="tl-desc">The squad took to the pitch for the official season opener, delivering an electrifying performance in front of a packed Omaha crowd. The journey had officially begun.</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-date">Now</div><div class="tl-title">40 Players. 10 Nations. One Club.</div><div class="tl-desc">Super Stars FC now fields a 40-player squad representing 10 nationalities — a true reflection of Omaha's diversity, united by football, purpose, and pride.</div></div>
+    </div>
+
+    <div class="section-divider reveal">⚽</div>
+
+    <!-- ====== FEATURES ====== -->
+    <div class="reveal" style="margin-bottom:16px">
+      <div class="section-title">Why Super Stars FC?</div>
+      <div class="section-sub">More than a football club — a community, a cause, and a movement from Omaha's streets.</div>
+    </div>
+    <div class="features-grid reveal">
+      <div class="feature-card"><span class="feature-icon">🏟️</span><h3>Upcoming Matches</h3><p>Stay locked in with our full schedule — every match, every moment that matters to this club.</p><p>Home games hit different: the crowd, the noise, the city behind us. Be there.</p></div>
+      <div class="feature-card"><span class="feature-icon">🌍</span><h3>Community</h3><p>We give back where it started — from the block to the pitch. Super Stars FC invests in the same streets that built us through youth clinics and community matches.</p></div>
+      <div class="feature-card"><span class="feature-icon">🛒</span><h3>Shop</h3><p>Wear the badge. Rep the city. Official kits, scarves, and limited-edition drops made for those who live the game. Built from Omaha. Worn everywhere.</p></div>
+      <div class="feature-card"><span class="feature-icon">📋</span><h3>UPSL Tryouts</h3><p>Think you've got what it takes? Super Stars FC are always looking for hungry, talented players who want to compete at the next level.</p></div>
+      <div class="feature-card"><span class="feature-icon">🤝</span><h3>Partnerships</h3><p>BLOOM and WENDÔK Sportswear: our partners share our values, invest in our players, and help us build futures through football.</p></div>
+      <div class="feature-card"><span class="feature-icon">📱</span><h3>Follow Our Journey</h3><p>From training sessions to match days — follow Super Stars FC across Facebook, Instagram, X, and YouTube as the story unfolds.</p></div>
+    </div>
+
+    <div class="section-divider reveal">💬</div>
+
+    <!-- ====== FAN WALL ====== -->
+    <div id="fan-wall-section" class="reveal" style="margin-bottom:16px">
+      <div class="section-title">Fan Wall</div>
+      <div class="section-sub">Show your support — leave a message for the squad. All messages saved locally.</div>
+    </div>
+    <div class="fan-wall reveal">
+      <div class="fan-input-row">
+        <input type="text" class="fan-name-input" id="fanName" placeholder="Your name" maxlength="22">
+        <input type="text" class="fan-msg-input" id="fanMsg" placeholder="Leave a message for the squad... 🔥" maxlength="140" onkeydown="if(event.key==='Enter')postFanMsg()">
+        <button class="fan-post-btn" onclick="postFanMsg()">POST</button>
+      </div>
+      <div class="fan-messages" id="fanMessages"></div>
+    </div>
+
+    <div class="section-divider reveal">🤝</div>
+
+    <!-- PARTNERS STRIP -->
+    <div class="partners-strip reveal">
+      <h3>Official Partners</h3>
+      <div class="partner-chips">
+        <a href="#" class="partner-chip"><i class="fas fa-star" style="color:var(--accent-blue)"></i> BLOOM</a>
+        <a href="./wendok.html" class="partner-chip"><i class="fas fa-shirt" style="color:var(--accent-red)"></i> WENDÔK Sportswear</a>
+        <a href="./Partners.html" class="partner-chip" style="color:var(--muted)">View All Partners →</a>
+      </div>
+    </div>
+
+  </div><!-- /.container -->
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand"><h3>Super Star FC</h3><p>Founded June 3, 2025.</p><p>Building champions on and off the field.</p></div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="./bout.html">About Us</a><a href="./team.html">Teams</a><a href="./term.html">Terms</a>
+        <a href="./Partners.html">Partners</a><a href="./contact.html">Contact</a>
+        <a href="./Privacy.html">Privacy Policy</a><a href="./rules.html">Code of Conduct</a>
+      </div>
+      <div class="footer-contact"><h4>Contact</h4><p>Email: superstarfc25@gmail.com</p><p>Phone: +1 (531) 262-1982</p></div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/profile.php?id=100077275385711" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2V12h2.2V9.8c0-2.2 1.3-3.4 3.3-3.4.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 2.9h-1.9v7A10 10 0 0 0 22 12z"/></svg></a>
+          <a href="https://www.instagram.com/super_starsfc_fc" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zm5.8-2.1a1.3 1.3 0 1 1-1.3-1.3 1.3 1.3 0 0 1 1.3 1.3z"/></svg></a>
+          <a href="https://x.com/SuperStars75843" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.1.9A5.4 5.4 0 0 0 22.4 1a10.8 10.8 0 0 1-3.4 1.3A5.4 5.4 0 0 0 9.6 7a15.3 15.3 0 0 1-11.1-5.6 5.4 5.4 0 0 0 1.7 7.2A5.3 5.3 0 0 1 .8 8v.1a5.4 5.4 0 0 0 4.3 5.3 5.5 5.5 0 0 1-2.4.1 5.4 5.4 0 0 0 5 3.8A10.8 10.8 0 0 1 0 19.5 15.3 15.3 0 0 0 8.3 22c10 0 15.5-8.3 15.5-15.5v-.7A11 11 0 0 0 23 3z"/></svg></a>
+          <a href="https://youtube.com/@s.s.f.c" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5h0s-5.6 0-8.5.4c-.4.1-1.3.1-2.1 1C.7 4.6.5 6.2.5 6.2S0 8.1 0 10v2c0 1.9.5 3.8.5 3.8s.2 1.6.9 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.2.4 7.2.4s5.6 0 8.5-.4c.4-.1 1.3-.1 2.1-1 .7-.7.9-2.3.9-2.3s.5-1.9.5-3.8v-2c0-1.9-.5-3.8-.5-3.8zM9.8 14.5V9.5l4.8 2.5-4.8 2.5z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="year"></span> Super Star FC. All rights reserved.</div>
+  </footer>
+
+  <div class="toast" id="toast"><i class="fas fa-check-circle" style="color:#3ecf6a"></i><span id="toastMsg">Done!</span></div>
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
+
+  <script>
+    // =================== INIT ===================
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // =================== PROGRESS + SCROLL ===================
+    window.addEventListener('scroll', () => {
+      const s = window.scrollY, t = document.body.scrollHeight - window.innerHeight;
+      document.getElementById('progress-bar').style.width = (s / t * 100) + '%';
+      document.getElementById('scrollTop').classList.toggle('show', s > 300);
+    });
+
+    // =================== REVEAL ===================
+    const revObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revObs.unobserve(e.target); } });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+    // =================== COUNTERS ===================
+    const cntObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const el = e.target, target = parseInt(el.dataset.target);
+          if (isNaN(target)) return;
+          let cur = 0; const step = target / (1300 / 16);
+          const t = setInterval(() => { cur = Math.min(cur + step, target); el.textContent = Math.round(cur); if (cur >= target) clearInterval(t); }, 16);
+          cntObs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.counter').forEach(el => cntObs.observe(el));
+
+    // =================== COUNTDOWN ===================
+    function updateCountdown() {
+      const target = new Date('2026-04-18T19:00:00');
+      const now = new Date(), diff = target - now;
+      if (diff <= 0) { ['cd-days','cd-hours','cd-mins','cd-secs'].forEach(id => document.getElementById(id).textContent = '00'); return; }
+      document.getElementById('cd-days').textContent  = String(Math.floor(diff/86400000)).padStart(2,'0');
+      document.getElementById('cd-hours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+      document.getElementById('cd-mins').textContent  = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+      document.getElementById('cd-secs').textContent  = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+    }
+    updateCountdown(); setInterval(updateCountdown, 1000);
+
+    // =================== FONT / THEME ===================
+    let fontSize = 1;
+    function changeFontSize(d) { fontSize = Math.min(1.3, Math.max(0.82, fontSize + d * 0.05)); document.documentElement.style.setProperty('--font-size', fontSize+'rem'); showToast('Text '+(d>0?'larger':'smaller')); }
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+      const l = document.body.classList.contains('light-mode');
+      document.getElementById('modeToggle').textContent = l ? '🌑' : '🌙';
+      localStorage.setItem('ssfc_mode', l ? 'light' : 'dark');
+    }
+    if (localStorage.getItem('ssfc_mode') === 'light') { document.body.classList.add('light-mode'); document.getElementById('modeToggle').textContent = '🌑'; }
+
+    // =================== VIEWS + LIKES ===================
+    const vk = 'ssfc_home_views';
+    let views = parseInt(localStorage.getItem(vk)||'0')+1;
+    localStorage.setItem(vk, views);
+    document.getElementById('viewCount').textContent = views.toLocaleString();
+
+    const likeKey = 'ssfc_home_likes', likedKey = 'ssfc_home_liked';
+    let likes = parseInt(localStorage.getItem(likeKey)||'34'), liked = localStorage.getItem(likedKey)==='true';
+    document.getElementById('likeCount').textContent = likes;
+    if (liked) document.getElementById('likeBtn').classList.add('liked');
+    function toggleLike() {
+      if (liked) { likes--; liked = false; document.getElementById('likeBtn').classList.remove('liked'); }
+      else { likes++; liked = true; document.getElementById('likeBtn').classList.add('liked'); showToast('Thanks for the love! ❤️'); }
+      document.getElementById('likeCount').textContent = likes;
+      localStorage.setItem(likeKey, likes); localStorage.setItem(likedKey, liked);
+    }
+
+    // =================== NEWS TICKER ===================
+    const tickerItems = [
+      { icon: 'fa-futbol', text: 'RESULT: Super Stars FC 2–1 Heartleand United FC · Apr 12' },
+      { icon: 'fa-calendar-check', text: 'NEXT MATCH: Apr 18 · 7:00 PM · vs Worthington Community FC · Away, MN' },
+      { icon: 'fa-users', text: 'SQUAD: 40 players · 10 nationalities · Season 2026' },
+      { icon: 'fa-shirt', text: 'PARTNER: WENDÔK Sportswear — Official Kit Partner' },
+      { icon: 'fa-trophy', text: 'UPSL TRYOUTS: Think you have what it takes? Join the movement' },
+      { icon: 'fa-star', text: 'FOUNDED: June 3, 2025 · Born in Omaha · Built from the streets' },
+      { icon: 'fa-futbol', text: 'RESULT: Omaha Elites 2–4 Super Stars FC · Aug 24' },
+    ];
+    function buildTicker() {
+      const all = [...tickerItems, ...tickerItems]; // duplicate for seamless loop
+      return all.map(i => `<span class="ticker-item"><i class="fas ${i.icon}"></i>${i.text}</span><span class="ticker-dot"></span>`).join('');
+    }
+    document.getElementById('tickerTrack').innerHTML = buildTicker();
+
+    // =================== WELCOME MODAL ===================
+    function closeWelcome() { document.getElementById('welcomeModal').classList.add('hidden'); }
+    function closeWelcomePermanent() { closeWelcome(); localStorage.setItem('ssfc_no_welcome', '1'); }
+    if (localStorage.getItem('ssfc_no_welcome') === '1') closeWelcome();
+    else setTimeout(() => {}, 0); // show on load
+
+    // =================== LEADERBOARD ===================
+    const scorers = [
+      { name: 'Chan Chuol', pos: 'Forward', goals: 1, apps: 1 },
+      { name: 'Kaysha K Shagavah', pos: 'Defender', goals: 1, apps: 1 },
+    ];
+    const rankColors = ['gold','silver','bronze','',''];
+    function buildTable(data, valKey) {
+      const max = data[0]?.[valKey] || 1;
+      return data.map((p, i) => `
+        <div class="lt-row">
+          <span class="lt-rank ${rankColors[i]}">${i===0?'🥇':i===1?'🥈':i===2?'🥉':i+1}</span>
+          <div style="flex:1"><div class="lt-name">${p.name}</div><div class="lt-pos">${p.pos}</div></div>
+          <div class="lt-bar-wrap"><div class="lt-bar" style="width:${Math.max(8, p[valKey]/max*100)}%"></div></div>
+          <div class="lt-val">${p[valKey]}</div>
+        </div>`).join('');
+    }
+    document.getElementById('goalsTable').innerHTML = buildTable(scorers, 'goals');
+    document.getElementById('appsTable').innerHTML = buildTable(appearances, 'apps');
+
+    // =================== FAN WALL ===================
+    const fanKey = 'ssfc_fan_messages';
+    const defaultMsgs = [
+      { name: 'Omaha Fan', msg: 'SSFC all day! Born in Omaha, built from the streets! 🔥', time: '2 days ago' },
+      { name: 'Super Stars', msg: 'Best squad in Nebraska! Let\'s go boys! 💪', time: '3 days ago' },
+      { name: 'Soccer Mom', msg: 'My son trains with this team — the coaches are amazing! So proud. 🙌', time: '5 days ago' },
+    ];
+    let fanMsgs = JSON.parse(localStorage.getItem(fanKey) || 'null') || defaultMsgs;
+    function renderFanWall() {
+      const container = document.getElementById('fanMessages');
+      if (!fanMsgs.length) { container.innerHTML = '<div class="fan-no-msgs">Be the first to leave a message! 👇</div>'; return; }
+      container.innerHTML = fanMsgs.map(m => `
+        <div class="fan-msg-card">
+          <div class="fan-msg-avatar">${m.name[0].toUpperCase()}</div>
+          <div><div class="fan-msg-name">${m.name}</div><div class="fan-msg-text">${m.msg}</div><div class="fan-msg-time">${m.time}</div></div>
+        </div>`).join('');
+      container.scrollTop = container.scrollHeight;
+    }
+    function postFanMsg() {
+      const name = document.getElementById('fanName').value.trim() || 'Anonymous Fan';
+      const msg = document.getElementById('fanMsg').value.trim();
+      if (!msg) { showToast('Write something first!'); return; }
+      fanMsgs.unshift({ name, msg, time: 'Just now' });
+      if (fanMsgs.length > 20) fanMsgs.pop();
+      localStorage.setItem(fanKey, JSON.stringify(fanMsgs));
+      document.getElementById('fanMsg').value = '';
+      renderFanWall();
+      showToast('Message posted! 🔥');
+    }
+    renderFanWall();
+
+    // =================== NEWSLETTER ===================
+    function subscribeNl() {
+      const email = document.getElementById('nlEmail').value.trim();
+      if (!email || !email.includes('@')) { showToast('Enter a valid email address!'); return; }
+      localStorage.setItem('ssfc_nl_sub', email);
+      showToast('You\'re in! Welcome to the movement 📬');
+      document.getElementById('nlEmail').value = '';
+    }
+
+    // =================== SHARE ===================
+    function sharePage() {
+      if (navigator.share) {
+        navigator.share({ title: 'Super Stars FC', text: 'Check out Super Stars FC — Omaha\'s movement!', url: window.location.href });
+      } else {
+        navigator.clipboard.writeText(window.location.href).then(() => showToast('Link copied! 🔗'));
+      }
+    }
+
+    // =================== SCROLL TO SECTION ===================
+    function scrollToSection(id) {
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // =================== TOAST ===================
+    let toastT;
+    function showToast(msg) {
+      clearTimeout(toastT);
+      document.getElementById('toastMsg').textContent = msg;
+      const t = document.getElementById('toast');
+      t.classList.add('show');
+      toastT = setTimeout(() => t.classList.remove('show'), 3200);
+    }
+  </script>
+</body>
+</html>

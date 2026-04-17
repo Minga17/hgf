@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" href="image0.jpeg" type="image/jpeg">
+<title>Super Stars FC | 2026 UPSL Spring Schedule Announced</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* ===== DESIGN TOKENS ===== */
+  :root {
+    --gold:        #F5C518;
+    --gold-dark:   #C9A000;
+    --gold-glow:   rgba(245,197,24,0.25);
+    --red:         #C0392B;
+    --navy:        #0A0E1A;
+    --navy-mid:    #111827;
+    --navy-card:   #161D2F;
+    --navy-border: #1E293B;
+    --white:       #F8F9FA;
+    --muted:       #94A3B8;
+    --font-head:   'Bebas Neue', sans-serif;
+    --font-cond:   'Barlow Condensed', sans-serif;
+    --font-body:   'Barlow', sans-serif;
+  }
+
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: var(--font-body);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: var(--gold); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* ===== UTILITY ===== */
+  .gold { color: var(--gold); }
+  .red  { color: var(--red); }
+  .muted { color: var(--muted); }
+  .uppercase { text-transform: uppercase; letter-spacing: .12em; }
+  .center { text-align: center; }
+
+  /* ===== TICKER ===== */
+  .ticker-wrap {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 8px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    font-family: var(--font-cond);
+    font-weight: 700;
+    font-size: .9rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .ticker-content {
+    display: inline-block;
+    animation: ticker 38s linear infinite;
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .ticker-content span { margin: 0 3rem; }
+  .ticker-content .dot { color: var(--red); }
+
+  /* ===== TOP NAV ===== */
+  nav {
+    background: rgba(10,14,26,.97);
+    border-bottom: 2px solid var(--gold);
+    position: sticky; top: 0; z-index: 999;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: .9rem 2.5rem;
+    backdrop-filter: blur(10px);
+  }
+  .nav-brand {
+    display: flex; align-items: center; gap: .85rem;
+  }
+  .nav-crest {
+    width: 46px; height: 46px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-head);
+    font-size: 1.1rem;
+    color: var(--navy);
+    box-shadow: 0 0 14px var(--gold-glow);
+    flex-shrink: 0;
+    letter-spacing: .03em;
+  }
+  .nav-title {
+    font-family: var(--font-head);
+    font-size: 1.45rem;
+    letter-spacing: .06em;
+    line-height: 1;
+  }
+  .nav-sub {
+    font-family: var(--font-cond);
+    font-size: .7rem;
+    color: var(--gold);
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+  .nav-links {
+    display: flex; gap: 2rem;
+    list-style: none;
+    font-family: var(--font-cond);
+    font-size: .95rem;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .nav-links a { color: var(--muted); transition: color .2s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--gold); text-decoration: none; }
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    padding: .45rem 1.2rem;
+    border-radius: 3px;
+    font-weight: 700 !important;
+    transition: background .2s !important;
+  }
+  .nav-cta:hover { background: var(--gold-dark) !important; text-decoration: none !important; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 560px;
+    display: flex; align-items: flex-end;
+    overflow: hidden;
+    padding: 4rem 0 3rem;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 70% 40%, rgba(245,197,24,.07) 0%, transparent 60%),
+      linear-gradient(160deg, #0A0E1A 0%, #0f1828 40%, #0A0E1A 100%);
+  }
+  .hero-pitch {
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        90deg,
+        rgba(255,255,255,.02) 0px, rgba(255,255,255,.02) 1px,
+        transparent 1px, transparent 80px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,.02) 0px, rgba(255,255,255,.02) 1px,
+        transparent 1px, transparent 80px
+      );
+  }
+  /* animated spotlight */
+  .hero-spot {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(245,197,24,.08) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    animation: spotFloat 8s ease-in-out infinite alternate;
+  }
+  @keyframes spotFloat {
+    from { transform: translate(0, 0) scale(1); }
+    to   { transform: translate(-60px, 40px) scale(1.15); }
+  }
+  /* pentagon/crest watermark */
+  .hero-watermark {
+    position: absolute;
+    right: 6%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-head);
+    font-size: 22rem;
+    color: rgba(245,197,24,.035);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+  .hero-inner {
+    position: relative; z-index: 2;
+    max-width: 900px;
+    padding: 0 2.5rem;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: .6rem;
+    background: var(--red);
+    color: #fff;
+    font-family: var(--font-cond);
+    font-weight: 700;
+    font-size: .78rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    padding: .32rem .9rem;
+    border-radius: 2px;
+    margin-bottom: 1.2rem;
+    animation: fadeUp .6s ease both;
+  }
+  .hero-eyebrow .pulse {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #fff;
+    animation: pulse 1.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .4; transform: scale(.6); }
+  }
+  .hero h1 {
+    font-family: var(--font-head);
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: .95;
+    letter-spacing: .02em;
+    margin-bottom: 1.4rem;
+    animation: fadeUp .7s ease .1s both;
+  }
+  .hero h1 .accent { color: var(--gold); }
+  .hero-meta {
+    display: flex; align-items: center; gap: 1.5rem;
+    font-family: var(--font-cond);
+    font-size: .9rem;
+    color: var(--muted);
+    letter-spacing: .06em;
+    animation: fadeUp .7s ease .2s both;
+    flex-wrap: wrap;
+  }
+  .hero-meta .sep { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); }
+  .hero-share {
+    display: flex; gap: .65rem; margin-top: 2rem;
+    animation: fadeUp .7s ease .3s both;
+  }
+  .share-btn {
+    padding: .5rem 1.1rem;
+    border: 1.5px solid var(--navy-border);
+    border-radius: 3px;
+    font-family: var(--font-cond);
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    cursor: pointer;
+    background: transparent;
+    transition: all .2s;
+    display: flex; align-items: center; gap: .4rem;
+  }
+  .share-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .share-btn.copied { border-color: #27ae60; color: #27ae60; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(22px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ===== LAYOUT ===== */
+  .container { max-width: 1140px; margin: 0 auto; padding: 0 2rem; }
+  .layout { display: grid; grid-template-columns: 1fr 340px; gap: 2.5rem; padding: 3rem 0 4rem; }
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .hero-watermark { display: none; }
+  }
+
+  /* ===== ARTICLE BODY ===== */
+  .article-section { margin-bottom: 2.8rem; }
+  .article-section h2 {
+    font-family: var(--font-head);
+    font-size: 2.1rem;
+    letter-spacing: .04em;
+    color: var(--white);
+    margin-bottom: .75rem;
+    padding-bottom: .5rem;
+    border-bottom: 2px solid var(--gold);
+    display: inline-block;
+  }
+  .article-section p {
+    font-size: 1.05rem;
+    color: #CBD5E1;
+    margin-bottom: 1.1rem;
+  }
+  .article-section p:first-of-type::first-letter {
+    font-family: var(--font-head);
+    font-size: 4rem;
+    float: left;
+    line-height: .75;
+    padding-right: .18em;
+    color: var(--gold);
+  }
+  .article-section p strong { color: var(--white); }
+
+  /* ===== PULL QUOTE ===== */
+  .pull-quote {
+    border-left: 4px solid var(--gold);
+    margin: 2rem 0;
+    padding: 1.2rem 1.6rem;
+    background: var(--navy-card);
+    border-radius: 0 6px 6px 0;
+    position: relative;
+  }
+  .pull-quote::before {
+    content: '\201C';
+    font-family: var(--font-head);
+    font-size: 5rem;
+    color: var(--gold);
+    opacity: .2;
+    position: absolute;
+    top: -1rem; left: .8rem;
+    line-height: 1;
+  }
+  .pull-quote p {
+    font-family: var(--font-cond);
+    font-size: 1.35rem !important;
+    font-weight: 600;
+    color: var(--white) !important;
+    font-style: italic;
+    margin-bottom: .4rem !important;
+  }
+  .pull-quote p::first-letter { all: unset; }
+  .pull-quote cite {
+    font-family: var(--font-cond);
+    font-size: .85rem;
+    color: var(--gold);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-style: normal;
+  }
+
+  /* ===== SCHEDULE TABLE ===== */
+  .schedule-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 1rem;
+    flex-wrap: wrap; gap: .5rem;
+  }
+  .schedule-header h2 {
+    font-family: var(--font-head);
+    font-size: 2rem;
+    letter-spacing: .06em;
+    color: var(--gold);
+  }
+  .filter-tabs { display: flex; gap: .5rem; }
+  .filter-tab {
+    padding: .3rem .9rem;
+    border: 1.5px solid var(--navy-border);
+    border-radius: 2px;
+    font-family: var(--font-cond);
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: transparent;
+    color: var(--muted);
+    transition: all .2s;
+  }
+  .filter-tab.active, .filter-tab:hover {
+    background: var(--gold); color: var(--navy); border-color: var(--gold);
+  }
+  .schedule-table { width: 100%; border-collapse: collapse; }
+  .schedule-table thead th {
+    font-family: var(--font-cond);
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: .6rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--navy-border);
+  }
+  .schedule-table tbody tr {
+    border-bottom: 1px solid var(--navy-border);
+    transition: background .2s;
+  }
+  .schedule-table tbody tr:hover { background: rgba(245,197,24,.04); }
+  .schedule-table td {
+    padding: .85rem 1rem;
+    font-size: .95rem;
+    color: #CBD5E1;
+    vertical-align: middle;
+  }
+  .badge {
+    display: inline-block;
+    padding: .18rem .65rem;
+    border-radius: 2px;
+    font-family: var(--font-cond);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  .badge-home { background: rgba(245,197,24,.15); color: var(--gold); border: 1px solid rgba(245,197,24,.3); }
+  .badge-away { background: rgba(192,57,43,.15); color: #e74c3c; border: 1px solid rgba(192,57,43,.3); }
+  .match-date-num {
+    font-family: var(--font-head);
+    font-size: 1.1rem;
+    color: var(--white);
+    line-height: 1;
+  }
+  .match-date-day {
+    font-family: var(--font-cond);
+    font-size: .72rem;
+    color: var(--muted);
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+  .opponent-name { font-weight: 600; color: var(--white); }
+  .opponent-loc {
+    font-size: .8rem;
+    color: var(--muted);
+    font-family: var(--font-cond);
+    letter-spacing: .04em;
+  }
+  .opener-row td { background: rgba(245,197,24,.06) !important; }
+  .opener-row .match-date-num { color: var(--gold); }
+
+  /* ===== COUNTDOWN ===== */
+  .countdown-card {
+    background: var(--navy-card);
+    border: 1px solid var(--navy-border);
+    border-top: 3px solid var(--gold);
+    border-radius: 6px;
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .countdown-eyebrow {
+    font-family: var(--font-cond);
+    font-size: .72rem;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .5rem;
+  }
+  .countdown-match {
+    font-family: var(--font-head);
+    font-size: 1.6rem;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 1.2rem;
+  }
+  .countdown-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem;
+    margin: 0 auto 1.2rem;
+  }
+  .countdown-unit {
+    background: var(--navy);
+    border: 1px solid var(--navy-border);
+    border-radius: 4px;
+    padding: .7rem .2rem;
+  }
+  .countdown-num {
+    font-family: var(--font-head);
+    font-size: 2rem;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+  .countdown-label {
+    font-family: var(--font-cond);
+    font-size: .65rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .btn {
+    display: inline-block;
+    padding: .7rem 1.5rem;
+    border-radius: 3px;
+    font-family: var(--font-cond);
+    font-weight: 700;
+    font-size: .9rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .btn-gold {
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    width: 100%;
+    text-align: center;
+  }
+  .btn-gold:hover { background: var(--gold-dark); text-decoration: none; color: var(--navy); }
+  .btn-outline {
+    background: transparent;
+    color: var(--muted);
+    border: 1.5px solid var(--navy-border);
+    width: 100%;
+    text-align: center;
+    margin-top: .5rem;
+  }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); text-decoration: none; }
+
+  /* ===== SIDEBAR CARD ===== */
+  .sidebar-card {
+    background: var(--navy-card);
+    border: 1px solid var(--navy-border);
+    border-radius: 6px;
+    padding: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+  .sidebar-card h3 {
+    font-family: var(--font-head);
+    font-size: 1.2rem;
+    letter-spacing: .08em;
+    color: var(--white);
+    margin-bottom: 1rem;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid var(--navy-border);
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .sidebar-card h3 .icon { font-size: .9rem; }
+
+  /* ===== STANDINGS WIDGET ===== */
+  .standings-row {
+    display: grid; grid-template-columns: 24px 1fr repeat(4, 36px);
+    gap: .3rem;
+    align-items: center;
+    padding: .5rem 0;
+    border-bottom: 1px solid rgba(30,41,59,.6);
+    font-size: .85rem;
+  }
+  .standings-row:last-child { border: none; }
+  .standings-pos { color: var(--muted); font-family: var(--font-cond); font-weight: 700; }
+  .standings-club { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .standings-club.highlight { color: var(--gold); }
+  .standings-stat { text-align: center; color: var(--muted); font-family: var(--font-cond); }
+  .standings-stat.pts { color: var(--white); font-weight: 700; }
+  .standings-head {
+    display: grid; grid-template-columns: 24px 1fr repeat(4, 36px);
+    gap: .3rem;
+    padding: 0 0 .4rem;
+    font-family: var(--font-cond);
+    font-size: .68rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border-bottom: 1px solid var(--navy-border);
+    margin-bottom: .2rem;
+  }
+  .standings-head > *:nth-child(n+3) { text-align: center; }
+
+  /* ===== CLUB INFO WIDGET ===== */
+  .club-fact {
+    display: flex; justify-content: space-between;
+    padding: .5rem 0;
+    border-bottom: 1px solid rgba(30,41,59,.6);
+    font-size: .88rem;
+  }
+  .club-fact:last-child { border: none; }
+  .fact-label { color: var(--muted); font-family: var(--font-cond); text-transform: uppercase; letter-spacing: .08em; font-size: .78rem; }
+  .fact-value { font-weight: 600; text-align: right; }
+
+  /* ===== SOCIAL WIDGET ===== */
+  .social-links { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+  .social-link {
+    display: flex; align-items: center; gap: .5rem;
+    padding: .55rem .8rem;
+    border-radius: 4px;
+    font-family: var(--font-cond);
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    transition: opacity .2s;
+    text-decoration: none !important;
+  }
+  .social-link:hover { opacity: .8; }
+  .sl-ig  { background: linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045); color: #fff; }
+  .sl-fb  { background: #1877f2; color: #fff; }
+  .sl-tw  { background: #000; color: #fff; }
+  .sl-yt  { background: #ff0000; color: #fff; }
+
+  /* ===== NEWSLETTER ===== */
+  .newsletter-section {
+    background: var(--navy-card);
+    border: 1px solid var(--navy-border);
+    border-top: 3px solid var(--gold);
+    border-radius: 6px;
+    padding: 2.5rem 2rem;
+    margin: 3rem 0;
+    text-align: center;
+  }
+  .newsletter-section h2 {
+    font-family: var(--font-head);
+    font-size: 2rem;
+    letter-spacing: .06em;
+    margin-bottom: .5rem;
+  }
+  .newsletter-section p { color: var(--muted); margin-bottom: 1.5rem; }
+  .nl-form { display: flex; gap: .6rem; max-width: 480px; margin: 0 auto; }
+  .nl-input {
+    flex: 1;
+    background: var(--navy);
+    border: 1.5px solid var(--navy-border);
+    border-radius: 3px;
+    padding: .75rem 1rem;
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: .95rem;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .nl-input:focus { border-color: var(--gold); }
+  .nl-input::placeholder { color: var(--muted); }
+  .nl-btn {
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    padding: .75rem 1.5rem;
+    border-radius: 3px;
+    font-family: var(--font-cond);
+    font-weight: 700;
+    font-size: .9rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background .2s;
+    white-space: nowrap;
+  }
+  .nl-btn:hover { background: var(--gold-dark); }
+
+  /* ===== MATCH PREVIEW CARDS ===== */
+  .match-cards-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.2rem;
+    margin: 1.5rem 0;
+  }
+  .match-card {
+    background: var(--navy-card);
+    border: 1px solid var(--navy-border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .match-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(0,0,0,.4); }
+  .match-card-header {
+    padding: .7rem 1rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-bottom: 1px solid var(--navy-border);
+  }
+  .match-card-date {
+    font-family: var(--font-cond);
+    font-size: .78rem;
+    color: var(--muted);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .match-card-body { padding: 1.2rem 1rem 1rem; }
+  .match-vs {
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: .5rem;
+    margin-bottom: .8rem;
+  }
+  .match-team { font-family: var(--font-cond); font-weight: 700; font-size: 1rem; line-height: 1.2; }
+  .match-team.home { text-align: right; color: var(--gold); }
+  .match-team.away { text-align: left; color: var(--muted); }
+  .match-vs-sep {
+    font-family: var(--font-head); font-size: 1.1rem; color: var(--muted);
+    background: var(--navy); border-radius: 3px; padding: .1rem .4rem;
+  }
+  .match-venue {
+    font-size: .8rem; color: var(--muted);
+    font-family: var(--font-cond); letter-spacing: .04em;
+    display: flex; align-items: center; gap: .3rem;
+  }
+
+  /* ===== STAT HIGHLIGHTS ===== */
+  .stat-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    margin: 2rem 0;
+    text-align: center;
+  }
+  .stat-box {
+    background: var(--navy-card);
+    border: 1px solid var(--navy-border);
+    border-radius: 6px;
+    padding: 1.4rem 1rem;
+  }
+  .stat-number {
+    font-family: var(--font-head);
+    font-size: 2.8rem;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+  .stat-desc {
+    font-family: var(--font-cond);
+    font-size: .8rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: .3rem;
+  }
+
+  /* ===== SECTION DIVIDER ===== */
+  .section-rule {
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+    margin: 2.5rem 0;
+    opacity: .3;
+  }
+
+  /* ===== PHOTO STRIP ===== */
+  .photo-strip {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem;
+    margin: 2rem 0;
+  }
+  .photo-placeholder {
+    aspect-ratio: 4/3;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: .3rem;
+    font-family: var(--font-cond);
+    font-size: .72rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    overflow: hidden;
+    position: relative;
+  }
+  .photo-placeholder:nth-child(1) { background: linear-gradient(135deg,#1a2035,#0d1623); }
+  .photo-placeholder:nth-child(2) { background: linear-gradient(135deg,#1e1a10,#2d1f00); }
+  .photo-placeholder:nth-child(3) { background: linear-gradient(135deg,#1a0f0f,#2d0e00); }
+  .photo-placeholder:nth-child(4) { background: linear-gradient(135deg,#111a2e,#0a1525); }
+  .photo-icon { font-size: 1.5rem; opacity: .4; }
+  .photo-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(0deg, rgba(0,0,0,.7) 0%, transparent 100%);
+    padding: .4rem .5rem .3rem;
+    font-size: .68rem;
+    text-align: center;
+  }
+
+  /* ===== READING PROGRESS ===== */
+  .reading-progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: var(--gold);
+    z-index: 9999;
+    transition: width .1s;
+    box-shadow: 0 0 8px var(--gold-glow);
+  }
+
+  /* ===== BACK TO TOP ===== */
+  .btt {
+    position: fixed;
+    bottom: 2rem; right: 2rem;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 16px rgba(0,0,0,.4);
+    transition: opacity .2s, transform .2s;
+    opacity: 0; pointer-events: none;
+    z-index: 999;
+  }
+  .btt.visible { opacity: 1; pointer-events: all; }
+  .btt:hover { transform: translateY(-3px); }
+
+  /* ===== RELATED ARTICLES ===== */
+  .related-section { margin: 3rem 0; }
+  .related-section h2 {
+    font-family: var(--font-head);
+    font-size: 1.8rem; letter-spacing: .06em;
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: .7rem;
+  }
+  .related-section h2::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--navy-border);
+  }
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  @media (max-width: 700px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card {
+    background: var(--navy-card);
+    border: 1px solid var(--navy-border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform .2s;
+  }
+  .related-card:hover { transform: translateY(-3px); }
+  .related-thumb {
+    height: 120px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 2.5rem;
+  }
+  .related-thumb.t1 { background: linear-gradient(135deg,#1a2035,#0d1623); }
+  .related-thumb.t2 { background: linear-gradient(135deg,#1e1a10,#2d1f00); }
+  .related-thumb.t3 { background: linear-gradient(135deg,#0e1a0e,#1a3a0a); }
+  .related-body { padding: 1rem; }
+  .related-cat {
+    font-family: var(--font-cond);
+    font-size: .68rem; letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .3rem;
+  }
+  .related-title {
+    font-family: var(--font-cond);
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.3;
+    color: var(--white);
+    margin-bottom: .4rem;
+  }
+  .related-date { font-size: .78rem; color: var(--muted); }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--navy-mid);
+    border-top: 2px solid var(--navy-border);
+    padding: 3rem 0 1.5rem;
+    margin-top: 3rem;
+  }
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  @media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  .footer-brand h3 {
+    font-family: var(--font-head);
+    font-size: 1.6rem; letter-spacing: .06em;
+    margin-bottom: .5rem;
+  }
+  .footer-brand p { color: var(--muted); font-size: .9rem; line-height: 1.6; }
+  .footer-col h4 {
+    font-family: var(--font-cond);
+    font-size: .78rem; letter-spacing: .18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: .8rem;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: .4rem; }
+  .footer-col ul li a { color: var(--muted); font-size: .9rem; }
+  .footer-col ul li a:hover { color: var(--white); text-decoration: none; }
+  .footer-bottom {
+    border-top: 1px solid var(--navy-border);
+    padding-top: 1.5rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+    font-size: .8rem; color: var(--muted);
+    font-family: var(--font-cond); letter-spacing: .06em;
+  }
+  .footer-bottom .upsl-badge {
+    background: var(--navy-border);
+    padding: .25rem .7rem; border-radius: 2px;
+    font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  /* ===== LIGHT TOOLTIP/LABEL ===== */
+  .label-tag {
+    display: inline-block;
+    padding: .2rem .6rem;
+    background: rgba(245,197,24,.12);
+    color: var(--gold);
+    border-radius: 2px;
+    font-family: var(--font-cond);
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-right: .4rem;
+  }
+  .label-tag.red { background: rgba(192,57,43,.12); color: #e74c3c; }
+
+  /* ===== SCROLL REVEAL ===== */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- Reading Progress Bar -->
+<div class="reading-progress" id="readingProgress"></div>
+
+<!-- Breaking News Ticker -->
+<div class="ticker-wrap" aria-label="Breaking news ticker">
+  <div class="ticker-content" id="ticker">
+    <span class="dot">★</span>
+    <span>OFFICIAL: Super Stars FC 2026 UPSL Spring Schedule Released</span>
+    <span class="dot">★</span>
+    <span>Home Opener Set for April 12, 2026 · Omaha, Nebraska</span>
+    <span class="dot">★</span>
+    <span>Super Stars FC Compete in NE-SD-IA Conference</span>
+    <span class="dot">★</span>
+    <span>First-Ever UPSL Season for the Super Stars</span>
+    <span class="dot">★</span>
+    <span>Away Opener: April 18 at Sioux Falls Thunder FC</span>
+    <span class="dot">★</span>
+    <span>OFFICIAL: Super Stars FC 2026 UPSL Spring Schedule Released</span>
+    <span class="dot">★</span>
+    <span>Home Opener Set for April 12, 2026 · Omaha, Nebraska</span>
+    <span class="dot">★</span>
+    <span>Super Stars FC Compete in NE-SD-IA Conference</span>
+    <span class="dot">★</span>
+    <span>First-Ever UPSL Season for the Super Stars</span>
+    <span class="dot">★</span>
+    <span>Away Opener: April 18 at Sioux Falls Thunder FC</span>
+  </div>
+</div>
+
+<!-- Navigation -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-crest">SS</div>
+    <div>
+      <div class="nav-title">Super Stars FC</div>
+      <div class="nav-sub">Omaha, Nebraska · Est. 2025</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="./new.html" class="active">News</a></li>
+    <li><a href="#schedule">Schedule</a></li>
+    <li><a href="#standings">Standings</a></li>
+    <li><a href="#club">Club</a></li>
+    <li><a href="#" class="nav-cta">Get Tickets</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-pitch"></div>
+  <div class="hero-spot"></div>
+  <div class="hero-watermark">★</div>
+  <div class="hero-inner container">
+    <div class="hero-eyebrow"><span class="pulse"></span> Club Announcement · March 2026</div>
+    <h1>Our <span class="accent">Season</span><br>Has Arrived.</h1>
+    <div class="hero-meta">
+      <span class="uppercase" style="font-weight:600; color:var(--white);">Super Stars FC Media</span>
+      <span class="sep"></span>
+      <span>March 13, 2026</span>
+      <span class="sep"></span>
+      <span class="gold uppercase" style="font-weight:700;">UPSL NE-SD-IA Conference</span>
+    </div>
+    <div class="hero-share">
+      <button class="share-btn" onclick="copyLink(this)">🔗 Copy Link</button>
+      <button class="share-btn" onclick="shareTwitter()">𝕏 Share</button>
+      <button class="share-btn" onclick="shareFacebook()">f Share</button>
+      <button class="share-btn" onclick="shareInstagram()">I Share</button>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN LAYOUT -->
+<div class="container">
+  <div class="layout">
+
+    <!-- ======== ARTICLE MAIN ======== -->
+    <main>
+
+      <!-- Season Stats Highlights -->
+      <div class="stat-row reveal">
+        <div class="stat-box">
+          <span class="stat-number">10</span>
+          <span class="stat-desc">League Matches</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">5</span>
+          <span class="stat-desc">Home Games</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-number">5</span>
+          <span class="stat-desc">Away Fixtures</span>
+        </div>
+      </div>
+
+      <!-- INTRO -->
+      <div class="article-section reveal">
+        <h2>A Historic Moment for Omaha Soccer</h2>
+        <p>
+          The day has finally come. Super Stars FC is proud to announce the release of our complete
+          <strong>2026 UPSL Spring Season schedule</strong>, the first competitive league calendar in the
+          history of this club. From the moment we were founded on June 3, 2025, this moment has been
+          the finish line we were sprinting toward. Now, it is our starting line.
+        </p>
+        <p>
+          The United Premier Soccer League, one of the fastest-growing soccer organizations in the United
+          States, and widely recognized as the unofficial 4th tier of American soccer, has officially
+          placed Super Stars FC into the <strong>NE-SD-IA Conference</strong>, a tight knit, competitive
+          division encompassing clubs from Nebraska, South Dakota, and Iowa. The league has confirmed our
+          full slate of home and away fixtures, and the countdown to kick-off has officially begun.
+        </p>
+        <p>
+          This is not just a schedule. It is a declaration. Super Stars FC belongs on this stage, and
+          the Omaha soccer community deserves a club to call its own in national competition. That club
+          is us.
+        </p>
+
+        <div class="pull-quote">
+          <p>"This schedule represents everything we have been working toward since day one. Every player,
+          every coach, every supporter who believed in this project, this is for you. Our journey in the
+          UPSL starts now."</p>
+          <cite>— Super Stars FC Club Leadership</cite>
+        </div>
+      </div>
+
+      <div class="section-rule"></div>
+
+      <!-- HOME GAMES -->
+      <div class="article-section reveal">
+        <h2>⚽ Home Sweet Home</h2>
+        <p>
+          There is something sacred about a home ground. It is where a club's identity is forged,
+          where supporters become a family, and where opponents learn to dread the noise and passion of
+          a united crowd. For Super Stars FC, our home pitch in Omaha is more than a playing surface,
+          it is the heartbeat of this club.
+        </p>
+        <p>
+          The <strong>home opener</strong> is more than a match. It is a moment of community. It is the
+          first time the Super Stars will take the field with our supporters behind us in official UPSL
+          competition, and we intend to make it unforgettable. We are calling on every soccer fan in
+          Omaha and the surrounding area to come out, wear the colors, and help us write the first
+          chapter of something that will be told for decades.
+        </p>
+        <p>
+          Our home schedule features five fixtures throughout the spring, giving supporters multiple
+          opportunities to witness UPSL football live in Omaha. Each home match will bring a distinct
+          atmosphere, from the electric buzz of the opener to the high stakes final home stand as the
+          season reaches its crescendo. The <strong>volume of home support</strong> is not a detail; it
+          is a competitive advantage. Our players hear every chant, every clap, every roar, and it
+          fuels them.
+        </p>
+
+        <div class="pull-quote">
+          <p>"We want Omaha to feel the sport the way millions of fans around the world feel it. C
+          loud, proud, and passionate. Come out to our home matches and let's build something real
+          together."</p>
+          <cite>— Super Stars FC, Club Statement</cite>
+        </div>
+      </div>
+
+      <!-- AWAY TRIPS -->
+      <div class="article-section reveal">
+        <h2>✈ The Away Journey</h2>
+        <p>
+          Every great club earns its reputation not just at home, but on the road. The 2026 UPSL
+          Spring slate takes Super Stars FC on five away trips, beginning with our very first
+          competitive league fixture on <strong>Sunday, April 5th, 2026</strong>, when we travel to
+          <strong>Sioux Falls, South Dakota</strong> to face Sioux Falls Thunder FC.
+        </p>
+        <p>
+          That opening away trip carries enormous symbolic weight. It will be the first time Super Stars
+          FC players pull on the kit in official league competition, walking into an opposing stadium
+          for the first time. History does not ask whether you are ready, it simply arrives. We will
+          be ready.
+        </p>
+        <p>
+          Our away schedule also brings us to face fellow NE-SD-IA Conference clubs, including
+          Heartland United FC, Bana Mboka FC, and Omaha Street Futbol Club, each a respected side
+          that will push us to grow. These trips will test our squad's character, our tactical
+          flexibility, and our mental strength under pressure. They will also forge the bonds between
+          players that can only come from competing together on unfamiliar ground.
+        </p>
+        <p>
+          We encourage the traveling Super Stars faithful, if you can make the journey, do it. Away
+          support is the purest form of loyalty, and it matters more than most fans realize. Every
+          voice in an away section changes the energy of a match.
+        </p>
+
+        <div class="pull-quote">
+          <p>"Away games build a team's soul. You are on foreign soil, and all you have is each other.
+          That bond is what championships are built on."</p>
+          <cite>— Super Stars FC Technical Staff</cite>
+        </div>
+      </div>
+
+      <!-- PHOTO STRIP -->
+      <div class="photo-strip reveal">
+        <div class="photo-placeholder">
+          <span class="photo-icon">⚽</span>
+          <span class="photo-caption">Pre-Season Training</span>
+        </div>
+        <div class="photo-placeholder">
+          <span class="photo-icon">🏟️</span>
+          <span class="photo-caption">Home Ground</span>
+        </div>
+        <div class="photo-placeholder">
+          <span class="photo-icon">🤝</span>
+          <span class="photo-caption">Club Signing Day</span>
+        </div>
+        <div class="photo-placeholder">
+          <span class="photo-icon">📋</span>
+          <span class="photo-caption">Tactical Session</span>
+        </div>
+      </div>
+      <p style="font-size:.76rem; color:var(--muted); text-align:center; margin-bottom:2rem; font-family:var(--font-cond); letter-spacing:.08em; text-transform:uppercase;">
+        Photography: Super Stars FC Media | Content Coming Soon
+      </p>
+
+      <!-- THE JOURNEY -->
+      <div class="article-section reveal">
+        <h2>🌟 The Long Journey Begins</h2>
+        <p>
+          Super Stars FC was founded less than a year ago, on June 3, 2025. In the months since, this
+          club has built a squad, assembled a coaching staff, established an identity, and earned its
+          place in national competition through the UPSL. That progress is remarkable. But we are
+          under no illusion that this is the summit, it is base camp.
+        </p>
+        <p>
+          The 2026 Spring season is a foundation. Every point earned, every match played, every lesson
+          learned on the pitch is an investment in the long-term vision of this club. We are building
+          a <strong>permanent pillar</strong> of soccer in Omaha, a place where the community can
+          find belonging, where talented players can develop, and where future generations will look
+          back and say: this is where it all started.
+        </p>
+        <p>
+          The UPSL's promotion and relegation system means that ambition has a pathway. Clubs that
+          perform rise. We intend to be among those clubs. But right now, the first mission is simple:
+          compete with everything we have, represent Omaha with pride, and give our supporters a
+          season to remember.
+        </p>
+
+        <div class="pull-quote">
+          <p>"We are not just building a team for this season. We are building a club for this city,
+          for the next ten, twenty, fifty years. The schedule is just the beginning."</p>
+          <cite>— Super Stars FC Founding Statement</cite>
+        </div>
+      </div>
+
+      <div class="section-rule"></div>
+
+      <!-- FULL SCHEDULE TABLE -->
+      <div id="schedule" class="reveal">
+        <div class="schedule-header">
+          <h2>2026 Spring Schedule</h2>
+          <div class="filter-tabs">
+            <button class="filter-tab active" onclick="filterSchedule('all', this)">All</button>
+            <button class="filter-tab" onclick="filterSchedule('home', this)">Home</button>
+            <button class="filter-tab" onclick="filterSchedule('away', this)">Away</button>
+          </div>
+        </div>
+
+        <table class="schedule-table" id="scheduleTable">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Opponent</th>
+              <th>Venue</th>
+              <th>Type</th>
+              <th>Time (CT)</th>
+            </tr>
+          </thead>
+          <tbody id="scheduleBody">
+            <tr data-type="home" class="opener-row">
+              <td>
+                <div class="match-date-num">Apr 12</div>
+                <div class="match-date-day">Sunday</div>
+              </td>
+              <td>
+                <div class="opponent-name">Heartland United FC</div>
+                <div class="opponent-loc">Bellevue, NE</div>
+                <span class="label-tag" style="margin-top:.2rem;display:inline-block;">🏠 HOME OPENER</span>
+              </td>
+              <td>Omaha, NE</td>
+              <td><span class="badge badge-home">Home</span></td>
+              <td>2:00 PM</td>
+            </tr>
+            <tr data-type="away">
+              <td>
+                <div class="match-date-num">Apr 18</div>
+                <div class="match-date-day">Saturday</div>
+              </td>
+              <td>
+                <div class="opponent-name">Worthington Community FC</div>
+                <div class="opponent-loc">Worthington, MN</div>
+              </td>
+              <td>Away Venue, MN</td>
+              <td><span class="badge badge-away">Away</span></td>
+              <td>5:00 PM</td>
+            </tr>
+            <tr data-type="home">
+              <td>
+                <div class="match-date-num">Apr 26</div>
+                <div class="match-date-day">Sunday</div>
+              </td>
+              <td>
+                <div class="opponent-name">Club Atletico Omaha</div>
+                <div class="opponent-loc">Omaha, NE</div>
+              </td>
+              <td>Omaha, NE</td>
+              <td><span class="badge badge-home">Home</span></td>
+              <td>6:00 PM</td>
+            </tr>
+            <tr data-type="away">
+              <td>
+                <div class="match-date-num">May 3</div>
+                <div class="match-date-day">Sunday</div>
+              </td>
+              <td>
+                <div class="opponent-name">Garwo United FC</div>
+                <div class="opponent-loc">Sioux Falls, SD</div>
+              </td>
+              <td>Away Venue, SD</td>
+              <td><span class="badge badge-away">Away</span></td>
+              <td>5:00 PM</td>
+            </tr>
+            <tr data-type="home">
+              <td>
+                <div class="match-date-num">May 10</div>
+                <div class="match-date-day">Sunday</div>
+              </td>
+              <td>
+                <div class="opponent-name">Omaha Street Futbol Club</div>
+                <div class="opponent-loc">Omaha, NE</div>
+              </td>
+              <td>Omaha, NE</td>
+              <td><span class="badge badge-home">Home</span></td>
+              <td>6:00 PM</td>
+            </tr>
+            <tr data-type="away">
+              <td>
+                <div class="match-date-num">May 17</div>
+                <div class="match-date-day">Sunday</div>
+              </td>
+              <td>
+                <div class="opponent-name">CB Captains FC</div>
+                <div class="opponent-loc">Council Bluffs, IA</div>
+              </td>
+              <td>Away Venue, IA</td>
+              <td><span class="badge badge-away">Away</span></td>
+              <td>4:00 PM</td>
+            </tr>
+            <tr data-type="home">
+              <td>
+                <div class="match-date-num">May 19</div>
+                <div class="match-date-day">Tuesday</div>
+              </td>
+              <td>
+                <div class="opponent-name">Bana Mboka FC</div>
+                <div class="opponent-loc">Omaha, NE</div>
+              </td>
+              <td>Omaha, NE</td>
+              <td><span class="badge badge-home">Home</span></td>
+              <td>7:00 PM</td>
+            </tr>
+            <tr data-type="away">
+              <td>
+                <div class="match-date-num">May 23</div>
+                <div class="match-date-day">Saturday</div>
+              </td>
+              <td>
+                <div class="opponent-name">Sioux Falls Thunder FC</div>
+                <div class="opponent-loc">Sioux Falls, SD</div>
+              </td>
+              <td>Sioux Falls, SD</td>
+              <td><span class="badge badge-away">Away</span></td>
+              <td>5:00 PM</td>
+            </tr>
+            <tr data-type="away">
+              <td>
+                <div class="match-date-num">May 31</div>
+                <div class="match-date-day">Sunday</div>
+              </td>
+              <td>
+                <div class="opponent-name">Capital City Roots FC</div>
+                <div class="opponent-loc">Des Moines, IA</div>
+              </td>
+              <td>Away</td>
+              <td><span class="badge badge-away">Away</span></td>
+              <td>7:00 PM</td>
+            </tr>
+            <tr data-type="home">
+              <td>
+                <div class="match-date-num">Jun 7</div>
+                <div class="match-date-day">Sunday</div>
+              </td>
+              <td>
+                <div class="opponent-name">Reapers FC</div>
+                <div class="opponent-loc">Lincoln, NE</div>
+                <span class="label-tag red" style="margin-top:.2rem;display:inline-block;">Season Finale</span>
+              </td>
+              <td>Omaha, NE</td>
+              <td><span class="badge badge-home">Home</span></td>
+              <td>6:00 PM</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size:.78rem; color:var(--muted); margin-top:.8rem; font-family:var(--font-cond); letter-spacing:.06em;">
+          * Schedule subject to final UPSL confirmation. Times and venue details will be updated when released by the league. Confirmed fixture: April 12 home at Omaha, NE<br/>Stadium: South High School, Omaha, NE.
+        </p>
+      </div>
+
+      <div class="section-rule"></div>
+
+      <!-- KEY MATCH CARDS -->
+      <div class="reveal">
+        <h2 style="font-family:var(--font-head); font-size:1.8rem; letter-spacing:.05em; margin-bottom:1.2rem;">
+          Fixtures to Watch
+        </h2>
+        <div class="match-cards-grid">
+          <div class="match-card">
+            <div class="match-card-header">
+              <span class="match-card-date">Sun, April 12 · Home</span>
+              <span class="badge badge-home">🏠 Home Opener</span>
+            </div>
+            <div class="match-card-body">
+              <div class="match-vs">
+                <div class="match-team home">Super Stars<br>FC</div>
+                <div class="match-vs-sep">VS</div>
+                <div class="match-team away">Heartland<br>United FC</div>
+              </div>
+              <div class="match-venue">📍 Omaha, NE · Time TBD</div>
+            </div>
+          </div>
+          <div class="match-card">
+            <div class="match-card-header">
+              <span class="match-card-date">Sun, April 12 · Home</span>
+              <span class="badge badge-home">Away Opener</span>
+            </div>
+            <div class="match-card-body">
+              <div class="match-vs">
+                <div class="match-team home">Super Stars<br>FC</div>
+                <div class="match-vs-sep">VS</div>
+                <div class="match-team away">Worthington<br>Community FC</div>
+              </div>
+              <div class="match-venue">📍Worthington, MN · Time TBD</div>
+            </div>
+          </div>
+          <div class="match-card">
+            <div class="match-card-header">
+              <span class="match-card-date">Sun, June 7 · Home</span>
+              <span class="badge badge-home">Season Finale</span>
+            </div>
+            <div class="match-card-body">
+              <div class="match-vs">
+                <div class="match-team home">Super Stars<br>FC</div>
+                <div class="match-vs-sep">VS</div>
+                <div class="match-team away">Reapers<br>FC</div>
+              </div>
+              <div class="match-venue">📍 Omaha, NE · Time TBD</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-rule"></div>
+
+      <!-- CLOSING CALL TO ACTION -->
+      <div class="article-section reveal">
+        <h2>📣 Join the Super Stars Family</h2>
+        <p>
+          The 2026 UPSL Spring season represents not just a collection of fixtures, it represents
+          the birth of something the city of Omaha has needed. A local soccer club with national
+          ambition, community roots, and the determination to compete at the highest level available
+          to us.
+        </p>
+        <p>
+          Whether you have been with us since the founding, or this is the first time you are hearing
+          the name Super Stars FC, there has never been a better time to join this family.
+          <strong>Come to our home matches. Bring your friends, your family, your neighbors.</strong>
+          Every supporter who steps through those gates is part of the foundation of this club's history.
+        </p>
+        <p>
+          The pitch awaits. The fixtures are set. The Super Stars are ready.
+          <strong class="gold">Let's make Omaha proud.</strong>
+        </p>
+        <p style="font-family: var(--font-cond); font-size:.9rem; color:var(--muted); letter-spacing:.06em; text-transform:uppercase; margin-top:1.5rem;">
+          ⭐ Super Stars FC · Omaha, Nebraska · Est. June 3, 2025 · UPSL NE-SD-IA Conference · Spring 2026
+        </p>
+      </div>
+
+      <!-- TAGS -->
+      <div style="margin: 1.5rem 0 2rem;">
+        <span class="label-tag">UPSL</span>
+        <span class="label-tag">Super Stars FC</span>
+        <span class="label-tag">Omaha Soccer</span>
+        <span class="label-tag">NE-SD-IA</span>
+        <span class="label-tag">Spring 2026</span>
+        <span class="label-tag">Schedule</span>
+      </div>
+
+    </main>
+
+    <!-- ======== SIDEBAR ======== -->
+    <aside>
+
+      <!-- COUNTDOWN -->
+      <div class="countdown-card reveal" id="standings">
+        <div class="countdown-eyebrow">⏱ Countdown to Kickoff</div>
+        <div class="countdown-match">Super Stars FC<br>vs Worthington Community FC</div>
+        <div class="countdown-grid">
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-days">--</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-hours">--</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-mins">--</span>
+            <span class="countdown-label">Mins</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="cd-secs">--</span>
+            <span class="countdown-label">Secs</span>
+          </div>
+        </div>
+        <div style="font-family:var(--font-cond); font-size:.75rem; color:var(--muted); margin-bottom:1rem; text-transform:uppercase; letter-spacing:.08em;">
+          April 18, 2026 · 7:00 PM CT<br>Worthington, MN
+        </div>
+        <a href="#schedule" class="btn btn-gold">View Full Schedule</a>
+        <a href="superstarsfcstreamaccess.html" class="btn btn-outline">Watch live & Highlight</a>
+      </div>
+
+      <!-- NE-SD-IA CONFERENCE -->
+      <div class="sidebar-card reveal">
+        <h3><span class="icon">📊</span> NE-SD-IA Conference</h3>
+        <div class="standings-head">
+          <div>#</div>
+          <div>Club</div>
+          <div>W</div>
+          <div>D</div>
+          <div>L</div>
+          <div>Pts</div>
+        </div>
+        <div class="standings-row">
+          <div class="standings-pos">1</div>
+          <div class="standings-club">Worthington Community FC</div>
+          <div class="standings-stat">1</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat pts">3</div>
+        </div>
+        <div class="standings-row">
+          <div class="standings-pos">2</div>
+          <div class="standings-club">Omaha Street FC</div>
+          <div class="standings-stat">1</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat">1</div>
+          <div class="standings-stat pts">3</div>
+        </div>
+        <div class="standings-row">
+          <div class="standings-pos">3</div>
+          <div class="standings-club">Garwo United FC</div>
+          <div class="standings-stat">1</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat pts">3</div>
+        </div>
+        <div class="standings-row">
+          <div class="standings-pos">4</div>
+          <div class="standings-club">Reapers FC</div>
+          <div class="standings-stat">1</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat pts">3</div>
+        </div>
+        <div class="standings-row">
+          <div class="standings-pos">5</div>
+          <div class="standings-club highlight">⭐ Super Stars FC</div>
+          <div class="standings-stat">1</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat pts">3</div>
+        </div>
+        <div class="standings-row">
+          <div class="standings-pos">6</div>
+          <div class="standings-club">Club Atletico Omaha</div>
+          <div class="standings-stat">1</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat">1</div>
+          <div class="standings-stat pts">3</div>
+        </div>
+        <div class="standings-row">
+          <div class="standings-pos">7</div>
+          <div class="standings-club">Bana Mboka FC</div>
+          <div class="standings-stat">1</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat">1</div>
+          <div class="standings-stat pts">3</div>
+        </div>
+        <div class="standings-row">
+          <div class="standings-pos">8</div>
+          <div class="standings-club">Sioux Falls TFC</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat pts">0</div>
+        </div>
+        <div class="standings-row">
+          <div class="standings-pos">9</div>
+          <div class="standings-club">Heartland Utd</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat">2</div>
+          <div class="standings-stat pts">0</div>
+        </div>
+        <div class="standings-row">
+          <div class="standings-pos">10</div>
+          <div class="standings-club">CB Captains FC</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat">1</div>
+          <div class="standings-stat pts">0</div>
+        </div>
+        <div class="standings-row">
+          <div class="standings-pos">11</div>
+          <div class="standings-club">Capital City Roots FC</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat">0</div>
+          <div class="standings-stat">1</div>
+          <div class="standings-stat pts">0</div>
+        </div>
+        <p style="font-size:.72rem; color:var(--muted); margin-top:.7rem; font-family:var(--font-cond); text-transform:uppercase; letter-spacing:.08em;">
+          Season begins April 5, 2026
+        </p>
+      </div>
+
+      <!-- CLUB FACTS -->
+      <div class="sidebar-card reveal" id="club">
+        <h3><span class="icon">⭐</span> Club Profile</h3>
+        <div class="club-fact">
+          <span class="fact-label">Founded</span>
+          <span class="fact-value">June 3, 2025</span>
+        </div>
+        <div class="club-fact">
+          <span class="fact-label">City</span>
+          <span class="fact-value">Omaha, Nebraska</span>
+        </div>
+        <div class="club-fact">
+          <span class="fact-label">League</span>
+          <span class="fact-value">UPSL Premier</span>
+        </div>
+        <div class="club-fact">
+          <span class="fact-label">Conference</span>
+          <span class="fact-value">NE-SD-IA</span>
+        </div>
+        <div class="club-fact">
+          <span class="fact-label">Division</span>
+          <span class="fact-value">4th Tier US Soccer</span>
+        </div>
+        <div class="club-fact">
+          <span class="fact-label">First Match</span>
+          <span class="fact-value gold" style="font-weight:700;">April 12, 2026</span>
+        </div>
+      </div>
+
+      <!-- FOLLOW US -->
+      <div class="sidebar-card reveal">
+        <h3><span class="icon">📲</span> Follow the Club</h3>
+        <div class="social-links">
+          <a href="https://www.instagram.com/super_starsfc_fc?igsh=MWUyM3IxbHI1Y3p-sOQ==" class="social-link sl-ig">📷 Instagram</a>
+          <a href="https://www.facebook.com/profile.php?id=100077275385711" class="social-link sl-fb">Facebook</a>
+          <a href="https://x.com/SuperStars75843?t=tZZoC1LvPfNGI-BKk15JG4g&S=09" class="social-link sl-tw">𝕏 Twitter</a>
+          <a href="https://youtube.com/@s.s.f.c?si=fV4gWuc4trgaRfF6" class="social-link sl-yt">▶ YouTube</a>
+        </div>
+        <p style="font-size:.78rem; color:var(--muted); margin-top:1rem; font-family:var(--font-cond); letter-spacing:.06em;">
+          Stay up to date with match news, roster moves, and behind-the-scenes content throughout the 2026 season.
+        </p>
+      </div>
+
+      <!-- ABOUT UPSL -->
+      <div class="sidebar-card reveal">
+        <h3><span class="icon">🏆</span> About the UPSL</h3>
+        <p style="font-size:.88rem; color:var(--muted); line-height:1.6;">
+          The United Premier Soccer League is one of the nation's largest and fastest-growing soccer
+          leagues, featuring over 800 teams across 41+ states. Founded in 2011, the UPSL occupies
+          the 4th tier of American soccer and features a promotion/relegation system. Season runs
+          April through July.
+        </p>
+        <a href="https://upsl.com" target="_blank" class="btn btn-outline" style="margin-top:.8rem; display:block;">
+          Visit UPSL.com ↗
+        </a>
+      </div>
+    </aside>
+  </div><!-- end .layout -->
+  
+  <!-- RELATED ARTICLES -->
+  <div class="related-section reveal">
+    <h2>More from the Club</h2>
+    <div class="related-grid">
+      <div class="related-card">
+        <div class="related-thumb t1">⚽</div>
+        <div class="related-body">
+          <div class="related-cat">Club News</div>
+          <div class="related-title">Super Stars FC Officially Joins the UPSL for Spring 2026</div>
+          <div class="related-date">March 2026</div>
+        </div>
+      </div>
+      <div class="related-card">
+        <div class="related-thumb t2">🤝</div>
+        <div class="related-body">
+          <div class="related-cat">Roster</div>
+          <div class="related-title">Meet the Squad: The Players Who Will Wear the Crest</div>
+          <div class="related-date">March 2026</div>
+        </div>
+      </div>
+      <div class="related-card">
+        <div class="related-thumb t3">📖</div>
+        <div class="related-body">
+          <div class="related-cat">Club Story</div>
+          <div class="related-title">How Super Stars FC Was Born: The Story Behind the Club</div>
+          <div class="related-date">June 2025</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end .container -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>⭐ Super Stars FC</h3>
+        <p>Omaha's newest soccer club, competing in the United Premier Soccer League. Founded June 3, 2025. Representing Omaha, Nebraska with pride.</p>
+        <div style="margin-top:1rem; font-family:var(--font-cond); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gold);">
+          UPSL NE-SD-IA Conference · Spring 2026
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Club</h4>
+        <ul>
+          <li><a href="./bout.html">About</a></li>
+          <li><a href="./roster.html">Roster</a></li>
+          <li><a href="#">Coaching Staff</a></li>
+          <li><a href="../behind-the-sences.html">Club History</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Matches</h4>
+        <ul>
+          <li><a href="#schedule">Schedule</a></li>
+          <li><a href="#standings">Standings</a></li>
+          <li><a href="#">Tickets</a></li>
+          <li><a href="./matches.html">Results</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <ul>
+          <li><a href="#">Supporters</a></li>
+          <li><a href="#newsletter">Newsletter</a></li>
+          <li><a href="#">Media</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Super Stars FC · Omaha, Nebraska</span>
+      <span class="upsl-badge">UPSL Member Club</span>
+      <span>Site for informational purposes · Schedule subject to UPSL confirmation</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top -->
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// ===== READING PROGRESS =====
+const bar = document.getElementById('readingProgress');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width = Math.min(100, (scrollTop / docHeight) * 100) + '%';
+  // back to top
+  document.getElementById('btt').classList.toggle('visible', scrollTop > 400);
+});
+
+// ===== COUNTDOWN =====
+function updateCountdown() {
+  const target = new Date('2026-04-05T16:00:00-05:00'); // 4pm CT
+  const now = new Date();
+  const diff = target - now;
+  if (diff <= 0) {
+    document.getElementById('cd-days').textContent = '0';
+    document.getElementById('cd-hours').textContent = '0';
+    document.getElementById('cd-mins').textContent = '0';
+    document.getElementById('cd-secs').textContent = '0';
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  const s = Math.floor((diff % 60000) / 1000);
+  document.getElementById('cd-days').textContent  = String(d).padStart(2,'0');
+  document.getElementById('cd-hours').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-mins').textContent  = String(m).padStart(2,'0');
+  document.getElementById('cd-secs').textContent  = String(s).padStart(2,'0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// ===== SCHEDULE FILTER =====
+function filterSchedule(type, btn) {
+  document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  const rows = document.querySelectorAll('#scheduleBody tr');
+  rows.forEach(row => {
+    if (type === 'all' || row.dataset.type === type) {
+      row.style.display = '';
+    } else {
+      row.style.display = 'none';
+    }
+  });
+}
+
+// ===== NEWSLETTER =====
+function subscribeNewsletter() {
+  const email = document.getElementById('nlEmail').value.trim();
+  if (!email || !email.includes('@')) {
+    document.getElementById('nlEmail').style.borderColor = '#e74c3c';
+    return;
+  }
+  document.getElementById('nlEmail').style.borderColor = '#27ae60';
+  document.getElementById('nl-confirm').style.display = 'block';
+}
+
+// ===== SHARE BUTTONS =====
+function copyLink(btn) {
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    btn.textContent = '✓ Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = '🔗 Copy Link'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+function shareTwitter() {
+  const text = encodeURIComponent('Super Stars FC officially announces their 2026 UPSL Spring Schedule! First game April 5 at Sioux Falls Thunder FC. #SuperStarsFC #UPSL #OmahaSoccer');
+  window.open('https://x.com/SuperStars75843?t=tZZoC1LvPfNGI-BKk15JG4g&S=09' + text, '_blank');
+}
+function shareFacebook() {
+  window.open('https://www.facebook.com/profile.php?id=100077275385711' + encodeURIComponent(window.location.href), '_blank');
+}
+function shareInstagram() {
+  window.open('https://www.instagram.com/super_starsfc_fc?igsh=MWUyM3IxbHI1Y3p-sOQ==' + encodeURIComponent(window.location.href), '_blank');
+}
+
+// ===== SCROLL REVEAL =====
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

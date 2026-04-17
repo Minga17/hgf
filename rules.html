@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Super Star FC — Team Rules & Policies</title>
+  <link rel="shortcut icon" href="image0.jpeg" type="image/jpeg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #0f1724;
+      --accent-red: #b62a2d;
+      --accent-blue: #1c5da4;
+      --muted: #9aa4b2;
+      --max-w: 1100px;
+      --radius: 12px;
+      font-family: Inter, system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, var(--bg), #071021);
+      color: #e6eef8;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: var(--accent-blue); text-decoration: none; font-weight: 700; }
+    a:hover { color: var(--accent-red); }
+
+    /* ====== PROGRESS BAR ====== */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-red));
+      z-index: 9999;
+      transition: width 0.1s ease;
+    }
+
+    /* ====== LAYOUT ====== */
+    .container {
+      max-width: var(--max-w);
+      margin: auto;
+      padding: 28px 20px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+      font-weight: 800;
+    }
+
+    .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    /* ====== PAGE TITLE ====== */
+    .page-hero {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .page-hero h1 {
+      color: var(--accent-blue);
+      font-size: 2rem;
+      margin-bottom: 6px;
+    }
+
+    .page-hero .meta {
+      color: var(--muted);
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .page-hero .badge {
+      background: rgba(28,93,164,0.2);
+      border: 1px solid var(--accent-blue);
+      color: var(--accent-blue);
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .action-bar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: #162033;
+      border: 1.5px solid #2a3a55;
+      color: var(--muted);
+    }
+
+    .btn-secondary:hover { border-color: var(--accent-blue); color: #e6eef8; }
+    .btn-primary:hover { opacity: 0.85; }
+
+    /* ====== TWO-COLUMN LAYOUT ====== */
+    .main-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* ====== TOC SIDEBAR ====== */
+    .toc-sidebar {
+      position: sticky;
+      top: 20px;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .toc-sidebar h3 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .toc-list li { margin-bottom: 2px; }
+
+    .toc-list a {
+      display: block;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: all 0.2s;
+    }
+
+    .toc-list a:hover, .toc-list a.active {
+      background: rgba(28,93,164,0.15);
+      color: #e6eef8;
+    }
+
+    .toc-list a.active {
+      border-left: 2px solid var(--accent-blue);
+      color: var(--accent-blue);
+    }
+
+    .toc-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 10px 0;
+    }
+
+    .toc-section-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgba(154,164,178,0.5);
+      padding: 4px 10px 2px;
+    }
+
+    /* ====== CONTENT ====== */
+    .rules-content { display: flex; flex-direction: column; gap: 16px; }
+
+    /* ====== SECTION INTRO ====== */
+    .section-intro {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      border-left: 4px solid var(--accent-blue);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .section-intro.visible { opacity: 1; transform: translateY(0); }
+
+    .section-intro p { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.7; }
+
+    /* ====== RULE CARD ====== */
+    .rule-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.04);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .rule-card.visible { opacity: 1; transform: translateY(0); }
+
+    .rule-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+      border-left: 4px solid var(--accent-red);
+    }
+
+    .rule-header:hover { background: rgba(255,255,255,0.03); }
+
+    .rule-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .rule-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(28,93,164,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .rule-header h2 {
+      margin: 0;
+      font-size: 1rem;
+      color: #e6eef8;
+    }
+
+    .rule-toggle {
+      color: var(--muted);
+      font-size: 0.85rem;
+      transition: transform 0.3s;
+    }
+
+    .rule-toggle.open { transform: rotate(180deg); }
+
+    .rule-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 20px;
+    }
+
+    .rule-body.open {
+      max-height: 500px;
+      padding: 4px 20px 18px;
+    }
+
+    .rule-body ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .rule-body ul li {
+      margin-bottom: 7px;
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .rule-body p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* ====== SECTION GROUPING ====== */
+    .section-group-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-blue);
+      margin-top: 8px;
+    }
+
+    .section-group-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(28,93,164,0.25);
+    }
+
+    /* ====== SEARCH ====== */
+    .search-wrap {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      padding: 10px 16px 10px 40px;
+      border-radius: 8px;
+      border: 1.5px solid #2a3a55;
+      background: #162033;
+      color: #e6eef8;
+      font-size: 0.9rem;
+      transition: border-color 0.2s;
+    }
+
+    .search-wrap input:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+    }
+
+    .search-wrap i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+    }
+
+    .no-results {
+      text-align: center;
+      color: var(--muted);
+      padding: 24px;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    /* ====== ACKNOWLEDGMENT FORM ====== */
+    .ack-section {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 28px;
+      border: 1px solid rgba(28,93,164,0.3);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .ack-section.visible { opacity: 1; transform: translateY(0); }
+
+    .ack-section h2 {
+      color: var(--accent-blue);
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .ack-section p {
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .ack-form { display: flex; flex-direction: column; gap: 12px; }
+
+    .ack-form input[type="text"] {
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1.5px solid #2a3a55;
+      background: #162033;
+      color: #e6eef8;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+
+    .ack-form input[type="text"]:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+    }
+
+    .ack-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      cursor: pointer;
+    }
+
+    .ack-checkbox input { margin-top: 3px; flex-shrink: 0; }
+
+    .ack-btn {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      border: none;
+      color: #fff;
+      font-weight: 700;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .ack-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+    .ack-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+    .ack-success {
+      background: rgba(63,169,106,0.1);
+      border: 1px solid #3fa96a;
+      border-radius: 8px;
+      padding: 14px 18px;
+      color: #3fa96a;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .ack-error {
+      color: #e05555;
+      font-size: 0.8rem;
+      display: none;
+    }
+
+    /* ====== MOTTOS ====== */
+    .mottos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+
+    .motto-card {
+      background: #162033;
+      border-radius: 10px;
+      padding: 16px;
+      border-left: 3px solid var(--accent-blue);
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .motto-card.visible { opacity: 1; transform: translateY(0); }
+
+    /* ====== TOAST ====== */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: #1e3050;
+      border: 1px solid var(--accent-blue);
+      color: #e6eef8;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      z-index: 2000;
+      transform: translateY(80px);
+      opacity: 0;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* ====== SCROLL TOP ====== */
+    .scroll-top {
+      position: fixed;
+      bottom: 28px;
+      left: 28px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 999;
+      border: none;
+      font-size: 1rem;
+      color: #fff;
+      padding: 0;
+    }
+
+    .scroll-top.show { opacity: 1; pointer-events: all; }
+    .scroll-top:hover { transform: translateY(-3px) scale(1.05); }
+
+    /* ====== FOOTER ====== */
+    .site-footer {
+      background: linear-gradient(180deg, var(--bg), #060a18);
+      color: #e6eef8;
+      padding: 36px 20px 20px;
+      font-size: 14px;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      margin-top: 60px;
+    }
+
+    .footer-container {
+      max-width: var(--max-w);
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 36px;
+    }
+
+    .footer-brand h3 { color: #fff; margin-bottom: 8px; }
+    .footer-brand p { color: var(--muted); line-height: 1.6; }
+
+    .footer-links h4, .footer-contact h4, .footer-social h4 {
+      color: #fff;
+      margin-bottom: 12px;
+      font-size: 15px;
+      position: relative;
+    }
+
+    .footer-links h4::after, .footer-contact h4::after, .footer-social h4::after {
+      content: "";
+      display: block;
+      width: 34px;
+      height: 2px;
+      margin-top: 6px;
+      background: linear-gradient(90deg, var(--accent-red), var(--accent-blue));
+    }
+
+    .footer-links a {
+      display: block;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 8px;
+      font-weight: 500;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .footer-links a:hover { color: #e6eef8; transform: translateX(4px); }
+    .footer-contact p { margin-bottom: 6px; color: var(--muted); }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      margin-right: 10px;
+      border-radius: 50%;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .social-icons a svg { width: 18px; height: 18px; fill: currentColor; }
+
+    .social-icons a:hover {
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+      transform: translateY(-2px) scale(1.08);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    }
+
+    .social-icons a.icon-youtube:hover { background: #ff0000; }
+    .social-icons a.icon-facebook:hover { background: #1c5da4; }
+    .social-icons a.icon-twitter:hover { background: #000000; }
+
+    .footer-bottom {
+      margin-top: 32px;
+      padding-top: 16px;
+      text-align: center;
+      color: var(--muted);
+      position: relative;
+    }
+
+    .footer-bottom::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 70%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-red), var(--accent-blue), transparent);
+    }
+
+    /* ====== PRINT ====== */
+    @media print {
+      .toc-sidebar, .action-bar, .ack-section, .scroll-top, .toast, #progress-bar, .site-footer, header { display: none !important; }
+      .main-layout { grid-template-columns: 1fr; }
+      body { background: #fff; color: #000; }
+      .rule-card { box-shadow: none; border: 1px solid #ccc; }
+      .rule-body { max-height: none !important; padding: 4px 20px 18px !important; }
+      .rule-body ul li { color: #333; }
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 800px) {
+      .main-layout { grid-template-columns: 1fr; }
+      .toc-sidebar { position: static; }
+    }
+
+    @media (max-width: 520px) {
+      body { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Reading Progress Bar -->
+  <div id="progress-bar"></div>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <header>
+      <a href="./index.html" class="brand">
+        <div class="logo">SS</div>
+        <div>
+          <div style="font-weight:800">Super Star FC</div>
+          <div style="font-size:0.8rem;color:var(--muted)">Official Club</div>
+        </div>
+      </a>
+      <a href="./index.html" style="color:var(--accent-blue);font-weight:700">Main</a>
+    </header>
+
+    <!-- PAGE TITLE -->
+    <div class="page-hero">
+      <h1>⚽ Code of Conduct & Team Rules</h1>
+      <p style="color:var(--muted);margin:0">Players · Parents · Coaches · Partners · Sponsors</p>
+      <div class="meta">
+        <span>📅 Last Updated: June 3, 2025</span>
+        <span class="badge">Founded June 3, 2025</span>
+        <span class="badge">UPSL Club</span>
+      </div>
+    </div>
+
+    <!-- ACTION BAR -->
+    <div class="action-bar">
+      <button class="action-btn btn-primary" onclick="window.print()">
+        <i class="fas fa-print"></i> Print / Save PDF
+      </button>
+      <button class="action-btn btn-secondary" onclick="copyLink()">
+        <i class="fas fa-link"></i> Copy Link
+      </button>
+      <button class="action-btn btn-secondary" onclick="expandAll()">
+        <i class="fas fa-expand-alt"></i> Expand All
+      </button>
+      <button class="action-btn btn-secondary" onclick="collapseAll()">
+        <i class="fas fa-compress-alt"></i> Collapse All
+      </button>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="search-wrap" style="max-width:500px;margin:0 auto 28px;">
+      <i class="fas fa-search"></i>
+      <input type="text" id="ruleSearch" placeholder="Search rules..." oninput="filterRules()" />
+    </div>
+    <div class="no-results" id="noResults">No rules matched your search.</div>
+
+    <!-- MAIN LAYOUT -->
+    <div class="main-layout">
+
+      <!-- SIDEBAR TOC -->
+      <aside class="toc-sidebar">
+        <h3>Contents</h3>
+        <ul class="toc-list">
+          <li class="toc-section-label">Code of Conduct</li>
+          <li><a href="#coc-player" class="toc-link">1. Player Conduct</a></li>
+          <li><a href="#coc-parent" class="toc-link">2. Parent Conduct</a></li>
+          <li><a href="#coc-coach" class="toc-link">3. Coach Conduct</a></li>
+          <li><a href="#coc-spectator" class="toc-link">4. Spectator Conduct</a></li>
+          <li><a href="#coc-discipline" class="toc-link">5. Discipline</a></li>
+          <div class="toc-divider"></div>
+          <li class="toc-section-label">General Rules</li>
+          <li><a href="#r-commitment" class="toc-link">1. Commitment</a></li>
+          <li><a href="#r-punctuality" class="toc-link">2. Punctuality</a></li>
+          <li><a href="#r-respect" class="toc-link">3. Respect</a></li>
+          <li><a href="#r-discipline" class="toc-link">4. Discipline</a></li>
+          <li><a href="#r-appearance" class="toc-link">5. Appearance</a></li>
+          <li><a href="#r-teamfirst" class="toc-link">6. Team First</a></li>
+          <li><a href="#r-fitness" class="toc-link">7. Fitness & Health</a></li>
+          <li><a href="#r-fairplay" class="toc-link">8. Fair Play</a></li>
+          <li><a href="#r-comms" class="toc-link">9. Communication</a></li>
+          <li><a href="#r-consequences" class="toc-link">10. Consequences</a></li>
+          <div class="toc-divider"></div>
+          <li><a href="#acknowledge" class="toc-link">✍️ Acknowledge</a></li>
+        </ul>
+      </aside>
+
+      <!-- CONTENT -->
+      <div class="rules-content" id="rulesContent">
+
+        <!-- INTRO -->
+        <div class="section-intro reveal" id="intro">
+          <p>Super Stars FC is committed to providing a safe, respectful, and positive environment for all participants. This Code of Conduct applies to players, parents/guardians, coaches, staff, and spectators. Participation in Super Stars FC activities constitutes agreement to abide by this Code of Conduct.</p>
+        </div>
+
+        <!-- CODE OF CONDUCT GROUP -->
+        <div class="section-group-label reveal">Code of Conduct</div>
+
+        <div class="rule-card reveal" id="coc-player" data-keywords="player conduct respect teammates coaches referees opponents sportsmanship bullying harassment punctuality">
+          <div class="rule-header" onclick="toggleRule(this)">
+            <div class="rule-header-left">
+              <div class="rule-icon">👤</div>
+              <h2>1. Player Conduct</h2>
+            </div>
+            <i class="fas fa-chevron-down rule-toggle open"></i>
+          </div>
+          <div class="rule-body open">
+            <ul>
+              <li>Show respect to teammates, coaches, referees, and opponents.</li>
+              <li>Play fairly and follow the rules of the game.</li>
+              <li>Demonstrate good sportsmanship at all times.</li>
+              <li>No bullying, harassment, discrimination, or violence.</li>
+              <li>Arrive on time and be prepared for practices and games.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-card reveal" id="coc-parent" data-keywords="parent guardian support encourage coaching decisions referee sidelines communicate punctuality">
+          <div class="rule-header" onclick="toggleRule(this)">
+            <div class="rule-header-left">
+              <div class="rule-icon">👨‍👩‍👦</div>
+              <h2>2. Parent & Guardian Conduct</h2>
+            </div>
+            <i class="fas fa-chevron-down rule-toggle"></i>
+          </div>
+          <div class="rule-body">
+            <ul>
+              <li>Support and encourage all players positively.</li>
+              <li>Respect coaching decisions and referee calls.</li>
+              <li>Refrain from yelling instructions from the sidelines.</li>
+              <li>Communicate concerns respectfully and privately.</li>
+              <li>Ensure player punctuality and readiness.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-card reveal" id="coc-coach" data-keywords="coach staff safe inclusive supportive professional integrity teamwork abuse">
+          <div class="rule-header" onclick="toggleRule(this)">
+            <div class="rule-header-left">
+              <div class="rule-icon">📋</div>
+              <h2>3. Coach & Staff Conduct</h2>
+            </div>
+            <i class="fas fa-chevron-down rule-toggle"></i>
+          </div>
+          <div class="rule-body">
+            <ul>
+              <li>Provide a safe, inclusive, and supportive environment.</li>
+              <li>Lead by example with professionalism and integrity.</li>
+              <li>Teach skills, teamwork, and respect.</li>
+              <li>Never tolerate abuse or unsafe behavior.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-card reveal" id="coc-spectator" data-keywords="spectator cheer abusive language gestures officials">
+          <div class="rule-header" onclick="toggleRule(this)">
+            <div class="rule-header-left">
+              <div class="rule-icon">🙌</div>
+              <h2>4. Spectator Conduct</h2>
+            </div>
+            <i class="fas fa-chevron-down rule-toggle"></i>
+          </div>
+          <div class="rule-body">
+            <ul>
+              <li>Cheer positively for all players.</li>
+              <li>No abusive language, gestures, or behavior.</li>
+              <li>Respect officials, coaches, and club staff.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-card reveal" id="coc-discipline" data-keywords="disciplinary action warnings suspension removal dismissal acknowledgment">
+          <div class="rule-header" onclick="toggleRule(this)">
+            <div class="rule-header-left">
+              <div class="rule-icon">⚖️</div>
+              <h2>5. Disciplinary Action & Acknowledgment</h2>
+            </div>
+            <i class="fas fa-chevron-down rule-toggle"></i>
+          </div>
+          <div class="rule-body">
+            <p>Violations of this Code may result in warnings, suspension, removal from activities, or permanent dismissal from Super Stars FC. Participation in Super Stars FC activities constitutes agreement to abide by this Code of Conduct.</p>
+          </div>
+        </div>
+
+        <!-- GENERAL RULES GROUP -->
+        <div class="section-group-label reveal">General Rules</div>
+
+        <div class="rule-card reveal" id="r-commitment" data-keywords="commitment show up notify missing practice games minutes">
+          <div class="rule-header" onclick="toggleRule(this)">
+            <div class="rule-header-left">
+              <div class="rule-icon">🎯</div>
+              <h2>1. Team Commitment</h2>
+            </div>
+            <i class="fas fa-chevron-down rule-toggle"></i>
+          </div>
+          <div class="rule-body">
+            <ul>
+              <li>Show up — your team depends on you.</li>
+              <li>Notify coaches in advance for any missed team event.</li>
+              <li>Missed practice or games without notice = reduced playing time.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-card reveal" id="r-punctuality" data-keywords="punctuality early late conditioning">
+          <div class="rule-header" onclick="toggleRule(this)">
+            <div class="rule-header-left">
+              <div class="rule-icon">⏰</div>
+              <h2>2. Punctuality</h2>
+            </div>
+            <i class="fas fa-chevron-down rule-toggle"></i>
+          </div>
+          <div class="rule-body">
+            <ul>
+              <li>Be early — arriving on time is arriving late.</li>
+              <li>Late arrivals will receive extra conditioning.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-card reveal" id="r-respect" data-keywords="respect teammates refs opponents fans trash talk abuse social media public">
+          <div class="rule-header" onclick="toggleRule(this)">
+            <div class="rule-header-left">
+              <div class="rule-icon">🤝</div>
+              <h2>3. Respect</h2>
+            </div>
+            <i class="fas fa-chevron-down rule-toggle"></i>
+          </div>
+          <div class="rule-body">
+            <ul>
+              <li>Teammates, referees, opponents, fans — respect everyone.</li>
+              <li>No trash talk, no verbal abuse.</li>
+              <li>Represent the club positively on social media and in public.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-card reveal" id="r-discipline" data-keywords="discipline instructions officials arguing captains coaches suspension misconduct removal">
+          <div class="rule-header" onclick="toggleRule(this)">
+            <div class="rule-header-left">
+              <div class="rule-icon">📏</div>
+              <h2>4. Discipline</h2>
+            </div>
+            <i class="fas fa-chevron-down rule-toggle"></i>
+          </div>
+          <div class="rule-body">
+            <ul>
+              <li>Follow instructions from coaches and captains.</li>
+              <li>Respect decisions made by officials at all times.</li>
+              <li>Arguing with referees, captains, or coaches = immediate suspension.</li>
+              <li>Repeated misconduct = suspension or removal from the team.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-card reveal" id="r-appearance" data-keywords="appearance kit uniform training attire gear">
+          <div class="rule-header" onclick="toggleRule(this)">
+            <div class="rule-header-left">
+              <div class="rule-icon">👕</div>
+              <h2>5. Appearance</h2>
+            </div>
+            <i class="fas fa-chevron-down rule-toggle"></i>
+          </div>
+          <div class="rule-body">
+            <ul>
+              <li>Wear the kit — and wear it correctly.</li>
+              <li>Training attire must be team-approved.</li>
+              <li>Clean, proper gear is required every session.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-card reveal" id="r-teamfirst" data-keywords="team first egos badge personal stats attitude winning">
+          <div class="rule-header" onclick="toggleRule(this)">
+            <div class="rule-header-left">
+              <div class="rule-icon">🏆</div>
+              <h2>6. Team First</h2>
+            </div>
+            <i class="fas fa-chevron-down rule-toggle"></i>
+          </div>
+          <div class="rule-body">
+            <ul>
+              <li>No egos — the team is greater than any individual.</li>
+              <li>The badge comes before personal stats.</li>
+              <li>Maintain a positive, winning attitude — on and off the field.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-card reveal" id="r-fitness" data-keywords="fitness health shape injuries drugs alcohol">
+          <div class="rule-header" onclick="toggleRule(this)">
+            <div class="rule-header-left">
+              <div class="rule-icon">💪</div>
+              <h2>7. Fitness & Health</h2>
+            </div>
+            <i class="fas fa-chevron-down rule-toggle"></i>
+          </div>
+          <div class="rule-body">
+            <ul>
+              <li>Stay in shape — fitness is your responsibility.</li>
+              <li>All injuries must be reported to coaches immediately.</li>
+              <li>No drugs, no alcohol.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-card reveal" id="r-fairplay" data-keywords="fair play honest diving">
+          <div class="rule-header" onclick="toggleRule(this)">
+            <div class="rule-header-left">
+              <div class="rule-icon">⚽</div>
+              <h2>8. Fair Play</h2>
+            </div>
+            <i class="fas fa-chevron-down rule-toggle"></i>
+          </div>
+          <div class="rule-body">
+            <ul>
+              <li>Play hard, play honest.</li>
+              <li>No diving or simulation — ever.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-card reveal" id="r-comms" data-keywords="communication professional coaches captains group chats meetings conflicts respect">
+          <div class="rule-header" onclick="toggleRule(this)">
+            <div class="rule-header-left">
+              <div class="rule-icon">💬</div>
+              <h2>9. Communication</h2>
+            </div>
+            <i class="fas fa-chevron-down rule-toggle"></i>
+          </div>
+          <div class="rule-body">
+            <ul>
+              <li>Keep all communication with coaches and captains professional.</li>
+              <li>Team group chats and meetings must remain respectful.</li>
+              <li>Conflicts are handled with maturity and respect, not drama.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="rule-card reveal" id="r-consequences" data-keywords="consequences suspension fines dismissal">
+          <div class="rule-header" onclick="toggleRule(this)">
+            <div class="rule-header-left">
+              <div class="rule-icon">🚨</div>
+              <h2>10. Consequences</h2>
+            </div>
+            <i class="fas fa-chevron-down rule-toggle"></i>
+          </div>
+          <div class="rule-body">
+            <ul>
+              <li>Suspension from matches and loss of playing time.</li>
+              <li>Financial fines as determined by club leadership.</li>
+              <li>Dismissal from the team for serious or repeated violations.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- MOTTOS -->
+        <div class="section-group-label reveal">Club Mottos</div>
+        <div class="mottos">
+          <div class="motto-card reveal">🗣️ During practices or matches, players must remain focused — no unnecessary talking on the field.</div>
+          <div class="motto-card reveal">⚽ Super Stars FC stands for discipline, respect, and unity.</div>
+          <div class="motto-card reveal">🏅 Wear the badge with pride — on and off the pitch.</div>
+        </div>
+
+        <!-- ACKNOWLEDGMENT -->
+        <div class="section-group-label reveal">Digital Acknowledgment</div>
+
+        <div class="ack-section reveal" id="acknowledge">
+          <h2>✍️ Player / Member Acknowledgment</h2>
+          <p>By signing below, you confirm that you have read, understood, and agree to abide by the Super Stars FC Code of Conduct and all Team Rules listed above. A timestamp of your agreement will be recorded.</p>
+          <div class="ack-form" id="ackForm">
+            <input type="text" id="ackName" placeholder="Full Name" />
+            <input type="text" id="ackRole" placeholder="Role (e.g. Player, Parent, Coach)" />
+            <label class="ack-checkbox">
+              <input type="checkbox" id="ackCheck" />
+              I have fully read and agree to all Super Stars FC rules and policies.
+            </label>
+            <span class="ack-error" id="ackError">Please fill in your name and check the agreement box.</span>
+            <button class="ack-btn" id="ackBtn" onclick="submitAck()">✅ I Acknowledge & Agree</button>
+          </div>
+          <div class="ack-success" id="ackSuccess"></div>
+        </div>
+
+      </div><!-- /.rules-content -->
+    </div><!-- /.main-layout -->
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h3>Super Star FC</h3>
+          <p>Founded June 3, 2025.<br>Building champions on and off the field.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="./bout.html">About Us</a>
+          <a href="./term.html">Terms</a>
+          <a href="./contact.html">Contact</a>
+          <a href="./policy.html">Privacy Policy</a>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>Email: superstarfc25@gmail.com</p>
+          <p>Phone: +1 (531) 262-1982</p>
+        </div>
+        <div class="footer-social">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=100077275385711" aria-label="Facebook" class="icon-facebook">
+              <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2V12h2.2V9.8c0-2.2 1.3-3.4 3.3-3.4.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 2.9h-1.9v7A10 10 0 0 0 22 12z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/super_starsfc_fc" aria-label="Instagram" class="icon-instagram">
+              <svg viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zm5.8-2.1a1.3 1.3 0 1 1-1.3-1.3 1.3 1.3 0 0 1 1.3 1.3z"/></svg>
+            </a>
+            <a href="https://x.com/SuperStars75843" aria-label="Twitter" class="icon-twitter">
+              <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.1.9A5.4 5.4 0 0 0 22.4 1a10.8 10.8 0 0 1-3.4 1.3A5.4 5.4 0 0 0 9.6 7a15.3 15.3 0 0 1-11.1-5.6 5.4 5.4 0 0 0 1.7 7.2A5.3 5.3 0 0 1 .8 8v.1a5.4 5.4 0 0 0 4.3 5.3 5.5 5.5 0 0 1-2.4.1 5.4 5.4 0 0 0 5 3.8A10.8 10.8 0 0 1 0 19.5 15.3 15.3 0 0 0 8.3 22c10 0 15.5-8.3 15.5-15.5v-.7A11 11 0 0 0 23 3z"/></svg>
+            </a>
+            <a href="https://youtube.com/@s.s.f.c?si=fV4gWuc4trgaRfF6" aria-label="YouTube" class="icon-youtube">
+              <svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5h0s-5.6 0-8.5.4c-.4.1-1.3.1-2.1 1C.7 4.6.5 6.2.5 6.2S0 8.1 0 10v2c0 1.9.5 3.8.5 3.8s.2 1.6.9 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.2.4 7.2.4s5.6 0 8.5-.4c.4-.1 1.3-.1 2.1-1 .7-.7.9-2.3.9-2.3s.5-1.9.5-3.8v-2c0-1.9-.5-3.8-.5-3.8zM9.8 14.5V9.5l4.8 2.5-4.8 2.5z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">© <span id="year"></span> Super Star FC. All rights reserved.</div>
+    </footer>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"><i class="fas fa-check-circle" style="color:#3fa96a"></i> <span id="toastMsg">Done!</span></div>
+
+  <!-- SCROLL TOP -->
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script>
+    // ===== YEAR =====
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== READING PROGRESS BAR =====
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const total = document.body.scrollHeight - window.innerHeight;
+      document.getElementById('progress-bar').style.width = (scrolled / total * 100) + '%';
+
+      // Scroll Top Button
+      const btn = document.getElementById('scrollTop');
+      scrolled > 300 ? btn.classList.add('show') : btn.classList.remove('show');
+
+      // Scrollspy TOC
+      updateTOC();
+    });
+
+    // ===== SCROLL REVEAL =====
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => {
+            e.target.classList.add('visible');
+          }, 60);
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ===== ACCORDION TOGGLE =====
+    function toggleRule(header) {
+      const body = header.nextElementSibling;
+      const icon = header.querySelector('.rule-toggle');
+      const isOpen = body.classList.contains('open');
+      body.classList.toggle('open', !isOpen);
+      icon.classList.toggle('open', !isOpen);
+    }
+
+    function expandAll() {
+      document.querySelectorAll('.rule-body').forEach(b => b.classList.add('open'));
+      document.querySelectorAll('.rule-toggle').forEach(i => i.classList.add('open'));
+    }
+
+    function collapseAll() {
+      document.querySelectorAll('.rule-body').forEach(b => b.classList.remove('open'));
+      document.querySelectorAll('.rule-toggle').forEach(i => i.classList.remove('open'));
+    }
+
+    // ===== SEARCH / FILTER =====
+    function filterRules() {
+      const q = document.getElementById('ruleSearch').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.rule-card');
+      let anyVisible = false;
+
+      cards.forEach(card => {
+        const keywords = (card.dataset.keywords || '').toLowerCase();
+        const title = card.querySelector('h2').textContent.toLowerCase();
+        const match = !q || keywords.includes(q) || title.includes(q);
+        card.style.display = match ? '' : 'none';
+        if (match) anyVisible = true;
+        // auto-expand matched cards
+        if (match && q) {
+          card.querySelector('.rule-body').classList.add('open');
+          card.querySelector('.rule-toggle').classList.add('open');
+        }
+      });
+
+      document.getElementById('noResults').style.display = anyVisible ? 'none' : 'block';
+    }
+
+    // ===== SCROLLSPY TOC =====
+    function updateTOC() {
+      const sections = document.querySelectorAll('[id]');
+      const tocLinks = document.querySelectorAll('.toc-link');
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      tocLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+      });
+    }
+
+    // ===== ACKNOWLEDGMENT =====
+    function submitAck() {
+      const name = document.getElementById('ackName').value.trim();
+      const checked = document.getElementById('ackCheck').checked;
+      const errorEl = document.getElementById('ackError');
+
+      if (!name || !checked) {
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      errorEl.style.display = 'none';
+      const role = document.getElementById('ackRole').value.trim() || 'Member';
+      const timestamp = new Date().toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'short' });
+
+      document.getElementById('ackForm').style.display = 'none';
+      const successEl = document.getElementById('ackSuccess');
+      successEl.style.display = 'block';
+      successEl.innerHTML = `✅ <strong>${name}</strong> (${role}) acknowledged the Super Stars FC Code of Conduct on <strong>${timestamp}</strong>. Thank you for your commitment!`;
+
+      // Save to localStorage
+      localStorage.setItem('ssfc_ack', JSON.stringify({ name, role, timestamp }));
+      showToast('Acknowledgment recorded — thank you!');
+    }
+
+    // ===== CHECK PRIOR ACK =====
+    window.addEventListener('DOMContentLoaded', () => {
+      const prev = localStorage.getItem('ssfc_ack');
+      if (prev) {
+        try {
+          const d = JSON.parse(prev);
+          document.getElementById('ackForm').style.display = 'none';
+          const successEl = document.getElementById('ackSuccess');
+          successEl.style.display = 'block';
+          successEl.innerHTML = `✅ Previously acknowledged by <strong>${d.name}</strong> (${d.role}) on <strong>${d.timestamp}</strong>.`;
+        } catch(e) {}
+      }
+    });
+
+    // ===== COPY LINK =====
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        showToast('Page link copied to clipboard!');
+      });
+    }
+
+    // ===== TOAST =====
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+  </script>
+</body>
+</html>

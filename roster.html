@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Player Roster | Super Stars FC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Meet the Super Stars FC squad — the heart of Omaha's soccer movement. Season 2026 Player Roster.">
+  <link rel="shortcut icon" href="image0.jpeg" type="image/jpeg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #08101e;
+      --card: #0e1a2d;
+      --card2: #111f34;
+      --accent-red: #c0282b;
+      --accent-blue: #1555a0;
+      --accent-gold: #d4a32a;
+      --muted: #8899b4;
+      --border: rgba(255,255,255,0.06);
+      --max-w: 1140px;
+      --radius: 14px;
+      --font-size: 1rem;
+      font-family: 'Nunito', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: #dce8f5; -webkit-font-smoothing: antialiased; }
+    body.light-mode {
+      --bg: #eef3fa; --card: #ffffff; --card2: #f3f7fd; --muted: #556070; --border: rgba(0,0,0,0.07);
+      color: #1a2233;
+    }
+    a { color: var(--accent-blue); text-decoration: none; font-weight: 700; }
+    a:hover { color: var(--accent-red); }
+
+    /* ====== ANNOUNCEMENT BAR ====== */
+    .announce-bar {
+      background: linear-gradient(90deg, var(--accent-blue), #0e3a7a, var(--accent-red));
+      background-size: 200% 100%; animation: slideGrad 4s ease infinite;
+      padding: 9px 20px; text-align: center; font-size: 0.82rem; font-weight: 700;
+      color: #fff; display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;
+    }
+    @keyframes slideGrad { 0%,100%{background-position:0%} 50%{background-position:100%} }
+    .announce-bar .next-match { display: flex; align-items: center; gap: 8px; }
+    .countdown-wrap { display: flex; gap: 6px; }
+    .cd-block { background: rgba(0,0,0,0.25); border-radius: 6px; padding: 2px 8px; text-align: center; font-family: 'Barlow Condensed', sans-serif; font-size: 0.9rem; font-weight: 700; }
+    .cd-label { font-size: 0.55rem; letter-spacing: 1px; opacity: 0.75; display: block; }
+
+    /* ====== PROGRESS BAR ====== */
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; width: 0%; background: linear-gradient(90deg, var(--accent-blue), var(--accent-gold), var(--accent-red)); z-index: 9999; transition: width 0.1s; }
+
+    /* ====== HEADER ====== */
+    .site-header {
+      padding: 14px 28px; display: flex; justify-content: space-between; align-items: center;
+      background: rgba(8,16,30,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 100;
+    }
+    body.light-mode .site-header { background: rgba(238,243,250,0.94); }
+    .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
+    .logo {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 900; font-size: 0.88rem; font-family: 'Barlow Condensed', sans-serif; letter-spacing: 1px;
+    }
+    .brand-name { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.2rem; letter-spacing: 1px; }
+    .brand-sub { font-size: 0.7rem; color: var(--muted); font-weight: 600; }
+    .header-right { display: flex; align-items: center; gap: 12px; }
+    .header-right a { color: var(--muted); text-decoration: none; font-weight: 700; font-size: 0.85rem; transition: color 0.2s; }
+    .header-right a:hover { color: var(--accent-blue); }
+    .cta-btn { background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); color: #fff !important; padding: 8px 18px; border-radius: 9px; font-weight: 700 !important; }
+    .reading-controls { display: flex; gap: 5px; }
+    .ctrl-btn {
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+      color: var(--muted); width: 32px; height: 32px; border-radius: 7px;
+      cursor: pointer; font-size: 0.78rem; display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s; font-family: inherit;
+    }
+    .ctrl-btn:hover { border-color: var(--accent-blue); color: #dce8f5; }
+
+    /* ====== QUOTE BANNER ====== */
+    .qotd-banner {
+      background: linear-gradient(135deg, rgba(21,85,160,0.13), rgba(192,40,43,0.13));
+      border-top: 2px solid var(--accent-blue); border-bottom: 2px solid var(--accent-red);
+      padding: 13px 28px; text-align: center; font-size: 0.86rem; color: #a8bdd0; font-style: italic;
+    }
+    body.light-mode .qotd-banner { color: #334155; }
+    .qotd-banner strong { color: var(--accent-blue); font-style: normal; }
+
+    /* ====== HERO ====== */
+    .page-hero { text-align: center; padding: 52px 20px 36px; position: relative; overflow: hidden; }
+    .page-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(21,85,160,0.14) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(21,85,160,0.18); border: 1px solid rgba(21,85,160,0.38);
+      color: #6aadee; font-size: 0.7rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase;
+      padding: 5px 16px; border-radius: 20px; margin-bottom: 18px;
+    }
+    .page-hero h1 { font-family: 'Barlow Condensed', sans-serif; font-size: clamp(2.2rem, 5vw, 3.6rem); font-weight: 900; color: #dce8f5; margin-bottom: 12px; letter-spacing: 1px; }
+    body.light-mode .page-hero h1 { color: #0e1a2d; }
+    .page-hero > p { max-width: 540px; margin: 0 auto 24px; color: var(--muted); font-size: 0.97rem; line-height: 1.7; }
+    .hero-meta { display: flex; align-items: center; justify-content: center; gap: 22px; flex-wrap: wrap; font-size: 0.8rem; color: var(--muted); }
+    .hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+    /* ====== REVEAL ====== */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ====== CONTAINER ====== */
+    .container { max-width: var(--max-w); margin: auto; padding: 0 20px 60px; }
+
+    /* ====== STATS PANEL ====== */
+    .stats-panel {
+      background: var(--card); border-radius: var(--radius); padding: 20px 26px;
+      border: 1px solid var(--border); border-top: 3px solid var(--accent-blue);
+      box-shadow: 0 6px 24px rgba(0,0,0,0.32); margin-bottom: 24px;
+    }
+    .stats-panel h3 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-blue); margin-bottom: 16px; }
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; }
+    .stat-item { text-align: center; }
+    .stat-num {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 2.1rem; font-weight: 900;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1;
+    }
+    .stat-label { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+    /* ====== NATIONALITY CHART ====== */
+    .nat-chart { background: var(--card); border-radius: var(--radius); padding: 20px 26px; border: 1px solid var(--border); border-top: 3px solid var(--accent-gold); margin-bottom: 24px; display: none; }
+    .nat-chart.visible { display: block; }
+    .nat-chart h3 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-gold); margin-bottom: 16px; }
+    .nat-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .nat-flag { font-size: 1.1rem; width: 26px; text-align: center; }
+    .nat-label { font-size: 0.78rem; font-weight: 700; width: 110px; flex-shrink: 0; color: #dce8f5; }
+    body.light-mode .nat-label { color: #1a2233; }
+    .nat-bar-bg { flex: 1; background: rgba(255,255,255,0.05); border-radius: 4px; height: 10px; overflow: hidden; }
+    body.light-mode .nat-bar-bg { background: rgba(0,0,0,0.07); }
+    .nat-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--accent-blue), var(--accent-gold)); transition: width 1s ease; }
+    .nat-count { font-size: 0.8rem; font-weight: 800; color: var(--accent-gold); width: 22px; text-align: right; }
+
+    /* ====== TOOLBAR ====== */
+    .page-toolbar {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px; padding: 14px 0; margin-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .toolbar-left, .toolbar-right { display: flex; align-items: center; gap: 9px; flex-wrap: wrap; }
+    .like-btn {
+      display: flex; align-items: center; gap: 7px; background: var(--card);
+      border: 1.5px solid var(--border); color: var(--muted); padding: 8px 16px; border-radius: 9px;
+      cursor: pointer; font-size: 0.83rem; font-weight: 700; font-family: inherit; transition: all 0.2s;
+    }
+    .like-btn:hover, .like-btn.liked { border-color: var(--accent-red); color: var(--accent-red); }
+    .tool-btn {
+      display: flex; align-items: center; gap: 6px; background: var(--card);
+      border: 1.5px solid var(--border); color: var(--muted); padding: 8px 14px; border-radius: 9px;
+      cursor: pointer; font-size: 0.8rem; font-weight: 700; font-family: inherit; transition: all 0.2s; white-space: nowrap;
+    }
+    .tool-btn:hover { border-color: var(--accent-blue); color: #dce8f5; }
+    .tool-btn.active { background: var(--accent-blue); border-color: var(--accent-blue); color: #fff; }
+
+    /* ====== SORT ROW ====== */
+    .sort-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .sort-row label { font-size: 0.75rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+    .sort-btn {
+      background: var(--card); border: 1.5px solid var(--border); color: var(--muted);
+      padding: 6px 12px; border-radius: 7px; cursor: pointer; font-size: 0.75rem;
+      font-weight: 700; font-family: inherit; transition: all 0.2s; display: flex; align-items: center; gap: 5px;
+    }
+    .sort-btn:hover { border-color: var(--accent-blue); color: #dce8f5; }
+    .sort-btn.active { background: rgba(21,85,160,0.2); border-color: var(--accent-blue); color: #6aadee; }
+
+    /* ====== CONTROLS ROW ====== */
+    .controls-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 28px; }
+    .search-wrap { position: relative; flex: 1; min-width: 200px; }
+    .search-wrap i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 0.83rem; }
+    #searchInput {
+      width: 100%; background: var(--card); border: 1.5px solid var(--border); border-radius: 9px;
+      color: #dce8f5; padding: 10px 14px 10px 36px; font-size: 0.88rem; font-family: inherit; transition: border-color 0.2s;
+    }
+    body.light-mode #searchInput { background: #fff; border-color: rgba(0,0,0,0.1); color: #1a2233; }
+    #searchInput:focus { outline: none; border-color: var(--accent-blue); }
+    #searchInput::placeholder { color: var(--muted); }
+    .filter-tabs { display: flex; gap: 7px; flex-wrap: wrap; }
+    .filter-tab {
+      background: var(--card); border: 1.5px solid var(--border); color: var(--muted);
+      padding: 8px 14px; border-radius: 9px; cursor: pointer; font-size: 0.78rem; font-weight: 700;
+      font-family: inherit; transition: all 0.2s; white-space: nowrap;
+    }
+    .filter-tab:hover { border-color: var(--accent-blue); color: #dce8f5; }
+    .filter-tab.active { background: var(--accent-blue); border-color: var(--accent-blue); color: #fff; }
+
+    /* ====== SECTION ====== */
+    .position-section { margin-bottom: 44px; }
+    .position-title {
+      font-family: 'Barlow Condensed', sans-serif; font-size: 1.35rem; font-weight: 900; color: #dce8f5;
+      margin-bottom: 18px; display: flex; align-items: center; gap: 10px; letter-spacing: 1px;
+    }
+    body.light-mode .position-title { color: #0e1a2d; }
+    .position-title::before { content: ''; display: inline-block; width: 4px; height: 1.1em; background: linear-gradient(180deg, var(--accent-blue), var(--accent-red)); border-radius: 2px; flex-shrink: 0; }
+    .position-title .pos-count { font-size: 0.7rem; font-family: 'Nunito', sans-serif; font-weight: 800; letter-spacing: 1px; background: rgba(21,85,160,0.18); border: 1px solid rgba(21,85,160,0.3); color: #6aadee; padding: 3px 10px; border-radius: 20px; }
+
+    /* ====== ROSTER GRID ====== */
+    .roster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 18px; }
+
+    /* ====== PLAYER CARD ====== */
+    .player-card {
+      background: var(--card); border-radius: var(--radius); border: 1px solid var(--border);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.28); transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      cursor: pointer; overflow: visible; opacity: 0; transform: translateY(22px); position: relative;
+    }
+    .player-card.visible { opacity: 1; transform: none; }
+    .player-card:hover { transform: translateY(-7px); box-shadow: 0 18px 40px rgba(0,0,0,0.45); border-color: rgba(21,85,160,0.35); }
+    body.light-mode .player-card { background: #fff; border-color: rgba(0,0,0,0.07); }
+    .player-card.compare-selected { border-color: var(--accent-gold) !important; box-shadow: 0 0 0 2px var(--accent-gold), 0 8px 24px rgba(0,0,0,0.4) !important; }
+    .player-card.bookmarked .bookmark-btn { color: var(--accent-gold) !important; }
+
+    /* Badges */
+    .jersey-num {
+      position: absolute; top: 12px; left: 12px; z-index: 3;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 900;
+      width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+    .captain-badge {
+      position: absolute; top: 12px; right: 12px; z-index: 3;
+      background: var(--accent-gold); color: #0e1a2d; font-size: 0.6rem; font-weight: 900;
+      padding: 2px 7px; border-radius: 10px; letter-spacing: 1px; text-transform: uppercase; font-family: 'Barlow Condensed', sans-serif;
+    }
+
+    /* Card action buttons */
+    .card-actions {
+      position: absolute; top: -12px; right: 10px; z-index: 5;
+      display: flex; gap: 6px; opacity: 0; transform: translateY(6px);
+      transition: opacity 0.25s, transform 0.25s;
+    }
+    .player-card:hover .card-actions { opacity: 1; transform: translateY(0); }
+    .card-act-btn {
+      background: var(--card2); border: 1px solid var(--border); color: var(--muted);
+      width: 30px; height: 30px; border-radius: 8px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; font-size: 0.75rem;
+      transition: all 0.2s; font-family: inherit;
+    }
+    .card-act-btn:hover { color: #dce8f5; border-color: var(--accent-blue); }
+    .compare-btn:hover { color: var(--accent-gold) !important; border-color: var(--accent-gold) !important; }
+    .bookmark-btn.saved { color: var(--accent-gold) !important; }
+
+    /* Photo */
+    .photo-wrap { position: relative; padding: 22px 22px 0; border-radius: 50% 50% 0 0; overflow: hidden; }
+    .player-card img {
+      width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 50%;
+      border: 3px solid var(--accent-blue); background: #0a1525; display: block; transition: border-color 0.3s;
+    }
+    .player-card:hover img { border-color: var(--accent-red); }
+    .card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 30%, rgba(8,16,30,0.92));
+      opacity: 0; transition: opacity 0.3s; display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 14px; border-radius: 50%;
+    }
+    .player-card:hover .card-overlay { opacity: 1; }
+    .overlay-stats { display: flex; gap: 10px; justify-content: center; }
+    .ov-stat { text-align: center; }
+    .ov-num { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 900; color: #fff; line-height: 1; }
+    .ov-lbl { font-size: 0.58rem; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* Card body */
+    .card-body { padding: 13px 15px 16px; text-align: center; }
+    .player-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.05rem; font-weight: 900; color: #dce8f5; margin-bottom: 5px; letter-spacing: 0.5px; }
+    body.light-mode .player-name { color: #0e1a2d; }
+    .player-pos-badge { display: inline-block; font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1.2px; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; }
+    .pos-gk  { background: rgba(46,122,60,0.2);  color: #5ecf7a;  border: 1px solid rgba(46,122,60,0.3); }
+    .pos-def { background: rgba(21,85,160,0.2);  color: #6aadee;  border: 1px solid rgba(21,85,160,0.3); }
+    .pos-mid { background: rgba(180,115,14,0.18); color: #d4a32a;  border: 1px solid rgba(180,115,14,0.3); }
+    .pos-fwd { background: rgba(192,40,43,0.15);  color: #e57a7c;  border: 1px solid rgba(192,40,43,0.25); }
+
+    /* Star rating on card */
+    .card-stars { display: flex; justify-content: center; gap: 3px; margin-top: 4px; }
+    .star { font-size: 0.85rem; cursor: pointer; color: rgba(255,255,255,0.18); transition: color 0.15s; }
+    body.light-mode .star { color: rgba(0,0,0,0.15); }
+    .star.filled { color: var(--accent-gold); }
+    .star:hover { color: var(--accent-gold); }
+
+    /* ====== COACHES SECTION ====== */
+    .coaching-section { margin-bottom: 44px; }
+    .coach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+    .coach-card {
+      background: var(--card2); border-radius: var(--radius); border: 1px solid var(--border);
+      border-top: 3px solid var(--accent-gold); padding: 24px 20px;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.3); transition: transform 0.25s, box-shadow 0.25s;
+      opacity: 0; transform: translateY(22px;);
+    }
+    .coach-card.visible { opacity: 1; transform: none; }
+    .coach-card:hover { transform: translateY(-5px); box-shadow: 0 16px 36px rgba(0,0,0,0.4); }
+    body.light-mode .coach-card { background: #f8fbff; }
+    .coach-photo-wrap { position: relative; margin-bottom: 14px; }
+    .coach-photo {
+      width: 90px; height: 90px; border-radius: 50%; object-fit: cover;
+      border: 3px solid var(--accent-gold); background: #0a1525;
+    }
+    .coach-role-badge {
+      position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--accent-gold), #e8b428);
+      color: #0e1a2d; font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 900;
+      padding: 2px 10px; border-radius: 10px; white-space: nowrap; letter-spacing: 0.5px;
+    }
+    .coach-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.15rem; font-weight: 900; color: #dce8f5; margin-bottom: 4px; letter-spacing: 0.5px; }
+    body.light-mode .coach-name { color: #0e1a2d; }
+    .coach-nationality { font-size: 0.75rem; color: var(--muted); margin-bottom: 10px; }
+    .coach-bio { font-size: 0.78rem; color: var(--muted); line-height: 1.55; }
+    .coach-stats { display: flex; gap: 10px; margin-top: 12px; }
+    .coach-stat { background: rgba(21,85,160,0.1); border: 1px solid rgba(21,85,160,0.2); border-radius: 8px; padding: 8px 12px; text-align: center; flex: 1; }
+    .coach-stat .cs-num { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 900; color: var(--accent-gold); line-height: 1; }
+    .coach-stat .cs-lbl { font-size: 0.6rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ====== COMPARE PANEL ====== */
+    .compare-float {
+      position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(120px);
+      background: var(--card2); border: 1.5px solid var(--accent-gold);
+      border-radius: 14px; padding: 12px 20px; display: flex; align-items: center; gap: 14px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5); z-index: 800; transition: transform 0.35s ease;
+      font-size: 0.83rem; font-weight: 700; white-space: nowrap;
+    }
+    .compare-float.show { transform: translateX(-50%) translateY(0); }
+    .compare-float .cf-players { display: flex; gap: 8px; align-items: center; }
+    .cf-slot { background: rgba(255,255,255,0.06); border: 1px dashed rgba(255,255,255,0.2); border-radius: 8px; padding: 6px 12px; font-size: 0.78rem; color: var(--muted); min-width: 80px; text-align: center; }
+    .cf-slot.filled { border: 1px solid var(--accent-gold); color: var(--accent-gold); background: rgba(212,163,42,0.1); }
+    .cf-vs { color: var(--muted); font-size: 0.7rem; }
+    .cf-compare-btn {
+      background: linear-gradient(135deg, var(--accent-gold), #c9901a); color: #0e1a2d;
+      border: none; border-radius: 9px; padding: 8px 18px; font-weight: 900; font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.9rem; cursor: pointer; letter-spacing: 1px; transition: opacity 0.2s;
+    }
+    .cf-compare-btn:hover { opacity: 0.85; }
+    .cf-clear-btn { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 0.85rem; font-family: inherit; transition: color 0.2s; }
+    .cf-clear-btn:hover { color: var(--accent-red); }
+
+    /* ====== COMPARE MODAL ====== */
+    .compare-modal {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.82); display: none;
+      align-items: center; justify-content: center; z-index: 9100; padding: 20px;
+    }
+    .compare-modal.active { display: flex; }
+    .compare-content {
+      background: var(--card); border-radius: var(--radius); width: 100%; max-width: 700px;
+      max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+      border: 1px solid var(--border); animation: popIn 0.28s ease;
+    }
+    body.light-mode .compare-content { background: #fff; }
+    .compare-header { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .compare-header h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.3rem; font-weight: 900; letter-spacing: 1px; color: var(--accent-gold); }
+    .compare-close { background: none; border: none; color: var(--muted); font-size: 1.2rem; cursor: pointer; font-family: inherit; transition: color 0.2s; }
+    .compare-close:hover { color: var(--accent-red); }
+    .compare-grid { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0; }
+    .compare-player { padding: 20px; text-align: center; }
+    .compare-player img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-blue); margin-bottom: 10px; }
+    .compare-player .cp-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 900; margin-bottom: 4px; }
+    .compare-vs { display: flex; align-items: center; justify-content: center; padding: 0 12px; }
+    .compare-vs span { font-family: 'Barlow Condensed', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--muted); }
+    .compare-stats { padding: 0 20px 20px; }
+    .cs-row { display: flex; align-items: center; margin-bottom: 14px; gap: 8px; }
+    .cs-bar-left, .cs-bar-right { flex: 1; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; position: relative; }
+    body.light-mode .cs-bar-left, body.light-mode .cs-bar-right { background: rgba(0,0,0,0.06); }
+    .cs-fill-left { height: 100%; background: linear-gradient(90deg, var(--accent-red), var(--accent-blue)); border-radius: 4px; float: right; transition: width 0.6s ease; }
+    .cs-fill-right { height: 100%; background: linear-gradient(90deg, var(--accent-blue), var(--accent-gold)); border-radius: 4px; transition: width 0.6s ease; }
+    .cs-label { font-size: 0.68rem; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; width: 60px; text-align: center; flex-shrink: 0; }
+    .cs-val { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 900; width: 24px; text-align: center; }
+    .cs-val.winner { color: var(--accent-gold); }
+
+    /* ====== FORMATION MODAL ====== */
+    .formation-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 9200; padding: 16px; }
+    .formation-modal.active { display: flex; }
+    .formation-content { background: var(--card); border-radius: var(--radius); width: 100%; max-width: 520px; max-height: 90vh; overflow-y: auto; border: 1px solid var(--border); animation: popIn 0.28s ease; box-shadow: 0 20px 60px rgba(0,0,0,0.7); }
+    .formation-head { padding: 18px 22px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+    .formation-head h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.2rem; font-weight: 900; color: var(--accent-blue); letter-spacing: 1px; }
+    .formation-close { background: none; border: none; color: var(--muted); font-size: 1.1rem; cursor: pointer; font-family: inherit; }
+    .formation-close:hover { color: var(--accent-red); }
+    .formation-selector { padding: 14px 22px; display: flex; gap: 8px; flex-wrap: wrap; border-bottom: 1px solid var(--border); }
+    .form-tab { background: var(--card2); border: 1.5px solid var(--border); color: var(--muted); padding: 6px 14px; border-radius: 8px; cursor: pointer; font-size: 0.8rem; font-weight: 800; font-family: 'Barlow Condensed', sans-serif; letter-spacing: 1px; transition: all 0.2s; }
+    .form-tab.active { background: var(--accent-blue); border-color: var(--accent-blue); color: #fff; }
+    .pitch-wrap { padding: 18px; }
+    .pitch {
+      background: linear-gradient(180deg, #1a5c2a 0%, #1f6e31 50%, #1a5c2a 100%);
+      border-radius: 10px; position: relative; overflow: hidden; padding: 16px;
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+    .pitch-lines { position: absolute; inset: 0; pointer-events: none; }
+    .pitch-center-circle { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 60px; height: 60px; border: 2px solid rgba(255,255,255,0.25); border-radius: 50%; }
+    .pitch-center-line { position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: rgba(255,255,255,0.18); transform: translateY(-50%); }
+    .pitch-half-top, .pitch-half-bottom { position: absolute; width: 38%; height: 18%; left: 50%; transform: translateX(-50%); border: 2px solid rgba(255,255,255,0.2); }
+    .pitch-half-top { top: 0; border-radius: 0 0 8px 8px; border-top: none; }
+    .pitch-half-bottom { bottom: 0; border-radius: 8px 8px 0 0; border-bottom: none; }
+    .pitch-rows { display: flex; flex-direction: column; gap: 8px; position: relative; z-index: 2; }
+    .pitch-row { display: flex; justify-content: center; gap: 10px; }
+    .pitch-player { display: flex; flex-direction: column; align-items: center; gap: 3px; cursor: default; }
+    .pitch-dot { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-blue), #0a3575); border: 2px solid rgba(255,255,255,0.55); display: flex; align-items: center; justify-content: center; font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 900; color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.5); }
+    .pitch-dot.gk { background: linear-gradient(135deg, #2a7a3a, #1a5226); }
+    .pitch-dot.fwd { background: linear-gradient(135deg, var(--accent-red), #8c1215); }
+    .pitch-pname { font-size: 0.55rem; font-weight: 800; color: rgba(255,255,255,0.9); text-align: center; max-width: 44px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    /* ====== AI SCOUT MODAL ====== */
+    .ai-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.82); display: none; align-items: center; justify-content: center; z-index: 9300; padding: 16px; }
+    .ai-modal.active { display: flex; }
+    .ai-content { background: var(--card); border-radius: var(--radius); width: 100%; max-width: 480px; display: flex; flex-direction: column; max-height: 88vh; border: 1px solid var(--border); animation: popIn 0.28s ease; box-shadow: 0 20px 60px rgba(0,0,0,0.7); }
+    .ai-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
+    .ai-header-left { display: flex; align-items: center; gap: 10px; }
+    .ai-pulse { width: 10px; height: 10px; border-radius: 50%; background: #3ecf6a; box-shadow: 0 0 8px #3ecf6a; animation: pulse 1.5s ease infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .ai-header h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 900; letter-spacing: 1px; }
+    .ai-close { background: none; border: none; color: var(--muted); font-size: 1.1rem; cursor: pointer; font-family: inherit; }
+    .ai-close:hover { color: var(--accent-red); }
+    .ai-player-context { padding: 10px 18px; background: rgba(21,85,160,0.08); border-bottom: 1px solid var(--border); font-size: 0.78rem; color: var(--muted); display: flex; align-items: center; gap: 8px; }
+    .ai-player-context img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-blue); }
+    .ai-messages { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 12px; min-height: 200px; }
+    .ai-msg { max-width: 85%; padding: 10px 14px; border-radius: 12px; font-size: 0.83rem; line-height: 1.55; }
+    .ai-msg.assistant { background: rgba(21,85,160,0.15); border: 1px solid rgba(21,85,160,0.2); color: #dce8f5; align-self: flex-start; border-radius: 4px 12px 12px 12px; }
+    body.light-mode .ai-msg.assistant { color: #1a2233; }
+    .ai-msg.user { background: linear-gradient(135deg, var(--accent-blue), #0d3a7a); color: #fff; align-self: flex-end; border-radius: 12px 12px 4px 12px; }
+    .ai-msg.loading { opacity: 0.6; }
+    .ai-typing { display: flex; gap: 4px; align-items: center; padding: 6px 2px; }
+    .ai-typing span { width: 6px; height: 6px; border-radius: 50%; background: var(--accent-blue); animation: typing 1.2s ease infinite; }
+    .ai-typing span:nth-child(2) { animation-delay: 0.2s; }
+    .ai-typing span:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing { 0%,80%,100%{transform:scale(0.6);opacity:0.4} 40%{transform:scale(1);opacity:1} }
+    .ai-input-row { padding: 14px; border-top: 1px solid var(--border); display: flex; gap: 8px; flex-shrink: 0; }
+    .ai-quick-row { padding: 0 14px 10px; display: flex; gap: 6px; flex-wrap: wrap; }
+    .ai-quick-btn { background: rgba(21,85,160,0.1); border: 1px solid rgba(21,85,160,0.2); color: #6aadee; padding: 5px 10px; border-radius: 7px; font-size: 0.72rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s; white-space: nowrap; }
+    .ai-quick-btn:hover { background: rgba(21,85,160,0.22); }
+    #aiInput { flex: 1; background: var(--card2); border: 1.5px solid var(--border); border-radius: 9px; color: #dce8f5; padding: 9px 14px; font-size: 0.83rem; font-family: inherit; }
+    body.light-mode #aiInput { background: #f3f7fd; color: #1a2233; }
+    #aiInput:focus { outline: none; border-color: var(--accent-blue); }
+    #aiInput::placeholder { color: var(--muted); }
+    .ai-send-btn { background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); border: none; border-radius: 9px; color: #fff; width: 38px; height: 38px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; transition: opacity 0.2s; flex-shrink: 0; }
+    .ai-send-btn:hover { opacity: 0.85; }
+
+    /* ====== PLAYER MODAL ====== */
+    .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 9000; padding: 20px; }
+    .modal.active { display: flex; }
+    .modal-content { background: var(--card); border-radius: var(--radius); width: 100%; max-width: 460px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.7); border: 1px solid var(--border); animation: popIn 0.28s ease; }
+    body.light-mode .modal-content { background: #fff; }
+    @keyframes popIn { from{transform:scale(0.92);opacity:0} to{transform:scale(1);opacity:1} }
+    .modal-header { padding: 0; position: relative; }
+    .modal-photo-wrap { position: relative; }
+    .modal-photo { width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: top; filter: brightness(0.32); display: block; }
+    .modal-photo-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; }
+    .modal-photo-overlay img { width: 82px; height: 82px; border-radius: 50%; border: 3px solid var(--accent-blue); object-fit: cover; margin-bottom: 10px; background: #0a1525; }
+    .modal-photo-overlay h2 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.35rem; color: #fff; font-weight: 900; margin-bottom: 4px; letter-spacing: 1px; }
+    .modal-close { position: absolute; top: 10px; right: 12px; background: rgba(0,0,0,0.55); border: none; color: #fff; width: 32px; height: 32px; border-radius: 7px; cursor: pointer; font-size: 1rem; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10; font-family: inherit; }
+    .modal-close:hover { background: rgba(192,40,43,0.7); }
+    .modal-body { padding: 18px 22px 22px; }
+    .modal-stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+    .modal-stat { background: rgba(255,255,255,0.04); border-radius: 9px; padding: 12px 8px; text-align: center; border: 1px solid var(--border); }
+    body.light-mode .modal-stat { background: #f4f7fc; }
+    .modal-stat .ms-num { font-family: 'Barlow Condensed', sans-serif; font-size: 1.6rem; font-weight: 900; background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; line-height: 1; }
+    .modal-stat .ms-lbl { font-size: 0.63rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+    .modal-info-row { display: flex; align-items: center; gap: 10px; margin-bottom: 9px; font-size: 0.86rem; }
+    .modal-info-row i { color: var(--accent-blue); width: 16px; flex-shrink: 0; }
+    .modal-info-row span { color: #aabdd0; }
+    body.light-mode .modal-info-row span { color: #334155; }
+    .modal-info-row strong { color: #dce8f5; }
+    body.light-mode .modal-info-row strong { color: #0e1a2d; }
+    .modal-bio { font-size: 0.83rem; color: var(--muted); line-height: 1.6; background: rgba(21,85,160,0.07); border-left: 3px solid var(--accent-blue); border-radius: 0 9px 9px 0; padding: 11px 15px; margin-top: 13px; }
+    body.light-mode .modal-bio { color: #334155; }
+    .modal-fan-rating { margin-top: 14px; }
+    .modal-fan-rating label { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); display: block; margin-bottom: 7px; }
+    .modal-stars { display: flex; gap: 6px; }
+    .modal-star { font-size: 1.4rem; cursor: pointer; color: rgba(255,255,255,0.18); transition: color 0.15s, transform 0.15s; }
+    body.light-mode .modal-star { color: rgba(0,0,0,0.15); }
+    .modal-star.filled { color: var(--accent-gold); }
+    .modal-star:hover { color: var(--accent-gold); transform: scale(1.15); }
+    .modal-actions { margin-top: 16px; padding-top: 13px; border-top: 1px solid var(--border); display: flex; gap: 9px; flex-wrap: wrap; }
+    .modal-profile-btn { display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); color: #fff; padding: 9px 20px; border-radius: 9px; font-size: 0.83rem; font-weight: 700; text-decoration: none; transition: opacity 0.2s; }
+    .modal-profile-btn:hover { opacity: 0.85; color: #fff; }
+    .modal-ai-btn { display: inline-flex; align-items: center; gap: 6px; background: rgba(21,85,160,0.15); border: 1.5px solid rgba(21,85,160,0.3); color: #6aadee; padding: 9px 16px; border-radius: 9px; font-size: 0.83rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s; }
+    .modal-ai-btn:hover { background: rgba(21,85,160,0.28); }
+    .modal-compare-btn { display: inline-flex; align-items: center; gap: 6px; background: rgba(212,163,42,0.12); border: 1.5px solid rgba(212,163,42,0.3); color: var(--accent-gold); padding: 9px 16px; border-radius: 9px; font-size: 0.83rem; font-weight: 700; cursor: pointer; font-family: inherit; transition: all 0.2s; }
+    .modal-compare-btn:hover { background: rgba(212,163,42,0.22); }
+
+    /* ====== FAVORITES SECTION ====== */
+    .fav-section { margin-bottom: 32px; display: none; }
+    .fav-section.has-favs { display: block; }
+
+    /* ====== SECTION DIVIDER ====== */
+    .section-divider { display: flex; align-items: center; gap: 12px; margin: 10px 0 28px; color: var(--muted); font-size: 1rem; }
+    .section-divider::before, .section-divider::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.06); }
+    body.light-mode .section-divider::before, body.light-mode .section-divider::after { background: rgba(0,0,0,0.08); }
+
+    /* ====== NO RESULTS ====== */
+    #noResults { display: none; text-align: center; padding: 40px 20px; color: var(--muted); font-size: 0.93rem; }
+
+    /* ====== TOAST ====== */
+    .toast { position: fixed; bottom: 28px; right: 28px; background: var(--card2); border: 1px solid var(--accent-blue); color: #dce8f5; padding: 12px 18px; border-radius: 11px; font-size: 0.86rem; font-weight: 600; z-index: 2000; transform: translateY(80px); opacity: 0; transition: transform 0.35s ease, opacity 0.35s ease; display: flex; align-items: center; gap: 9px; max-width: 280px; }
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* ====== SCROLL TOP ====== */
+    .scroll-top { position: fixed; bottom: 28px; left: 28px; width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; z-index: 999; border: none; font-size: 1rem; color: #fff; }
+    .scroll-top.show { opacity: 1; pointer-events: all; }
+    .scroll-top:hover { transform: translateY(-3px) scale(1.05); }
+
+    /* ====== VIEW PROFILE BTN ====== */
+    .view-profile-btn { display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, var(--accent-blue), var(--accent-red)); color: #fff; padding: 8px 18px; border-radius: 9px; font-size: 0.8rem; font-weight: 700; text-decoration: none; transition: opacity 0.2s, transform 0.2s; }
+    .view-profile-btn:hover { opacity: 0.85; transform: translateY(-2px); color: #fff; }
+
+    /* ====== FOOTER ====== */
+    .site-footer { background: linear-gradient(180deg, var(--bg), #030712); color: #dce8f5; padding: 36px 20px 20px; margin-top: 40px; border-top: 1px solid var(--border); }
+    .footer-container { max-width: var(--max-w); margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; }
+    .footer-brand h3 { font-family: 'Barlow Condensed', sans-serif; font-size: 1.4rem; font-weight: 900; color: #fff; margin-bottom: 7px; letter-spacing: 1px; }
+    .footer-brand p { color: var(--muted); line-height: 1.6; margin: 0 0 4px; font-size: 0.88rem; }
+    .footer-links h4, .footer-contact h4, .footer-social h4 { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 900; color: #fff; margin-bottom: 12px; letter-spacing: 1px; }
+    .footer-links h4::after, .footer-contact h4::after, .footer-social h4::after { content: ""; display: block; width: 30px; height: 2px; margin-top: 5px; background: linear-gradient(90deg, var(--accent-red), var(--accent-blue)); }
+    .footer-links a { display: block; color: var(--muted); text-decoration: none; margin-bottom: 7px; font-weight: 600; font-size: 0.88rem; transition: color 0.2s, transform 0.2s; }
+    .footer-links a:hover { color: #dce8f5; transform: translateX(4px); }
+    .footer-contact p { margin-bottom: 6px; color: var(--muted); font-size: 0.86rem; }
+    .social-icons a { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin-right: 8px; border-radius: 50%; color: var(--muted); text-decoration: none; transition: all 0.2s; }
+    .social-icons a svg { width: 17px; height: 17px; fill: currentColor; }
+    .social-icons a:hover { color: #fff; background: linear-gradient(135deg, var(--accent-red), var(--accent-blue)); transform: translateY(-2px) scale(1.08); }
+    .footer-bottom { margin-top: 28px; padding-top: 14px; text-align: center; color: var(--muted); font-size: 0.82rem; position: relative; }
+    .footer-bottom::before { content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 70%; height: 1px; background: linear-gradient(90deg, transparent, var(--accent-red), var(--accent-blue), transparent); }
+
+    /* ====== PRINT STYLES ====== */
+    @media print {
+      .site-header, .announce-bar, .qotd-banner, .page-toolbar, .controls-row, .sort-row, .scroll-top, .toast, .compare-float, .ai-modal, .compare-modal, .formation-modal, .modal { display: none !important; }
+      body { background: #fff !important; color: #000 !important; }
+      .player-card, .coach-card { break-inside: avoid; opacity: 1 !important; transform: none !important; border: 1px solid #ccc !important; background: #fff !important; }
+      .roster-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+      .card-actions { display: none !important; }
+    }
+
+    @media (max-width: 640px) {
+      .header-right a:not(.cta-btn) { display: none; }
+      .roster-grid { grid-template-columns: repeat(2, 1fr); }
+      .coach-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 380px) {
+      .roster-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="progress-bar"></div>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announce-bar" id="announceBar">
+    <div class="next-match">
+      <i class="fas fa-calendar-check"></i>
+      <span style="font-family:'Barlow Condensed',sans-serif;font-size:1rem;letter-spacing:1px;">NEXT MATCH</span>
+      <span style="font-weight:900;">vs. Worthington Community FC</span>
+      <span style="opacity:0.6;">|</span>
+      <span><i class="fas fa-clock" style="margin-right:3px;"></i>Apr 18, 2026 &middot; 7:00 PM</span>
+      <span style="opacity:0.6;">|</span>
+      <span><i class="fas fa-location-dot" style="margin-right:3px;"></i>Away &middot; MN</span>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="#" class="brand">
+      <div class="logo">SS FC</div>
+      <div>
+        <div class="brand-name">Super Star FC</div>
+        <div class="brand-sub">Official Club · Omaha, NE</div>
+      </div>
+    </a>
+    <div class="header-right">
+      <a href="./matches.html">Matches</a>
+      <a href="./contact.html">Join Us</a>
+      <div class="reading-controls">
+        <button class="ctrl-btn" onclick="changeFontSize(-1)" title="Decrease text">A-</button>
+        <button class="ctrl-btn" onclick="changeFontSize(1)" title="Increase text">A+</button>
+        <button class="ctrl-btn" id="modeToggle" onclick="toggleMode()" title="Toggle theme">🌙</button>
+      </div>
+      <a href="index.html" class="cta-btn">Main</a>
+    </div>
+  </header>
+
+  <!-- QUOTE BANNER -->
+  <div class="qotd-banner">
+    <strong>Club Director:</strong> "This squad is more than players — they are the identity of Super Stars FC, the heart of everything we are building." — Super Stars FC
+  </div>
+
+  <!-- HERO -->
+  <div class="page-hero reveal">
+    <div class="hero-badge"><i class="fas fa-users"></i>&nbsp; Season 2026 Squad</div>
+    <h1>Player Roster</h1>
+    <p>Meet the Super Stars FC squad: the heart of Omaha's soccer movement. Every player, every position, every story.</p>
+    <div class="hero-meta">
+      <span><i class="fas fa-users"></i> <span id="playerCount">40</span> Players</span>
+      <span><i class="fas fa-location-dot"></i> Omaha, NE</span>
+      <span><i class="fas fa-calendar"></i> Season 2026</span>
+      <span><i class="fas fa-globe"></i> <span id="nationCount">10</span> Nationalities</span>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- STATS PANEL -->
+    <div class="stats-panel reveal">
+      <h3>👥 Squad at a Glance</h3>
+      <div class="stats-row">
+        <div class="stat-item"><div class="stat-num counter" data-target="40">0</div><div class="stat-label">Players</div></div>
+        <div class="stat-item"><div class="stat-num counter" data-target="3">0</div><div class="stat-label">Goalkeepers</div></div>
+        <div class="stat-item"><div class="stat-num counter" data-target="14">0</div><div class="stat-label">Defenders</div></div>
+        <div class="stat-item"><div class="stat-num counter" data-target="10">0</div><div class="stat-label">Midfielders</div></div>
+        <div class="stat-item"><div class="stat-num counter" data-target="12">0</div><div class="stat-label">Forwards</div></div>
+        <div class="stat-item"><div class="stat-num counter" data-target="4">0</div><div class="stat-label">Coaching Staff</div></div>
+        <div class="stat-item"><div class="stat-num counter" data-target="10">0</div><div class="stat-label">Nationalities</div></div>
+        <div class="stat-item"><div class="stat-num counter" data-target="2026">0</div><div class="stat-label">Season</div></div>
+      </div>
+    </div>
+
+    <!-- NATIONALITY CHART -->
+    <div class="nat-chart reveal" id="natChart">
+      <h3>🌍 Squad Nationalities</h3>
+      <div id="natBars"></div>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="page-toolbar reveal">
+      <div class="toolbar-left">
+        <button class="like-btn" id="likeBtn" onclick="toggleLike()">
+          <i class="fas fa-heart"></i> <span id="likeCount">21</span> Likes
+        </button>
+        <button class="tool-btn" id="favToggleBtn" onclick="toggleFavView()">
+          <i class="fas fa-bookmark"></i> Favorites (<span id="favCountBadge">0</span>)
+        </button>
+        <button class="tool-btn" onclick="toggleNatChart()">
+          <i class="fas fa-globe"></i> Nationalities
+        </button>
+      </div>
+      <div class="toolbar-right">
+        <button class="tool-btn" onclick="openFormation()">
+          <i class="fas fa-chess-board"></i> Formation
+        </button>
+        <button class="tool-btn" onclick="printRoster()">
+          <i class="fas fa-print"></i> Print
+        </button>
+      </div>
+    </div>
+
+    <!-- SEARCH + FILTERS -->
+    <div class="controls-row reveal">
+      <div class="search-wrap">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search player by name or nationality..." oninput="filterPlayers()">
+      </div>
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-pos="all"        onclick="setFilter(this)">All</button>
+        <button class="filter-tab"        data-pos="coach"      onclick="setFilter(this)">Coaches</button>
+        <button class="filter-tab"        data-pos="goalkeeper" onclick="setFilter(this)">GKs</button>
+        <button class="filter-tab"        data-pos="defender"   onclick="setFilter(this)">DEF</button>
+        <button class="filter-tab"        data-pos="midfielder" onclick="setFilter(this)">MID</button>
+        <button class="filter-tab"        data-pos="forward"    onclick="setFilter(this)">FWD</button>
+      </div>
+    </div>
+
+    <div id="noResults">No players match your search.</div>
+
+    <!-- ====== FAVORITES SECTION ====== -->
+    <div class="fav-section reveal" id="favSection">
+      <div class="section-divider">⭐ Bookmarked Players</div>
+      <div class="roster-grid" id="favGrid"></div>
+    </div>
+
+    <!-- ====== COACHING STAFF ====== -->
+    <div class="position-section" id="section-coach">
+      <div class="section-divider reveal">👨‍💼</div>
+      <div class="position-title reveal">Coaching Staff <span class="pos-count" id="coachCount">2</span></div>
+      <div class="coach-grid">
+
+        <div class="coach-card reveal" data-pos="coach" data-name="head coach"
+             data-fullname="Coach Djo" data-nation="🇨🇩 DR Congo"
+             data-bio="An experienced tactician who has shaped Super Stars FC's identity since the club's founding in 2025. Known for high-pressing, possession-based football that has energized Omaha's soccer community."
+             data-img="image0.jpeg">
+          <div class="coach-photo-wrap">
+            <img class="coach-photo" src="image0.jpeg" alt="Head Coach">
+            <div class="coach-role-badge">Head Coach</div>
+          </div>
+          <div class="coach-name">Coach John G</div>
+          <div class="coach-nationality">South Sudan &nbsp;·&nbsp; Super Stars FC</div>
+          <div class="coach-bio">A passionate and dedicated coach who has been instrumental in developing the team's tactical approach and player skills.</div>
+          <div class="coach-stats">
+            <div class="coach-stat"><div class="cs-num">1</div><div class="cs-lbl">Season</div></div>
+            <div class="coach-stat"><div class="cs-num">40</div><div class="cs-lbl">Players</div></div>
+          </div>
+        </div>
+
+        <div class="coach-card reveal" data-pos="coach" data-name="assistant coach"
+             data-fullname="Asst. Coach" data-nation="🇺🇸 USA"
+             data-bio="The assistant coach handles tactical drills, set-piece preparation, and player development sessions. A vital voice in the technical area on match days."
+             data-img="image0.jpeg">
+          <div class="coach-photo-wrap">
+            <img class="coach-photo" src="image0.jpeg" alt="Assistant Coach">
+            <div class="coach-role-badge">Assistant Coach</div>
+          </div>
+          <div class="coach-name">Asst. Coach Miguel</div>
+          <div class="coach-nationality">Cameroon &nbsp;·&nbsp; Super Stars FC</div>
+          <div class="coach-bio">Oversees tactical drills and set-piece preparation. A sharp football mind who elevates the squad's structure every session.</div>
+          <div class="coach-stats">
+            <div class="coach-stat"><div class="cs-num">1</div><div class="cs-lbl">Season</div></div>
+            <div class="coach-stat"><div class="cs-num">TT</div><div class="cs-lbl">Specialty</div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ====== GOALKEEPERS ====== -->
+    <div class="position-section" id="section-goalkeeper">
+      <div class="section-divider reveal">🧤</div>
+      <div class="position-title reveal">Goalkeepers <span class="pos-count">3</span></div>
+      <div class="roster-grid">
+
+        <div class="player-card" data-pos="goalkeeper" data-name="joshua" data-nation="DR Congo"
+             data-fullname="Joshua" data-number="25" data-apps="0" data-goals="0" data-cs="3"
+             data-bio="A commanding presence between the posts; Joshua has been a reliable last line of defense for Super Stars FC in every fixture this season."
+             data-profile="#" data-img="./joshua.jpeg">
+          <div class="jersey-num">25</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./joshua.jpeg" alt="Joshua">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">3</div><div class="ov-lbl">Clean Sh.</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Joshua</div>
+            <div class="player-pos-badge pos-gk">Goalkeeper</div>
+            <div class="card-stars" data-player="joshua"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="goalkeeper" data-name="sammy" data-nation="DR Congo"
+             data-fullname="Sammy" data-number="1" data-apps="0" data-goals="0" data-cs="1"
+             data-bio="A capable and composed shot-stopper, Sammy brings competition and quality to the goalkeeper position at Super Stars FC."
+             data-profile="#" data-img="./sammy.jpeg">
+          <div class="jersey-num">1</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./sammy.jpeg" alt="Sammy">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Clean Sh.</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Sammy</div>
+            <div class="player-pos-badge pos-gk">Goalkeeper</div>
+            <div class="card-stars" data-player="sammy"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="goalkeeper" data-name="richard" data-nation="DR Congo"
+             data-fullname="Richard" data-number="22" data-apps="1" data-goals="0" data-cs="0"
+             data-bio="Richard provides strong competition and depth in goal, a reliable third option who trains hard and pushes the squad every day."
+             data-profile="#" data-img="image0.jpeg">
+          <div class="jersey-num">22</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="image0.jpeg" alt="Richard">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Clean Sh.</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Richard</div>
+            <div class="player-pos-badge pos-gk">Goalkeeper</div>
+            <div class="card-stars" data-player="richard"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ====== DEFENDERS ====== -->
+    <div class="position-section" id="section-defender">
+      <div class="section-divider reveal">🛡️</div>
+      <div class="position-title reveal">Defenders <span class="pos-count">14</span></div>
+      <div class="roster-grid">
+
+        <div class="player-card" data-pos="defender" data-name="butoyi" data-nation="Burundi"
+             data-fullname="Butoyi" data-number="30" data-apps="0" data-goals="0" data-cs="–"
+             data-bio="A physical and commanding defender, Butoyi organizes the backline and leads by example in every defensive duel."
+             data-profile="#" data-img="./Butoyi.jpg">
+          <div class="jersey-num">30</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./Butoyi.jpg" alt="Butoyi">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Butoyi</div>
+            <div class="player-pos-badge pos-def">Defender</div>
+            <div class="card-stars" data-player="butoyi"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="defender" data-name="briand kembung katu" data-nation="Cameroon"
+             data-fullname="Briand Kembung Katu" data-number="29" data-apps="0" data-goals="0" data-cs="–"
+             data-bio="A defender with great anticipation and strong tackling ability, Briand is a key part of our defensive unit and always gives 100% on the pitch."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">29</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Briand Kembung Katu">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Briand Kembung Katu</div>
+            <div class="player-pos-badge pos-def">Defender</div>
+            <div class="card-stars" data-player="briand"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="defender" data-name="miraaj muhumed" data-nation="USA"
+             data-fullname="Miraaj Muhumed" data-number="13" data-apps="1" data-goals="0" data-cs="–"
+             data-bio="A versatile and disciplined defender, Miraaj Muhumed brings composure on the ball and intensity in the tackle to every match."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">13</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Miraaj Muhumed">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Miraaj Muhumed</div>
+            <div class="player-pos-badge pos-def">Defender</div>
+            <div class="card-stars" data-player="miraaj"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="defender" data-name="tshibambe ngongo" data-nation="DR Congo"
+             data-fullname="Tshibambe Ngongo" data-number="27" data-apps="0" data-goals="0" data-cs="–"
+             data-bio="A wide and athletic defender, Tshibambe Ngongo uses his pace and strength to shut down attackers and provide support on the flanks."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">27</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Tshibambe Ngongo">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Tshibambe Ngongo</div>
+            <div class="player-pos-badge pos-def">Defender</div>
+            <div class="card-stars" data-player="tshibambe"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="defender" data-name="mardochee" data-nation="DR Congo"
+             data-fullname="Mardochee" data-number="24" data-apps="0" data-goals="0" data-cs="–"
+             data-bio="Mardochee is a tough, no-nonsense defender who gives everything for the badge and never backs down from a challenge."
+             data-profile="#" data-img="./mard.jpg">
+          <div class="jersey-num">24</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./mard.jpg" alt="Mardochee">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Mardochee</div>
+            <div class="player-pos-badge pos-def">Defender</div>
+            <div class="card-stars" data-player="mardochee"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="defender" data-name="m gloire" data-nation="DR Congo"
+             data-fullname="M Gloire" data-number="5" data-apps="1" data-goals="0" data-cs="–"
+             data-bio="M Gloire is a dynamic and athletic fullback who contributes going forward and brings energy to the backline every time he plays."
+             data-profile="#" data-img="./mr mbo.jpeg">
+          <div class="jersey-num">5</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./mr mbo.jpeg" alt="M Gloire">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">M Gloire</div>
+            <div class="player-pos-badge pos-def">Defender</div>
+            <div class="card-stars" data-player="mgloire"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="defender" data-name="kaysha k shagavah" data-nation="Kenya"
+             data-fullname="Kaysha K Shagavah" data-number="12" data-apps="1" data-goals="1" data-cs="–"
+             data-bio="A versatile and disciplined defender, Kaysha K Shagavah brings composure on the ball and intensity in the tackle to every match."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">12</div>
+          <div class="captain-badge">★ TOP</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Kaysha K Shagavah">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Kaysha K Shagavah</div>
+            <div class="player-pos-badge pos-def">Defender</div>
+            <div class="card-stars" data-player="kaysha"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="defender" data-name="jackson" data-nation="DR Congo"
+             data-fullname="Jackson" data-number="4" data-apps="1" data-goals="0" data-cs="–"
+             data-bio="Jackson is a hard-working and versatile player providing valuable depth to the squad."
+             data-profile="#" data-img="./jackson.jpeg">
+          <div class="jersey-num">4</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./jackson.jpeg" alt="Jackson">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Jackson</div>
+            <div class="player-pos-badge pos-def">Defender / Forward</div>
+            <div class="card-stars" data-player="jackson"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="defender" data-name="abraham j agbezo" data-nation="Togo"
+             data-fullname="Abraham J Agbezo" data-number="28" data-apps="7" data-goals="4" data-cs="–"
+             data-bio="Abraham J Agbezo is a hard-working and versatile player who can fill multiple roles across the defense and midfield, providing valuable depth to the squad."
+             data-profile="#" data-img="image0.jpeg">
+          <div class="jersey-num">28</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="image0.jpeg" alt="Abraham J Agbezo">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">7</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">4</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Abraham J Agbezo</div>
+            <div class="player-pos-badge pos-def">Defender / Forward</div>
+            <div class="card-stars" data-player="abraham"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="defender" data-name="justin d backens" data-nation="USA"
+             data-fullname="Justin D Backens" data-number="26" data-apps="0" data-goals="0" data-cs="–"
+             data-bio="Justin is a solid and dependable player."
+             data-profile="#" data-img="image0.jpeg">
+          <div class="jersey-num">26</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="image0.jpeg" alt="Justin D Backens">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Justin D Backens</div>
+            <div class="player-pos-badge pos-def">Defender / Forward</div>
+            <div class="card-stars" data-player="justin"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="defender" data-name="espoir sam" data-nation="DR Congo"
+             data-fullname="Espoir Sam" data-number="19" data-apps="0" data-goals="0" data-cs="–"
+             data-bio="Espoir Sam is a promising defender who has shown great potential in training and provides valuable depth to the squad."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">19</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Espoir Sam">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Espoir Sam</div>
+            <div class="player-pos-badge pos-def">Defender</div>
+            <div class="card-stars" data-player="espoir"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="defender" data-name="jafar h abdullahi" data-nation="Kenya"
+             data-fullname="Jafar H Abdullahi" data-number="37" data-apps="0" data-goals="0" data-cs="–"
+             data-bio="A young and promising defender, Jafar H Abdullahi has shown great potential in training and provides valuable depth to the squad."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">37</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Jafar H Abdullahi">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Jafar H Abdullahi</div>
+            <div class="player-pos-badge pos-def">Defender</div>
+            <div class="card-stars" data-player="jafar"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="defender" data-name="adrians s lewis" data-nation="USA"
+             data-fullname="Adrians S Lewis" data-number="35" data-apps="0" data-goals="0" data-cs="–"
+             data-bio="A solid and dependable defender, Adrians S Lewis provides depth and competition in the backline for Super Stars FC."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">35</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Adrians S Lewis">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Adrians S Lewis</div>
+            <div class="player-pos-badge pos-def">Defender</div>
+            <div class="card-stars" data-player="adrians"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="defender" data-name="bazile r wite" data-nation="DR Congo"
+             data-fullname="Bazile R Wite" data-number="34" data-apps="0" data-goals="0" data-cs="–"
+             data-bio="Bazile R Wite is a solid and dependable defender, providing depth and competition in the backline for Super Stars FC."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">34</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Bazile R Wite">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Bazile R Wite</div>
+            <div class="player-pos-badge pos-def">Defender</div>
+            <div class="card-stars" data-player="bazile"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ====== MIDFIELDERS ====== -->
+    <div class="position-section" id="section-midfielder">
+      <div class="section-divider reveal">⚙️</div>
+      <div class="position-title reveal">Midfielders <span class="pos-count">10</span></div>
+      <div class="roster-grid">
+
+        <div class="player-card" data-pos="midfielder" data-name="yezi" data-nation="USA"
+             data-fullname="Yezi" data-number="11" data-apps="1" data-goals="0" data-cs="–"
+             data-bio="An energetic and box-to-box midfielder, Yezi links play, wins battles in the middle of the park, and drives the team forward with creativity."
+             data-profile="#" data-img="./yezi.jpeg">
+          <div class="jersey-num">11</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./yezi.jpeg" alt="Yezi">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Yezi</div>
+            <div class="player-pos-badge pos-mid">Midfielder</div>
+            <div class="card-stars" data-player="yezi"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="midfielder" data-name="ebengo majaliwa" data-nation="DR Congo"
+             data-fullname="Ebengo Majaliwa" data-number="31" data-apps="0" data-goals="0" data-cs="–"
+             data-bio="Ebengo Majaliwa is a technically gifted midfielder who controls the tempo of the game and always finds the right pass under pressure."
+             data-profile="#" data-img="./kildo.jpeg">
+          <div class="jersey-num">31</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./kildo.jpeg" alt="Ebengo Majaliwa">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Ebengo Majaliwa</div>
+            <div class="player-pos-badge pos-mid">Midfielder</div>
+            <div class="card-stars" data-player="ebengo"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="midfielder" data-name="minga" data-nation="DR Congo"
+             data-fullname="Minga" data-number="6" data-apps="1" data-goals="0" data-cs="–"
+             data-bio="Minga is a relentless, goal-scoring midfielder whose crucial goals — including a 90+1 winner — have defined some of the season's biggest moments."
+             data-profile="./minga.html" data-img="./minga1.jpeg">
+          <div class="jersey-num">6</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./minga1.jpeg" alt="Minga">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Minga</div>
+            <div class="player-pos-badge pos-mid">Midfielder</div>
+            <div class="card-stars" data-player="minga"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="midfielder" data-name="say say" data-nation="Thailand"
+             data-fullname="Say Say" data-number="10" data-apps="1" data-goals="0" data-cs="–"
+             data-bio="Say Say is a hard-working, disciplined midfielder who covers ground tirelessly and provides a crucial defensive shield in front of the backline."
+             data-profile="#" data-img="./say.jpg">
+          <div class="jersey-num">10</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./say.jpg" alt="Say Say">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Say Say</div>
+            <div class="player-pos-badge pos-mid">Midfielder</div>
+            <div class="card-stars" data-player="saysay"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="midfielder" data-name="abel" data-nation="Ethiopia"
+             data-fullname="Abel" data-number="15" data-apps="0" data-goals="1" data-cs="–"
+             data-bio="Abel's memorable equalizer in the 57th minute against Omaha Street FC earned a vital point — a player who rises to the big moments when it matters most."
+             data-profile="#" data-img="./Abel.jpg">
+          <div class="jersey-num">15</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./Abel.jpg" alt="Abel">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Abel</div>
+            <div class="player-pos-badge pos-mid">Midfielder</div>
+            <div class="card-stars" data-player="abel"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="midfielder" data-name="moses kabala" data-nation="DR Congo"
+             data-fullname="Moses Kabala" data-number="32" data-apps="0" data-goals="0" data-cs="–"
+             data-bio="A great midfielder with a strong work ethic and excellent vision on the pitch. A key playmaker, consistently creating scoring opportunities and controlling the game's tempo."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">32</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Moses Kabala">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Moses Kabala</div>
+            <div class="player-pos-badge pos-mid">Midfielder</div>
+            <div class="card-stars" data-player="moses"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="midfielder" data-name="patrick kuwong" data-nation="Cameroon"
+             data-fullname="Patrick Kuwong" data-number="20" data-apps="1" data-goals="0" data-cs="–"
+             data-bio="A great midfielder with a strong work ethic and excellent vision. A key playmaker for the team, consistently creating scoring opportunities and controlling the tempo."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">20</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Patrick Kuwong">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Patrick Kuwong</div>
+            <div class="player-pos-badge pos-mid">Midfielder</div>
+            <div class="card-stars" data-player="patrick"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="midfielder" data-name="brighton shabani" data-nation="DR Congo"
+             data-fullname="Brighton Shabani" data-number="33" data-apps="0" data-goals="0" data-cs="–"
+             data-bio="A midfielder with a great engine and eye for goal, Brighton Shabani is a key contributor to the team's attacking play and has scored crucial goals in past seasons."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">33</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Brighton Shabani">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Brighton Shabani</div>
+            <div class="player-pos-badge pos-mid">Midfielder</div>
+            <div class="card-stars" data-player="brighton"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="midfielder" data-name="ange diaz" data-nation="USA"
+             data-fullname="Ange Diaz" data-number="2" data-apps="1" data-goals="0" data-cs="–"
+             data-bio="A midfielder with a great engine and eye for goal, Ange Diaz is a key contributor to the team's attacking play."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">2</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Ange Diaz">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Ange Diaz</div>
+            <div class="player-pos-badge pos-mid">Midfielder</div>
+            <div class="card-stars" data-player="angediaz"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="midfielder" data-name="matu l chol" data-nation="South Sudan"
+             data-fullname="Matu L Chol" data-number="21" data-apps="1" data-goals="0" data-cs="–"
+             data-bio="A midfielder with a great engine and eye for goal, Matu L Chol is a key contributor to the team and has shown great potential in training."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">21</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Matu L Chol">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Matu L Chol</div>
+            <div class="player-pos-badge pos-mid">Midfielder</div>
+            <div class="card-stars" data-player="matu"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ====== FORWARDS ====== -->
+    <div class="position-section" id="section-forward">
+      <div class="section-divider reveal">⚽</div>
+      <div class="position-title reveal">Forwards <span class="pos-count">12</span></div>
+      <div class="roster-grid">
+
+        <div class="player-card" data-pos="forward" data-name="shimalo" data-nation="DR Congo"
+             data-fullname="Shimalo" data-number="36" data-apps="0" data-goals="0" data-cs="–"
+             data-bio="A clinical and intelligent forward, Shimalo is always a danger in front of goal and works tirelessly to create opportunities for teammates."
+             data-profile="#" data-img="./shimalo.jpeg">
+          <div class="jersey-num">36</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./shimalo.jpeg" alt="Shimalo">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Shimalo</div>
+            <div class="player-pos-badge pos-fwd">Forward</div>
+            <div class="card-stars" data-player="shimalo"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="forward" data-name="diorr" data-nation="Kenya"
+             data-fullname="Diorr (Abdikadir Abdullahi)" data-number="38" data-apps="0" data-goals="0" data-cs="–"
+             data-bio="A promising forward with great potential, Diorr is a key player for the team."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">38</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Diorr">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Diorr</div>
+            <div class="player-pos-badge pos-fwd">Forward</div>
+            <div class="card-stars" data-player="diorr"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="forward" data-name="john" data-nation="DR Congo"
+             data-fullname="John" data-number="9" data-apps="1" data-goals="0" data-cs="–"
+             data-bio="John is a strong and physical forward who uses his hold-up play to bring teammates into the attack and create scoring opportunities."
+             data-profile="#" data-img="./john1.jpeg">
+          <div class="jersey-num">9</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./john1.jpeg" alt="John">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">John</div>
+            <div class="player-pos-badge pos-fwd">Forward</div>
+            <div class="card-stars" data-player="john"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="forward" data-name="daniel ngongo" data-nation="DR Congo"
+             data-fullname="Daniel Ngongo" data-number="66" data-apps="0" data-goals="0" data-cs="–"
+             data-bio="Daniel Ngongo is a dynamic forward known for his pace and ability to create scoring opportunities."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">66</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Daniel Ngongo">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Daniel Ngongo</div>
+            <div class="player-pos-badge pos-fwd">Forward</div>
+            <div class="card-stars" data-player="daniel"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="forward" data-name="emmanuel kate" data-nation="DR Congo"
+             data-fullname="Emmanuel Kate" data-number="16" data-apps="1" data-goals="0" data-cs="–"
+             data-bio="Emmanuel Kate is a quick and direct forward who uses his pace and movement to stretch defenses and create space for teammates."
+             data-profile="#" data-img="./emma.jpeg">
+          <div class="jersey-num">16</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./emma.jpeg" alt="Emmanuel Kate">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Emmanuel Kate</div>
+            <div class="player-pos-badge pos-fwd">Forward</div>
+            <div class="card-stars" data-player="emmakate"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="forward" data-name="chan chuol" data-nation="South Sudan"
+             data-fullname="Chan Chuol" data-number="7" data-apps="1" data-goals="1" data-cs="–"
+             data-bio="Chan Chuol is a dynamic forward known for his pace, ability to beat defenders in 1v1 situations, and scoring crucial goals."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">7</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Chan Chuol">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Chan Chuol</div>
+            <div class="player-pos-badge pos-fwd">Forward</div>
+            <div class="card-stars" data-player="chan"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="forward" data-name="jeff sumaili" data-nation="DR Congo"
+             data-fullname="Jeff Sumaili" data-number="3" data-apps="1" data-goals="0" data-cs="–"
+             data-bio="Jeff is a versatile forward who can play in multiple positions and is known for his work ethic and dedication to the team."
+             data-profile="#" data-img="./jeff.jpeg">
+          <div class="jersey-num">3</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./jeff.jpeg" alt="Jeff Sumaili">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Jeff Sumaili</div>
+            <div class="player-pos-badge pos-fwd">Forward</div>
+            <div class="card-stars" data-player="jeff"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="forward" data-name="nhial yor" data-nation="USA"
+             data-fullname="Nhial Yor" data-number="8" data-apps="1" data-goals="0" data-cs="–"
+             data-bio="Nhial is a talented forward with excellent dribbling skills and a strong shot."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">8</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Nhial Yor">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Nhial Yor</div>
+            <div class="player-pos-badge pos-fwd">Forward</div>
+            <div class="card-stars" data-player="nhial"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="forward" data-name="osman sharif" data-nation="USA"
+             data-fullname="Osman Sharif" data-number="14" data-apps="1" data-goals="0" data-cs="–"
+             data-bio="Osman is a dynamic forward with exceptional speed and agility."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">14</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Osman Sharif">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">1</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Osman Sharif</div>
+            <div class="player-pos-badge pos-fwd">Forward</div>
+            <div class="card-stars" data-player="osman"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="forward" data-name="orion samba" data-nation="DR Congo"
+             data-fullname="Orion Samba" data-number="39" data-apps="0" data-goals="0" data-cs="–"
+             data-bio="Orion Samba is a promising forward with great potential, known for his pace and ability to create scoring opportunities for himself and teammates."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">39</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Orion Samba">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Orion Samba</div>
+            <div class="player-pos-badge pos-fwd">Forward</div>
+            <div class="card-stars" data-player="orion"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="forward" data-name="muoch kong" data-nation="USA"
+             data-fullname="Muoch Kong" data-number="40" data-apps="0" data-goals="0" data-cs="–"
+             data-bio="Muoch Kong is a versatile forward known for his pace who can play across the front line."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">40</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Muoch Kong">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Muoch Kong</div>
+            <div class="player-pos-badge pos-fwd">Forward</div>
+            <div class="card-stars" data-player="muoch"></div>
+          </div>
+        </div>
+
+        <div class="player-card" data-pos="forward" data-name="didier bitingingwa" data-nation="DR Congo"
+             data-fullname="Didier Bitingingwa" data-number="45" data-apps="0" data-goals="0" data-cs="–"
+             data-bio="Didier is a versatile forward who can play in multiple positions and is known for his work ethic and dedication to the team."
+             data-profile="#" data-img="./image0.jpeg">
+          <div class="jersey-num">45</div>
+          <div class="card-actions">
+            <button class="card-act-btn compare-btn" title="Compare" onclick="addToCompare(event, this)"><i class="fas fa-code-compare"></i></button>
+            <button class="card-act-btn bookmark-btn" title="Bookmark" onclick="toggleBookmark(event, this)"><i class="fas fa-bookmark"></i></button>
+          </div>
+          <div class="photo-wrap">
+            <img src="./image0.jpeg" alt="Didier Bitingingwa">
+            <div class="card-overlay"><div class="overlay-stats"><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Apps</div></div><div class="ov-stat"><div class="ov-num">0</div><div class="ov-lbl">Goals</div></div></div></div>
+          </div>
+          <div class="card-body">
+            <div class="player-name">Didier Bitingingwa</div>
+            <div class="player-pos-badge pos-fwd">Forward</div>
+            <div class="card-stars" data-player="didier"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section-divider reveal">🏆</div>
+
+  </div><!-- /.container -->
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>Super Star FC</h3>
+        <p>Founded June 3, 2025.</p>
+        <p>Building champions on and off the field.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="./bout.html">About Us</a>
+        <a href="./term.html">Terms</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./Privacy.html">Privacy Policy</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>Email: superstarfc25@gmail.com</p>
+        <p>Phone: +1 (531) 262-1982</p>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/profile.php?id=100077275385711" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2V12h2.2V9.8c0-2.2 1.3-3.4 3.3-3.4.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 2.9h-1.9v7A10 10 0 0 0 22 12z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/super_starsfc_fc" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zm5.8-2.1a1.3 1.3 0 1 1-1.3-1.3 1.3 1.3 0 0 1 1.3 1.3z"/></svg>
+          </a>
+          <a href="https://x.com/SuperStars75843" aria-label="Twitter">
+            <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.1.9A5.4 5.4 0 0 0 22.4 1a10.8 10.8 0 0 1-3.4 1.3A5.4 5.4 0 0 0 9.6 7a15.3 15.3 0 0 1-11.1-5.6 5.4 5.4 0 0 0 1.7 7.2A5.3 5.3 0 0 1 .8 8v.1a5.4 5.4 0 0 0 4.3 5.3 5.5 5.5 0 0 1-2.4.1 5.4 5.4 0 0 0 5 3.8A10.8 10.8 0 0 1 0 19.5 15.3 15.3 0 0 0 8.3 22c10 0 15.5-8.3 15.5-15.5v-.7A11 11 0 0 0 23 3z"/></svg>
+          </a>
+          <a href="https://youtube.com/@s.s.f.c" aria-label="YouTube">
+            <svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5h0s-5.6 0-8.5.4c-.4.1-1.3.1-2.1 1C.7 4.6.5 6.2.5 6.2S0 8.1 0 10v2c0 1.9.5 3.8.5 3.8s.2 1.6.9 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.2.4 7.2.4s5.6 0 8.5-.4c.4-.1 1.3-.1 2.1-1 .7-.7.9-2.3.9-2.3s.5-1.9.5-3.8v-2c0-1.9-.5-3.8-.5-3.8zM9.8 14.5V9.5l4.8 2.5-4.8 2.5z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="year"></span> Super Star FC. All rights reserved.</div>
+  </footer>
+
+  <!-- ====== PLAYER MODAL ====== -->
+  <div class="modal" id="playerModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-photo-wrap">
+          <img class="modal-photo" id="modalBg" src="" alt="">
+          <div class="modal-photo-overlay">
+            <img id="modalImg" src="" alt="">
+            <h2 id="modalName"></h2>
+            <span id="modalPosBadge" class="player-pos-badge"></span>
+          </div>
+          <button class="modal-close" id="closeModal">✕</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-stats-row">
+          <div class="modal-stat"><div class="ms-num" id="modalApps">–</div><div class="ms-lbl">Apps</div></div>
+          <div class="modal-stat"><div class="ms-num" id="modalGoals">–</div><div class="ms-lbl">Goals</div></div>
+          <div class="modal-stat"><div class="ms-num" id="modalNum">–</div><div class="ms-lbl">Jersey #</div></div>
+        </div>
+        <div class="modal-info-row"><i class="fas fa-location-dot"></i><span><strong>Nationality:</strong> <span id="modalNation"></span></span></div>
+        <div class="modal-info-row"><i class="fas fa-person-running"></i><span><strong>Position:</strong> <span id="modalPos"></span></span></div>
+        <div class="modal-bio" id="modalBio"></div>
+        <div class="modal-fan-rating">
+          <label>⭐ Fan Rating</label>
+          <div class="modal-stars" id="modalStars">
+            <span class="modal-star" data-val="1">★</span>
+            <span class="modal-star" data-val="2">★</span>
+            <span class="modal-star" data-val="3">★</span>
+            <span class="modal-star" data-val="4">★</span>
+            <span class="modal-star" data-val="5">★</span>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <a id="modalProfileLink" href="#" class="modal-profile-btn"><i class="fas fa-user"></i> Profile</a>
+          <button class="modal-ai-btn" id="modalAiBtn" onclick="openAiForCurrentPlayer()"><i class="fas fa-robot"></i> Ask AI Scout</button>
+          <button class="modal-compare-btn" id="modalCompareBtn" onclick="addCurrentToCompare()"><i class="fas fa-code-compare"></i> Compare</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== COMPARE FLOAT PANEL ====== -->
+  <div class="compare-float" id="compareFloat">
+    <span style="font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;">Compare</span>
+    <div class="cf-players">
+      <div class="cf-slot" id="cfSlot1">Player 1</div>
+      <div class="cf-vs">VS</div>
+      <div class="cf-slot" id="cfSlot2">Player 2</div>
+    </div>
+    <button class="cf-compare-btn" onclick="openCompareModal()">GO</button>
+    <button class="cf-clear-btn" onclick="clearCompare()"><i class="fas fa-xmark"></i></button>
+  </div>
+
+  <!-- ====== COMPARE MODAL ====== -->
+  <div class="compare-modal" id="compareModal">
+    <div class="compare-content">
+      <div class="compare-header">
+        <h3><i class="fas fa-code-compare"></i>&nbsp; Player Comparison</h3>
+        <button class="compare-close" onclick="closeCompareModal()">✕</button>
+      </div>
+      <div class="compare-grid" id="compareGrid"></div>
+      <div class="compare-stats" id="compareStats"></div>
+    </div>
+  </div>
+
+  <!-- ====== FORMATION MODAL ====== -->
+  <div class="formation-modal" id="formationModal">
+    <div class="formation-content">
+      <div class="formation-head">
+        <h3><i class="fas fa-chess-board"></i>&nbsp; Formation Viewer</h3>
+        <button class="formation-close" onclick="closeFormation()">✕</button>
+      </div>
+      <div class="formation-selector" id="formationSelector">
+        <button class="form-tab active" data-formation="4-3-3" onclick="setFormation(this)">4-3-3</button>
+        <button class="form-tab" data-formation="4-4-2" onclick="setFormation(this)">4-4-2</button>
+        <button class="form-tab" data-formation="4-2-3-1" onclick="setFormation(this)">4-2-3-1</button>
+        <button class="form-tab" data-formation="3-5-2" onclick="setFormation(this)">3-5-2</button>
+        <button class="form-tab" data-formation="5-3-2" onclick="setFormation(this)">5-3-2</button>
+      </div>
+      <div class="pitch-wrap">
+        <div class="pitch" id="pitchDisplay">
+          <div class="pitch-lines">
+            <div class="pitch-center-circle"></div>
+            <div class="pitch-center-line"></div>
+            <div class="pitch-half-top"></div>
+            <div class="pitch-half-bottom"></div>
+          </div>
+          <div class="pitch-rows" id="pitchRows"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"><i class="fas fa-check-circle" style="color:#3ecf6a"></i><span id="toastMsg">Done!</span></div>
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
+
+  <script>
+    // =================== INIT ===================
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // =================== PROGRESS + SCROLL ===================
+    window.addEventListener('scroll', () => {
+      const s = window.scrollY, t = document.body.scrollHeight - window.innerHeight;
+      document.getElementById('progress-bar').style.width = (s / t * 100) + '%';
+      document.getElementById('scrollTop').classList.toggle('show', s > 300);
+    });
+
+    // =================== REVEAL ===================
+    const revealObs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // =================== CARD STAGGER ===================
+    const cardObs = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 75);
+          cardObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.player-card, .coach-card').forEach(el => cardObs.observe(el));
+
+    // =================== COUNTERS ===================
+    const counterObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const el = e.target, target = parseInt(el.dataset.target);
+          if (isNaN(target)) return;
+          let cur = 0; const step = target / (1200 / 16);
+          const t = setInterval(() => { cur = Math.min(cur + step, target); el.textContent = Math.round(cur); if (cur >= target) clearInterval(t); }, 16);
+          counterObs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+
+    // =================== COUNTDOWN TIMER ===================
+    // Set your next match date here: YYYY, MM-1, DD, HH, MM
+    const matchDate = new Date(2026, 3, 26, 14, 0, 0); // April 26 2026, 2:00 PM
+    function updateCountdown() {
+      const now = new Date(), diff = matchDate - now;
+      if (diff <= 0) { document.getElementById('countdown').innerHTML = '<span style="font-weight:900;font-family:Barlow Condensed,sans-serif">MATCH DAY! ⚽</span>'; return; }
+      const d = Math.floor(diff/86400000), h = Math.floor((diff%86400000)/3600000), m = Math.floor((diff%3600000)/60000), s = Math.floor((diff%60000)/1000);
+      document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+      document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+      document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+      document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+    }
+    updateCountdown(); setInterval(updateCountdown, 1000);
+
+    // =================== FONT SIZE / THEME ===================
+    let fontSize = 1;
+    function changeFontSize(d) { fontSize = Math.min(1.3, Math.max(0.82, fontSize + d * 0.05)); document.documentElement.style.setProperty('--font-size', fontSize+'rem'); showToast('Text size ' + (d>0?'increased':'decreased')); }
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+      const l = document.body.classList.contains('light-mode');
+      document.getElementById('modeToggle').textContent = l ? '🌑' : '🌙';
+      localStorage.setItem('ssfc_mode', l ? 'light' : 'dark');
+    }
+    if (localStorage.getItem('ssfc_mode') === 'light') { document.body.classList.add('light-mode'); document.getElementById('modeToggle').textContent = '🌑'; }
+
+    // =================== LIKES ===================
+    const likeKey = 'ssfc_likes', likedKey = 'ssfc_liked';
+    let likes = parseInt(localStorage.getItem(likeKey) || '21');
+    let liked = localStorage.getItem(likedKey) === 'true';
+    document.getElementById('likeCount').textContent = likes;
+    if (liked) document.getElementById('likeBtn').classList.add('liked');
+    function toggleLike() {
+      if (liked) { likes--; liked = false; document.getElementById('likeBtn').classList.remove('liked'); }
+      else { likes++; liked = true; document.getElementById('likeBtn').classList.add('liked'); showToast('Thanks for the love! ❤️'); }
+      document.getElementById('likeCount').textContent = likes;
+      localStorage.setItem(likeKey, likes); localStorage.setItem(likedKey, liked);
+    }
+
+    // =================== FILTER / SEARCH ===================
+    let activeFilter = 'all';
+    function setFilter(btn) {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.pos;
+      // Show/hide coach section
+      const coachSec = document.getElementById('section-coach');
+      if (activeFilter === 'coach') {
+        document.querySelectorAll('.position-section:not(#section-coach)').forEach(s => s.style.display = 'none');
+        coachSec.style.display = '';
+      } else if (activeFilter === 'all') {
+        document.querySelectorAll('.position-section').forEach(s => s.style.display = '');
+      } else {
+        coachSec.style.display = 'none';
+      }
+      filterPlayers();
+    }
+
+    function filterPlayers() {
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.position-section:not(#section-coach) .player-card');
+      let visible = 0;
+      cards.forEach(card => {
+        const pos = card.dataset.pos, name = card.dataset.name, nation = (card.dataset.nation||'').toLowerCase();
+        const posMatch = activeFilter === 'all' || activeFilter === 'coach' || pos === activeFilter;
+        const nameMatch = query === '' || name.includes(query) || nation.includes(query);
+        const show = posMatch && nameMatch;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      document.getElementById('noResults').style.display = (visible === 0 && activeFilter !== 'coach') ? 'block' : 'none';
+      document.getElementById('playerCount').textContent = visible;
+      ['goalkeeper','defender','midfielder','forward'].forEach(pos => {
+        const sec = document.getElementById('section-' + pos);
+        if (!sec) return;
+        const any = [...sec.querySelectorAll('.player-card')].some(c => c.style.display !== 'none');
+        if (activeFilter !== 'coach') sec.style.display = any ? '' : 'none';
+      });
+    }
+
+    // =================== STAR RATINGS ===================
+    function getRating(key) { return parseInt(localStorage.getItem('ssfc_rating_' + key) || '0'); }
+    function setRating(key, val) { localStorage.setItem('ssfc_rating_' + key, val); }
+
+    function renderCardStars(container, key) {
+      const r = getRating(key);
+      container.innerHTML = '';
+      for (let i = 1; i <= 5; i++) {
+        const s = document.createElement('span');
+        s.className = 'star' + (i <= r ? ' filled' : '');
+        s.textContent = '★';
+        s.addEventListener('click', ev => {
+          ev.stopPropagation();
+          setRating(key, i);
+          renderCardStars(container, key);
+          showToast('Rated ' + i + ' ★');
+        });
+        container.appendChild(s);
+      }
+    }
+
+    document.querySelectorAll('.card-stars').forEach(container => {
+      renderCardStars(container, container.dataset.player);
+    });
+
+    // Modal stars
+    let currentModalPlayer = '';
+    document.querySelectorAll('.modal-star').forEach(star => {
+      star.addEventListener('click', () => {
+        const val = parseInt(star.dataset.val);
+        if (currentModalPlayer) {
+          setRating(currentModalPlayer, val);
+          renderModalStars(val);
+          // Re-render card stars
+          document.querySelectorAll(`.card-stars[data-player="${currentModalPlayer}"]`).forEach(c => renderCardStars(c, currentModalPlayer));
+          showToast('Rated ' + val + ' ★');
+        }
+      });
+    });
+
+    function renderModalStars(r) {
+      document.querySelectorAll('.modal-star').forEach(s => {
+        s.classList.toggle('filled', parseInt(s.dataset.val) <= r);
+      });
+    }
+
+    // =================== BOOKMARKS ===================
+    function getBookmarks() { return JSON.parse(localStorage.getItem('ssfc_bookmarks') || '[]'); }
+    function saveBookmarks(bm) { localStorage.setItem('ssfc_bookmarks', JSON.stringify(bm)); }
+
+    function toggleBookmark(event, btn) {
+      event.stopPropagation();
+      const card = btn.closest('.player-card');
+      const name = card.dataset.fullname;
+      let bm = getBookmarks();
+      if (bm.includes(name)) { bm = bm.filter(n => n !== name); card.classList.remove('bookmarked'); btn.style.color = ''; showToast('Removed bookmark'); }
+      else { bm.push(name); card.classList.add('bookmarked'); btn.style.color = 'var(--accent-gold)'; showToast('Bookmarked ' + name + ' ⭐'); }
+      saveBookmarks(bm);
+      updateFavCount();
+    }
+
+    function updateFavCount() {
+      const n = getBookmarks().length;
+      document.getElementById('favCountBadge').textContent = n;
+    }
+
+    function applyBookmarkStyles() {
+      const bm = getBookmarks();
+      document.querySelectorAll('.player-card').forEach(card => {
+        if (bm.includes(card.dataset.fullname)) {
+          card.classList.add('bookmarked');
+          const btn = card.querySelector('.bookmark-btn');
+          if (btn) btn.style.color = 'var(--accent-gold)';
+        }
+      });
+      updateFavCount();
+    }
+    applyBookmarkStyles();
+
+    let favViewActive = false;
+    function toggleFavView() {
+      favViewActive = !favViewActive;
+      const sec = document.getElementById('favSection');
+      const btn = document.getElementById('favToggleBtn');
+      if (favViewActive) {
+        const bm = getBookmarks();
+        if (bm.length === 0) { showToast('No bookmarks yet!'); favViewActive = false; return; }
+        const grid = document.getElementById('favGrid');
+        grid.innerHTML = '';
+        bm.forEach(name => {
+          const card = document.querySelector(`.player-card[data-fullname="${name}"]`);
+          if (card) {
+            const clone = card.cloneNode(true);
+            clone.classList.add('visible');
+            clone.style.opacity = '1'; clone.style.transform = 'none';
+            // Re-attach click
+            clone.addEventListener('click', () => openModal(card));
+            grid.appendChild(clone);
+          }
+        });
+        sec.classList.add('has-favs');
+        btn.classList.add('active');
+        sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        sec.classList.remove('has-favs');
+        btn.classList.remove('active');
+      }
+    }
+
+    // =================== NATIONALITY CHART ===================
+    let natChartVisible = false;
+    function toggleNatChart() {
+      natChartVisible = !natChartVisible;
+      const chart = document.getElementById('natChart');
+      chart.classList.toggle('visible', natChartVisible);
+      if (natChartVisible) buildNatChart();
+    }
+
+    function buildNatChart() {
+      const cards = document.querySelectorAll('.player-card');
+      const counts = {};
+      cards.forEach(c => {
+        const n = (c.dataset.nation || '').replace(/[\u{1F1E0}-\u{1F1FF}]+/gu, '').trim();
+        if (n) counts[n] = (counts[n]||0) + 1;
+      });
+      const sorted = Object.entries(counts).sort((a,b) => b[1]-a[1]);
+      const max = sorted[0]?.[1] || 1;
+      document.getElementById('nationCount').textContent = sorted.length;
+      const container = document.getElementById('natBars');
+      container.innerHTML = '';
+      sorted.forEach(([nation, count]) => {
+        const row = document.createElement('div');
+        row.className = 'nat-bar-row';
+        row.innerHTML = `
+          <div class="nat-label">${nation}</div>
+          <div class="nat-bar-bg"><div class="nat-bar-fill" style="width:0%"></div></div>
+          <div class="nat-count">${count}</div>
+        `;
+        container.appendChild(row);
+        requestAnimationFrame(() => {
+          setTimeout(() => { row.querySelector('.nat-bar-fill').style.width = (count/max*100) + '%'; }, 50);
+        });
+      });
+    }
+
+    // =================== COMPARE ===================
+    let comparePlayers = [null, null];
+
+    function addToCompare(event, btn) {
+      event.stopPropagation();
+      const card = btn.closest('.player-card');
+      addPlayerToCompare(card);
+    }
+
+    function addPlayerToCompare(card) {
+      const name = card.dataset.fullname;
+      if (comparePlayers[0] && comparePlayers[0].dataset.fullname === name) { showToast('Already selected'); return; }
+      if (comparePlayers[1] && comparePlayers[1].dataset.fullname === name) { showToast('Already selected'); return; }
+      if (!comparePlayers[0]) comparePlayers[0] = card;
+      else if (!comparePlayers[1]) comparePlayers[1] = card;
+      else { comparePlayers[0] = comparePlayers[1]; comparePlayers[1] = card; }
+      document.querySelectorAll('.player-card').forEach(c => c.classList.remove('compare-selected'));
+      comparePlayers.filter(Boolean).forEach(c => c.classList.add('compare-selected'));
+      updateCompareFloat();
+    }
+
+    function addCurrentToCompare() {
+      const modal = document.getElementById('playerModal');
+      const name = document.getElementById('modalName').textContent;
+      const card = document.querySelector(`.player-card[data-fullname="${name}"]`);
+      if (card) { addPlayerToCompare(card); modal.classList.remove('active'); }
+    }
+
+    function updateCompareFloat() {
+      const p1 = comparePlayers[0], p2 = comparePlayers[1];
+      const float = document.getElementById('compareFloat');
+      document.getElementById('cfSlot1').textContent = p1 ? p1.dataset.fullname.split(' ')[0] : 'Player 1';
+      document.getElementById('cfSlot1').className = 'cf-slot' + (p1 ? ' filled' : '');
+      document.getElementById('cfSlot2').textContent = p2 ? p2.dataset.fullname.split(' ')[0] : 'Player 2';
+      document.getElementById('cfSlot2').className = 'cf-slot' + (p2 ? ' filled' : '');
+      float.classList.toggle('show', !!(p1 || p2));
+    }
+
+    function clearCompare() {
+      comparePlayers = [null, null];
+      document.querySelectorAll('.player-card').forEach(c => c.classList.remove('compare-selected'));
+      updateCompareFloat();
+    }
+
+    function openCompareModal() {
+      if (!comparePlayers[0] || !comparePlayers[1]) { showToast('Select 2 players to compare!'); return; }
+      const [a, b] = comparePlayers;
+      const grid = document.getElementById('compareGrid');
+      grid.innerHTML = `
+        <div class="compare-player">
+          <img src="${a.dataset.img}" alt="">
+          <div class="cp-name">${a.dataset.fullname}</div>
+          <span class="player-pos-badge pos-${a.dataset.pos}">${posLabel[a.dataset.pos]||a.dataset.pos}</span>
+        </div>
+        <div class="compare-vs"><span>VS</span></div>
+        <div class="compare-player">
+          <img src="${b.dataset.img}" alt="">
+          <div class="cp-name">${b.dataset.fullname}</div>
+          <span class="player-pos-badge pos-${b.dataset.pos}">${posLabel[b.dataset.pos]||b.dataset.pos}</span>
+        </div>
+      `;
+      const aA = parseInt(a.dataset.apps)||0, bA = parseInt(b.dataset.apps)||0;
+      const aG = parseInt(a.dataset.goals)||0, bG = parseInt(b.dataset.goals)||0;
+      const aR = getRating(a.dataset.name||''), bR = getRating(b.dataset.name||'');
+      const aJ = parseInt(a.dataset.number)||0, bJ = parseInt(b.dataset.number)||0;
+      const maxA = Math.max(aA,bA,1), maxG = Math.max(aG,bG,1), maxR = Math.max(aR,bR,1);
+      document.getElementById('compareStats').innerHTML = buildCompareRow('APPS', aA, bA, maxA) + buildCompareRow('GOALS', aG, bG, maxG) + buildCompareRow('FAN RATING', aR, bR, maxR) + buildCompareRow('JERSEY #', aJ, bJ, Math.max(aJ,bJ,1));
+      document.getElementById('compareModal').classList.add('active');
+      requestAnimationFrame(() => {
+        document.querySelectorAll('.cs-fill-left, .cs-fill-right').forEach(el => {
+          el.style.width = el.dataset.w + '%';
+        });
+      });
+    }
+
+    function buildCompareRow(label, a, b, max) {
+      const aw = max>0 ? Math.round(a/max*100) : 0, bw = max>0 ? Math.round(b/max*100) : 0;
+      const aWin = a>b ? ' winner':'', bWin = b>a ? ' winner':'';
+      return `<div class="cs-row">
+        <div class="cs-val${aWin}">${a}</div>
+        <div class="cs-bar-left"><div class="cs-fill-left" data-w="${aw}" style="width:0%"></div></div>
+        <div class="cs-label">${label}</div>
+        <div class="cs-bar-right"><div class="cs-fill-right" data-w="${bw}" style="width:0%"></div></div>
+        <div class="cs-val${bWin}">${b}</div>
+      </div>`;
+    }
+
+    function closeCompareModal() {
+      document.getElementById('compareModal').classList.remove('active');
+    }
+    document.getElementById('compareModal').addEventListener('click', e => { if(e.target===document.getElementById('compareModal')) closeCompareModal(); });
+
+    // =================== FORMATION VIEWER ===================
+    const formations = {
+      '4-3-3': [['GK'],['CB','CB','CB','CB'],['CM','CM','CM'],['LW','ST','RW']],
+      '4-4-2': [['GK'],['LB','CB','CB','RB'],['LM','CM','CM','RM'],['ST','ST']],
+      '4-2-3-1': [['GK'],['LB','CB','CB','RB'],['DM','DM'],['LAM','CAM','RAM'],['ST']],
+      '3-5-2': [['GK'],['CB','CB','CB'],['LWB','CM','CM','CM','RWB'],['ST','ST']],
+      '5-3-2': [['GK'],['LWB','CB','CB','CB','RWB'],['CM','CM','CM'],['ST','ST']],
+    };
+    const playersByPos = {
+      GK: ['Joshua','Sammy','Richard'],
+      CB: ['Butoyi','Mardochee','M Gloire','Jackson'],
+      LB: ['Tshibambe','Espoir Sam'],
+      RB: ['Miraaj M.','Kaysha K.'],
+      DM: ['Say Say','Moses K.'],
+      CM: ['Minga','Yezi','Ebengo','Patrick'],
+      CAM: ['Abel','Brighton'],
+      LAM: ['Ange D.','Matu L.'],
+      RAM: ['Brighton','Patrick'],
+      LWB: ['Jackson','Espoir'],
+      RWB: ['Kaysha','Miraaj'],
+      LM: ['Yezi','Abel'],
+      RM: ['Brighton','Ange'],
+      LW: ['Chan C.','Shimalo'],
+      RW: ['Diorr','Emmanuel'],
+      ST: ['John','Jeff','Nhial','Osman'],
+      FWD: ['John','Jeff'],
+    };
+    let currentFormation = '4-3-3';
+
+    function setFormation(btn) {
+      document.querySelectorAll('.form-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      currentFormation = btn.dataset.formation;
+      renderFormation();
+    }
+
+    function openFormation() { document.getElementById('formationModal').classList.add('active'); renderFormation(); }
+    function closeFormation() { document.getElementById('formationModal').classList.remove('active'); }
+    document.getElementById('formationModal').addEventListener('click', e => { if(e.target===document.getElementById('formationModal')) closeFormation(); });
+
+    let playerIndex = {};
+    function nextPlayer(pos) {
+      if (!playerIndex[pos]) playerIndex[pos] = 0;
+      const list = playersByPos[pos] || playersByPos['ST'];
+      const name = list[playerIndex[pos] % list.length];
+      playerIndex[pos]++;
+      return name;
+    }
+
+    function renderFormation() {
+      playerIndex = {};
+      const rows = formations[currentFormation];
+      const container = document.getElementById('pitchRows');
+      container.innerHTML = '';
+      // Reverse so GK is at bottom (attack at top)
+      const displayRows = [...rows].reverse();
+      displayRows.forEach((row, ri) => {
+        const rowEl = document.createElement('div');
+        rowEl.className = 'pitch-row';
+        row.forEach(pos => {
+          const p = document.createElement('div');
+          p.className = 'pitch-player';
+          const isGk = pos === 'GK';
+          const isFwd = ['ST','LW','RW','CF'].includes(pos);
+          p.innerHTML = `<div class="pitch-dot ${isGk?'gk':isFwd?'fwd':''}">${pos}</div><div class="pitch-pname">${nextPlayer(pos)}</div>`;
+          rowEl.appendChild(p);
+        });
+        container.appendChild(rowEl);
+      });
+    }
+
+    // =================== PLAYER MODAL ===================
+    const modal = document.getElementById('playerModal');
+    document.getElementById('closeModal').addEventListener('click', () => modal.classList.remove('active'));
+    modal.addEventListener('click', e => { if(e.target === modal) modal.classList.remove('active'); });
+    document.addEventListener('keydown', e => { if(e.key==='Escape') { modal.classList.remove('active'); closeAiModal(); closeCompareModal(); closeFormation(); } });
+
+    const posBadgeClass = { goalkeeper:'pos-gk', defender:'pos-def', midfielder:'pos-mid', forward:'pos-fwd' };
+    const posLabel = { goalkeeper:'Goalkeeper', defender:'Defender', midfielder:'Midfielder', forward:'Forward' };
+
+    function openModal(card) {
+      const img = card.dataset.img;
+      document.getElementById('modalBg').src = img;
+      document.getElementById('modalImg').src = img;
+      document.getElementById('modalName').textContent = card.dataset.fullname;
+      document.getElementById('modalApps').textContent = card.dataset.apps || '0';
+      document.getElementById('modalGoals').textContent = card.dataset.goals || '0';
+      document.getElementById('modalNum').textContent = '#' + card.dataset.number;
+      document.getElementById('modalNation').textContent = card.dataset.nation;
+      document.getElementById('modalPos').textContent = posLabel[card.dataset.pos] || card.dataset.pos;
+      document.getElementById('modalBio').textContent = card.dataset.bio;
+      document.getElementById('modalProfileLink').href = card.dataset.profile;
+      const badge = document.getElementById('modalPosBadge');
+      badge.textContent = posLabel[card.dataset.pos] || card.dataset.pos;
+      badge.className = 'player-pos-badge ' + (posBadgeClass[card.dataset.pos] || '');
+      currentModalPlayer = card.dataset.name || card.dataset.fullname.toLowerCase().split(' ')[0];
+      renderModalStars(getRating(currentModalPlayer));
+      modal.classList.add('active');
+    }
+
+    document.querySelectorAll('.player-card').forEach(card => {
+      card.addEventListener('click', () => openModal(card));
+    });
+
+    // =================== PRINT ===================
+    function printRoster() { window.print(); }
+
+    // =================== TOAST ===================
+    let toastTimer;
+    function showToast(msg) {
+      clearTimeout(toastTimer);
+      document.getElementById('toastMsg').textContent = msg;
+      const t = document.getElementById('toast');
+      t.classList.add('show');
+      toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // =================== INIT NATIONALITY CHART ===================
+    buildNatChart();
+  </script>
+</body>
+</html>

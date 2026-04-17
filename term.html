@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms & Conditions | Super Stars FC</title>
+  <link rel="shortcut icon" href="image0.jpeg" type="image/jpeg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="description" content="Super Stars FC — Terms & Conditions. Read the rules and guidelines for participating in our club." />
+
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #0f1724;
+      --accent-red: #b62a2d;
+      --accent-blue: #1c5da4;
+      --muted: #9aa4b2;
+      --max-w: 1100px;
+      --radius: 12px;
+      font-family: Inter, system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: linear-gradient(180deg, var(--bg), #071021);
+      color: #e6eef8;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--accent-blue); text-decoration: none; font-weight: 700; }
+    a:hover { color: var(--accent-red); }
+
+    /* ---- READING PROGRESS BAR ---- */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-red), var(--accent-blue));
+      z-index: 9998;
+      transition: width 0.1s linear;
+    }
+
+    /* ---- PAGE LOADER ---- */
+    #page-loader {
+      position: fixed; inset: 0;
+      background: var(--bg); z-index: 9999;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 18px;
+      transition: opacity 0.5s ease;
+    }
+    #page-loader .loader-logo {
+      width: 64px; height: 64px; border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      display: grid; place-items: center;
+      font-size: 1.6rem; font-weight: 900; color: #fff;
+      animation: pulse 1s ease-in-out infinite alternate;
+    }
+    #page-loader .loader-bar { width: 180px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 99px; overflow: hidden; }
+    #page-loader .loader-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-red), var(--accent-blue));
+      border-radius: 99px;
+      animation: loadbar 1.2s ease-in-out forwards;
+    }
+    @keyframes loadbar { from { width: 0; } to { width: 100%; } }
+    @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.08); } }
+    #page-loader.hidden { opacity: 0; pointer-events: none; }
+
+    /* ---- ACCEPTANCE BANNER ---- */
+    #accept-banner {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: rgba(11,16,32,0.97);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(28,93,164,0.3);
+      padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+      z-index: 800;
+      transform: translateY(0);
+      transition: transform 0.4s ease;
+    }
+    #accept-banner.hidden { transform: translateY(110%); }
+    #accept-banner p { color: var(--muted); font-size: 0.88rem; flex: 1; min-width: 200px; }
+    #accept-banner p a { color: var(--accent-blue); }
+    #accept-banner-btns { display: flex; gap: 10px; flex-shrink: 0; }
+    .banner-btn-accept {
+      padding: 9px 20px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+      color: #fff; font-weight: 800; border: none;
+      cursor: pointer; font-size: 0.85rem;
+      transition: transform 0.2s;
+    }
+    .banner-btn-accept:hover { transform: translateY(-1px); }
+    .banner-btn-dismiss {
+      padding: 9px 20px; border-radius: 999px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--muted); font-weight: 700;
+      cursor: pointer; font-size: 0.85rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .banner-btn-dismiss:hover { border-color: var(--accent-blue); color: #e6eef8; }
+
+    /* ---- CONTAINER ---- */
+    .container { max-width: var(--max-w); margin: auto; padding: 28px 20px 100px; }
+
+    /* ---- HEADER ---- */
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 60px;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; color: #fff; text-decoration: none; font-weight: 800; }
+    .logo {
+      width: 46px; height: 46px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      display: grid; place-items: center; font-weight: 900; color: #fff;
+    }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { color: var(--muted); font-weight: 600; font-size: 0.95rem; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: #fff; }
+    .nav-links a.active { border-bottom: 2px solid var(--accent-red); padding-bottom: 2px; }
+
+    /* Hamburger */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; z-index: 200; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #e6eef8; border-radius: 2px; transition: all 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav {
+      display: none; position: fixed; top: 0; right: 0;
+      width: 70%; max-width: 280px; height: 100vh;
+      background: #0c1526; z-index: 150;
+      flex-direction: column; padding: 80px 32px 40px; gap: 28px;
+      box-shadow: -8px 0 30px rgba(0,0,0,0.6);
+      transform: translateX(100%); transition: transform 0.35s ease;
+    }
+    .mobile-nav.open { transform: translateX(0); }
+    .mobile-nav a { color: #e6eef8; font-size: 1.15rem; font-weight: 700; }
+    .mobile-nav a:hover { color: var(--accent-red); }
+    .nav-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 140; }
+    .nav-overlay.open { display: block; }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .mobile-nav { display: flex; }
+    }
+
+    /* ---- HERO ---- */
+    .hero { text-align: center; margin-bottom: 50px; }
+    .hero-icon {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      display: grid; place-items: center; margin: 0 auto 20px;
+      font-size: 2rem;
+    }
+    .hero h1 { font-size: clamp(1.9rem, 4vw, 2.8rem); color: #fff; margin-bottom: 14px; }
+    .hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 14px; }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(28,93,164,0.15);
+      border: 1px solid rgba(28,93,164,0.35);
+      color: var(--accent-blue);
+      padding: 5px 16px; border-radius: 999px;
+      font-size: 0.82rem; font-weight: 700; letter-spacing: 0.05em;
+    }
+    .hero-badge.red {
+      background: rgba(182,42,45,0.15);
+      border-color: rgba(182,42,45,0.35);
+      color: var(--accent-red);
+    }
+    .hero p { color: var(--muted); max-width: 580px; margin: auto; font-size: 1rem; line-height: 1.7; }
+
+    /* ---- SEARCH BAR ---- */
+    .search-bar-wrap {
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .search-bar-wrap i {
+      position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+      color: var(--muted); font-size: 0.9rem;
+    }
+    #section-search {
+      width: 100%; padding: 13px 18px 13px 42px;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      color: #e6eef8; font-size: 0.95rem; outline: none;
+      transition: border-color 0.2s;
+    }
+    #section-search:focus { border-color: var(--accent-blue); }
+    #section-search::placeholder { color: var(--muted); }
+    #search-count { color: var(--muted); font-size: 0.82rem; margin-top: 8px; min-height: 18px; }
+
+    /* ---- TABLE OF CONTENTS ---- */
+    .toc-card {
+      background: var(--card); border-radius: var(--radius);
+      padding: 28px 32px; margin-bottom: 40px;
+      border-left: 4px solid var(--accent-blue);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    }
+    .toc-card h3 { color: #fff; margin-bottom: 16px; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.07em; }
+    .toc-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; list-style: none; padding: 0; }
+    .toc-list li a {
+      color: var(--muted); font-size: 0.88rem; font-weight: 600;
+      display: flex; align-items: center; gap: 8px; transition: color 0.2s;
+    }
+    .toc-list li a:hover { color: var(--accent-blue); }
+    .toc-list li a::before { content: "§"; color: var(--accent-red); font-weight: 900; }
+
+    /* ---- PRINT / DOWNLOAD STRIP ---- */
+    .action-strip {
+      background: var(--card); border-radius: var(--radius);
+      padding: 22px 28px; margin-bottom: 36px;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
+      border-left: 4px solid var(--accent-blue);
+    }
+    .action-strip p { color: var(--muted); font-size: 0.88rem; margin: 0; }
+    .action-strip-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .action-btn {
+      display: flex; align-items: center; gap: 7px;
+      padding: 9px 18px; border-radius: 999px;
+      font-weight: 700; font-size: 0.83rem; cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05); color: #e6eef8;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .action-btn:hover { background: rgba(255,255,255,0.1); border-color: var(--accent-blue); }
+
+    /* ---- ACCORDION SECTIONS ---- */
+    .terms-sections { margin-bottom: 50px; display: grid; gap: 14px; }
+
+    .accordion {
+      background: var(--card); border-radius: var(--radius);
+      overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: border-color 0.3s;
+    }
+    .accordion:hover { border-color: rgba(28,93,164,0.35); }
+    .accordion.open { border-color: rgba(28,93,164,0.6); }
+    .accordion.highlight { border-color: rgba(182,42,45,0.6); background: rgba(182,42,45,0.05); }
+
+    .accordion-header {
+      display: flex; align-items: center; gap: 16px;
+      padding: 20px 24px; cursor: pointer; user-select: none;
+      transition: background 0.2s;
+    }
+    .accordion-header:hover { background: rgba(255,255,255,0.03); }
+
+    .acc-num {
+      width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      display: grid; place-items: center;
+      font-weight: 900; font-size: 0.88rem; color: #fff;
+    }
+    .acc-title { flex: 1; color: #fff; font-weight: 700; font-size: 1rem; }
+    .acc-icon { color: var(--muted); font-size: 1rem; transition: transform 0.35s ease; }
+    .accordion.open .acc-icon { transform: rotate(180deg); color: var(--accent-blue); }
+
+    .accordion-body {
+      max-height: 0; overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 24px;
+    }
+    .accordion.open .accordion-body { max-height: 800px; padding: 0 24px 24px; }
+    .accordion-body p { color: var(--muted); line-height: 1.75; font-size: 0.95rem; margin-bottom: 10px; }
+    .accordion-body ul { padding-left: 20px; color: var(--muted); font-size: 0.95rem; }
+    .accordion-body ul li { margin-bottom: 8px; line-height: 1.6; }
+    .accordion-body a { color: var(--accent-blue); }
+
+    /* ---- CONTACT CTA CARD ---- */
+    .contact-cta {
+      background: linear-gradient(135deg, rgba(28,93,164,0.12), rgba(182,42,45,0.12));
+      border: 1px solid rgba(28,93,164,0.25);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .contact-cta h2 { color: #fff; font-size: 1.5rem; margin-bottom: 10px; }
+    .contact-cta p { color: var(--muted); font-size: 0.95rem; margin-bottom: 24px; line-height: 1.6; }
+    .contact-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      padding: 13px 28px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+      color: #fff; font-weight: 800; border: none;
+      cursor: pointer; font-size: 0.95rem; text-decoration: none; display: inline-block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(182,42,45,0.35); color: #fff; }
+    .btn-outline {
+      padding: 13px 28px; border-radius: 999px;
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.15);
+      color: var(--muted); font-weight: 700; display: inline-block;
+      font-size: 0.95rem; transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--accent-blue); color: #e6eef8; }
+
+    /* ---- SCROLL REVEAL ---- */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ---- BACK TO TOP ---- */
+    #back-to-top {
+      position: fixed; bottom: 80px; right: 24px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+      color: #fff; border: none; cursor: pointer;
+      font-size: 1.1rem; display: grid; place-items: center;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s; z-index: 500;
+    }
+    #back-to-top.visible { opacity: 1; pointer-events: all; }
+    #back-to-top:hover { transform: translateY(-3px); }
+
+    /* ---- FOOTER ---- */
+    .site-footer {
+      background: linear-gradient(180deg, var(--bg), #060a18);
+      color: #e6eef8; padding: 36px 20px 20px;
+      font-size: 14px; border-top-left-radius: 12px; border-top-right-radius: 12px;
+    }
+    .footer-container {
+      max-width: var(--max-w); margin: auto;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 36px;
+    }
+    .footer-brand h3 { color: #fff; margin-bottom: 8px; }
+    .footer-brand p { color: var(--muted); line-height: 1.6; }
+    .footer-links h4, .footer-contact h4, .footer-social h4 { color: #fff; margin-bottom: 12px; font-size: 15px; position: relative; }
+    .footer-links h4::after, .footer-contact h4::after, .footer-social h4::after {
+      content: ""; display: block; width: 34px; height: 2px; margin-top: 6px;
+      background: linear-gradient(90deg, var(--accent-red), var(--accent-blue));
+    }
+    .footer-links a { display: block; color: var(--muted); text-decoration: none; margin-bottom: 8px; transition: color 0.2s, transform 0.2s; }
+    .footer-links a:hover { color: #e6eef8; transform: translateX(4px); }
+    .footer-contact p { margin-bottom: 6px; color: var(--muted); }
+    .social-icons a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; margin-right: 10px; border-radius: 50%;
+      color: var(--muted); transition: color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .social-icons a svg { width: 18px; height: 18px; fill: currentColor; }
+    .social-icons a:hover { color: #fff; background: linear-gradient(135deg, var(--accent-red), var(--accent-blue)); transform: translateY(-2px) scale(1.08); box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
+    .social-icons a.icon-youtube:hover { background: #ff0000; }
+    .social-icons a.icon-facebook:hover { background: #1c5da4; }
+    .social-icons a.icon-twitter:hover { background: #000; }
+    .footer-bottom { margin-top: 32px; padding-top: 16px; text-align: center; color: var(--muted); position: relative; }
+    .footer-bottom::before {
+      content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+      width: 70%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-red), var(--accent-blue), transparent);
+    }
+
+    @media (max-width: 520px) {
+      .action-strip { flex-direction: column; align-items: flex-start; }
+      .contact-cta-btns { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PROGRESS BAR -->
+  <div id="progress-bar"></div>
+
+  <!-- PAGE LOADER -->
+  <div id="page-loader">
+    <div class="loader-logo">SS</div>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+  </div>
+
+  <!-- ACCEPTANCE BANNER -->
+  <div id="accept-banner">
+    <p>By using our website and services, you agree to our <a href="#">Terms & Conditions</a> and <a href="Privacy.html">Privacy Policy</a>.</p>
+    <div id="accept-banner-btns">
+      <button class="banner-btn-accept" onclick="dismissBanner()">I Agree</button>
+      <button class="banner-btn-dismiss" onclick="dismissBanner()">Dismiss</button>
+    </div>
+  </div>
+
+  <!-- MOBILE NAV OVERLAY -->
+  <div class="nav-overlay" id="nav-overlay"></div>
+
+  <!-- MOBILE DRAWER -->
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="index.html">🏠 Main</a>
+    <a href="about.html">📖 About</a>
+    <a href="new.html">📰 News</a>
+    <a href="teams.html">⚽ Teams</a>
+    <a href="roster.html">👥 Roster</a>
+    <a href="contact.html">📬 Contact</a>
+  </nav>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <header>
+      <a href="index.html" class="brand">
+        <div class="logo">SS</div>
+        <div>
+          <div>Super Star FC</div>
+          <div style="font-size:.8rem;color:var(--muted)">Official Club</div>
+        </div>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Main</a>
+        <a href="about.html">About</a>
+        <a href="new.html">News</a>
+        <a href="teams.html">Teams</a>
+        <a href="roster.html">Roster</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero reveal">
+      <div class="hero-icon">📜</div>
+      <div class="hero-badges">
+        <span class="hero-badge red">Effective: 2025</span>
+        <span class="hero-badge">Last Updated: June 3, 2025</span>
+        <span class="hero-badge">12 Sections</span>
+      </div>
+      <h1>Terms & Conditions</h1>
+      <p>By accessing our website, registering a player, or using any Super Stars FC services, you agree to be bound by these terms. Please read them carefully.</p>
+    </section>
+
+    <!-- SEARCH BAR -->
+    <div class="search-bar-wrap reveal">
+      <i class="fa fa-search"></i>
+      <input type="text" id="section-search" placeholder="Search terms... e.g. &quot;medical&quot;, &quot;photos&quot;, &quot;eligibility&quot;" oninput="searchSections()" />
+      <div id="search-count"></div>
+    </div>
+
+    <!-- TABLE OF CONTENTS -->
+    <div class="toc-card reveal">
+      <h3>📑 All Sections</h3>
+      <ul class="toc-list">
+        <li><a href="#sec1">About Super Stars FC</a></li>
+        <li><a href="#sec2">Eligibility & Registration</a></li>
+        <li><a href="#sec3">Player & Parent Responsibilities</a></li>
+        <li><a href="#sec4">Health, Safety & Medical Consent</a></li>
+        <li><a href="#sec5">Media, Photos & Videos</a></li>
+        <li><a href="#sec6">Website Use</a></li>
+        <li><a href="#sec7">Privacy</a></li>
+        <li><a href="#sec8">Limitation of Liability</a></li>
+        <li><a href="#sec9">Termination</a></li>
+        <li><a href="#sec10">Governing Law</a></li>
+        <li><a href="#sec11">Changes to These Terms</a></li>
+        <li><a href="#sec12">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <!-- PRINT / DOWNLOAD STRIP -->
+    <div class="action-strip reveal">
+      <p>Need a copy of these Terms for your records?</p>
+      <div class="action-strip-btns">
+        <button class="action-btn" onclick="window.print()">🖨️ Print</button>
+        <button class="action-btn" onclick="downloadTerms()">⬇️ Download (.txt)</button>
+      </div>
+    </div>
+
+    <!-- ACCORDION SECTIONS -->
+    <div class="terms-sections reveal" id="terms-sections">
+
+      <div class="accordion" id="sec1" data-content="About Super Stars FC community-based football soccer club player development sportsmanship teamwork contact information email phone">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="acc-num">1</div>
+          <div class="acc-title">About Super Stars FC</div>
+          <i class="fa fa-chevron-down acc-icon"></i>
+        </div>
+        <div class="accordion-body">
+          <p>Super Stars FC is a community-based football (soccer) club dedicated to player development, sportsmanship, and teamwork. We are committed to building strong athletes and leaders both on and off the pitch.</p>
+          <p><strong style="color:#e6eef8">Contact Information:</strong></p>
+          <p>📧 Email: superstarfc25@gmail.com<br>📞 Phone: +1 (531) 262-1982</p>
+        </div>
+      </div>
+
+      <div class="accordion" id="sec2" data-content="Eligibility Registration age requirements parents guardians minors accurate information accept deny cancel registrations">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="acc-num">2</div>
+          <div class="acc-title">Eligibility & Registration</div>
+          <i class="fa fa-chevron-down acc-icon"></i>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Players must meet age and eligibility requirements set by the Club.</li>
+            <li>Parents or legal guardians must register minors on their behalf.</li>
+            <li>All information provided during registration must be accurate and up to date.</li>
+            <li>The Club reserves the right to accept, deny, or cancel registrations at its discretion.</li>
+            <li>Re-registration may be required each season or year.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion" id="sec3" data-content="Player Parent Responsibilities rules conduct safety guidelines behavior punctuality respect coaches referees teammates opponents unsportsmanlike suspension removal">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="acc-num">3</div>
+          <div class="acc-title">Player & Parent Responsibilities</div>
+          <i class="fa fa-chevron-down acc-icon"></i>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>Players must follow all club rules, codes of conduct, and safety guidelines at all times.</li>
+            <li>Parents and guardians are responsible for their player's behavior, attendance, and punctuality.</li>
+            <li>Respect toward coaches, referees, teammates, and opponents is mandatory at all times.</li>
+            <li>Unsportsmanlike conduct, harassment, or abuse may result in suspension or permanent removal from the club.</li>
+            <li>Players are expected to arrive on time for all training sessions and matches.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion" id="sec4" data-content="Health Safety Medical Consent physical activity risks medically fit emergency treatment conditions disclosed insurance">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="acc-num">4</div>
+          <div class="acc-title">Health, Safety & Medical Consent</div>
+          <i class="fa fa-chevron-down acc-icon"></i>
+        </div>
+        <div class="accordion-body">
+          <p>Participation in sports involves physical activity and inherent risks. By registering, you acknowledge and voluntarily accept these risks.</p>
+          <ul>
+            <li>Parents and guardians confirm that the registered player is medically fit to participate.</li>
+            <li>The Club may seek emergency medical treatment if a player requires urgent care and parents cannot be reached.</li>
+            <li>Any known medical conditions, allergies, or special requirements must be disclosed to coaches in advance.</li>
+            <li>Participants are encouraged to maintain personal health insurance coverage.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion" id="sec5" data-content="Media Photos Videos photographs practices games events promotional educational permission opt-out written">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="acc-num">5</div>
+          <div class="acc-title">Media, Photos & Videos</div>
+          <i class="fa fa-chevron-down acc-icon"></i>
+        </div>
+        <div class="accordion-body">
+          <p>Super Stars FC may take photographs or videos during practices, games, and events for promotional, educational, or archival purposes.</p>
+          <p>By participating, you grant permission for the use of such media in club communications, social media, and website content unless you submit a written opt-out request to <a href="mailto:superstarfc25@gmail.com">superstarfc25@gmail.com</a>.</p>
+        </div>
+      </div>
+
+      <div class="accordion" id="sec6" data-content="Website Use unlawful harmful activities content copied reused permission modify discontinue">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="acc-num">6</div>
+          <div class="acc-title">Website Use</div>
+          <i class="fa fa-chevron-down acc-icon"></i>
+        </div>
+        <div class="accordion-body">
+          <ul>
+            <li>You may not use the website for unlawful, harmful, or fraudulent activities.</li>
+            <li>Website content including text, images, and graphics may not be copied or reused without express written permission from Super Stars FC.</li>
+            <li>We reserve the right to modify, suspend, or discontinue any website content at any time without notice.</li>
+            <li>Links to third-party websites are provided for convenience; we do not endorse or control their content.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="accordion" id="sec7" data-content="Privacy Policy personal data collect use protect information">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="acc-num">7</div>
+          <div class="acc-title">Privacy</div>
+          <i class="fa fa-chevron-down acc-icon"></i>
+        </div>
+        <div class="accordion-body">
+          <p>Your use of our services is also governed by our <a href="Privacy.html">Privacy Policy</a>. Please review it to understand how we collect, use, and protect your personal data. By using our services, you also agree to the terms of our Privacy Policy.</p>
+        </div>
+      </div>
+
+      <div class="accordion" id="sec8" data-content="Limitation Liability indirect incidental consequential damages participation website law">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="acc-num">8</div>
+          <div class="acc-title">Limitation of Liability</div>
+          <i class="fa fa-chevron-down acc-icon"></i>
+        </div>
+        <div class="accordion-body">
+          <p>To the maximum extent permitted by applicable law, Super Stars FC and its officers, coaches, volunteers, and affiliates shall not be liable for any indirect, incidental, special, or consequential damages arising from participation in Club activities or use of the website. This includes, but is not limited to, personal injury, property damage, or loss of data.</p>
+        </div>
+      </div>
+
+      <div class="accordion" id="sec9" data-content="Termination suspend terminate participation access services violations policies">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="acc-num">9</div>
+          <div class="acc-title">Termination</div>
+          <i class="fa fa-chevron-down acc-icon"></i>
+        </div>
+        <div class="accordion-body">
+          <p>The Club reserves the right to suspend or permanently terminate a player's participation or access to services at any time for violations of these Terms, the Code of Conduct, or any Club policies. Decisions made by Club leadership regarding termination are final.</p>
+        </div>
+      </div>
+
+      <div class="accordion" id="sec10" data-content="Governing Law United States Nebraska state laws interpreted">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="acc-num">10</div>
+          <div class="acc-title">Governing Law</div>
+          <i class="fa fa-chevron-down acc-icon"></i>
+        </div>
+        <div class="accordion-body">
+          <p>These Terms & Conditions shall be governed by and interpreted in accordance with the laws of the United States and the State of Nebraska, where Super Stars FC is based and operates. Any disputes shall be resolved in the appropriate courts of Nebraska.</p>
+        </div>
+      </div>
+
+      <div class="accordion" id="sec11" data-content="Changes Updates Terms Conditions updated effective date posted page notify">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="acc-num">11</div>
+          <div class="acc-title">Changes to These Terms</div>
+          <i class="fa fa-chevron-down acc-icon"></i>
+        </div>
+        <div class="accordion-body">
+          <p>We may update these Terms & Conditions at any time to reflect changes in our practices or legal requirements. Changes will be posted on this page with an updated effective date. We encourage you to review this page periodically. Continued use of our services after changes are posted constitutes your acceptance of the updated terms.</p>
+        </div>
+      </div>
+
+      <div class="accordion" id="sec12" data-content="Contact Us questions email phone superstarfc25@gmail.com 531 262-1982">
+        <div class="accordion-header" onclick="toggleAccordion(this)">
+          <div class="acc-num">12</div>
+          <div class="acc-title">Contact Us</div>
+          <i class="fa fa-chevron-down acc-icon"></i>
+        </div>
+        <div class="accordion-body">
+          <p>If you have any questions, concerns, or feedback regarding these Terms & Conditions, please reach out to us:</p>
+          <p>📧 Email: <strong style="color:#e6eef8">superstarfc25@gmail.com</strong><br>
+             📞 Phone: <strong style="color:#e6eef8">+1 (531) 262-1982</strong></p>
+          <p>We're here to help and will respond as soon as possible.</p>
+        </div>
+      </div>
+
+    </div><!-- end terms-sections -->
+
+    <!-- CONTACT CTA -->
+    <section class="contact-cta reveal">
+      <h2>Have Questions About These Terms?</h2>
+      <p>Our team is always happy to clarify anything. Reach out to us directly and we'll get back to you as soon as possible.</p>
+      <div class="contact-cta-btns">
+        <a href="contact.html" class="btn-primary">📬 Contact Us</a>
+        <a href="Privacy.html" class="btn-outline">🔒 Privacy Policy</a>
+      </div>
+    </section>
+
+  </div><!-- end container -->
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>Super Star FC</h3>
+        <p>Building champions on and off the field.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="./bout.html">About Us</a>
+        <a href="./new.html">News</a>
+        <a href="./teams.html">Teams</a>
+        <a href="./roster.html">Roster</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./Privacy.html">Privacy Policy</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>Email: superstarfc25@gmail.com</p>
+        <p>Phone: +1 (531) 262-1982</p>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/profile.php?id=100077275385711" aria-label="Facebook" class="icon-facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2V12h2.2V9.8c0-2.2 1.3-3.4 3.3-3.4.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 2.9h-1.9v7A10 10 0 0 0 22 12z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/super_starsfc_fc" aria-label="Instagram" class="icon-instagram">
+            <svg viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zm5.8-2.1a1.3 1.3 0 1 1-1.3-1.3 1.3 1.3 0 0 1 1.3 1.3z"/></svg>
+          </a>
+          <a href="https://x.com/SuperStars75843" aria-label="Twitter" class="icon-twitter">
+            <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.1.9A5.4 5.4 0 0 0 22.4 1a10.8 10.8 0 0 1-3.4 1.3A5.4 5.4 0 0 0 9.6 7a15.3 15.3 0 0 1-11.1-5.6 5.4 5.4 0 0 0 1.7 7.2A5.3 5.3 0 0 1 .8 8v.1a5.4 5.4 0 0 0 4.3 5.3 5.5 5.5 0 0 1-2.4.1 5.4 5.4 0 0 0 5 3.8A10.8 10.8 0 0 1 0 19.5 15.3 15.3 0 0 0 8.3 22c10 0 15.5-8.3 15.5-15.5v-.7A11 11 0 0 0 23 3z"/></svg>
+          </a>
+          <a href="https://youtube.com/@s.s.f.c?si=fV4gWuc4trgaRfF6" aria-label="YouTube" class="icon-youtube">
+            <svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5h0s-5.6 0-8.5.4c-.4.1-1.3.1-2.1 1C.7 4.6.5 6.2.5 6.2S0 8.1 0 10v2c0 1.9.5 3.8.5 3.8s.2 1.6.9 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.2.4 7.2.4s5.6 0 8.5-.4c.4-.1 1.3-.1 2.1-1 .7-.7.9-2.3.9-2.3s.5-1.9.5-3.8v-2c0-1.9-.5-3.8-.5-3.8zM9.8 14.5V9.5l4.8 2.5-4.8 2.5z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <span id="year"></span> Super Star FC. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- BACK TO TOP -->
+  <button id="back-to-top" title="Back to top">&#8679;</button>
+
+  <script>
+    // ---- PAGE LOADER ----
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const loader = document.getElementById('page-loader');
+        loader.classList.add('hidden');
+        setTimeout(() => loader.remove(), 600);
+      }, 1300);
+    });
+
+    // ---- YEAR ----
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ---- HAMBURGER ----
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobile-nav');
+    const navOverlay = document.getElementById('nav-overlay');
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileNav.classList.toggle('open');
+      navOverlay.classList.toggle('open');
+    });
+    navOverlay.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      navOverlay.classList.remove('open');
+    });
+
+    // ---- READING PROGRESS BAR ----
+    window.addEventListener('scroll', () => {
+      const doc = document.documentElement;
+      const scrolled = doc.scrollTop || document.body.scrollTop;
+      const total = doc.scrollHeight - doc.clientHeight;
+      document.getElementById('progress-bar').style.width = ((scrolled / total) * 100) + '%';
+
+      // back to top
+      document.getElementById('back-to-top').classList.toggle('visible', scrolled > 400);
+    });
+
+    // ---- BACK TO TOP ----
+    document.getElementById('back-to-top').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ---- SCROLL REVEAL ----
+    document.querySelectorAll('.reveal').forEach(el => {
+      new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+      }, { threshold: 0.08 }).observe(el);
+    });
+
+    // ---- ACCORDION ----
+    function toggleAccordion(header) {
+      const acc = header.parentElement;
+      const isOpen = acc.classList.contains('open');
+      document.querySelectorAll('.accordion.open').forEach(a => a.classList.remove('open'));
+      if (!isOpen) {
+        acc.classList.add('open');
+        setTimeout(() => acc.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+      }
+    }
+
+    // ---- ACCEPTANCE BANNER ----
+    function dismissBanner() {
+      document.getElementById('accept-banner').classList.add('hidden');
+      document.getElementById('back-to-top').style.bottom = '28px';
+    }
+
+    // ---- SEARCH SECTIONS ----
+    function searchSections() {
+      const query = document.getElementById('section-search').value.trim().toLowerCase();
+      const sections = document.querySelectorAll('.accordion');
+      let matchCount = 0;
+
+      sections.forEach(sec => {
+        const content = (sec.dataset.content || '').toLowerCase() + ' ' + sec.querySelector('.acc-title').textContent.toLowerCase();
+        const matches = query.length > 0 && content.includes(query);
+
+        sec.classList.toggle('highlight', matches);
+        if (matches) {
+          matchCount++;
+          sec.classList.add('open');
+        } else if (query.length > 0) {
+          sec.classList.remove('open');
+        }
+      });
+
+      const countEl = document.getElementById('search-count');
+      if (query.length === 0) {
+        countEl.textContent = '';
+        document.querySelectorAll('.accordion').forEach(a => { a.classList.remove('highlight'); a.classList.remove('open'); });
+      } else {
+        countEl.textContent = matchCount > 0
+          ? `✅ ${matchCount} section${matchCount > 1 ? 's' : ''} found for "${query}"`
+          : `❌ No sections found for "${query}"`;
+      }
+    }
+
+    // ---- DOWNLOAD TERMS ----
+    function downloadTerms() {
+      const text = `SUPER STARS FC — TERMS & CONDITIONS
+Effective Date: 2025
+
+1. ABOUT SUPER STARS FC
+Super Stars FC is a community-based football (soccer) club dedicated to player development, sportsmanship, and teamwork.
+Contact: superstarfc25@gmail.com | +1 (531) 262-1982
+
+2. ELIGIBILITY & REGISTRATION
+- Players must meet age and eligibility requirements set by the Club.
+- Parents or legal guardians must register minors on their behalf.
+- All information provided must be accurate and up to date.
+- The Club reserves the right to accept, deny, or cancel registrations.
+
+3. PLAYER & PARENT RESPONSIBILITIES
+- Players must follow all club rules, codes of conduct, and safety guidelines.
+- Parents/guardians are responsible for player behavior and punctuality.
+- Respect toward coaches, referees, teammates, and opponents is mandatory.
+- Unsportsmanlike conduct may result in suspension or removal.
+
+4. HEALTH, SAFETY & MEDICAL CONSENT
+- Parents confirm the player is medically fit to participate.
+- The Club may seek emergency medical treatment if necessary.
+- Any medical conditions must be disclosed in advance.
+
+5. MEDIA, PHOTOS & VIDEOS
+Super Stars FC may take photographs or videos during practices and events. By participating, you grant permission for use unless you submit a written opt-out.
+
+6. WEBSITE USE
+- You may not use the website for unlawful or harmful activities.
+- Content may not be copied or reused without permission.
+- We reserve the right to modify or discontinue website content.
+
+7. PRIVACY
+Your use of our services is governed by our Privacy Policy.
+
+8. LIMITATION OF LIABILITY
+To the maximum extent permitted by law, Super Stars FC shall not be liable for any indirect, incidental, or consequential damages.
+
+9. TERMINATION
+The Club reserves the right to suspend or terminate participation for violations of these Terms or Club policies.
+
+10. GOVERNING LAW
+These Terms shall be governed by the laws of the United States and the State of Nebraska.
+
+11. CHANGES TO THESE TERMS
+We may update these Terms at any time. Changes will be posted with an updated effective date.
+
+12. CONTACT US 
+Email: superstarfc25@gmail.com
+Phone: +1 (531) 262-1982
+
+© Super Stars FC. All Rights Reserved.`;
+
+      const blob = new Blob([text], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'SuperStarsFC_TermsAndConditions.txt';
+      a.click();
+    }
+  </script>
+</body>
+</html>

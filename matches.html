@@ -1,0 +1,2816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Matches & Results | Super Stars FC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Super Stars FC — Full match schedule, results, scorers, and season statistics. 2025–2026 · UPSL.">
+  <meta name="theme-color" content="#0b1020">
+  <link rel="shortcut icon" href="image0.jpeg" type="image/jpeg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — red #ff1e1e · blue #007bff · dark navy base
+       ============================================================ */
+    :root {
+      --red:         #ff1e1e;
+      --red-dark:    #cc0000;
+      --red-glow:    rgba(255,30,30,0.22);
+      --blue:        #007bff;
+      --blue-dark:   #005fcc;
+      --blue-glow:   rgba(0,123,255,0.22);
+      --bg:          #0b1020;
+      --bg-deep:     #060d1a;
+      --card:        #0f1724;
+      --card-hover:  #131f30;
+      --border:      rgba(255,255,255,0.06);
+      --border-blue: rgba(0,123,255,0.28);
+      --border-red:  rgba(255,30,30,0.28);
+      --muted:       #8a9ab5;
+      --text:        #e6eef8;
+      --text-dim:    #b0bdd0;
+      --max-w:       1120px;
+      --radius:      14px;
+      --radius-sm:   8px;
+      --font-disp:   'Oswald', sans-serif;
+      --font-cond:   'Barlow Condensed', sans-serif;
+      --font-body:   'Barlow', sans-serif;
+      --transition:  0.25s ease;
+    }
+
+    /* Light Mode */
+    body.light {
+      --bg:       #f0f4fa;
+      --bg-deep:  #e2e8f4;
+      --card:     #ffffff;
+      --card-hover: #f7f9ff;
+      --border:   rgba(0,0,0,0.07);
+      --muted:    #5a6a80;
+      --text:     #1a2233;
+      --text-dim: #3a4a5c;
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 400;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: var(--blue); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: var(--red); }
+    button { cursor: pointer; font-family: var(--font-body); border: none; }
+
+    /* ============================================================
+       READING PROGRESS BAR
+       ============================================================ */
+    #progress-bar {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--red), var(--blue));
+      z-index: 9999; transition: width 0.1s linear;
+      box-shadow: 0 0 10px var(--red-glow);
+    }
+
+    /* ============================================================
+       BREAKING TICKER
+       ============================================================ */
+    .ticker-wrap {
+      background: linear-gradient(90deg, var(--red-dark), var(--red));
+      color: #fff;
+      padding: 9px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      font-family: var(--font-cond);
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+    }
+    .ticker-label {
+      background: #fff;
+      color: var(--red);
+      padding: 3px 14px;
+      font-weight: 800;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      flex-shrink: 0;
+      margin-right: 14px;
+      position: relative;
+      z-index: 2;
+    }
+    .ticker-label::after {
+      content: '';
+      position: absolute;
+      right: -10px; top: 0; bottom: 0;
+      width: 0; height: 0;
+      border-top: 100% solid #fff;
+      border-right: 10px solid transparent;
+    }
+    .ticker-content {
+      display: inline-block;
+      animation: tickerScroll 45s linear infinite;
+    }
+    .ticker-content span { margin: 0 2.5rem; }
+    .ticker-content .dot { color: rgba(255,255,255,0.5); }
+    @keyframes tickerScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ============================================================
+       STICKY HEADER
+       ============================================================ */
+    .site-header {
+      position: sticky; top: 0; z-index: 500;
+      padding: 0 28px;
+      height: 66px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(11,16,32,0.96);
+      backdrop-filter: blur(14px) saturate(1.4);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.35);
+    }
+    body.light .site-header {
+      background: rgba(240,244,250,0.97);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    }
+
+    .brand { display: flex; align-items: center; gap: 13px; text-decoration: none; color: inherit; }
+
+    .logo {
+      width: 46px; height: 46px; border-radius: 11px;
+      background: linear-gradient(135deg, var(--red), var(--blue));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-disp); font-size: 1rem; letter-spacing: 0.03em;
+      color: #fff; font-weight: 700;
+      box-shadow: 0 4px 16px rgba(255,30,30,0.35), 0 0 0 1px rgba(255,255,255,0.06);
+    }
+
+    .brand-text .name {
+      font-family: var(--font-disp); font-size: 1.2rem; letter-spacing: 0.04em; line-height: 1;
+    }
+    .brand-text .sub {
+      font-family: var(--font-cond); font-size: 0.68rem; color: var(--muted);
+      letter-spacing: 0.14em; text-transform: uppercase;
+    }
+
+    .header-right { display: flex; align-items: center; gap: 10px; }
+
+    .nav-link {
+      color: var(--muted); font-family: var(--font-cond); font-weight: 600;
+      font-size: 0.88rem; letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 6px 10px; border-radius: 6px; transition: color var(--transition);
+      text-decoration: none;
+    }
+    .nav-link:hover { color: var(--text); }
+    .nav-link.active { color: var(--blue); }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--red), var(--blue));
+      color: #fff !important;
+      padding: 8px 18px; border-radius: var(--radius-sm);
+      font-family: var(--font-cond); font-weight: 700;
+      font-size: 0.88rem; letter-spacing: 0.08em; text-transform: uppercase;
+      transition: opacity var(--transition), transform var(--transition);
+      box-shadow: 0 3px 12px rgba(255,30,30,0.3);
+    }
+    .nav-cta:hover { opacity: 0.88; transform: translateY(-1px); text-decoration: none; color: #fff !important; }
+
+    .ctrl-group { display: flex; gap: 5px; }
+    .ctrl-btn {
+      background: rgba(255,255,255,0.05); border: 1px solid var(--border);
+      color: var(--muted); width: 34px; height: 34px; border-radius: 7px;
+      font-size: 0.75rem; transition: all var(--transition);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ctrl-btn:hover { border-color: var(--blue); color: var(--text); background: rgba(0,123,255,0.1); }
+    body.light .ctrl-btn { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.1); }
+
+    /* ============================================================
+       NEWSLETTER & NOTES
+       ============================================================ */
+    .nl-note {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+
+    /* ============================================================
+       SOCIAL SIDEBAR
+       ============================================================ */
+    #social-bar {
+      position: fixed; top: 50%; left: 0; transform: translateY(-50%);
+      width: 52px;
+      background: linear-gradient(180deg, var(--red), var(--blue));
+      border-radius: 0 44px 44px 0;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      padding: 20px 0;
+      z-index: 400;
+      box-shadow: 4px 0 24px rgba(255,30,30,0.2);
+      gap: 6px;
+    }
+    #social-bar a {
+      color: rgba(255,255,255,0.8); font-size: 1rem;
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.25s; text-decoration: none;
+    }
+    #social-bar a:hover { color: #fff; background: rgba(255,255,255,0.18); transform: scale(1.18); }
+    @media (max-width: 768px) { #social-bar { display: none; } }
+
+    /* ============================================================
+       HERO SECTION
+       ============================================================ */
+    .hero {
+      position: relative; overflow: hidden;
+      min-height: 520px;
+      display: flex; align-items: flex-end;
+      padding: 3rem 0 3.5rem;
+    }
+
+    /* Pitch grid background */
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, #060d1a 0%, #0b1020 50%, #07111f 100%);
+    }
+    .hero-pitch {
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(90deg, rgba(0,123,255,0.035) 0 1px, transparent 1px 90px),
+        repeating-linear-gradient(0deg, rgba(0,123,255,0.035) 0 1px, transparent 1px 90px);
+    }
+    /* Center circle */
+    .hero-circle {
+      position: absolute;
+      width: 380px; height: 380px;
+      border: 1px solid rgba(0,123,255,0.08);
+      border-radius: 50%;
+      top: 50%; right: 8%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    .hero-circle::before {
+      content: '';
+      position: absolute; inset: 40px;
+      border: 1px solid rgba(255,30,30,0.06);
+      border-radius: 50%;
+    }
+    /* Red spotlight */
+    .hero-glow-r {
+      position: absolute;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,30,30,0.07) 0%, transparent 65%);
+      top: -60px; left: -80px;
+      animation: glowDrift 9s ease-in-out infinite alternate;
+    }
+    .hero-glow-b {
+      position: absolute;
+      width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,123,255,0.065) 0%, transparent 65%);
+      bottom: -120px; right: 5%;
+      animation: glowDrift 11s ease-in-out infinite alternate-reverse;
+    }
+    @keyframes glowDrift {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(30px, -20px) scale(1.1); }
+    }
+
+    /* Big watermark text */
+    .hero-watermark {
+      position: absolute; right: 3%; bottom: -1rem;
+      font-family: var(--font-disp); font-size: 16rem;
+      color: rgba(0,123,255,0.03); line-height: 1;
+      pointer-events: none; user-select: none;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-inner {
+      position: relative; z-index: 2;
+      max-width: var(--max-w); margin: 0 auto;
+      padding: 0 2rem 0 5rem;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,30,30,0.12);
+      border: 1px solid rgba(255,30,30,0.25);
+      color: #ff8080;
+      font-family: var(--font-cond); font-weight: 700; font-size: 0.72rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 5px 16px; border-radius: 20px;
+      margin-bottom: 1.1rem;
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero-eyebrow .blink {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--red);
+      animation: blink 1.4s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.3;transform:scale(.6)} }
+
+    .hero h1 {
+      font-family: var(--font-disp);
+      font-size: clamp(2.8rem, 7vw, 5.2rem);
+      font-weight: 700;
+      line-height: 0.95;
+      letter-spacing: 0.02em;
+      margin-bottom: 1.2rem;
+      animation: fadeUp 0.65s ease 0.08s both;
+    }
+    .hero h1 .red   { color: var(--red); }
+    .hero h1 .blue  { color: var(--blue); }
+
+    .hero-desc {
+      max-width: 540px;
+      color: var(--text-dim);
+      font-size: 1.02rem;
+      line-height: 1.7;
+      margin-bottom: 1.8rem;
+      animation: fadeUp 0.65s ease 0.16s both;
+    }
+
+    .hero-meta {
+      display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+      font-family: var(--font-cond); font-size: 0.85rem;
+      color: var(--muted); letter-spacing: 0.06em;
+      animation: fadeUp 0.65s ease 0.24s both;
+    }
+    .hero-meta .chip {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      padding: 5px 12px; border-radius: 20px;
+    }
+    .hero-meta .chip i { color: var(--blue); font-size: 0.75rem; }
+    .hero-meta .chip.live { border-color: rgba(255,30,30,0.3); }
+    .hero-meta .chip.live i { color: var(--red); }
+
+    .hero-ctas {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      margin-top: 2rem;
+      animation: fadeUp 0.65s ease 0.32s both;
+    }
+    .btn-hero-primary {
+      background: linear-gradient(135deg, var(--red), var(--blue));
+      color: #fff; padding: 12px 26px; border-radius: var(--radius-sm);
+      font-family: var(--font-cond); font-weight: 700; font-size: 0.92rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      transition: transform var(--transition), box-shadow var(--transition);
+      box-shadow: 0 4px 20px rgba(255,30,30,0.3);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .btn-hero-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,30,30,0.4); text-decoration: none; color: #fff; }
+
+    .btn-hero-ghost {
+      background: transparent; color: var(--muted);
+      border: 1.5px solid var(--border); padding: 12px 24px; border-radius: var(--radius-sm);
+      font-family: var(--font-cond); font-weight: 700; font-size: 0.92rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      transition: all var(--transition);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .btn-hero-ghost:hover { border-color: var(--blue); color: var(--blue); text-decoration: none; }
+
+    @keyframes fadeUp {
+      from { opacity:0; transform:translateY(24px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* Diagonal badge overlay */
+    .hero-season-badge {
+      position: absolute; top: 28px; right: 3%;
+      background: linear-gradient(135deg, var(--red), var(--blue));
+      color: #fff; padding: 10px 22px; border-radius: 6px;
+      font-family: var(--font-disp); font-size: 1rem; letter-spacing: 0.08em;
+      box-shadow: 0 6px 20px rgba(255,30,30,0.3);
+      transform: rotate(2deg);
+      animation: fadeUp 0.7s ease 0.4s both;
+    }
+    .hero-season-badge small { display: block; font-size: 0.6rem; letter-spacing: 0.2em; opacity: 0.8; text-transform: uppercase; font-family: var(--font-cond); }
+
+    /* ============================================================
+       SHARED LAYOUT
+       ============================================================ */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
+
+    .section-title-wrap { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+    .section-title-wrap h2 {
+      font-family: var(--font-disp); font-size: 1.35rem; font-weight: 600;
+      letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap;
+    }
+    .title-line { flex: 1; height: 1px; background: var(--border); }
+    .title-icon { color: var(--blue); margin-right: 6px; }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* Section spacing */
+    .section { padding: 3rem 0; }
+    .section + .section { border-top: 1px solid var(--border); }
+
+    /* ============================================================
+       SEASON SNAPSHOT (4-stat bar)
+       ============================================================ */
+    .snapshot-bar {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      background: var(--card); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--red);
+      box-shadow: 0 6px 30px rgba(0,0,0,0.3);
+      overflow: hidden;
+      margin: 2rem 0;
+    }
+    .snap-item {
+      padding: 22px 18px; text-align: center;
+      position: relative;
+    }
+    .snap-item:not(:last-child) { border-right: 1px solid var(--border); }
+    .snap-num {
+      font-family: var(--font-disp); font-size: 3rem; line-height: 1; font-weight: 700;
+      background: linear-gradient(135deg, var(--red), var(--blue));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .snap-label {
+      font-family: var(--font-cond); font-size: 0.68rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted); margin-top: 4px;
+    }
+    .snap-sub {
+      font-family: var(--font-cond); font-size: 0.72rem; color: var(--muted);
+      margin-top: 2px; letter-spacing: 0.04em;
+    }
+    @media (max-width: 600px) {
+      .snapshot-bar { grid-template-columns: 1fr 1fr; }
+      .snap-item:nth-child(2) { border-right: none; }
+      .snap-item:nth-child(3) { border-right: 1px solid var(--border); border-top: 1px solid var(--border); }
+      .snap-item:nth-child(4) { border-top: 1px solid var(--border); }
+    }
+
+    /* ============================================================
+       FORM STRIP
+       ============================================================ */
+    .form-strip-wrap {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px 24px;
+      margin-bottom: 24px;
+      display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+    }
+    .form-label {
+      font-family: var(--font-cond); font-weight: 700; font-size: 0.72rem;
+      text-transform: uppercase; letter-spacing: 0.18em; color: var(--muted); flex-shrink: 0;
+    }
+    .form-dots { display: flex; gap: 7px; align-items: center; flex-wrap: wrap; }
+    .form-dot {
+      width: 36px; height: 36px; border-radius: 8px;
+      font-family: var(--font-disp); font-size: 0.85rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      letter-spacing: 0.04em; position: relative; cursor: default;
+    }
+    .form-dot.W { background: rgba(46,204,113,0.18); color: #2ecc71; border: 1px solid rgba(46,204,113,0.3); }
+    .form-dot.D { background: rgba(241,196,15,0.15); color: #f1c40f; border: 1px solid rgba(241,196,15,0.3); }
+    .form-dot.L { background: rgba(255,30,30,0.12);  color: #ff6b6b; border: 1px solid rgba(255,30,30,0.25); }
+    .form-dot.C { background: rgba(200,200,200,0.1); color: #aaa;    border: 1px solid rgba(200,200,200,0.2); }
+    .form-dot[title] { cursor: help; }
+    .form-info {
+      margin-left: auto; font-family: var(--font-cond); font-size: 0.8rem; color: var(--muted);
+    }
+
+    /* ============================================================
+       COUNTDOWN — NEXT MATCH
+       ============================================================ */
+    .next-match-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--red);
+      padding: 24px 28px; margin-bottom: 24px;
+      display: grid; grid-template-columns: auto 1fr auto; gap: 24px; align-items: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+      flex-wrap: wrap;
+      position: relative; overflow: hidden;
+    }
+    .next-match-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 100% 50%, rgba(0,123,255,0.04) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .nm-eyebrow {
+      font-family: var(--font-cond); font-weight: 800; font-size: 0.68rem;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--red);
+      margin-bottom: 6px; display: flex; align-items: center; gap: 6px;
+    }
+    .nm-eyebrow .pulse-dot {
+      width: 7px; height: 7px; border-radius: 50%; background: var(--red);
+      animation: blink 1.4s ease-in-out infinite;
+    }
+    .nm-match-title {
+      font-family: var(--font-disp); font-size: 1.3rem; font-weight: 600; color: var(--text);
+    }
+    .nm-details { font-family: var(--font-cond); font-size: 0.82rem; color: var(--muted); margin-top: 4px; }
+
+    .countdown-units { display: flex; gap: 8px; align-items: center; }
+    .cd-box {
+      text-align: center; background: var(--bg-deep);
+      border: 1px solid var(--border); border-radius: 10px;
+      padding: 12px 14px; min-width: 64px;
+    }
+    .cd-num {
+      font-family: var(--font-disp); font-size: 1.9rem; font-weight: 700; line-height: 1;
+      background: linear-gradient(135deg, var(--red), var(--blue));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .cd-lbl { font-family: var(--font-cond); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
+    .cd-sep { font-family: var(--font-disp); font-size: 1.4rem; color: var(--red); font-weight: 700; }
+
+    .nm-venue { text-align: right; }
+    .nm-venue .venue-tag {
+      display: inline-block; background: rgba(0,123,255,0.12);
+      border: 1px solid rgba(0,123,255,0.22); color: #6ab4ff;
+      font-family: var(--font-cond); font-weight: 700; font-size: 0.65rem;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 3px 12px; border-radius: 20px; margin-bottom: 6px;
+    }
+    .nm-venue .venue-name { font-family: var(--font-cond); font-weight: 600; font-size: 0.9rem; color: var(--text); }
+    .nm-venue .venue-loc  { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+
+    @media (max-width: 700px) {
+      .next-match-card { grid-template-columns: 1fr; gap: 16px; }
+      .nm-venue { text-align: left; }
+    }
+
+    /* ============================================================
+       TOOLBAR (like + share)
+       ============================================================ */
+    .page-toolbar {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 10px;
+      padding: 14px 0; margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .toolbar-left, .toolbar-right { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+    .action-btn {
+      display: flex; align-items: center; gap: 7px;
+      background: var(--card); border: 1.5px solid var(--border);
+      color: var(--muted); padding: 9px 16px; border-radius: var(--radius-sm);
+      font-family: var(--font-cond); font-weight: 700; font-size: 0.8rem;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      transition: all var(--transition);
+    }
+    .action-btn:hover { border-color: var(--blue); color: var(--text); }
+    .action-btn.liked { border-color: var(--red); color: var(--red); }
+    .action-btn.copied { border-color: #2ecc71; color: #2ecc71; }
+
+    /* ============================================================
+       FILTER BAR
+       ============================================================ */
+    .filter-bar {
+      display: flex; gap: 7px; flex-wrap: wrap;
+      align-items: center; margin-bottom: 28px;
+    }
+    .filter-lbl {
+      font-family: var(--font-cond); font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.18em; color: var(--muted);
+      margin-right: 4px; display: flex; align-items: center; gap: 5px;
+    }
+    .filter-tab {
+      background: var(--card); border: 1.5px solid var(--border);
+      color: var(--muted); padding: 8px 16px; border-radius: 20px;
+      font-family: var(--font-cond); font-weight: 700; font-size: 0.8rem;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      transition: all var(--transition); white-space: nowrap;
+      display: flex; align-items: center; gap: 7px;
+    }
+    .filter-tab:hover { border-color: var(--blue); color: var(--text); }
+    .filter-tab.active { background: var(--blue); border-color: var(--blue); color: #fff; }
+    .filter-tab .count-pill {
+      background: rgba(255,255,255,0.15); color: inherit;
+      font-size: 0.65rem; padding: 1px 7px; border-radius: 20px;
+    }
+    .filter-tab.active .count-pill { background: rgba(255,255,255,0.25); }
+
+    /* ============================================================
+       MATCH CARDS
+       ============================================================ */
+    #noResults {
+      display: none; text-align: center; padding: 50px 20px;
+      color: var(--muted); font-family: var(--font-cond);
+      font-size: 1rem; letter-spacing: 0.06em;
+    }
+    #noResults i { font-size: 2.5rem; display: block; margin-bottom: 12px; opacity: .4; }
+
+    .match-list {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(308px, 1fr));
+      gap: 18px; margin-bottom: 48px;
+    }
+
+    .match-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.28);
+      overflow: hidden; cursor: pointer;
+      transition: transform 0.28s, box-shadow 0.28s, border-color 0.28s;
+      opacity: 0; transform: translateY(24px);
+    }
+    .match-card.visible { opacity: 1; transform: none; }
+    .match-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.45); border-color: rgba(0,123,255,0.22); }
+    body.light .match-card { background: #fff; border-color: rgba(0,0,0,0.07); }
+
+    /* Left-border result indicator */
+    .match-card.win      { border-left: 4px solid #2ecc71; }
+    .match-card.draw     { border-left: 4px solid #f1c40f; }
+    .match-card.loss     { border-left: 4px solid var(--red); }
+    .match-card.upcoming { border-left: 4px solid var(--blue); }
+    .match-card.canceled { border-left: 4px solid #888; }
+
+    /* Card top stripe */
+    .card-stripe {
+      height: 3px;
+      background: linear-gradient(90deg, var(--red), var(--blue));
+      opacity: 0.5;
+    }
+    .match-card.win  .card-stripe { background: #2ecc71; opacity: 0.7; }
+    .match-card.loss .card-stripe { background: var(--red); opacity: 0.7; }
+    .match-card.draw .card-stripe { background: #f1c40f; opacity: 0.7; }
+
+    .card-inner { padding: 18px 20px; }
+
+    .match-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; flex-wrap: wrap; gap: 7px; }
+    .match-date { font-family: var(--font-cond); font-size: 0.76rem; font-weight: 600; color: var(--muted); letter-spacing: 0.06em; display: flex; align-items: center; gap: 5px; }
+    .badge-row  { display: flex; gap: 5px; align-items: center; }
+
+    /* Team vs row */
+    .match-vs-row {
+      display: grid; grid-template-columns: 1fr auto 1fr;
+      align-items: center; gap: 10px; margin-bottom: 14px;
+    }
+    .team-side { display: flex; flex-direction: column; align-items: flex-start; }
+    .team-side.right { align-items: flex-end; text-align: right; }
+    .team-initials {
+      width: 40px; height: 40px; border-radius: 10px;
+      font-family: var(--font-disp); font-size: 0.88rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 5px;
+    }
+    .team-initials.ssfc { background: linear-gradient(135deg, var(--red), var(--blue)); color: #fff; }
+    .team-initials.opp  { background: rgba(255,255,255,0.08); color: var(--muted); }
+    .team-name { font-family: var(--font-cond); font-weight: 700; font-size: 0.9rem; color: var(--text); line-height: 1.2; }
+    body.light .team-name { color: #1a2233; }
+
+    .score-center { text-align: center; }
+    .score-val {
+      font-family: var(--font-disp); font-size: 2rem; font-weight: 700; line-height: 1;
+      color: var(--text); letter-spacing: 0.05em;
+    }
+    .score-val.win  { color: #2ecc71; }
+    .score-val.loss { color: var(--red); }
+    .score-val.draw { color: #f1c40f; }
+    .score-vs { font-family: var(--font-disp); font-size: 1rem; color: var(--muted); }
+    .score-status { font-family: var(--font-cond); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px; }
+
+    .card-footer {
+      padding-top: 12px; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 10px;
+      flex-wrap: wrap;
+    }
+    body.light .card-footer { border-color: rgba(0,0,0,0.07); }
+    .card-venue { font-size: 0.76rem; color: var(--muted); display: flex; align-items: center; gap: 5px; font-family: var(--font-cond); }
+    .card-scorers { font-size: 0.76rem; color: var(--muted); font-family: var(--font-cond); line-height: 1.5; }
+    .card-scorers strong { color: var(--text); font-weight: 600; }
+    body.light .card-scorers strong { color: #1a2233; }
+
+    /* Badge styles */
+    .loc-badge, .result-badge {
+      font-family: var(--font-cond); font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 3px 11px; border-radius: 20px;
+    }
+    .loc-badge.home { background: rgba(0,123,255,0.14); color: #6ab4ff; border: 1px solid rgba(0,123,255,0.22); }
+    .loc-badge.away { background: rgba(255,30,30,0.1);  color: #ff9a9a; border: 1px solid rgba(255,30,30,0.18); }
+    .result-badge.win      { background: rgba(46,204,113,0.14); color: #2ecc71; border: 1px solid rgba(46,204,113,0.25); }
+    .result-badge.draw     { background: rgba(241,196,15,0.12);  color: #f1c40f; border: 1px solid rgba(241,196,15,0.25); }
+    .result-badge.loss     { background: rgba(255,30,30,0.1);    color: #ff7070; border: 1px solid rgba(255,30,30,0.2); }
+    .result-badge.upcoming { background: rgba(0,123,255,0.12);   color: #6ab4ff; border: 1px solid rgba(0,123,255,0.22); }
+    .result-badge.canceled { background: rgba(150,150,150,0.1);  color: #aaa;    border: 1px solid rgba(150,150,150,0.2); }
+
+    /* Section divider */
+    .section-divider {
+      display: flex; align-items: center; gap: 14px;
+      color: var(--muted); font-size: 1.1rem;
+      margin: 16px 0 36px;
+    }
+    .section-divider::before, .section-divider::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+    }
+
+    /* ============================================================
+       TOP SCORERS SECTION
+       ============================================================ */
+    .scorers-section {
+      background: var(--card); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--blue);
+      padding: 24px 28px; margin-bottom: 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+    .scorers-section h3 {
+      font-family: var(--font-disp); font-size: 1rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 18px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .scorer-row {
+      display: grid; grid-template-columns: 28px 1fr 60px;
+      gap: 10px; align-items: center;
+      padding: 9px 0;
+      border-bottom: 1px solid var(--border);
+      transition: background var(--transition);
+    }
+    .scorer-row:last-child { border: none; }
+    .scorer-row:hover { background: rgba(0,123,255,0.03); }
+    .scorer-pos { font-family: var(--font-disp); font-size: 0.85rem; color: var(--muted); text-align: center; }
+    .scorer-info { }
+    .scorer-name { font-family: var(--font-cond); font-weight: 700; font-size: 0.95rem; color: var(--text); }
+    .scorer-bar-wrap { position: relative; }
+    .scorer-bar-bg { height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; }
+    .scorer-bar-fill { height: 100%; background: linear-gradient(90deg, var(--red), var(--blue)); border-radius: 3px; transition: width 1.2s ease; width: 0; }
+    .scorer-goals {
+      font-family: var(--font-disp); font-size: 1rem; font-weight: 700;
+      color: var(--text); text-align: right;
+    }
+    .scorer-goals small { font-size: 0.65rem; color: var(--muted); font-family: var(--font-cond); letter-spacing: 0.1em; }
+
+    /* ============================================================
+       SEASON CHART (CSS goals per match)
+       ============================================================ */
+    .chart-section {
+      background: var(--card); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 24px 28px; margin-bottom: 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+    .chart-section h3 {
+      font-family: var(--font-disp); font-size: 1rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--red); margin-bottom: 20px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .bar-chart { display: flex; gap: 10px; align-items: flex-end; height: 120px; }
+    .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+    .bar-val { font-family: var(--font-disp); font-size: 0.75rem; color: var(--text); }
+    .bar { width: 100%; border-radius: 4px 4px 0 0; transition: height 1s ease; min-height: 4px;
+           background: linear-gradient(180deg, var(--blue), var(--red)); }
+    .bar.win  { background: linear-gradient(180deg, #2ecc71, #1a9e54); }
+    .bar.loss { background: linear-gradient(180deg, var(--red), var(--red-dark)); }
+    .bar.draw { background: linear-gradient(180deg, #f1c40f, #c9a200); }
+    .bar.canceled { background: rgba(255,255,255,0.1); }
+    .bar-lbl { font-family: var(--font-cond); font-size: 0.62rem; color: var(--muted); text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%; }
+    .chart-legend { display: flex; gap: 16px; margin-top: 14px; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: 6px; font-family: var(--font-cond); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; }
+    .legend-dot { width: 10px; height: 10px; border-radius: 2px; }
+
+    /* ============================================================
+       ATTENDANCE TRACKER
+       ============================================================ */
+    .attendance-section {
+      background: var(--card); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 24px 28px; margin-bottom: 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+    .attendance-section h3 {
+      font-family: var(--font-disp); font-size: 1rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 18px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .att-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+    .att-box {
+      background: var(--bg-deep); border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 12px; text-align: center;
+    }
+    .att-match { font-family: var(--font-cond); font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+    .att-num { font-family: var(--font-disp); font-size: 1.5rem; font-weight: 700; color: var(--text); }
+    .att-bar { height: 4px; border-radius: 2px; margin-top: 8px; background: linear-gradient(90deg, var(--red), var(--blue)); }
+
+    /* ============================================================
+       FAN POLL SECTION
+       ============================================================ */
+    .poll-section {
+      background: var(--card); border-radius: var(--radius);
+      border: 1px solid var(--border); border-left: 4px solid var(--red);
+      padding: 24px 28px; margin-bottom: 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+    .poll-section h3 {
+      font-family: var(--font-disp); font-size: 1.1rem; font-weight: 600;
+      letter-spacing: 0.06em; color: var(--text); margin-bottom: 6px;
+    }
+    .poll-question { font-size: 0.9rem; color: var(--muted); margin-bottom: 18px; }
+    .poll-options { display: flex; flex-direction: column; gap: 9px; }
+    .poll-option {
+      display: flex; align-items: center; gap: 10px; cursor: pointer;
+      padding: 10px 14px; border-radius: 8px;
+      background: rgba(255,255,255,0.03); border: 1.5px solid var(--border);
+      transition: all var(--transition);
+    }
+    .poll-option:hover { border-color: var(--blue); background: rgba(0,123,255,0.05); }
+    .poll-option.selected { border-color: var(--red); background: rgba(255,30,30,0.07); }
+    .poll-radio { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--muted); flex-shrink: 0; transition: all var(--transition); }
+    .poll-option.selected .poll-radio { border-color: var(--red); background: var(--red); }
+    .poll-option-text { font-family: var(--font-cond); font-weight: 600; font-size: 0.88rem; flex: 1; }
+    .poll-bar-wrap { flex: 2; height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; overflow: hidden; display: none; }
+    .poll-bar-fill { height: 100%; background: linear-gradient(90deg, var(--red), var(--blue)); border-radius: 3px; transition: width 0.8s ease; }
+    .poll-pct { font-family: var(--font-cond); font-size: 0.76rem; color: var(--muted); min-width: 36px; text-align: right; display: none; }
+    .poll-submitted .poll-bar-wrap, .poll-submitted .poll-pct { display: block; }
+    .poll-total { margin-top: 12px; font-family: var(--font-cond); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; }
+    .poll-vote-btn {
+      margin-top: 14px; padding: 10px 24px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--red), var(--blue));
+      color: #fff; font-family: var(--font-cond); font-weight: 700;
+      font-size: 0.88rem; letter-spacing: 0.1em; text-transform: uppercase;
+      border: none; transition: all var(--transition);
+      box-shadow: 0 3px 14px rgba(255,30,30,0.25);
+    }
+    .poll-vote-btn:hover { transform: translateY(-1px); box-shadow: 0 5px 20px rgba(255,30,30,0.35); }
+    .poll-vote-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+    /* ============================================================
+       PHOTO GALLERY
+       ============================================================ */
+    .gallery-section { padding: 2rem 0; }
+    .gallery-section h3 {
+      font-family: var(--font-disp); font-size: 1rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--text); margin-bottom: 18px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .gallery-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: auto auto; gap: 10px; }
+    .gallery-item {
+      border-radius: 10px; overflow: hidden; position: relative;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .gallery-item:hover { transform: scale(1.02); box-shadow: 0 10px 30px rgba(0,0,0,0.45); }
+    .gallery-item:first-child { grid-row: span 2; }
+    .gallery-placeholder {
+      width: 100%; aspect-ratio: 4/3;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 8px; position: relative;
+    }
+    .gallery-item:first-child .gallery-placeholder { aspect-ratio: unset; height: 100%; min-height: 220px; }
+    .gallery-ph-1 { background: linear-gradient(135deg, #0d1f3a, #0b2744); }
+    .gallery-ph-2 { background: linear-gradient(135deg, #2a0808, #1a0505); }
+    .gallery-ph-3 { background: linear-gradient(135deg, #0a1a2e, #0d213d); }
+    .gallery-ph-4 { background: linear-gradient(135deg, #1a0d0d, #2d1010); }
+    .gallery-ph-5 { background: linear-gradient(135deg, #0d1a30, #0b1e38); }
+    .gallery-icon { font-size: 2.5rem; opacity: 0.3; }
+    .gallery-cap {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: linear-gradient(0, rgba(0,0,0,0.75) 0%, transparent 100%);
+      padding: 20px 12px 10px;
+      font-family: var(--font-cond); font-size: 0.78rem;
+      color: rgba(255,255,255,0.85); text-align: center;
+    }
+    .gallery-overlay {
+      position: absolute; inset: 0; background: rgba(255,30,30,0.12);
+      opacity: 0; transition: opacity var(--transition);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+    .gallery-overlay i { font-size: 1.8rem; color: #fff; }
+    @media (max-width: 600px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:first-child { grid-column: span 2; grid-row: span 1; }
+    }
+
+    /* ============================================================
+       NEWSLETTER
+       ============================================================ */
+    .newsletter-card {
+      background: var(--card); border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden; margin-bottom: 28px;
+      position: relative;
+    }
+    .newsletter-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 100% at 0% 50%, rgba(255,30,30,0.05) 0%, transparent 55%),
+                  radial-gradient(ellipse 70% 100% at 100% 50%, rgba(0,123,255,0.05) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .newsletter-inner { padding: 32px 36px; position: relative; z-index: 1; text-align: center; }
+    .newsletter-inner .eyebrow {
+      font-family: var(--font-cond); font-size: 0.7rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--red); margin-bottom: 10px;
+    }
+    .newsletter-inner h3 {
+      font-family: var(--font-disp); font-size: 1.8rem; font-weight: 600;
+      letter-spacing: 0.04em; color: var(--text); margin-bottom: 8px;
+    }
+    .newsletter-inner p { color: var(--muted); font-size: 0.9rem; margin-bottom: 22px; }
+    .nl-form { display: flex; gap: 8px; max-width: 440px; margin: 0 auto; }
+    .nl-input {
+      flex: 1; background: var(--bg-deep); border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm); padding: 11px 16px; color: var(--text);
+      font-family: var(--font-body); font-size: 0.92rem; outline: none;
+      transition: border-color var(--transition);
+    }
+    .nl-input:focus { border-color: var(--red); }
+    .nl-input::placeholder { color: var(--muted); }
+    .nl-btn {
+      background: linear-gradient(135deg, var(--red), var(--blue));
+      color: #fff; border: none; padding: 11px 22px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-cond); font-weight: 700; font-size: 0.88rem;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      transition: all var(--transition); white-space: nowrap;
+      box-shadow: 0 3px 14px rgba(255,30,30,0.25);
+    }
+    .nl-btn:hover { transform: translateY(-1px); box-shadow: 0 5px 20px rgba(255,30,30,0.35); }
+    @media (max-width: 480px) { .nl-form { flex-direction: column; } }
+
+    /* ============================================================
+       MATCH MODAL
+       ============================================================ */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.82);
+      display: none; justify-content: center; align-items: center;
+      z-index: 1000; padding: 1rem; backdrop-filter: blur(4px);
+    }
+    .modal-overlay.active { display: flex; }
+    .modal-box {
+      background: var(--card); border-radius: var(--radius);
+      width: 100%; max-width: 540px; position: relative;
+      border-top: 3px solid var(--blue);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+      animation: modalPop 0.25s ease;
+      max-height: 90vh; overflow-y: auto;
+    }
+    body.light .modal-box { background: #fff; }
+    @keyframes modalPop { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    .modal-header {
+      padding: 22px 24px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    body.light .modal-header { border-color: rgba(0,0,0,0.08); }
+    .modal-close {
+      position: absolute; top: 14px; right: 18px;
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+      color: var(--muted); font-size: 1.1rem; font-weight: bold;
+      display: flex; align-items: center; justify-content: center;
+      transition: all var(--transition);
+    }
+    .modal-close:hover { background: rgba(255,30,30,0.15); color: var(--red); border-color: var(--red); }
+    .modal-title { font-family: var(--font-disp); font-size: 1.2rem; font-weight: 600; color: var(--blue); margin-bottom: 8px; padding-right: 36px; }
+    .modal-score-display {
+      font-family: var(--font-disp); font-size: 2.5rem; font-weight: 700;
+      color: var(--text); letter-spacing: 0.08em; line-height: 1;
+      margin: 8px 0 4px;
+    }
+
+    .modal-body { padding: 20px 24px; }
+    .modal-row {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;
+    }
+    body.light .modal-row { border-color: rgba(0,0,0,0.07); }
+    .modal-row:last-child { border: none; }
+    .modal-row i { color: var(--blue); width: 16px; margin-top: 2px; flex-shrink: 0; }
+    .modal-row span { color: var(--muted); line-height: 1.6; }
+    .modal-row strong { color: var(--text); font-weight: 600; }
+    body.light .modal-row strong { color: #1a2233; }
+
+    .modal-footer {
+      padding: 16px 24px; border-top: 1px solid var(--border);
+      display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    body.light .modal-footer { border-color: rgba(0,0,0,0.08); }
+    .modal-share-btn {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(0,123,255,0.1); border: 1px solid rgba(0,123,255,0.2);
+      color: #6ab4ff; padding: 8px 14px; border-radius: 7px;
+      font-family: var(--font-cond); font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      transition: all var(--transition);
+    }
+    .modal-share-btn:hover { background: rgba(0,123,255,0.2); }
+
+    /* ============================================================
+       TOAST
+       ============================================================ */
+    .toast {
+      position: fixed; bottom: 90px; right: 28px;
+      background: #1b2a45; border: 1px solid var(--blue);
+      color: var(--text); padding: 13px 20px;
+      border-radius: 10px; font-size: 0.88rem; font-weight: 600;
+      z-index: 2000;
+      transform: translateY(80px); opacity: 0;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+      display: flex; align-items: center; gap: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      max-width: 280px;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    body.light .toast { background: #fff; border-color: var(--blue); color: #1a2233; }
+
+    /* ============================================================
+       SCROLL-TO-TOP
+       ============================================================ */
+    .scroll-top {
+      position: fixed; bottom: 28px; right: 28px;
+      width: 46px; height: 46px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--red), var(--blue));
+      color: #fff; font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; border: none;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 999; box-shadow: 0 4px 16px rgba(255,30,30,0.3);
+    }
+    .scroll-top.show { opacity: 1; pointer-events: all; }
+    .scroll-top:hover { transform: translateY(-3px) scale(1.06); }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .site-footer {
+      background: linear-gradient(180deg, var(--bg), var(--bg-deep));
+      border-top: 1px solid var(--border);
+      padding: 48px 0 20px; margin-top: 60px;
+    }
+    .footer-grid {
+      max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 768px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 28px; } }
+    @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+
+    .footer-brand h3 {
+      font-family: var(--font-disp); font-size: 1.5rem; font-weight: 600;
+      letter-spacing: 0.04em; color: var(--text); margin-bottom: 10px;
+    }
+    .footer-brand p { color: var(--muted); font-size: 0.88rem; line-height: 1.65; margin-bottom: 4px; }
+
+    .footer-col h4 {
+      font-family: var(--font-cond); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--text); margin-bottom: 14px; position: relative;
+    }
+    .footer-col h4::after {
+      content: ''; display: block; width: 28px; height: 2px; margin-top: 7px;
+      background: linear-gradient(90deg, var(--red), var(--blue));
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a { color: var(--muted); font-size: 0.88rem; transition: all var(--transition); display: inline-block; }
+    .footer-col ul li a:hover { color: var(--text); transform: translateX(4px); text-decoration: none; }
+
+    .footer-contact p { color: var(--muted); font-size: 0.88rem; margin-bottom: 7px; display: flex; gap: 8px; }
+    .footer-contact p i { color: var(--blue); width: 14px; flex-shrink: 0; margin-top: 3px; }
+
+    .footer-social-icons { display: inline-flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+    .footer-social-icons a {
+       display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin-right: 10px; border-radius: 50%; color: var(--muted); text-decoration: none; transition: color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .footer-social-icons a:hover {
+      background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+      color: #fff; transform: translateY(-2px) scale(1.08); box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    }
+    .footer-social-icons .icon-youtube:hover  { background: #ff0000; }
+    .footer-social-icons .icon-facebook:hover { background: #1c5da4; }
+    .footer-social-icons .icon-twitter:hover  { background: #000; }
+
+    .footer-bottom {
+      max-width: var(--max-w); margin: 0 auto; padding: 20px 1.5rem 0;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 10px;
+      font-family: var(--font-cond); font-size: 0.78rem; color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+    .footer-bottom .upsl-chip {
+      background: rgba(0,123,255,0.1); border: 1px solid rgba(0,123,255,0.2);
+      color: #6ab4ff; padding: 3px 12px; border-radius: 20px;
+      font-weight: 700; letter-spacing: 0.12em;
+    }
+
+    /* ============================================================
+       RESPONSIVE UTILITIES
+       ============================================================ */
+    @media (max-width: 640px) {
+      .match-list { grid-template-columns: 1fr; }
+      .hero-inner { padding: 0 1.2rem 0 1.2rem; }
+      .hero-season-badge { display: none; }
+      .nav-link:not(.nav-cta) { display: none; }
+      .countdown-units { gap: 5px; }
+      .cd-box { min-width: 52px; padding: 10px; }
+      .cd-num { font-size: 1.5rem; }
+    }
+
+    /* QOTD Banner */
+    .qotd-banner {
+      background: linear-gradient(135deg, rgba(0,123,255,0.1), rgba(255,30,30,0.08));
+      border-top: 2px solid var(--blue); border-bottom: 2px solid var(--red);
+      padding: 12px 28px; text-align: center;
+      font-family: var(--font-cond); font-size: 0.86rem;
+      color: var(--text-dim); font-style: italic; letter-spacing: 0.03em;
+    }
+    .qotd-banner strong { color: var(--blue); font-style: normal; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       READING PROGRESS
+       ============================================================ -->
+  <div id="progress-bar"></div>
+
+  <!-- ============================================================
+       BREAKING TICKER
+       ============================================================ -->
+  <div class="ticker-wrap">
+    <span class="ticker-label">SSFC NEWS</span>
+    <div class="ticker-content" id="tickerContent">
+      <span>⚽ Next Match: Super Stars FC vs Worthington Community FC · April 18, 2026</span>
+      <span class="dot"> ★ </span>
+      <span>🏆 Jackson Hat-Trick vs Togoless Soccer Assoc · 5–8 AWAY WIN</span>
+      <span class="dot"> ★ </span>
+      <span>📋 2026 UPSL Spring Schedule Now Live · NE-SD-IA Conference</span>
+      <span class="dot"> ★ </span>
+      <span>⭐ Super Stars FC Founded June 3, 2025 · Omaha, Nebraska</span>
+      <span class="dot"> ★ </span>
+      <span>🔴 Home Opener: Super Stars FC vs Heartland United FC · April 12, 2026</span>
+      <span class="dot"> ★ </span>
+      <span>⚽ Next Match: Super Stars FC vs Worthington Community FC · April 18, 2026</span>
+      <span class="dot"> ★ </span>
+      <span>🏆 Jackson Hat-Trick vs Togoless Soccer Assoc · 5–8 AWAY WIN</span>
+      <span class="dot"> ★ </span>
+      <span>📋 2026 UPSL Spring Schedule Now Live · NE-SD-IA Conference</span>
+      <span class="dot"> ★ </span>
+      <span>⭐ Super Stars FC Founded June 3, 2025 · Omaha, Nebraska</span>
+      <span class="dot"> ★ </span>
+      <span>🔴 Home Opener: Super Stars FC vs Heartland United FC · April 12, 2026</span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       STICKY HEADER
+       ============================================================ -->
+  <header class="site-header">
+    <a href="#" class="brand">
+      <div class="logo">SS</div>
+      <div class="brand-text">
+        <div class="name">Super Stars FC</div>
+        <div class="sub">Official Club · Omaha</div>
+      </div>
+    </a>
+    <div class="header-right">
+      <div class="ctrl-group">
+        <button class="ctrl-btn" onclick="changeFontSize(-1)" title="Decrease font size">A−</button>
+        <button class="ctrl-btn" onclick="changeFontSize(1)"  title="Increase font size">A+</button>
+        <button class="ctrl-btn" id="modeToggle" onclick="toggleMode()" title="Toggle light/dark">🌙</button>
+      </div>
+      <a href="./roster.html"  class="nav-link">Roster</a>
+      <a href="./contact.html" class="nav-link">Join Us</a>
+      <a href="./Super Stars FC Tickers.html" class="nav-link">Get Tickets</a>
+      <a href="./index.html"   class="nav-link nav-cta">← Home</a>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       QOTD BANNER
+       ============================================================ -->
+  <div class="qotd-banner">
+    <strong>Super Stars FC:</strong> "Every result, every performance, every goal — this is the story of a squad that competes with everything it has." ⚽
+  </div>
+
+  <!-- ============================================================
+       HERO SECTION
+       ============================================================ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-pitch"></div>
+    <div class="hero-circle"></div>
+    <div class="hero-glow-r"></div>
+    <div class="hero-glow-b"></div>
+    <div class="hero-watermark">FC</div>
+
+    <div class="hero-season-badge">
+      UPSL 2025–26
+      <small>NE-SD-IA Conference</small>
+    </div>
+
+    <div class="hero-inner">
+      <div class="hero-eyebrow"><span class="blink"></span> Live Season Coverage</div>
+      <h1>Matches &amp;<br><span class="red">Results</span> <span class="blue">2025</span></h1>
+      <p class="hero-desc">
+        Full Super Stars FC fixture list, past results, scorers, and season statistics.
+        Every match in one place — from the first whistle to the final table.
+      </p>
+      <div class="hero-meta">
+        <div class="chip"><i class="fas fa-calendar-check"></i> 10 Total Fixtures</div>
+        <div class="chip live"><i class="fas fa-location-dot"></i> Omaha, NE</div>
+        <div class="chip"><i class="fas fa-trophy"></i> Pre-Season + UPSL</div>
+      </div>
+      <div class="hero-ctas">
+        <a href="#results" class="btn-hero-primary"><i class="fas fa-futbol"></i> See Results</a>
+        <a href="#upcoming" class="btn-hero-ghost"><i class="fas fa-calendar"></i> Upcoming</a>
+        <a href="./games.html" class="btn-hero-ghost"><i class="fas fa-calendar"></i> Schedule | UPSL Table</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <div class="container">
+
+    <!-- SEASON SNAPSHOT -->
+    <div class="snapshot-bar reveal">
+      <div class="snap-item">
+        <div class="snap-num counter" data-target="7">0</div>
+        <div class="snap-label">Matches Played</div>
+        <div class="snap-sub">Pre-Season 2025</div>
+      </div>
+      <div class="snap-item">
+        <div class="snap-num counter" data-target="4">0</div>
+        <div class="snap-label">Wins</div>
+        <div class="snap-sub">57% win rate</div>
+      </div>
+      <div class="snap-item">
+        <div class="snap-num counter" data-target="1">0</div>
+        <div class="snap-label">Draws</div>
+        <div class="snap-sub">14% draw rate</div>
+      </div>
+      <div class="snap-item">
+        <div class="snap-num counter" data-target="29">0</div>
+        <div class="snap-label">Goals Scored</div>
+        <div class="snap-sub">4.1 per game avg</div>
+      </div>
+    </div>
+
+    <!-- SEASON FORM STRIP -->
+    <div class="form-strip-wrap reveal">
+      <div class="form-label"><i class="fas fa-signal"></i> Season Form<br/> 2025</div>
+      <div class="form-dots">
+        <div class="form-dot W" title="Win vs Togoless (8–5)">W</div>
+        <div class="form-dot W" title="Win vs Omaha Elites (4–2)">W</div>
+        <div class="form-dot L" title="Loss vs Yazidi FC (2–4)">L</div>
+        <div class="form-dot W" title="Win vs Omaha Stars FC (5–3)">W</div>
+        <div class="form-dot L" title="Loss vs Omaha Elites (4–5)">L</div>
+        <div class="form-dot D" title="Draw vs Omaha Street FC (1–1)">D</div>
+        <div class="form-dot L" title="Loss vs Yazidi FC (2–4)">L</div>
+        <div class="form-dot C" title="Canceled vs Vunja Vikwazo FC">C</div>
+      </div>
+      <div class="form-info"><i class="fas fa-info-circle" style="color:var(--blue)"></i> Hover each result for match info &nbsp;·&nbsp; Most recent right</div>
+    </div>
+
+    <!-- NEXT MATCH + COUNTDOWN -->
+    <div id="upcoming" class="next-match-card reveal">
+      <div>
+        <div class="nm-eyebrow"><span class="pulse-dot"></span> Next Match</div>
+        <div class="nm-match-title">Worthington Community FC<br><span style="color:var(--blue)">vs Super Stars FC</span></div>
+        <div class="nm-details"><i class="fas fa-calendar" style="color:var(--red)"></i> &nbsp;Apr 18, 2026 &nbsp;&nbsp;<i class="fas fa-clock" style="color:var(--blue)"></i> &nbsp;7:00 PM CT</div>
+      </div>
+      <div class="countdown-units">
+        <div class="cd-box"><div class="cd-num" id="cd-days">–</div><div class="cd-lbl">Days</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-box"><div class="cd-num" id="cd-hrs">–</div><div class="cd-lbl">Hours</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-box"><div class="cd-num" id="cd-min">–</div><div class="cd-lbl">Mins</div></div>
+        <div class="cd-sep">:</div>
+        <div class="cd-box"><div class="cd-num" id="cd-sec">–</div><div class="cd-lbl">Secs</div></div>
+      </div>
+      <div class="nm-venue">
+        <div class="venue-tag">Away</div>
+        <div class="venue-name">Worthington, MN</div>
+        <div class="venue-loc"><i class="fas fa-location-dot"></i> UPSL &nbsp;·&nbsp; Trojan Field</div>
+      </div>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="page-toolbar reveal">
+      <div class="toolbar-left">
+        <button class="action-btn" id="likeBtn" onclick="toggleLike()">
+          <i class="fas fa-heart"></i> <span id="likeCount">24</span> Likes
+        </button>
+        <button class="action-btn" onclick="copyLink(this)">
+          <i class="fas fa-link"></i> Copy Link
+        </button>
+        <button class="action-btn" onclick="shareTwitter()">
+          <i class="fab fa-x-twitter"></i> Share
+        </button>
+      </div>
+      <div class="toolbar-right">
+        <span style="font-family:var(--font-cond);font-size:0.76rem;color:var(--muted);letter-spacing:0.08em;">
+          <i class="fas fa-eye" style="color:var(--blue)"></i> &nbsp;<span id="viewCount2">–</span> views
+        </span>
+      </div>
+    </div>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar reveal">
+      <span class="filter-lbl"><i class="fas fa-filter"></i> Filter</span>
+      <button class="filter-tab active" data-filter="all"      onclick="setFilter(this)">All <span class="count-pill" id="cnt-all">8</span></button>
+      <button class="filter-tab"        data-filter="upcoming" onclick="setFilter(this)">Upcoming <span class="count-pill" id="cnt-upcoming">2</span></button>
+      <button class="filter-tab"        data-filter="win"      onclick="setFilter(this)">Wins <span class="count-pill" id="cnt-win">4</span></button>
+      <button class="filter-tab"        data-filter="draw"     onclick="setFilter(this)">Draws <span class="count-pill" id="cnt-draw">1</span></button>
+      <button class="filter-tab"        data-filter="loss"     onclick="setFilter(this)">Losses <span class="count-pill" id="cnt-loss">3</span></button>
+      <button class="filter-tab"        data-filter="home"     onclick="setFilter(this)">Home <span class="count-pill" id="cnt-home">5</span></button>
+      <button class="filter-tab"        data-filter="away"     onclick="setFilter(this)">Away <span class="count-pill" id="cnt-away">4</span></button>
+    </div>
+
+    <div id="noResults">
+      <i class="fas fa-search"></i>
+      No matches found for this filter.
+    </div>
+
+    <!-- ==================== UPCOMING MATCHES ==================== -->
+    <section id="results">
+      <div class="section-title-wrap reveal">
+        <h2 style="color:var(--red)"><i class="fas fa-calendar-alt title-icon"></i> Upcoming Matches</h2>
+        <div class="title-line"></div>
+      </div>
+
+      <div class="match-list">
+
+        <!-- Upcoming 1 -->
+        <div class="match-card upcoming" data-result="upcoming" data-venue="away"
+          data-title="Worthington Community FC vs Super Stars FC"
+          data-date="Sat, Apr 18, 2026" data-time="7:00 PM CT"
+          data-location="Worthington, Minnesota" data-attendance="–"
+          data-score="vs" data-scorers="–"
+          data-info="Super Stars FC's first-ever away game in the UPSL competitive league. An away trip to Worthington to open the 2026 season. Show your support in spirit!">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Sat · Apr 18, 2026</span>
+              <div class="badge-row">
+                <span class="loc-badge away">Away</span>
+                <span class="result-badge upcoming">⏳ Upcoming</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials opp">WC</div>
+                <div class="team-name">Worthington<br>Community FC</div>
+              </div>
+              <div class="score-center">
+                <div class="score-vs">VS</div>
+                <div class="score-status">UPSL · Upcoming</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> Worthington, MN</div>
+              <div class="card-venue"><i class="fas fa-clock"></i> 7:00 PM CT</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upcoming 2 -->
+        <div class="match-card upcoming" data-result="upcoming" data-venue="home"
+          data-title="Super Stars FC vs Club Atletico Omaha"
+          data-date="Sun, Apr 26, 2026" data-time="6:00 PM CT"
+          data-location="South High School Stadium, Omaha, NE" data-attendance="–"
+          data-score="vs" data-scorers="–"
+          data-info="Our second home match in UPSL history. Come out to South High School Stadium and help us build a fortress!">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Sun · Apr 26, 2026</span>
+              <div class="badge-row">
+                <span class="loc-badge home">🏠 Home</span>
+                <span class="result-badge upcoming">⏳ Upcoming</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+              <div class="score-center">
+                <div class="score-vs">VS</div>
+                <div class="score-status">UPSL · Upcoming</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials opp">CAO</div>
+                <div class="team-name">Club Atletico<br>Omaha</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> South High, Omaha</div>
+              <div class="card-venue"><i class="fas fa-users"></i> Come support!</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="section-divider reveal">⚽</div>
+
+    <!-- ==================== 2026 SEASON ==================== -->
+    <section id="results">
+      <div class="section-title-wrap reveal">
+        <h2 style="color:var(--red)"><i class="fas fa-calendar-alt title-icon"></i> 2026 Season<br/>All Matches</h2>
+        <div class="title-line"></div>
+      </div>
+
+      <div class="match-list">
+        <!-- WIN: Heartland United FC -->
+        <div class="match-card win" data-result="win" data-venue="home"
+          data-title="Super Stars FC 2–1 Heartland United FC"
+          data-date="Sat, Apr 12, 2026" data-time="Full Time"
+          data-location="South High School Stadium, Omaha" data-attendance="100"
+          data-score="2 – 1" data-scorers="Chan (1), Kaysha (1)"
+          data-info="Chan and Kaysha scored to secure a hard-fought victory for Super Stars FC. Excellent team play from start to finish, at South High School Stadium in front of 100 fans.">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Sat · Apr 12, 2026</span>
+              <div class="badge-row">
+                <span class="loc-badge home">Home</span>
+                <span class="result-badge win">Win</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+              <div class="score-center">
+                <div class="score-val win">2–1</div>
+                <div class="score-status">Full Time</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials opp">HU</div>
+                <div class="team-name">Heartland<br>United FC</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> South High School Stadium &nbsp;<i class="fas fa-users"></i> 100</div>
+              <div class="card-scorers"><strong>⚽</strong> Chan, Kaysha ×2</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upcoming 1 -->
+        <div class="match-card upcoming" data-result="upcoming" data-venue="away"
+          data-title="Worthington Community FC vs Super Stars FC"
+          data-date="Sat, Apr 18, 2026" data-time="7:00 PM CT"
+          data-location="Worthington, Minnesota" data-attendance="–"
+          data-score="vs" data-scorers="–"
+          data-info="Super Stars FC's first-ever away game in the UPSL competitive league. An away trip to Worthington to open the 2026 season. Show your support in spirit!">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Sat · Apr 18, 2026</span>
+              <div class="badge-row">
+                <span class="loc-badge away">Away</span>
+                <span class="result-badge upcoming">⏳ Upcoming</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials opp">WC</div>
+                <div class="team-name">Worthington<br>Community FC</div>
+              </div>
+              <div class="score-center">
+                <div class="score-vs">VS</div>
+                <div class="score-status">UPSL · Next Game</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> Worthington, MN</div>
+              <div class="card-venue"><i class="fas fa-clock"></i> 7:00 PM CT</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2026 Season -->
+        <div class="match-card upcoming" data-result="upcoming" data-venue="home"
+          data-title="Super Stars FC vs Club Atletico Omaha"
+          data-date="Sun, Apr 26, 2026" data-time="6:00 PM CT"
+          data-location="South High School Stadium, Omaha, NE" data-attendance="–"
+          data-score="vs" data-scorers="–"
+          data-info="Our second home match in UPSL history. Come out to South High School Stadium and help us build a fortress!">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Sun · Apr 26, 2026</span>
+              <div class="badge-row">
+                <span class="loc-badge home">🏠 Home</span>
+                <span class="result-badge upcoming">⏳ Upcoming</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+              <div class="score-center">
+                <div class="score-vs">VS</div>
+                <div class="score-status">UPSL · Apr 2026</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials opp">CAO</div>
+                <div class="team-name">Club Atletico<br>Omaha</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> South High, Omaha</div>
+              <div class="card-venue"><i class="fas fa-users"></i> Come support!</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upcoming 1 -->
+        <div class="match-card upcoming" data-result="upcoming" data-venue="away"
+          data-title="Garwo United FC vs Super Stars FC"
+          data-date="Sat, May 03, 2026" data-time="5:00 PM CT"
+          data-location="Worthington, Minnesota" data-attendance="–"
+          data-score="vs" data-scorers="–"
+          data-info="Our away game in south Dakota. Come out and support the team, show your support in spirit.!">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Sat · May 03, 2026</span>
+              <div class="badge-row">
+                <span class="loc-badge away">Away</span>
+                <span class="result-badge upcoming">⏳ Upcoming</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials opp">GU</div>
+                <div class="team-name">Garwo<br>United FC</div>
+              </div>
+              <div class="score-center">
+                <div class="score-vs">VS</div>
+                <div class="score-status">UPSL · Apr 2026</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> SiouxFalls, SD</div>
+              <div class="card-venue"><i class="fas fa-clock"></i> 5:00 PM CT</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2026 Season -->
+        <div class="match-card upcoming" data-result="upcoming" data-venue="home"
+          data-title="Super Stars FC vs Omaha Street Futbol Club"
+          data-date="Sun, May 10, 2026" data-time="6:00 PM CT"
+          data-location="South High School Stadium, Omaha, NE" data-attendance="–"
+          data-score="vs" data-scorers="–"
+          data-info="Our second home match in UPSL history. Come out to South High School Stadium and help us build a fortress!">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Sun · May 10, 2026</span>
+              <div class="badge-row">
+                <span class="loc-badge home">🏠 Home</span>
+                <span class="result-badge upcoming">⏳ Upcoming</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+              <div class="score-center">
+                <div class="score-vs">VS</div>
+                <div class="score-status">UPSL · May 2026</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials opp">OSFC</div>
+                <div class="team-name">Omaha Street<br>Futbol Club</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> South High, Omaha</div>
+              <div class="card-venue"><i class="fas fa-users"></i> Come support!</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upcoming 1 -->
+        <div class="match-card upcoming" data-result="upcoming" data-venue="away"
+          data-title="CB Captains FC vs Super Stars FC"
+          data-date="Sat, May 17, 2026" data-time="4:00 PM CT"
+          data-location="Blackburn High School, Omaha, NE" data-attendance="–"
+          data-score="vs" data-scorers="–"
+          data-info="Super Stars FC next away match after the home game against Omaha Street Futbol Club!">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Sat · May 17, 2026</span>
+              <div class="badge-row">
+                <span class="loc-badge away">Away</span>
+                <span class="result-badge upcoming">⏳ Upcoming</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials opp">CB</div>
+                <div class="team-name">CB<br>Captains FC</div>
+              </div>
+              <div class="score-center">
+                <div class="score-vs">VS</div>
+                <div class="score-status">UPSL · May 2026</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> Blackburn High School, Omaha, NE</div>
+              <div class="card-venue"><i class="fas fa-clock"></i> 4:00 PM CT</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2026 Season -->
+        <div class="match-card upcoming" data-result="upcoming" data-venue="home"
+          data-title="Super Stars FC vs Bana Mboka FC"
+          data-date="Sun, May 19, 2026" data-time="7:00 PM CT"
+          data-location="South High School Stadium, Omaha, NE" data-attendance="–"
+          data-score="vs" data-scorers="–"
+          data-info="Match coming up! Come out to South High School Stadium and help us build a fortress!">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Sun · May 19, 2026</span>
+              <div class="badge-row">
+                <span class="loc-badge home">🏠 Home</span>
+                <span class="result-badge upcoming">⏳ Upcoming</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+              <div class="score-center">
+                <div class="score-vs">VS</div>
+                <div class="score-status">UPSL · May 2026</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials opp">BM</div>
+                <div class="team-name">Bana Mboka<br>FC</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> South High, Omaha</div>
+              <div class="card-venue"><i class="fas fa-users"></i> Come support!</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upcoming 1 -->
+        <div class="match-card upcoming" data-result="upcoming" data-venue="away"
+          data-title="Sioux Falls Thunder FC vs Super Stars FC"
+          data-date="Sat, May 23, 2026" data-time="5:00 PM CT"
+          data-location="University of Sioux Falls, Sioux Falls, SD" data-attendance="–"
+          data-score="vs" data-scorers="–"
+          data-info="Our next away match in south Dakota. Come out and support the team, show your support in spirit.!">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Sat · May 23, 2026</span>
+              <div class="badge-row">
+                <span class="loc-badge away">Away</span>
+                <span class="result-badge upcoming">⏳ Upcoming</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials opp">SFT</div>
+                <div class="team-name">Sioux Falls<br>Thunder FC</div>
+              </div>
+              <div class="score-center">
+                <div class="score-vs">VS</div>
+                <div class="score-status">UPSL · May 2026</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> University of Sioux Falls, Sioux Falls, SD</div>
+              <div class="card-venue"><i class="fas fa-clock"></i> 5:00 PM CT</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Upcoming 1 -->
+        <div class="match-card upcoming" data-result="upcoming" data-venue="away"
+          data-title="Capital City Roots FC vs Super Stars FC"
+          data-date="Sat, May 31, 2026" data-time="7:00 PM CT"
+          data-location="West Des Moines, IA" data-attendance="–"
+          data-score="vs" data-scorers="–"
+          data-info="Our next away match in Iowa. Come out and support the team, show your support in spirit.!">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Sat · May 31, 2026</span>
+              <div class="badge-row">
+                <span class="loc-badge away">Away</span>
+                <span class="result-badge upcoming">⏳ Upcoming</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials opp">CCR</div>
+                <div class="team-name">Capital City <br>Roots FC</div>
+              </div>
+              <div class="score-center">
+                <div class="score-vs">VS</div>
+                <div class="score-status">UPSL · May 2026</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> West Des Moines, IA</div>
+              <div class="card-venue"><i class="fas fa-clock"></i> 7:00 PM CT</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2026 Season -->
+        <div class="match-card upcoming" data-result="upcoming" data-venue="home"
+          data-title="Super Stars FC vs Reapers FC"
+          data-date="Sun, June 07, 2026" data-time="6:00 PM CT"
+          data-location="South High School Stadium, Omaha, NE" data-attendance="–"
+          data-score="vs" data-scorers="–"
+          data-info="Our last match of the 2026 season (for now)! A home match against Reapers FC. Come out to South High School Stadium and help us finish the season strong!">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Sun · June 07, 2026</span>
+              <div class="badge-row">
+                <span class="loc-badge home">🏠 Home</span>
+                <span class="result-badge upcoming">⏳ Upcoming</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+              <div class="score-center">
+                <div class="score-vs">VS</div>
+                <div class="score-status">UPSL · June 2026</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials opp">RP</div>
+                <div class="team-name">Reapers<br>FC</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> South High, Omaha</div>
+              <div class="card-venue"><i class="fas fa-users"></i> Come support!</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="section-divider reveal">⚽</div>
+
+    <!-- ==================== PAST RESULTS ==================== -->
+    <section>
+      <div class="section-title-wrap reveal">
+        <h2 style="color:var(--blue)"><i class="fas fa-flag-checkered title-icon"></i> Past Results</h2>
+        <div class="title-line"></div>
+      </div>
+
+      <div class="match-list">
+
+        <!-- CANCELED: Vunja Vikwazo -->
+        <div class="match-card canceled" data-result="draw" data-venue="away"
+          data-title="Super Stars FC vs Vunja Vikwazo FC"
+          data-date="Sat, Nov 1, 2025" data-time="Canceled"
+          data-location="Kansas City Stadium" data-attendance="–"
+          data-score="–" data-scorers="–"
+          data-info="Match was canceled prior to kick-off due to opponent team issues. Result recorded as void.">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Sat · Nov 1, 2025</span>
+              <div class="badge-row">
+                <span class="loc-badge away">Away</span>
+                <span class="result-badge canceled">Canceled</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+              <div class="score-center">
+                <div class="score-vs">–</div>
+                <div class="score-status">VOID</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials opp">VV</div>
+                <div class="team-name">Vunja<br>Vikwazo FC</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> Kansas City Stadium</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LOSS: Yazidi Oct 4 -->
+        <div class="match-card loss" data-result="loss" data-venue="away"
+          data-title="Super Stars FC 2–4 Yazidi FC"
+          data-date="Sun, Oct 4, 2025" data-time="Full Time"
+          data-location="Lincoln, NE" data-attendance="450"
+          data-score="2 – 4" data-scorers="Shimalo (1), John (1)"
+          data-info="John equalized in the 66th minute but the team ultimately fell to a 2–4 defeat against Yazidi FC. A tough away result — we learn and come back stronger.">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Sun · Oct 4, 2025</span>
+              <div class="badge-row">
+                <span class="loc-badge away">Away</span>
+                <span class="result-badge loss">Loss</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+              <div class="score-center">
+                <div class="score-val loss">2–4</div>
+                <div class="score-status">Full Time</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials opp">YFC</div>
+                <div class="team-name">Yazidi<br>FC</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> Lincoln, NE &nbsp;<i class="fas fa-users"></i> 450</div>
+              <div class="card-scorers"><strong>⚽</strong> Shimalo, John</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DRAW: Omaha Street FC Oct 1 -->
+        <div class="match-card draw" data-result="draw" data-venue="home"
+          data-title="Super Stars FC 1–1 Omaha Street FC"
+          data-date="Wed, Oct 1, 2025" data-time="Full Time"
+          data-location="Blackburn High School, Omaha" data-attendance="350"
+          data-score="1 – 1" data-scorers="Abel (57')"
+          data-info="Abel equalized in the 57th minute to secure a hard-fought draw against Omaha Street FC at Blackburn High School. A point earned, but the team pushed for more until the final whistle.">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Wed · Oct 1, 2025</span>
+              <div class="badge-row">
+                <span class="loc-badge home">Home</span>
+                <span class="result-badge draw">Draw</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+              <div class="score-center">
+                <div class="score-val draw">1–1</div>
+                <div class="score-status">Full Time</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials opp">OSF</div>
+                <div class="team-name">Omaha Street<br>FC</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> Blackburn HS &nbsp;<i class="fas fa-users"></i> 350</div>
+              <div class="card-scorers"><strong>⚽</strong> Abel (57')</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LOSS: Omaha Elites Sep 20 -->
+        <div class="match-card loss" data-result="loss" data-venue="away"
+          data-title="Omaha Elites 5–4 Super Stars FC"
+          data-date="Sat, Sep 20, 2025" data-time="Full Time"
+          data-location="Benson Stadium, Omaha" data-attendance="810"
+          data-score="4 – 5" data-scorers="Tresor (1), Minga (1), John ×2"
+          data-info="John bagged a brace and the team played brilliant football but were edged out 4–5 in a high-scoring contest at Benson Stadium. A thriller that could've gone either way.">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Sat · Sep 20, 2025</span>
+              <div class="badge-row">
+                <span class="loc-badge away">Away</span>
+                <span class="result-badge loss">Loss</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials opp">OE</div>
+                <div class="team-name">Omaha<br>Elites</div>
+              </div>
+              <div class="score-center">
+                <div class="score-val loss">5–4</div>
+                <div class="score-status">Full Time</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> Benson Stadium &nbsp;<i class="fas fa-users"></i> 810</div>
+              <div class="card-scorers"><strong>⚽</strong> Tresor, Minga, John ×2</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WIN: Omaha Stars FC Sep 6 -->
+        <div class="match-card win" data-result="win" data-venue="home"
+          data-title="Super Stars FC 5–3 Omaha Stars FC"
+          data-date="Sat, Sep 6, 2025" data-time="Full Time"
+          data-location="Benson Stadium, Omaha" data-attendance="810"
+          data-score="5 – 3" data-scorers="Shimalo (1), Divo (1), Jackson (1), John ×2"
+          data-info="John fired a brace and Jackson completed a strong win with a superb finish. Excellent team play from start to finish at Benson Stadium in front of 810 fans.">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Sat · Sep 6, 2025</span>
+              <div class="badge-row">
+                <span class="loc-badge home">Home</span>
+                <span class="result-badge win">Win</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+              <div class="score-center">
+                <div class="score-val win">5–3</div>
+                <div class="score-status">Full Time</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials opp">OSF</div>
+                <div class="team-name">Omaha Stars<br>FC</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> Benson Stadium &nbsp;<i class="fas fa-users"></i> 810</div>
+              <div class="card-scorers"><strong>⚽</strong> Shimalo, Divo, Jackson, John ×2</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LOSS: Yazidi FC Aug 31 -->
+        <div class="match-card loss" data-result="loss" data-venue="home"
+          data-title="Super Stars FC 2–4 Yazidi FC"
+          data-date="Sun, Aug 31, 2025" data-time="Full Time"
+          data-location="Benson Stadium, Omaha" data-attendance="750"
+          data-score="2 – 4" data-scorers="Minga (1), John (1)"
+          data-info="John equalized in the 49th minute but the team ultimately fell to a 2–4 defeat to Yazidi FC at Benson Stadium. The squad fought hard — Yazidi proved strong opponents on the night.">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Sun · Aug 31, 2025</span>
+              <div class="badge-row">
+                <span class="loc-badge home">Home</span>
+                <span class="result-badge loss">Loss</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+              <div class="score-center">
+                <div class="score-val loss">2–4</div>
+                <div class="score-status">Full Time</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials opp">YFC</div>
+                <div class="team-name">Yazidi<br>FC</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> Benson Stadium &nbsp;<i class="fas fa-users"></i> 750</div>
+              <div class="card-scorers"><strong>⚽</strong> Minga, John</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WIN: Omaha Elites Aug 24 -->
+        <div class="match-card win" data-result="win" data-venue="home"
+          data-title="Omaha Elites 2–4 Super Stars FC"
+          data-date="Sun, Aug 24, 2025" data-time="Full Time"
+          data-location="Benson Stadium, Omaha" data-attendance="590"
+          data-score="4 – 2" data-scorers="Tresor (1), John ×2, Minga (90+1')"
+          data-info="John bagged his second brace of the season and Minga sealed the win with a 90+1st minute strike. A memorable comeback performance at Benson Stadium!">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Sun · Aug 24, 2025</span>
+              <div class="badge-row">
+                <span class="loc-badge home">Home</span>
+                <span class="result-badge win">Win</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials opp">OE</div>
+                <div class="team-name">Omaha<br>Elites</div>
+              </div>
+              <div class="score-center">
+                <div class="score-val win">2–4</div>
+                <div class="score-status">Full Time</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> Benson Stadium &nbsp;<i class="fas fa-users"></i> 590</div>
+              <div class="card-scorers"><strong>⚽</strong> Tresor, John ×2, Minga (90+1')</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WIN: Togoless Aug 16 — HAT-TRICK! -->
+        <div class="match-card win" data-result="win" data-venue="away"
+          data-title="Togoless Soccer Assoc. 5–8 Super Stars FC"
+          data-date="Sat, Aug 16, 2025" data-time="Full Time"
+          data-location="Papillon Landing Sports Complex" data-attendance="150"
+          data-score="8 – 5" data-scorers="John ×2, Tresor (1), Brighton (1), Divo (1), Jackson ×3 🎩"
+          data-info="Jackson completed a stunning hat-trick, sealing his final goal in the 90+6th minute — his first-ever treble for Super Stars FC. John also grabbed a brace. A dominant 8–5 away performance to remember!">
+          <div class="card-stripe"></div>
+          <div class="card-inner">
+            <div class="match-header">
+              <span class="match-date"><i class="fas fa-calendar"></i> Sat · Aug 16, 2025</span>
+              <div class="badge-row">
+                <span class="loc-badge away">Away</span>
+                <span class="result-badge win">🎩 Hat-Trick Win!</span>
+              </div>
+            </div>
+            <div class="match-vs-row">
+              <div class="team-side">
+                <div class="team-initials opp">TSA</div>
+                <div class="team-name">Togoless<br>Soccer Assoc.</div>
+              </div>
+              <div class="score-center">
+                <div class="score-val win">5–8</div>
+                <div class="score-status">Full Time</div>
+              </div>
+              <div class="team-side right">
+                <div class="team-initials ssfc">SS</div>
+                <div class="team-name">Super Stars<br>FC</div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="card-venue"><i class="fas fa-location-dot"></i> Papillon Landing &nbsp;<i class="fas fa-users"></i> 150</div>
+              <div class="card-scorers"><strong>⚽</strong> John ×2, Tresor, Brighton, Divo, <strong>Jackson ×3 🎩</strong></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="section-divider reveal">🏆</div>
+
+    <!-- ==================== TWO-COLUMN STATS ROW ==================== -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;" class="reveal">
+
+      <!-- TOP SCORERS -->
+      <div class="scorers-section">
+        <h3><i class="fas fa-shoe-prints"></i> Top Scorers &nap; Season 2026</h3>
+        <div class="scorer-row">
+          <div class="scorer-pos">1</div>
+          <div class="scorer-info">
+            <div class="scorer-name">Chan Chuol</div>
+            <div style="font-size:0.72rem;color:var(--muted);font-family:var(--font-cond);">Incl. First Goal vs Heartland United FC</div>
+            <div class="scorer-bar-wrap" style="margin-top:5px;"><div class="scorer-bar-bg"><div class="scorer-bar-fill" data-width="100"></div></div></div>
+          </div>
+          <div class="scorer-goals">1 <small>Goals</small></div>
+        </div>
+        <div class="scorer-row">
+          <div class="scorer-pos">2</div>
+          <div class="scorer-info">
+            <div class="scorer-name">Kaysha K</div>
+            <div style="font-size:0.72rem;color:var(--muted);font-family:var(--font-cond);">Incl. First Goal vs Heartland United FC</div>
+            <div class="scorer-bar-wrap" style="margin-top:5px;"><div class="scorer-bar-bg"><div class="scorer-bar-fill" data-width="44"></div></div></div>
+          </div>
+          <div class="scorer-goals">1 <small>Goals</small></div>
+        </div>
+      </div>
+      <div class="scorers-section">
+        <h3><i class="fas fa-ball-prints">⚽</i> Top Assist &nap; Season 2026</h3>
+        <div class="scorer-row">
+          <div class="scorer-pos">1</div>
+          <div class="scorer-info">
+            <div class="scorer-name">Jeff Sumaili</div>
+            <div style="font-size:0.72rem;color:var(--muted);font-family:var(--font-cond);">Incl. First Assist vs Heartland United FC</div>
+            <div class="scorer-bar-wrap" style="margin-top:5px;"><div class="scorer-bar-bg"><div class="scorer-bar-fill" data-width="100"></div></div></div>
+          </div>
+          <div class="scorer-goals">1 <small>Goals</small></div>
+        </div>
+        <div class="scorer-row">
+          <div class="scorer-pos">2</div>
+          <div class="scorer-info">
+            <div class="scorer-name">Osman Sharif</div>
+            <div style="font-size:0.72rem;color:var(--muted);font-family:var(--font-cond);">Incl. First Assist vs Heartland United FC<br/>Incl. 75 min</div>
+            <div class="scorer-bar-wrap" style="margin-top:5px;"><div class="scorer-bar-bg"><div class="scorer-bar-fill" data-width="44"></div></div></div>
+          </div>
+          <div class="scorer-goals">1 <small>Goals</small></div>
+        </div>
+      </div>
+      <div class="scorers-section">
+        <h3><i class="fas fa-shoe-prints"></i> Top Scorers — Season 2025</h3>
+        <div class="scorer-row">
+          <div class="scorer-pos" style="color:gold;">🥇</div>
+          <div class="scorer-info">
+            <div class="scorer-name">Jackson</div>
+            <div style="font-size:0.72rem;color:var(--muted);font-family:var(--font-cond);">Incl. hat-trick vs TSA</div>
+            <div class="scorer-bar-wrap" style="margin-top:5px;"><div class="scorer-bar-bg"><div class="scorer-bar-fill" data-width="100"></div></div></div>
+          </div>
+          <div class="scorer-goals">5 <small>Goals</small></div>
+        </div>
+        <div class="scorer-row">
+          <div class="scorer-pos" style="color:silver;">🥈</div>
+          <div class="scorer-info">
+            <div class="scorer-name">John</div>
+            <div style="font-size:0.72rem;color:var(--muted);font-family:var(--font-cond);">Multiple braces</div>
+            <div class="scorer-bar-wrap" style="margin-top:5px;"><div class="scorer-bar-bg"><div class="scorer-bar-fill" data-width="88"></div></div></div>
+          </div>
+          <div class="scorer-goals">8 <small>Goals</small></div>
+        </div>
+        <div class="scorer-row">
+          <div class="scorer-pos" style="color:#cd7f32;">🥉</div>
+          <div class="scorer-info">
+            <div class="scorer-name">Minga</div>
+            <div style="font-size:0.72rem;color:var(--muted);font-family:var(--font-cond);">Incl. 90+1' winner</div>
+            <div class="scorer-bar-wrap" style="margin-top:5px;"><div class="scorer-bar-bg"><div class="scorer-bar-fill" data-width="55"></div></div></div>
+          </div>
+          <div class="scorer-goals">3 <small>Goals</small></div>
+        </div>
+        <div class="scorer-row">
+          <div class="scorer-pos">4</div>
+          <div class="scorer-info">
+            <div class="scorer-name">Tresor</div>
+            <div class="scorer-bar-wrap" style="margin-top:5px;"><div class="scorer-bar-bg"><div class="scorer-bar-fill" data-width="44"></div></div></div>
+          </div>
+          <div class="scorer-goals">3 <small>Goals</small></div>
+        </div>
+        <div class="scorer-row">
+          <div class="scorer-pos">5</div>
+          <div class="scorer-info">
+            <div class="scorer-name">Shimalo</div>
+            <div class="scorer-bar-wrap" style="margin-top:5px;"><div class="scorer-bar-bg"><div class="scorer-bar-fill" data-width="28"></div></div></div>
+          </div>
+          <div class="scorer-goals">2 <small>Goals</small></div>
+        </div>
+        <div class="scorer-row">
+          <div class="scorer-pos">6</div>
+          <div class="scorer-info">
+            <div class="scorer-name">Divo</div>
+            <div class="scorer-bar-wrap" style="margin-top:5px;"><div class="scorer-bar-bg"><div class="scorer-bar-fill" data-width="22"></div></div></div>
+          </div>
+          <div class="scorer-goals">2 <small>Goals</small></div>
+        </div>
+        <div class="scorer-row">
+          <div class="scorer-pos">7</div>
+          <div class="scorer-info">
+            <div class="scorer-name">Brighton</div>
+            <div class="scorer-bar-wrap" style="margin-top:5px;"><div class="scorer-bar-bg"><div class="scorer-bar-fill" data-width="14"></div></div></div>
+          </div>
+          <div class="scorer-goals">1 <small>Goal</small></div>
+        </div>
+        <div class="scorer-row">
+          <div class="scorer-pos">8</div>
+          <div class="scorer-info">
+            <div class="scorer-name">Abel</div>
+            <div class="scorer-bar-wrap" style="margin-top:5px;"><div class="scorer-bar-bg"><div class="scorer-bar-fill" data-width="14"></div></div></div>
+          </div>
+          <div class="scorer-goals">1 <small>Goal</small></div>
+        </div>
+      </div>
+
+      <!-- GOALS PER MATCH CHART -->
+      <div class="chart-section">
+        <h3><i class="fas fa-chart-bar"></i> Goals Scored Per Match</h3>
+        <div class="bar-chart" id="goalsChart">
+          <!-- Bars injected by JS -->
+        </div>
+        <div class="chart-legend">
+          <div class="legend-item"><div class="legend-dot" style="background:linear-gradient(#2ecc71,#1a9e54)"></div> Win</div>
+          <div class="legend-item"><div class="legend-dot" style="background:linear-gradient(#f1c40f,#c9a200)"></div> Draw</div>
+          <div class="legend-item"><div class="legend-dot" style="background:linear-gradient(var(--red),var(--red-dark))"></div> Loss</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ATTENDANCE TRACKER -->
+    <div class="attendance-section reveal" style="margin-top:20px;">
+      <h3><i class="fas fa-users"></i> Fan Attendance by Match</h3>
+      <div class="att-grid">
+        <div class="att-box">
+          <div class="att-match">vs Togoless</div>
+          <div class="att-num counter" data-target="150">0</div>
+          <div class="att-bar" style="width:18%"></div>
+        </div>
+        <div class="att-box">
+          <div class="att-match">vs Elites (Aug)</div>
+          <div class="att-num counter" data-target="590">0</div>
+          <div class="att-bar" style="width:72%"></div>
+        </div>
+        <div class="att-box">
+          <div class="att-match">vs Yazidi (Aug)</div>
+          <div class="att-num counter" data-target="750">0</div>
+          <div class="att-bar" style="width:92%"></div>
+        </div>
+        <div class="att-box">
+          <div class="att-match">vs Omaha Stars</div>
+          <div class="att-num counter" data-target="810">0</div>
+          <div class="att-bar"></div>
+        </div>
+        <div class="att-box">
+          <div class="att-match">vs Elites (Sep)</div>
+          <div class="att-num counter" data-target="810">0</div>
+          <div class="att-bar"></div>
+        </div>
+        <div class="att-box">
+          <div class="att-match">vs Street FC</div>
+          <div class="att-num counter" data-target="350">0</div>
+          <div class="att-bar" style="width:43%"></div>
+        </div>
+        <div class="att-box">
+          <div class="att-match">vs Yazidi (Oct)</div>
+          <div class="att-num counter" data-target="350">0</div>
+          <div class="att-bar" style="width:55%"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAN POLL -->
+    <div class="poll-section reveal">
+      <h3><i class="fas fa-poll" style="color:var(--red)"></i> Fan Poll</h3>
+      <p class="poll-question">Who has been Super Stars FC's standout performer of the pre-season?</p>
+      <div class="poll-options" id="pollOptions">
+        <label class="poll-option" data-index="0">
+          <div class="poll-radio"></div>
+          <div class="poll-option-text">Jackson — Hat-trick hero &amp; clinical striker</div>
+          <div class="poll-bar-wrap"><div class="poll-bar-fill" data-width="42"></div></div>
+          <div class="poll-pct">42%</div>
+        </label>
+        <label class="poll-option" data-index="1">
+          <div class="poll-radio"></div>
+          <div class="poll-option-text">John — Multiple braces, top scorer</div>
+          <div class="poll-bar-wrap"><div class="poll-bar-fill" data-width="35"></div></div>
+          <div class="poll-pct">35%</div>
+        </label>
+        <label class="poll-option" data-index="2">
+          <div class="poll-radio"></div>
+          <div class="poll-option-text">Minga — Late winner &amp; consistent performer</div>
+          <div class="poll-bar-wrap"><div class="poll-bar-fill" data-width="14"></div></div>
+          <div class="poll-pct">14%</div>
+        </label>
+        <label class="poll-option" data-index="3">
+          <div class="poll-radio"></div>
+          <div class="poll-option-text">Tresor — Reliable goals all season</div>
+          <div class="poll-bar-wrap"><div class="poll-bar-fill" data-width="9"></div></div>
+          <div class="poll-pct">9%</div>
+        </label>
+      </div>
+      <button class="poll-vote-btn" id="pollVoteBtn" onclick="submitPoll()">Cast Your Vote</button>
+      <div class="poll-total" id="pollTotal">Cast your vote above.</div>
+    </div>
+
+    <!-- PHOTO GALLERY -->
+    <div class="gallery-section reveal">
+      <div class="section-title-wrap">
+        <h3 style="font-family:var(--font-disp);font-size:1.2rem;letter-spacing:0.05em;text-transform:uppercase;"><i class="fas fa-camera title-icon" style="color:var(--red)"></i> Match Gallery</h3>
+        <div class="title-line"></div>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <div class="gallery-placeholder gallery-ph-1">
+            <i class="fas fa-futbol gallery-icon" style="font-size:3.5rem; color:rgba(0,123,255,0.3)"></i>
+            <span style="font-family:var(--font-cond);color:rgba(255,255,255,0.3);font-size:0.8rem;letter-spacing:0.1em;text-transform:uppercase;">Match Action</span>
+          </div>
+          <div class="gallery-cap">Jackson's Hat-Trick · Aug 16</div>
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gallery-ph-2">
+            <i class="fas fa-users gallery-icon" style="color:rgba(255,30,30,0.3)"></i>
+            <span style="font-family:var(--font-cond);color:rgba(255,255,255,0.3);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;">The Squad</span>
+          </div>
+          <div class="gallery-cap">Pre-Match Huddle</div>
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gallery-ph-3">
+            <i class="fas fa-fist-raised gallery-icon" style="color:rgba(0,123,255,0.3)"></i>
+            <span style="font-family:var(--font-cond);color:rgba(255,255,255,0.3);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;">Celebration</span>
+          </div>
+          <div class="gallery-cap">Goal Celebration · Benson</div>
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gallery-ph-4">
+            <i class="fas fa-trophy gallery-icon" style="color:rgba(255,30,30,0.3)"></i>
+            <span style="font-family:var(--font-cond);color:rgba(255,255,255,0.3);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;">Training</span>
+          </div>
+          <div class="gallery-cap">Training Session</div>
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+        <div class="gallery-item">
+          <div class="gallery-placeholder gallery-ph-5">
+            <i class="fas fa-stadium gallery-icon" style="color:rgba(0,123,255,0.3)"></i>
+            <span style="font-family:var(--font-cond);color:rgba(255,255,255,0.3);font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;">Benson Stadium</span>
+          </div>
+          <div class="gallery-cap">Benson Stadium · Omaha</div>
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:12px;font-family:var(--font-cond);font-size:0.72rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;">
+        Media library launching soon · Submit your match photos to superstarfc25@gmail.com
+      </p>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="newsletter-card reveal">
+      <div class="newsletter-inner">
+        <div class="eyebrow">⭐ Never Miss a Match</div>
+        <h3>Get <span style="color:var(--red)">Super Stars FC</span> Updates</h3>
+        <p>Sign up for match alerts, results, scorer updates, and exclusive club news delivered to your inbox every week.</p>
+        <a class="nl-btn" href="superstarsfcstreamaccess.html" id="nlSubmitBtn">Watch Live</a>
+        <p id="nl-confirm" style="display:none;color:#2ecc71;margin-top:10px;font-family:var(--font-cond);font-size:0.88rem;letter-spacing:0.06em;">
+          ✓ You're in! Match updates on the way.
+        </p>
+        <p style="font-size:0.72rem;color:var(--muted);margin-top:12px;">No spam. Unsubscribe anytime.</p>
+      </div>
+    </div>
+
+  </div><!-- end .container -->
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>⭐ Super Stars FC</h3>
+        <p>Founded June 3, 2025.</p>
+        <p>Building champions on and off the field — Omaha, Nebraska.</p>
+        <p style="margin-top:10px;"><span style="background:rgba(255,30,30,0.12);border:1px solid rgba(255,30,30,0.2);color:#ff9a9a;padding:3px 10px;border-radius:20px;font-family:var(--font-cond);font-size:0.7rem;font-weight:700;letter-spacing:0.14em;">UPSL NE-SD-IA · Spring 2026</span></p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./bout.html">About Us</a></li>
+          <li><a href="./roster.html">Roster</a></li>
+          <li><a href="./contact.html">Contact</a></li>
+          <li><a href="./term.html">Terms</a></li>
+          <li><a href="./Privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h4>Contact</h4>
+        <p><i class="fas fa-envelope"></i> superstarfc25@gmail.com</p>
+        <p><i class="fas fa-phone"></i> +1 (531) 262-1982</p>
+        <p><i class="fas fa-location-dot"></i> Omaha, Nebraska</p>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="footer-social-icons">
+          <a href="https://www.facebook.com/profile.php?id=100077275385711" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/super_starsfc_fc?igsh=MWUyM3IxbHI1Y3p-sOQ==" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://x.com/SuperStars75843?t=tZZoC1LvPfNGI-BKk15JG4g&S=09" target="_blank" aria-label="Twitter/X"><i class="fab fa-x-twitter"></i></a>
+          <a href="https://youtube.com/@s.s.f.c?si=fV4gWuc4trgaRfF6" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p style="margin-top:14px;font-size:0.78rem;color:var(--muted);font-family:var(--font-cond);letter-spacing:0.06em;line-height:1.6;">
+          Follow for match highlights, squad news, behind-the-scenes content, and live updates.
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="footerYear"></span> Super Stars FC · All Rights Reserved</span>
+      <span class="upsl-chip">UPSL Member Club</span>
+      <span>Omaha, Nebraska · Est. June 3, 2025</span>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       MATCH DETAIL MODAL
+       ============================================================ -->
+  <div class="modal-overlay" id="matchModal">
+    <div class="modal-box">
+      <button class="modal-close" id="closeModal" aria-label="Close">&times;</button>
+      <div class="modal-header">
+        <div id="modalBadge" style="margin-bottom:10px"></div>
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-score-display" id="modalScore"></div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-row"><i class="fas fa-calendar"></i><span><strong>Date: </strong><span id="modalDate"></span></span></div>
+        <div class="modal-row"><i class="fas fa-clock"></i><span><strong>Status: </strong><span id="modalTime"></span></span></div>
+        <div class="modal-row"><i class="fas fa-location-dot"></i><span><strong>Venue: </strong><span id="modalLoc"></span></span></div>
+        <div class="modal-row"><i class="fas fa-users"></i><span><strong>Attendance: </strong><span id="modalAtt"></span></span></div>
+        <div class="modal-row" id="modalScorerRow"><i class="fas fa-futbol"></i><span><strong>Scorers: </strong><span id="modalScorers"></span></span></div>
+        <div class="modal-row"><i class="fas fa-info-circle"></i><span id="modalInfo"></span></div>
+      </div>
+      <div class="modal-footer">
+        <button class="modal-share-btn" onclick="shareMatchTw()"><i class="fab fa-x-twitter"></i> Share</button>
+        <button class="modal-share-btn" onclick="copyMatchLink()"><i class="fas fa-link"></i> Copy Link</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       TOAST NOTIFICATION
+       ============================================================ -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle" style="color:#2ecc71"></i>
+    <span id="toastMsg">Done!</span>
+  </div>
+
+  <!-- ============================================================
+       SCROLL TO TOP
+       ============================================================ -->
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- ============================================================
+       JAVASCRIPT
+       ============================================================ -->
+  <script>
+    // ── YEAR ──────────────────────────────────────────────────────
+    document.getElementById('footerYear').textContent = new Date().getFullYear();
+
+    // ── READING PROGRESS ──────────────────────────────────────────
+    window.addEventListener('scroll', () => {
+      const s = window.scrollY, h = document.body.scrollHeight - window.innerHeight;
+      document.getElementById('progress-bar').style.width = (s / h * 100) + '%';
+      document.getElementById('scrollTop').classList.toggle('show', s > 350);
+    });
+
+    // ── SCROLL REVEAL ─────────────────────────────────────────────
+    const revealObs = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } }),
+      { threshold: 0.08 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // ── STAGGERED CARD REVEAL ─────────────────────────────────────
+    const cardObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e, i) => {
+          if (e.isIntersecting) {
+            setTimeout(() => e.target.classList.add('visible'), i * 100);
+            cardObs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.06 }
+    );
+    document.querySelectorAll('.match-card').forEach(el => cardObs.observe(el));
+
+    // ── ANIMATED COUNTERS ─────────────────────────────────────────
+    const counterObs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          const el = e.target;
+          const target = parseInt(el.dataset.target);
+          if (isNaN(target)) return;
+          let cur = 0;
+          const duration = 1400, step = target / (duration / 16);
+          const timer = setInterval(() => {
+            cur = Math.min(cur + step, target);
+            el.textContent = Math.round(cur).toLocaleString();
+            if (cur >= target) clearInterval(timer);
+          }, 16);
+          counterObs.unobserve(el);
+        });
+      },
+      { threshold: 0.5 }
+    );
+    document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+
+    // ── COUNTDOWN TIMER ───────────────────────────────────────────
+    const nextMatchDate = new Date('2026-04-05T16:00:00-05:00');
+    function updateCountdown() {
+      const diff = nextMatchDate - new Date();
+      if (diff <= 0) { ['cd-days','cd-hrs','cd-min','cd-sec'].forEach(id => document.getElementById(id).textContent = '0'); return; }
+      document.getElementById('cd-days').textContent = String(Math.floor(diff / 86400000)).padStart(2,'0');
+      document.getElementById('cd-hrs').textContent  = String(Math.floor((diff % 86400000) / 3600000)).padStart(2,'0');
+      document.getElementById('cd-min').textContent  = String(Math.floor((diff % 3600000) / 60000)).padStart(2,'0');
+      document.getElementById('cd-sec').textContent  = String(Math.floor((diff % 60000) / 1000)).padStart(2,'0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // ── DARK / LIGHT MODE ─────────────────────────────────────────
+    const modeBtn = document.getElementById('modeToggle');
+    function toggleMode() {
+      document.body.classList.toggle('light');
+      const isLight = document.body.classList.contains('light');
+      modeBtn.textContent = isLight ? '🌑' : '🌙';
+      localStorage.setItem('ssfc_mode', isLight ? 'light' : 'dark');
+    }
+    if (localStorage.getItem('ssfc_mode') === 'light') {
+      document.body.classList.add('light');
+      modeBtn.textContent = '🌑';
+    }
+
+    // ── FONT SIZE ─────────────────────────────────────────────────
+    let fontSize = 16;
+    function changeFontSize(dir) {
+      fontSize = Math.min(20, Math.max(13, fontSize + dir));
+      document.documentElement.style.fontSize = fontSize + 'px';
+      showToast('Font size ' + (dir > 0 ? 'increased ↑' : 'decreased ↓'));
+    }
+
+    // ── VIEW COUNTER ──────────────────────────────────────────────
+    const viewKey = 'ssfc_results_views';
+    let views = parseInt(localStorage.getItem(viewKey) || '0') + 1;
+    localStorage.setItem(viewKey, views);
+    document.querySelectorAll('[id^="viewCount"]').forEach(el => el.textContent = views.toLocaleString());
+
+    // ── LIKE BUTTON ───────────────────────────────────────────────
+    const likeKey = 'ssfc_results_likes', likedKey = 'ssfc_results_liked';
+    let likes = parseInt(localStorage.getItem(likeKey) || '24');
+    let liked = localStorage.getItem(likedKey) === 'true';
+    const likeBtn = document.getElementById('likeBtn');
+    const likeCount = document.getElementById('likeCount');
+    likeCount.textContent = likes;
+    if (liked) likeBtn.classList.add('liked');
+
+    function toggleLike() {
+      liked = !liked;
+      likes += liked ? 1 : -1;
+      likeBtn.classList.toggle('liked', liked);
+      likeCount.textContent = likes;
+      localStorage.setItem(likeKey, likes);
+      localStorage.setItem(likedKey, liked);
+      if (liked) showToast('Thanks for the love! ❤️');
+    }
+
+    // ── SHARE BUTTONS ─────────────────────────────────────────────
+    function copyLink(btn) {
+      navigator.clipboard.writeText(window.location.href).then(() => {
+        btn.classList.add('copied');
+        btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+        showToast('Link copied to clipboard!');
+        setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = '<i class="fas fa-link"></i> Copy Link'; }, 2500);
+      });
+    }
+    function shareTwitter() {
+      const txt = encodeURIComponent('Check out Super Stars FC match results! ⚽ #SuperStarsFC #UPSL #OmahaSoccer');
+      window.open('https://x.com/SuperStars75843?t=tZZoC1LvPfNGI-BKk15JG4g&S=09=' + txt + '&url=' + encodeURIComponent(window.location.href), '_blank');
+    }
+
+    // ── FILTER SYSTEM ─────────────────────────────────────────────
+    let activeFilter = 'all';
+    function setFilter(btn) {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.filter;
+      applyFilter();
+    }
+    function applyFilter() {
+      const cards = document.querySelectorAll('.match-card');
+      let count = 0;
+      cards.forEach(card => {
+        const show = activeFilter === 'all'
+          || activeFilter === card.dataset.result
+          || activeFilter === card.dataset.venue;
+        card.style.display = show ? '' : 'none';
+        if (show) count++;
+      });
+      document.getElementById('noResults').style.display = count === 0 ? 'block' : 'none';
+    }
+
+    // ── MATCH MODAL ───────────────────────────────────────────────
+    const modal = document.getElementById('matchModal');
+    const resultColors = {
+      win:      { bg:'rgba(46,204,113,0.15)',  color:'#2ecc71', label:'✅ Win' },
+      draw:     { bg:'rgba(241,196,15,0.12)',   color:'#f1c40f', label:'🟡 Draw' },
+      loss:     { bg:'rgba(255,30,30,0.12)',    color:'#ff6b6b', label:'❌ Loss' },
+      upcoming: { bg:'rgba(0,123,255,0.12)',    color:'#6ab4ff', label:'🔵 Upcoming' },
+      canceled: { bg:'rgba(150,150,150,0.1)',   color:'#aaa',    label:'⚫ Canceled' },
+    };
+    let modalMatchTitle = '';
+
+    document.querySelectorAll('.match-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const r = card.dataset.result || 'upcoming';
+        const rc = resultColors[r] || resultColors.upcoming;
+        modalMatchTitle = card.dataset.title;
+
+        document.getElementById('modalTitle').textContent = card.dataset.title;
+        document.getElementById('modalScore').textContent = card.dataset.score !== 'vs' ? card.dataset.score : '';
+        document.getElementById('modalDate').textContent  = card.dataset.date;
+        document.getElementById('modalTime').textContent  = card.dataset.time;
+        document.getElementById('modalLoc').textContent   = card.dataset.location;
+        document.getElementById('modalAtt').textContent   = card.dataset.attendance || '–';
+        document.getElementById('modalScorers').textContent = card.dataset.scorers || '–';
+        document.getElementById('modalInfo').textContent  = card.dataset.info;
+        document.getElementById('modalScorerRow').style.display =
+          (card.dataset.scorers && card.dataset.scorers !== '–') ? 'flex' : 'none';
+        document.getElementById('modalBadge').innerHTML =
+          `<span style="display:inline-block;padding:4px 14px;border-radius:20px;font-size:0.72rem;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;background:${rc.bg};color:${rc.color};border:1px solid ${rc.color}40">${rc.label}</span>`;
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeModal() { modal.classList.remove('active'); document.body.style.overflow = ''; }
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    function shareMatchTw() {
+      const txt = encodeURIComponent(modalMatchTitle + ' — Super Stars FC ⚽ #SuperStarsFC #UPSL');
+      window.open('https://x.com/SuperStars75843?t=tZZoC1LvPfNGI-BKk15JG4g&S=09=' + txt, '_blank');
+    }
+    function copyMatchLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => showToast('Link copied!'));
+    }
+
+    // ── TOAST ─────────────────────────────────────────────────────
+    let toastTimer;
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      document.getElementById('toastMsg').textContent = msg;
+      t.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => t.classList.remove('show'), 3200);
+    }
+
+    // ── GOALS CHART ───────────────────────────────────────────────
+    const matchData = [
+      { label:'Aug 16', goals: 8, result:'win' },
+      { label:'Aug 24', goals: 4, result:'win' },
+      { label:'Aug 31', goals: 2, result:'loss' },
+      { label:'Sep 6',  goals: 5, result:'win' },
+      { label:'Sep 20', goals: 4, result:'loss' },
+      { label:'Oct 1',  goals: 1, result:'draw' },
+      { label:'Oct 4',  goals: 2, result:'loss' },
+      { label:'Nov 1',  goals: 0, result:'canceled' },
+    ];
+    const maxGoals = Math.max(...matchData.map(m => m.goals));
+    const chartEl = document.getElementById('goalsChart');
+    matchData.forEach(m => {
+      const heightPct = maxGoals > 0 ? (m.goals / maxGoals) * 100 : 0;
+      chartEl.innerHTML += `
+        <div class="bar-col">
+          <div class="bar-val">${m.goals > 0 ? m.goals : '–'}</div>
+          <div class="bar ${m.result}" style="height:${heightPct}%" title="${m.label}: ${m.goals} goals"></div>
+          <div class="bar-lbl">${m.label}</div>
+        </div>`;
+    });
+
+    // Animate scorer bars
+    const scorerBarObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.scorer-bar-fill').forEach(bar => {
+            bar.style.width = bar.dataset.width + '%';
+          });
+          scorerBarObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.scorers-section').forEach(el => scorerBarObs.observe(el));
+
+    // Animate poll bars
+    const pollBarObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.poll-bar-fill').forEach(bar => {
+            if (e.target.classList.contains('poll-submitted'))
+              bar.style.width = bar.dataset.width + '%';
+          });
+          pollBarObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    // ── FAN POLL ──────────────────────────────────────────────────
+    let selectedOption = null;
+    const pollOptions = document.querySelectorAll('.poll-option');
+    const pollVoteBtn = document.getElementById('pollVoteBtn');
+    const pollTotal   = document.getElementById('pollTotal');
+    const pollStoredKey = 'ssfc_poll_voted';
+
+    // If already voted, show results
+    if (localStorage.getItem(pollStoredKey)) {
+      showPollResults();
+    }
+
+    pollOptions.forEach((opt, idx) => {
+      opt.addEventListener('click', () => {
+        if (localStorage.getItem(pollStoredKey)) return;
+        pollOptions.forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        selectedOption = idx;
+        pollVoteBtn.disabled = false;
+      });
+    });
+
+    function submitPoll() {
+      if (selectedOption === null) { showToast('Please pick a player first!'); return; }
+      localStorage.setItem(pollStoredKey, selectedOption);
+      showPollResults();
+      showToast('Vote submitted! Thanks! ⭐');
+    }
+
+    function showPollResults() {
+      const container = document.querySelector('.poll-options');
+      container.classList.add('poll-submitted');
+      container.querySelectorAll('.poll-bar-fill').forEach(bar => {
+        setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 300);
+      });
+      pollVoteBtn.disabled = true;
+      pollVoteBtn.textContent = 'Voted ✓';
+      pollTotal.textContent = '📊 Based on current fan votes · Results updated live';
+    }
+
+    // ── NEWSLETTER ────────────────────────────────────────────────
+    function subscribeNL() {
+      const email = document.getElementById('nlEmail').value.trim();
+      const input = document.getElementById('nlEmail');
+      if (!email || !email.includes('@')) {
+        input.style.borderColor = 'var(--red)';
+        showToast('Please enter a valid email address.');
+        return;
+      }
+      input.style.borderColor = '#2ecc71';
+      document.getElementById('nl-confirm').style.display = 'block';
+      showToast('Subscribed! Welcome to the family ⭐');
+    }
+
+    // ── GALLERY LIGHTBOX ──────────────────────────────────────────
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', () => {
+        showToast('📸 Full gallery coming soon!');
+      });
+    });
+  </script>
+</body>
+</html>

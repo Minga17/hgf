@@ -1,0 +1,1114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Super Star FC — Privacy Policy</title>
+  <link rel="shortcut icon" href="image0.jpeg" type="image/jpeg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta name="description" content="Super Star FC — Privacy Policy. Learn how we collect, use, and protect your information." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #0f1724;
+      --accent: #b62a2d;
+      --accent-secondary: #1c5da4;
+      --muted: #9aa4b2;
+      --glass: rgba(255,255,255,0.04);
+      --max-w: 1100px;
+      --radius: 12px;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, var(--bg), #071021);
+      color: #e6eef8;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      padding: 0 0 60px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      padding: 32px 20px;
+    }
+
+    /* ====== PROGRESS BAR ====== */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-secondary), var(--accent));
+      z-index: 9999;
+      transition: width 0.1s ease;
+    }
+
+    /* ====== HEADER ====== */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo {
+      width: 48px; height: 48px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent-secondary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    }
+
+    nav { display: flex; gap: 16px; align-items: center; }
+    nav a { color: var(--muted); text-decoration: none; font-weight: 600; }
+
+    .cta {
+      background: linear-gradient(135deg, var(--accent-secondary), var(--accent));
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .cta:hover { opacity: 0.85; }
+
+    /* ====== PAGE HERO ====== */
+    .page-hero {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
+      padding: 32px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.04);
+      margin-bottom: 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .page-hero h1 {
+      font-size: 2.2rem;
+      color: var(--accent-secondary);
+      margin: 0 0 10px;
+    }
+
+    .page-hero .meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      background: rgba(28,93,164,0.2);
+      border: 1px solid var(--accent-secondary);
+      color: var(--accent-secondary);
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .badge.red {
+      background: rgba(182,42,45,0.15);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .action-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.83rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent-secondary), var(--accent));
+      color: #fff;
+    }
+
+    .btn-secondary {
+      background: #162033;
+      border: 1.5px solid #2a3a55;
+      color: var(--muted);
+    }
+
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-secondary:hover { border-color: var(--accent-secondary); color: #e6eef8; }
+
+    /* ====== MAIN LAYOUT ====== */
+    .main-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* ====== SIDEBAR ====== */
+    .toc-sidebar {
+      position: sticky;
+      top: 20px;
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .toc-sidebar h3 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin: 0 0 12px;
+    }
+
+    .toc-list { list-style: none; padding: 0; margin: 0; }
+    .toc-list li { margin-bottom: 2px; }
+
+    .toc-list a {
+      display: block;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--muted);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .toc-list a:hover { background: rgba(28,93,164,0.12); color: #e6eef8; }
+    .toc-list a.active {
+      background: rgba(28,93,164,0.18);
+      color: var(--accent-secondary);
+      border-left: 2px solid var(--accent-secondary);
+    }
+
+    /* ====== POLICY CONTENT ====== */
+    .policy-content { display: flex; flex-direction: column; gap: 14px; }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ====== SECTION CARDS ====== */
+    .policy-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .policy-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+      border-left: 4px solid var(--accent-secondary);
+    }
+
+    .policy-header:hover { background: rgba(255,255,255,0.02); }
+
+    .policy-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .policy-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: rgba(28,93,164,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .policy-header h2 {
+      margin: 0;
+      font-size: 0.97rem;
+      color: #e6eef8;
+    }
+
+    .policy-toggle {
+      color: var(--muted);
+      font-size: 0.85rem;
+      transition: transform 0.3s;
+    }
+
+    .policy-toggle.open { transform: rotate(180deg); }
+
+    .policy-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+      padding: 0 20px;
+    }
+
+    .policy-body.open {
+      max-height: 600px;
+      padding: 4px 20px 20px;
+    }
+
+    .policy-body p { color: var(--muted); font-size: 0.9rem; margin: 8px 0; line-height: 1.7; }
+
+    .policy-body ul {
+      margin: 8px 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .policy-body ul li {
+      margin-bottom: 7px;
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .policy-body strong { color: #e6eef8; }
+
+    /* Highlight callout */
+    .callout {
+      background: rgba(28,93,164,0.1);
+      border-left: 3px solid var(--accent-secondary);
+      border-radius: 0 8px 8px 0;
+      padding: 12px 16px;
+      margin: 10px 0;
+      font-size: 0.88rem;
+      color: #c5d3e8;
+      line-height: 1.6;
+    }
+
+    .callout.red {
+      background: rgba(182,42,45,0.08);
+      border-color: var(--accent);
+    }
+
+    /* Contact inline copy */
+    .contact-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 6px 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .copy-inline {
+      background: #162033;
+      border: 1px solid #2a3a55;
+      color: var(--muted);
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .copy-inline:hover { border-color: var(--accent-secondary); color: #e6eef8; }
+
+    /* ====== DATA REQUEST FORM ====== */
+    .data-request {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 28px;
+      border: 1px solid rgba(28,93,164,0.3);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .data-request h2 {
+      color: var(--accent-secondary);
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+    }
+
+    .data-request p { color: var(--muted); font-size: 0.88rem; margin-bottom: 18px; line-height: 1.6; }
+
+    .req-form { display: flex; flex-direction: column; gap: 12px; }
+
+    .req-form input, .req-form select, .req-form textarea {
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1.5px solid #2a3a55;
+      background: #162033;
+      color: #e6eef8;
+      font-size: 0.9rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    .req-form input:focus, .req-form select:focus, .req-form textarea:focus {
+      outline: none;
+      border-color: var(--accent-secondary);
+    }
+
+    select option { background: #162033; }
+
+    .req-btn {
+      background: linear-gradient(135deg, var(--accent-secondary), var(--accent));
+      border: none;
+      color: #fff;
+      font-weight: 700;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .req-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+    .req-success {
+      background: rgba(63,169,106,0.1);
+      border: 1px solid #3fa96a;
+      border-radius: 8px;
+      padding: 14px 18px;
+      color: #3fa96a;
+      font-weight: 600;
+      font-size: 0.88rem;
+      display: none;
+    }
+
+    .req-error { color: #e05555; font-size: 0.8rem; display: none; }
+
+    /* ====== COOKIE BANNER ====== */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: #0d1829;
+      border-top: 1px solid rgba(28,93,164,0.4);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      z-index: 800;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+
+    .cookie-banner.show { transform: translateY(0); }
+
+    .cookie-banner p { margin: 0; color: var(--muted); font-size: 0.84rem; }
+    .cookie-banner p a { color: var(--accent-secondary); }
+
+    .cookie-actions { display: flex; gap: 10px; flex-shrink: 0; }
+
+    .cookie-accept {
+      background: linear-gradient(135deg, var(--accent-secondary), var(--accent));
+      border: none;
+      color: #fff;
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.84rem;
+      font-family: inherit;
+    }
+
+    .cookie-decline {
+      background: transparent;
+      border: 1.5px solid #2a3a55;
+      color: var(--muted);
+      font-weight: 700;
+      padding: 8px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.84rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    .cookie-decline:hover { border-color: var(--accent-secondary); }
+
+    /* ====== TOAST ====== */
+    .toast {
+      position: fixed;
+      bottom: 80px;
+      right: 28px;
+      background: #1e3050;
+      border: 1px solid var(--accent-secondary);
+      color: #e6eef8;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      z-index: 2000;
+      transform: translateY(80px);
+      opacity: 0;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* ====== SCROLL TOP ====== */
+    .scroll-top {
+      position: fixed;
+      bottom: 80px;
+      left: 28px;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-secondary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 999;
+      border: none;
+      font-size: 1rem;
+      color: #fff;
+      padding: 0;
+    }
+
+    .scroll-top.show { opacity: 1; pointer-events: all; }
+    .scroll-top:hover { transform: translateY(-3px) scale(1.05); }
+
+    /* ====== FOOTER ====== */
+    .site-footer {
+      background: linear-gradient(180deg, var(--bg), #060a18);
+      color: #e6eef8;
+      padding: 36px 20px 20px;
+      font-size: 14px;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      margin-top: 60px;
+    }
+
+    .footer-container {
+      max-width: var(--max-w);
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 36px;
+    }
+
+    .footer-brand h3 { color: #fff; margin-bottom: 8px; }
+    .footer-brand p { color: var(--muted); line-height: 1.6; margin: 0 0 4px; }
+
+    .footer-links h4, .footer-contact h4, .footer-social h4 {
+      color: #fff;
+      margin-bottom: 12px;
+      font-size: 15px;
+      position: relative;
+    }
+
+    .footer-links h4::after, .footer-contact h4::after, .footer-social h4::after {
+      content: "";
+      display: block;
+      width: 34px;
+      height: 2px;
+      margin-top: 6px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+    }
+
+    .footer-links a {
+      display: block;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 8px;
+      font-weight: 500;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .footer-links a:hover { color: #e6eef8; transform: translateX(4px); }
+    .footer-contact p { margin-bottom: 6px; color: var(--muted); }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      margin-right: 10px;
+      border-radius: 50%;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .social-icons a svg { width: 18px; height: 18px; fill: currentColor; }
+
+    .social-icons a:hover {
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+      transform: translateY(-2px) scale(1.08);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    }
+
+    .social-icons a.icon-youtube:hover { background: #ff0000; }
+    .social-icons a.icon-facebook:hover { background: #1c5da4; }
+    .social-icons a.icon-twitter:hover { background: #000; }
+
+    .footer-bottom {
+      margin-top: 32px;
+      padding-top: 16px;
+      text-align: center;
+      color: var(--muted);
+      position: relative;
+    }
+
+    .footer-bottom::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 70%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), var(--accent-secondary), transparent);
+    }
+
+    /* ====== PRINT ====== */
+    @media print {
+      .toc-sidebar, .action-bar, .data-request, .scroll-top, .toast, .cookie-banner,
+      #progress-bar, header nav, .policy-toggle { display: none !important; }
+      .main-layout { grid-template-columns: 1fr; }
+      body { background: #fff; color: #000; padding: 0; }
+      .policy-card { box-shadow: none; border: 1px solid #ccc; }
+      .policy-body { max-height: none !important; padding: 4px 20px 16px !important; }
+      .policy-body p, .policy-body li { color: #333 !important; }
+      .page-hero { border: 1px solid #ccc; }
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 800px) {
+      .main-layout { grid-template-columns: 1fr; }
+      .toc-sidebar { position: static; }
+    }
+  </style>
+</head>
+<body>
+  <div id="progress-bar"></div>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <header>
+      <a class="brand" href="./index.html">
+        <div class="logo">SS</div>
+        <div>
+          <div style="font-weight:800;letter-spacing:0.6px">Super Star FC</div>
+          <div style="font-size:0.8rem;color:var(--muted);margin-top:2px">Official Club</div>
+        </div>
+      </a>
+      <nav>
+        <a class="cta" href="./index.html">Main</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <div class="page-hero reveal">
+      <h1>🔐 Privacy Policy</h1>
+      <div class="meta">
+        <span class="badge">Effective: June 3, 2025</span>
+        <span class="badge">Last Updated: June 3, 2025</span>
+        <span class="badge red">SUPER STARS FC </span>
+      </div>
+      <p style="color:var(--muted);margin:0;font-size:0.9rem">Super Stars FC respects your privacy and is committed to protecting the personal information of our players, parents, guardians, supporters, and website visitors.</p>
+      <div class="action-bar">
+        <button class="action-btn btn-primary" onclick="window.print()">
+          <i class="fas fa-print"></i> Print / Save PDF
+        </button>
+        <button class="action-btn btn-secondary" onclick="expandAll()">
+          <i class="fas fa-expand-alt"></i> Expand All
+        </button>
+        <button class="action-btn btn-secondary" onclick="collapseAll()">
+          <i class="fas fa-compress-alt"></i> Collapse All
+        </button>
+      </div>
+    </div>
+
+    <!-- MAIN LAYOUT -->
+    <div class="main-layout">
+
+      <!-- SIDEBAR TOC -->
+      <aside class="toc-sidebar">
+        <h3>Contents</h3>
+        <ul class="toc-list">
+          <li><a href="#s1" class="toc-link">1. Who We Are</a></li>
+          <li><a href="#s2" class="toc-link">2. Info We Collect</a></li>
+          <li><a href="#s3" class="toc-link">3. How We Use It</a></li>
+          <li><a href="#s4" class="toc-link">4. Cookies</a></li>
+          <li><a href="#s5" class="toc-link">5. Sharing</a></li>
+          <li><a href="#s6" class="toc-link">6. Children's Privacy</a></li>
+          <li><a href="#s7" class="toc-link">7. Data Security</a></li>
+          <li><a href="#s8" class="toc-link">8. Data Retention</a></li>
+          <li><a href="#s9" class="toc-link">9. Your Rights</a></li>
+          <li><a href="#s10" class="toc-link">10. Policy Changes</a></li>
+          <li><a href="#s11" class="toc-link">11. Contact Us</a></li>
+          <li><a href="#data-request" class="toc-link">📋 Data Request</a></li>
+        </ul>
+      </aside>
+
+      <!-- CONTENT -->
+      <div class="policy-content">
+
+        <!-- 1 -->
+        <div class="policy-card reveal" id="s1">
+          <div class="policy-header" onclick="toggleSection(this)">
+            <div class="policy-header-left">
+              <div class="policy-icon">🏢</div>
+              <h2>1. Who We Are</h2>
+            </div>
+            <i class="fas fa-chevron-down policy-toggle open"></i>
+          </div>
+          <div class="policy-body open">
+            <p><strong>Club Name:</strong> Super Stars FC</p>
+            <p><strong>Founded:</strong> June 3, 2025</p>
+            <div class="contact-line">
+              <span>📧 superstarfc25@gmail.com</span>
+              <button class="copy-inline" onclick="copyText('superstarfc25@gmail.com', 'Email copied!')">Copy</button>
+            </div>
+            <div class="contact-line">
+              <span>📞 +1 (531) 262-1982</span>
+              <button class="copy-inline" onclick="copyText('+15312621982', 'Phone copied!')">Copy</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="policy-card reveal" id="s2">
+          <div class="policy-header" onclick="toggleSection(this)">
+            <div class="policy-header-left">
+              <div class="policy-icon">📋</div>
+              <h2>2. Information We Collect</h2>
+            </div>
+            <i class="fas fa-chevron-down policy-toggle"></i>
+          </div>
+          <div class="policy-body">
+            <ul>
+              <li>Personal identifiers (name, email, phone number)</li>
+              <li>Player and guardian details (for youth players)</li>
+              <li>Registration, participation, and team information</li>
+              <li>Payment or transaction details (if applicable)</li>
+              <li>Photos or videos captured during matches or events</li>
+              <li>Website usage data (IP address, browser type, cookies)</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="policy-card reveal" id="s3">
+          <div class="policy-header" onclick="toggleSection(this)">
+            <div class="policy-header-left">
+              <div class="policy-icon">⚙️</div>
+              <h2>3. How We Use Your Information</h2>
+            </div>
+            <i class="fas fa-chevron-down policy-toggle"></i>
+          </div>
+          <div class="policy-body">
+            <ul>
+              <li>Manage registrations, memberships, and team activities</li>
+              <li>Communicate schedules, updates, and club announcements</li>
+              <li>Organize matches, events, and tournaments</li>
+              <li>Improve our website and services</li>
+              <li>Ensure safety, security, and compliance</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="policy-card reveal" id="s4">
+          <div class="policy-header" onclick="toggleSection(this)">
+            <div class="policy-header-left">
+              <div class="policy-icon">🍪</div>
+              <h2>4. Cookies & Analytics</h2>
+            </div>
+            <i class="fas fa-chevron-down policy-toggle"></i>
+          </div>
+          <div class="policy-body">
+            <p>We use cookies and analytics tools to improve site performance and user experience. These tools collect non-identifiable technical data.</p>
+            <div class="callout">You may disable cookies through your browser settings at any time. Disabling cookies may affect some features of our website.</div>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="policy-card reveal" id="s5">
+          <div class="policy-header" onclick="toggleSection(this)">
+            <div class="policy-header-left">
+              <div class="policy-icon">🔗</div>
+              <h2>5. Sharing of Information</h2>
+            </div>
+            <i class="fas fa-chevron-down policy-toggle"></i>
+          </div>
+          <div class="policy-body">
+            <div class="callout red">Super Stars FC does <strong>not sell</strong> your personal data to any third party.</div>
+            <p>We may share information only with:</p>
+            <ul>
+              <li>Club coaches, staff, and volunteers for operational needs</li>
+              <li>Trusted service providers (website hosting, communications)</li>
+              <li>Authorities when required by law</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="policy-card reveal" id="s6">
+          <div class="policy-header" onclick="toggleSection(this)">
+            <div class="policy-header-left">
+              <div class="policy-icon">👶</div>
+              <h2>6. Children's Privacy</h2>
+            </div>
+            <i class="fas fa-chevron-down policy-toggle"></i>
+          </div>
+          <div class="policy-body">
+            <p>We collect personal data from minors only with verified parent or guardian consent. Children's information is used strictly for club-related purposes.</p>
+            <div class="callout">Parents and guardians may request access to, correction of, or deletion of their child's data at any time by contacting us.</div>
+          </div>
+        </div>
+
+        <!-- 7 -->
+        <div class="policy-card reveal" id="s7">
+          <div class="policy-header" onclick="toggleSection(this)">
+            <div class="policy-header-left">
+              <div class="policy-icon">🔐</div>
+              <h2>7. Data Security</h2>
+            </div>
+            <i class="fas fa-chevron-down policy-toggle"></i>
+          </div>
+          <div class="policy-body">
+            <p>We implement reasonable technical and organizational safeguards to protect your personal information.</p>
+            <div class="callout red">No system is completely secure. We encourage you to use strong passwords and keep your account credentials private.</div>
+          </div>
+        </div>
+
+        <!-- 8 -->
+        <div class="policy-card reveal" id="s8">
+          <div class="policy-header" onclick="toggleSection(this)">
+            <div class="policy-header-left">
+              <div class="policy-icon">🗂️</div>
+              <h2>8. Data Retention</h2>
+            </div>
+            <i class="fas fa-chevron-down policy-toggle"></i>
+          </div>
+          <div class="policy-body">
+            <p>We retain personal data only as long as necessary to fulfill club purposes or comply with legal obligations. Historical photos and records may be retained unless removal is specifically requested.</p>
+          </div>
+        </div>
+
+        <!-- 9 -->
+        <div class="policy-card reveal" id="s9">
+          <div class="policy-header" onclick="toggleSection(this)">
+            <div class="policy-header-left">
+              <div class="policy-icon">⚖️</div>
+              <h2>9. Your Privacy Rights (U.S. & California)</h2>
+            </div>
+            <i class="fas fa-chevron-down policy-toggle"></i>
+          </div>
+          <div class="policy-body">
+            <p>Under the CCPA/CPRA and applicable U.S. state laws, you may have the right to:</p>
+            <ul>
+              <li>Know what personal data we collect</li>
+              <li>Request access to your personal data</li>
+              <li>Request correction or deletion of your data</li>
+              <li>Opt out of data sharing (we do not sell data)</li>
+              <li>Not be discriminated against for exercising your rights</li>
+            </ul>
+            <div class="callout">To exercise any of these rights, use our <a href="#data-request" style="color:var(--accent-secondary)">Data Request Form</a> below or contact us directly.</div>
+          </div>
+        </div>
+
+        <!-- 10 -->
+        <div class="policy-card reveal" id="s10">
+          <div class="policy-header" onclick="toggleSection(this)">
+            <div class="policy-header-left">
+              <div class="policy-icon">🔄</div>
+              <h2>10. Changes to This Policy</h2>
+            </div>
+            <i class="fas fa-chevron-down policy-toggle"></i>
+          </div>
+          <div class="policy-body">
+            <p>We may update this Privacy Policy from time to time. Updates will be posted on this page with a revised effective date. We encourage you to check back periodically.</p>
+          </div>
+        </div>
+
+        <!-- 11 -->
+        <div class="policy-card reveal" id="s11">
+          <div class="policy-header" onclick="toggleSection(this)">
+            <div class="policy-header-left">
+              <div class="policy-icon">📬</div>
+              <h2>11. Contact Us</h2>
+            </div>
+            <i class="fas fa-chevron-down policy-toggle"></i>
+          </div>
+          <div class="policy-body">
+            <p>If you have questions or requests regarding this Privacy Policy:</p>
+            <div class="contact-line">
+              <span>📧 <strong>superstarfc25@gmail.com</strong></span>
+              <button class="copy-inline" onclick="copyText('superstarfc25@gmail.com', 'Email copied!')">Copy</button>
+            </div>
+            <div class="contact-line">
+              <span>📞 <strong>+1 (531) 262-1982</strong></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- DATA REQUEST FORM -->
+        <div class="data-request reveal" id="data-request">
+          <h2>📋 Submit a Data Request</h2>
+          <p>To access, correct, or delete your personal data held by Super Stars FC, please complete the form below. We will respond within 30 days.</p>
+          <div class="req-form" id="reqForm">
+            <input type="text" id="reqName" placeholder="Full Name *" />
+            <input type="email" id="reqEmail" placeholder="Email Address *" />
+            <select id="reqType">
+              <option value="">Select Request Type *</option>
+              <option>Access my personal data</option>
+              <option>Correct my personal data</option>
+              <option>Delete my personal data</option>
+              <option>Opt out of data sharing</option>
+              <option>Other privacy inquiry</option>
+            </select>
+            <textarea id="reqDetails" rows="3" placeholder="Additional details (optional)"></textarea>
+            <span class="req-error" id="reqError">Please fill in all required fields.</span>
+            <button class="req-btn" onclick="submitRequest()">📨 Submit Data Request</button>
+          </div>
+          <div class="req-success" id="reqSuccess"></div>
+        </div>
+
+      </div><!-- /.policy-content -->
+    </div><!-- /.main-layout -->
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <h3>Super Star FC</h3>
+          <p>Founded June 3, 2025.</p>
+          <p>Building champions on and off the field.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="./bout.html">About Us</a>
+          <a href="./term.html">Terms</a>
+          <a href="./contact.html">Contact</a>
+          <a href="./rules.html">Code of Conduct</a>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>Email: superstarfc25@gmail.com</p>
+          <p>Phone: +1 (531) 262-1982</p>
+        </div>
+        <div class="footer-social">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=100077275385711" aria-label="Facebook" class="icon-facebook">
+              <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2V12h2.2V9.8c0-2.2 1.3-3.4 3.3-3.4.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 2.9h-1.9v7A10 10 0 0 0 22 12z"/></svg>
+            </a>
+            <a href="https://www.instagram.com/super_starsfc_fc" aria-label="Instagram" class="icon-instagram">
+              <svg viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zm5.8-2.1a1.3 1.3 0 1 1-1.3-1.3 1.3 1.3 0 0 1 1.3 1.3z"/></svg>
+            </a>
+            <a href="https://x.com/SuperStars75843" aria-label="Twitter" class="icon-twitter">
+              <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.1.9A5.4 5.4 0 0 0 22.4 1a10.8 10.8 0 0 1-3.4 1.3A5.4 5.4 0 0 0 9.6 7a15.3 15.3 0 0 1-11.1-5.6 5.4 5.4 0 0 0 1.7 7.2A5.3 5.3 0 0 1 .8 8v.1a5.4 5.4 0 0 0 4.3 5.3 5.5 5.5 0 0 1-2.4.1 5.4 5.4 0 0 0 5 3.8A10.8 10.8 0 0 1 0 19.5 15.3 15.3 0 0 0 8.3 22c10 0 15.5-8.3 15.5-15.5v-.7A11 11 0 0 0 23 3z"/></svg>
+            </a>
+            <a href="https://youtube.com/@s.s.f.c?si=fV4gWuc4trgaRfF6" aria-label="YouTube" class="icon-youtube">
+              <svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5h0s-5.6 0-8.5.4c-.4.1-1.3.1-2.1 1C.7 4.6.5 6.2.5 6.2S0 8.1 0 10v2c0 1.9.5 3.8.5 3.8s.2 1.6.9 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.2.4 7.2.4s5.6 0 8.5-.4c.4-.1 1.3-.1 2.1-1 .7-.7.9-2.3.9-2.3s.5-1.9.5-3.8v-2c0-1.9-.5-3.8-.5-3.8zM9.8 14.5V9.5l4.8 2.5-4.8 2.5z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">© <span id="year"></span> Super Star FC. All rights reserved.</div>
+    </footer>
+  </div>
+
+  <!-- COOKIE BANNER -->
+  <div class="cookie-banner" id="cookieBanner">
+    <p>🍪 We use cookies to improve your experience. See our <a href="#s4">Cookie Policy</a> for details.</p>
+    <div class="cookie-actions">
+      <button class="cookie-accept" onclick="acceptCookies()">Accept</button>
+      <button class="cookie-decline" onclick="declineCookies()">Decline</button>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle" style="color:#3fa96a"></i>
+    <span id="toastMsg">Done!</span>
+  </div>
+
+  <!-- SCROLL TOP -->
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script>
+    // ===== YEAR =====
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ===== PROGRESS BAR + SCROLL =====
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const total = document.body.scrollHeight - window.innerHeight;
+      document.getElementById('progress-bar').style.width = (scrolled / total * 100) + '%';
+      const btn = document.getElementById('scrollTop');
+      scrolled > 300 ? btn.classList.add('show') : btn.classList.remove('show');
+      updateTOC();
+    });
+
+    // ===== SMOOTH SCROLL =====
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          window.scrollTo({ top: target.offsetTop - 20, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // ===== SCROLL REVEAL =====
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ===== ACCORDION =====
+    function toggleSection(header) {
+      const body = header.nextElementSibling;
+      const icon = header.querySelector('.policy-toggle');
+      const isOpen = body.classList.contains('open');
+      body.classList.toggle('open', !isOpen);
+      icon.classList.toggle('open', !isOpen);
+    }
+
+    function expandAll() {
+      document.querySelectorAll('.policy-body').forEach(b => b.classList.add('open'));
+      document.querySelectorAll('.policy-toggle').forEach(i => i.classList.add('open'));
+    }
+
+    function collapseAll() {
+      document.querySelectorAll('.policy-body').forEach(b => b.classList.remove('open'));
+      document.querySelectorAll('.policy-toggle').forEach(i => i.classList.remove('open'));
+    }
+
+    // ===== SCROLLSPY =====
+    function updateTOC() {
+      const sections = document.querySelectorAll('[id]');
+      const links = document.querySelectorAll('.toc-link');
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 100) current = s.id;
+      });
+      links.forEach(l => {
+        l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+      });
+    }
+
+    // ===== COPY =====
+    function copyText(text, msg) {
+      navigator.clipboard.writeText(text).then(() => showToast(msg || 'Copied!'));
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => showToast('Page link copied!'));
+    }
+
+    // ===== TOAST =====
+    function showToast(msg) {
+      document.getElementById('toastMsg').textContent = msg;
+      const t = document.getElementById('toast');
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    // ===== COOKIE BANNER =====
+    window.addEventListener('DOMContentLoaded', () => {
+      const consent = localStorage.getItem('ssfc_cookie_consent');
+      if (!consent) setTimeout(() => document.getElementById('cookieBanner').classList.add('show'), 1200);
+    });
+
+    function acceptCookies() {
+      localStorage.setItem('ssfc_cookie_consent', 'accepted');
+      document.getElementById('cookieBanner').classList.remove('show');
+      showToast('Cookie preferences saved.');
+    }
+
+    function declineCookies() {
+      localStorage.setItem('ssfc_cookie_consent', 'declined');
+      document.getElementById('cookieBanner').classList.remove('show');
+      showToast('Cookies declined.');
+    }
+
+    // ===== DATA REQUEST FORM =====
+    function submitRequest() {
+      const name = document.getElementById('reqName').value.trim();
+      const email = document.getElementById('reqEmail').value.trim();
+      const type = document.getElementById('reqType').value;
+      const errorEl = document.getElementById('reqError');
+
+      if (!name || !email || !type || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      errorEl.style.display = 'none';
+      const details = document.getElementById('reqDetails').value.trim();
+      const ts = new Date().toLocaleString('en-US', { dateStyle: 'full', timeStyle: 'short' });
+
+      document.getElementById('reqForm').style.display = 'none';
+      const success = document.getElementById('reqSuccess');
+      success.style.display = 'block';
+      success.innerHTML = `✅ Request received from <strong>${name}</strong> (${email}) — <em>${type}</em>.<br>Submitted on <strong>${ts}</strong>. We will respond within 30 days.`;
+      showToast('Data request submitted!');
+    }
+  </script>
+</body>
+</html>

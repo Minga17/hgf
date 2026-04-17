@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>An End-Of-Season Vibe | Super Stars FC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Super Stars FC closes out a season of grind, growth, resilience, and belief. A look back at the journey.">
+  <link rel="shortcut icon" href="../image0.jpeg" type="image/jpeg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #0f1724;
+      --accent-red: #b62a2d;
+      --accent-blue: #1c5da4;
+      --muted: #9aa4b2;
+      --max-w: 1100px;
+      --radius: 12px;
+      --font-size: 1.05rem;
+      font-family: Inter, system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: linear-gradient(180deg, var(--bg), #071021);
+      color: #e6eef8;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.light-mode {
+      background: #f0f4fa;
+      color: #1a2233;
+      --bg: #f0f4fa;
+      --card: #ffffff;
+      --muted: #556070;
+    }
+
+    /* ====== PROGRESS BAR ====== */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-red));
+      z-index: 9999;
+      transition: width 0.1s ease;
+    }
+
+    /* ====== HEADER ====== */
+    .site-header {
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(11,16,32,0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    body.light-mode .site-header {
+      background: rgba(240,244,250,0.92);
+      border-bottom-color: rgba(0,0,0,0.08);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo {
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .header-right { display: flex; align-items: center; gap: 14px; }
+
+    .header-right a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+
+    .header-right a:hover { color: var(--accent-blue); }
+
+    .cta-btn {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      color: #fff !important;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 700 !important;
+      text-decoration: none;
+    }
+
+    .reading-controls { display: flex; align-items: center; gap: 6px; }
+
+    .ctrl-btn {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--muted);
+      width: 32px; height: 32px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .ctrl-btn:hover { border-color: var(--accent-blue); color: #e6eef8; }
+    body.light-mode .ctrl-btn { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.1); color: #556070; }
+
+    /* ====== QUOTE BANNER ====== */
+    .qotd-banner {
+      background: linear-gradient(135deg, rgba(28,93,164,0.15), rgba(182,42,45,0.15));
+      border-top: 2px solid var(--accent-blue);
+      border-bottom: 2px solid var(--accent-red);
+      padding: 14px 28px;
+      text-align: center;
+      font-size: 0.88rem;
+      color: #c8d3e0;
+      font-style: italic;
+    }
+
+    body.light-mode .qotd-banner { color: #334155; }
+    .qotd-banner strong { color: var(--accent-blue); font-style: normal; }
+
+    /* ====== HERO ====== */
+    .article-hero {
+      position: relative;
+      height: 460px;
+      overflow: hidden;
+    }
+
+    .article-hero img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.32);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 28px;
+    }
+
+    .article-category {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent-blue);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+
+    .hero-overlay h1 {
+      font-size: clamp(1.7rem, 4.5vw, 2.9rem);
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 18px;
+      max-width: 820px;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.7);
+    }
+
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.72);
+    }
+
+    .article-meta span { display: flex; align-items: center; gap: 6px; }
+
+    /* ====== SEASON SUMMARY CARD ====== */
+    .summary-wrap {
+      max-width: 860px;
+      margin: 32px auto 0;
+      padding: 0 20px;
+    }
+
+    .season-summary {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 26px 28px;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-top: 4px solid var(--accent-blue);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .summary-icon {
+      font-size: 3rem;
+      flex-shrink: 0;
+    }
+
+    .summary-info h2 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      margin-bottom: 4px;
+    }
+
+    .summary-info p {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .summary-stats {
+      margin-left: auto;
+      display: flex;
+      gap: 22px;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+
+    .sstat { text-align: center; }
+
+    .sstat .snum {
+      font-size: 1.8rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+
+    .sstat .slbl {
+      font-size: 0.66rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 3px;
+    }
+
+    /* ====== MAIN WRAP ====== */
+    .main-wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 20px 60px;
+    }
+
+    /* ====== SEASON STATS PANEL ====== */
+    .season-stats {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 22px 28px;
+      margin-bottom: 28px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .season-stats h3 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-blue);
+      margin-bottom: 18px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 16px;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-num {
+      font-size: 1.9rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.68rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 5px;
+    }
+
+    /* ====== TOOLBAR ====== */
+    .article-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 16px 0;
+      margin-bottom: 28px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    body.light-mode .article-toolbar { border-color: rgba(0,0,0,0.08); }
+
+    .like-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--card);
+      border: 1.5px solid rgba(255,255,255,0.07);
+      color: var(--muted);
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 700;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    .like-btn:hover, .like-btn.liked { border-color: var(--accent-red); color: var(--accent-red); }
+
+    .share-group { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .share-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--card);
+      border: 1.5px solid rgba(255,255,255,0.07);
+      color: var(--muted);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 700;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    .share-btn:hover { border-color: var(--accent-blue); color: #e6eef8; }
+
+    /* ====== TOC ====== */
+    .toc-box {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 36px;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-left: 4px solid var(--accent-blue);
+    }
+
+    .toc-box h3 {
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-blue);
+      margin-bottom: 12px;
+    }
+
+    .toc-box ol {
+      padding-left: 18px;
+      margin: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 24px;
+    }
+
+    .toc-box ol li a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .toc-box ol li a:hover { color: var(--accent-blue); }
+
+    /* ====== ARTICLE BODY ====== */
+    .article-body { font-size: var(--font-size); line-height: 1.8; }
+
+    .article-section { margin-bottom: 40px; }
+
+    .section-heading {
+      font-size: 1.45rem;
+      color: #e6eef8;
+      margin-bottom: 14px;
+      padding-top: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    body.light-mode .section-heading { color: #1a2233; }
+
+    .section-heading::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 1.2em;
+      background: linear-gradient(180deg, var(--accent-blue), var(--accent-red));
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .article-body p { color: #c8d3e0; margin-bottom: 16px; }
+    body.light-mode .article-body p { color: #334155; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* Pull Quote */
+    .pull-quote {
+      padding: 18px 24px;
+      margin: 32px 0;
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+
+    .pull-quote.blue {
+      border-left: 4px solid var(--accent-blue);
+      background: rgba(28,93,164,0.08);
+    }
+
+    .pull-quote.red {
+      border-left: 4px solid var(--accent-red);
+      background: rgba(182,42,45,0.07);
+    }
+
+    .pull-quote p {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: #d4e2f4 !important;
+      margin: 0 0 8px !important;
+      line-height: 1.5;
+    }
+
+    body.light-mode .pull-quote p { color: #1e3a5f !important; }
+    .pull-quote cite { font-size: 0.8rem; color: var(--muted); font-style: normal; }
+
+    /* Callout */
+    .key-callout {
+      background: rgba(28,93,164,0.1);
+      border-left: 3px solid var(--accent-blue);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      font-size: 0.9rem;
+      color: #c5d3e8;
+      line-height: 1.6;
+    }
+
+    body.light-mode .key-callout { color: #334155; background: rgba(28,93,164,0.06); }
+
+    /* Divider */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 36px 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .section-divider::before, .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+    }
+
+    body.light-mode .section-divider::before,
+    body.light-mode .section-divider::after { background: rgba(0,0,0,0.1); }
+
+    /* ====== SEASON TIMELINE ====== */
+    .timeline-section { margin: 40px 0; }
+
+    .timeline-section h3 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-blue);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .timeline-section h3::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(28,93,164,0.3);
+    }
+
+    .timeline { position: relative; padding-left: 32px; }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent-blue), var(--accent-red), transparent);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 28px;
+      opacity: 0;
+      transform: translateX(-16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .timeline-item.visible { opacity: 1; transform: none; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -27px; top: 6px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--card);
+      border: 2px solid var(--accent-blue);
+      z-index: 1;
+    }
+
+    .timeline-dot.active {
+      background: var(--accent-blue);
+      box-shadow: 0 0 8px rgba(28,93,164,0.6);
+    }
+
+    .timeline-date {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .timeline-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #e6eef8;
+      margin-bottom: 4px;
+    }
+
+    body.light-mode .timeline-title { color: #1a2233; }
+    .timeline-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.5; }
+
+    /* ====== GALLERY ====== */
+    .gallery-section { margin-bottom: 40px; }
+
+    .gallery-section h2 {
+      font-size: 1.1rem;
+      color: var(--accent-blue);
+      margin-bottom: 6px;
+    }
+
+    .gallery-section > p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      cursor: pointer;
+      aspect-ratio: 4/3;
+    }
+
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(11,16,32,0.78));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.08); }
+    .gallery-item:hover::after { opacity: 1; }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 12px; left: 12px; right: 12px;
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 2;
+    }
+
+    .gallery-item:hover .gallery-caption { opacity: 1; transform: translateY(0); }
+
+    /* ====== LIGHTBOX ====== */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.93);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 8000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    #lightbox.open { opacity: 1; pointer-events: all; }
+
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: var(--radius);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+      object-fit: contain;
+    }
+
+    .lb-close {
+      position: absolute;
+      top: 20px; right: 24px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background 0.2s;
+    }
+
+    .lb-close:hover { background: rgba(255,255,255,0.2); }
+
+    .lb-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+
+    .lb-nav:hover { background: rgba(255,255,255,0.2); }
+    .lb-prev { left: 20px; }
+    .lb-next { right: 20px; }
+
+    .lb-caption {
+      position: absolute;
+      bottom: 20px;
+      left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.65);
+      color: #e6eef8;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    /* ====== HIGHLIGHT SHARE ====== */
+    #highlight-popup {
+      position: fixed;
+      display: none;
+      background: #1e3050;
+      border: 1px solid var(--accent-blue);
+      color: #e6eef8;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      z-index: 5000;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+      gap: 8px;
+      align-items: center;
+      white-space: nowrap;
+    }
+
+    /* ====== COMMENTS ====== */
+    .comments-section {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-top: 40px;
+      border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .comments-section h3 { color: var(--accent-blue); margin-bottom: 20px; font-size: 1.1rem; }
+
+    .comment-form { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+
+    .comment-form input, .comment-form textarea {
+      background: #162033;
+      border: 1.5px solid #2a3a55;
+      border-radius: 8px;
+      color: #e6eef8;
+      padding: 10px 14px;
+      font-size: 0.9rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    body.light-mode .comment-form input,
+    body.light-mode .comment-form textarea { background: #eef2f8; border-color: #c0ccd8; color: #1a2233; }
+
+    .comment-form input:focus, .comment-form textarea:focus { outline: none; border-color: var(--accent-blue); }
+
+    .comment-submit {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      border: none;
+      color: #fff;
+      font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 0.9rem;
+      align-self: flex-start;
+      transition: opacity 0.2s;
+    }
+
+    .comment-submit:hover { opacity: 0.85; }
+
+    .comments-list { display: flex; flex-direction: column; gap: 14px; }
+
+    .comment-item {
+      background: #162033;
+      border-radius: 10px;
+      padding: 14px 16px;
+      border-left: 3px solid var(--accent-blue);
+    }
+
+    body.light-mode .comment-item { background: #eef2f8; }
+
+    .comment-author { font-weight: 700; font-size: 0.85rem; margin-bottom: 3px; }
+    .comment-date { font-size: 0.72rem; color: var(--muted); margin-bottom: 8px; }
+    .comment-text { font-size: 0.88rem; color: var(--muted); line-height: 1.55; }
+    .no-comments { text-align: center; color: var(--muted); font-size: 0.88rem; padding: 20px 0; }
+
+    /* ====== RELATED ====== */
+    .related-section { margin-top: 50px; }
+    .related-section h3 { color: var(--accent-blue); font-size: 1.1rem; margin-bottom: 18px; }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .related-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px;
+      border: 1px solid rgba(255,255,255,0.05);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, transform 0.2s;
+      display: block;
+    }
+
+    .related-card:hover { border-color: var(--accent-blue); transform: translateY(-3px); }
+
+    .rc-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--accent-blue);
+      margin-bottom: 8px;
+    }
+
+    .related-card h4 { font-size: 0.95rem; color: #e6eef8; line-height: 1.4; margin-bottom: 8px; }
+    .related-card p { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+
+    /* ====== TOAST ====== */
+    .toast {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      background: #1e3050;
+      border: 1px solid var(--accent-blue);
+      color: #e6eef8;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      z-index: 2000;
+      transform: translateY(80px);
+      opacity: 0;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* ====== SCROLL TOP ====== */
+    .scroll-top {
+      position: fixed;
+      bottom: 28px; left: 28px;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 999;
+      border: none;
+      font-size: 1rem;
+      color: #fff;
+    }
+
+    .scroll-top.show { opacity: 1; pointer-events: all; }
+    .scroll-top:hover { transform: translateY(-3px) scale(1.05); }
+
+    /* ====== FOOTER ====== */
+    .site-footer {
+      background: linear-gradient(180deg, var(--bg), #060a18);
+      color: #e6eef8;
+      padding: 36px 20px 20px;
+      font-size: 14px;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      margin-top: 60px;
+    }
+
+    .footer-container {
+      max-width: var(--max-w);
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 36px;
+    }
+
+    .footer-brand h3 { color: #fff; margin-bottom: 8px; }
+    .footer-brand p { color: var(--muted); line-height: 1.6; margin: 0 0 4px; }
+
+    .footer-links h4, .footer-contact h4, .footer-social h4 {
+      color: #fff; margin-bottom: 12px; font-size: 15px; position: relative;
+    }
+
+    .footer-links h4::after, .footer-contact h4::after, .footer-social h4::after {
+      content: "";
+      display: block;
+      width: 34px; height: 2px; margin-top: 6px;
+      background: linear-gradient(90deg, var(--accent-red), var(--accent-blue));
+    }
+
+    .footer-links a {
+      display: block;
+      color: var(--muted);
+      text-decoration: none;
+      margin-bottom: 8px;
+      font-weight: 500;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .footer-links a:hover { color: #e6eef8; transform: translateX(4px); }
+    .footer-contact p { margin-bottom: 6px; color: var(--muted); }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px; height: 36px;
+      margin-right: 10px;
+      border-radius: 50%;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .social-icons a svg { width: 18px; height: 18px; fill: currentColor; }
+
+    .social-icons a:hover {
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+      transform: translateY(-2px) scale(1.08);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    }
+
+    .social-icons a.icon-youtube:hover { background: #ff0000; }
+    .social-icons a.icon-facebook:hover { background: #1c5da4; }
+    .social-icons a.icon-twitter:hover { background: #000; }
+
+    .footer-bottom {
+      margin-top: 32px; padding-top: 16px;
+      text-align: center; color: var(--muted); position: relative;
+    }
+
+    .footer-bottom::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 70%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-red), var(--accent-blue), transparent);
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 640px) {
+      .article-hero { height: 300px; }
+      .toc-box ol { grid-template-columns: 1fr; }
+      .season-summary { flex-direction: column; }
+      .summary-stats { margin-left: 0; }
+      .header-right a:not(.cta-btn) { display: none; }
+      .lb-prev { left: 8px; }
+      .lb-next { right: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="progress-bar"></div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="../index.html" class="brand">
+      <div class="logo">SS</div>
+      <div>
+        <div style="font-weight:800">Super Star FC</div>
+        <div style="font-size:0.75rem;color:var(--muted)">Official Club</div>
+      </div>
+    </a>
+    <div class="header-right">
+      <div class="reading-controls">
+        <button class="ctrl-btn" onclick="changeFontSize(-1)" title="Decrease text">A-</button>
+        <button class="ctrl-btn" onclick="changeFontSize(1)" title="Increase text">A+</button>
+        <button class="ctrl-btn" id="modeToggle" onclick="toggleMode()" title="Toggle light/dark">🌙</button>
+      </div>
+      <a href="../index.html" class="cta-btn">Main</a>
+    </div>
+  </header>
+
+  <!-- QUOTE BANNER -->
+  <div class="qotd-banner">
+    <strong>Head Coach:</strong> "Every training session, every matchday, every challenge, this squad met it all with focus, commitment, and belief." 
+    <p>— Super Stars FC Coaching Staff</p>
+  </div>
+
+  <!-- HERO -->
+  <div class="article-hero">
+    <img src="../0fd4279c-c053-4fd1-9948-58a87c23d14a.jpg" alt="Super Stars FC end of season">
+    <div class="hero-overlay">
+      <div class="article-category"><i class="fas fa-star"></i> End of Season</div>
+      <h1>An End-Of-Season Vibe</h1>
+      <div class="article-meta">
+        <span><i class="fas fa-location-dot"></i> Omaha, NE</span>
+        <span><i class="fas fa-calendar"></i> Season 2025</span>
+        <span><i class="fas fa-clock"></i> 5 min read</span>
+        <span><i class="fas fa-eye"></i> <span id="viewCount">–</span> views</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEASON SUMMARY CARD -->
+  <div class="summary-wrap">
+    <div class="season-summary reveal">
+      <div class="summary-icon">🏆</div>
+      <div class="summary-info">
+        <h2>Season 2025 — UPSL · Super Stars FC</h2>
+        <p>A full season of grind, growth, and belief. Built on resilience, unity, and a commitment to the process.</p>
+      </div>
+      <div class="summary-stats">
+        <div class="sstat">
+          <div class="snum counter" data-target="2025">0</div>
+          <div class="slbl">Season</div>
+        </div>
+        <div class="sstat">
+          <div class="snum">AFRO CONFEDERATION CUP</div>
+          <div class="slbl">League</div>
+        </div>
+        <div class="sstat">
+          <div class="snum counter" data-target="100">0</div>
+          <div class="slbl">% Effort</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN WRAP -->
+  <div class="main-wrap">
+
+    <!-- SEASON STATS PANEL -->
+    <div class="season-stats reveal">
+      <h3>📊 Season at a Glance</h3>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num counter" data-target="90">0</div>
+          <div class="stat-label">Min Per Match</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num counter" data-target="11">0</div>
+          <div class="stat-label">Players Per Side</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num counter" data-target="3">0</div>
+          <div class="stat-label">Core Values</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num counter" data-target="365">0</div>
+          <div class="stat-label">Days of Work</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num counter" data-target="1">0</div>
+          <div class="stat-label">Club Identity</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num counter" data-target="100">0</div>
+          <div class="stat-label">% Commitment</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="article-toolbar reveal">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button class="like-btn" id="likeBtn" onclick="toggleLike()">
+          <i class="fas fa-heart"></i> <span id="likeCount">0</span> Likes
+        </button>
+      </div>
+    </div>
+
+    <!-- TOC -->
+    <div class="toc-box reveal">
+      <h3>⚽ In This Article</h3>
+      <ol>
+        <li><a href="#s1">A Season Defined by Effort</a></li>
+        <li><a href="#s2">Stepping Up When It Mattered</a></li>
+        <li><a href="#s3">The Season Highlights Timeline</a></li>
+        <li><a href="#s4">Focused on the Future</a></li>
+        <li><a href="#gallery">Season Gallery</a></li>
+        <li><a href="#messages">Fan Messages</a></li>
+      </ol>
+    </div>
+
+    <!-- ARTICLE BODY -->
+    <div class="article-body">
+
+      <div class="article-section reveal" id="s1">
+        <h2 class="section-heading">A Season Defined by Effort</h2>
+        <p>This season tested the character of the Super Stars FC UPSL squad from start to finish. Every training session, every matchday, and every challenge demanded focus and commitment. The squad answered that call, not always loudly, but always consistently.</p>
+        <p>Players stepped up in key moments, embraced responsibility, and continued to grow as individuals and as a unit. The progress made throughout the campaign was clear, in performance, mentality, and cohesion. This wasn't just a season. It was a statement about who Super Stars FC is.</p>
+        <div class="key-callout">💪 Most importantly, this season reinforced the identity of Super Stars FC: hardworking, united, and driven to improve.</div>
+      </div>
+
+      <div class="section-divider">⚽</div>
+
+      <div class="article-section reveal" id="s2">
+        <h2 class="section-heading">Stepping Up When It Mattered</h2>
+        <p>Throughout the campaign, the squad demonstrated something beyond ability, they demonstrated character. When the moments were difficult, players dug deeper. When results were close, the team stayed together. That unity under pressure became the defining trait of this group.</p>
+        <p>The coaching staff created an environment where players could take ownership, make decisions, and grow through their mistakes. That trust became mutual, and it showed in the way the team played, trained, and carried themselves both on and off the pitch.</p>
+      </div>
+
+      <blockquote class="pull-quote blue reveal">
+        <p>"The progress made this season wasn't just in results, it was in how the squad thought, responded, and competed together."</p>
+        <cite>— Super Stars FC Coaching Staff</cite>
+      </blockquote>
+
+      <div class="section-divider">📅</div>
+
+      <!-- TIMELINE -->
+      <div class="article-section reveal" id="s3">
+        <h2 class="section-heading">Season Highlights Timeline</h2>
+        <p>A look back at the key chapters that defined the 2025 campaign from start to finish.</p>
+      </div>
+
+      <div class="timeline-section reveal">
+        <h3>📅 Season 2025 Journey</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot active"></div>
+            <div class="timeline-date">June 2025</div>
+            <div class="timeline-title">Club Founded & Preseason Begins</div>
+            <div class="timeline-desc">Super Stars FC launches. The first training sessions bring the squad together and set the tone for the months ahead.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">Season Opener</div>
+            <div class="timeline-title">Strong Start in Front of Home Crowd</div>
+            <div class="timeline-desc">Super Stars FC opens the season with confidence and intensity, delivering a performance that sets the tone for the campaign.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">Mid-Season</div>
+            <div class="timeline-title">Clean Sheet Statement Win</div>
+            <div class="timeline-desc">The defense puts in a dominant performance. Zero goals conceded. Maximum effort. A result that captured exactly what the team is building toward.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">Throughout</div>
+            <div class="timeline-title">Historic Appearance Record Reached</div>
+            <div class="timeline-desc">A milestone that belongs to every player, coach, and supporter who invested in the club's vision from day one.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot active"></div>
+            <div class="timeline-date">End of Season</div>
+            <div class="timeline-title">A Foundation Built</div>
+            <div class="timeline-desc">Season 2025 closes. The squad is stronger, more cohesive, and more determined. The next chapter starts now.</div>
+          </div>
+        </div>
+      </div>
+
+      <blockquote class="pull-quote red reveal">
+        <p>"Every setback was a chance to bounce back. Every good moment showed what this team can do when it stays true to who it is."</p>
+        <cite>— Super Stars FC</cite>
+      </blockquote>
+
+      <div class="section-divider">🌟</div>
+
+      <div class="article-section reveal" id="s4">
+        <h2 class="section-heading">Focused on the Future</h2>
+        <p>As the team looks ahead, everything learned this season becomes the base for what comes next. The growth shown by the players, both on their own and together, has strengthened the club's belief in where it's going.</p>
+        <p>Super Stars FC moves forward with confidence, purpose, and a drive to keep raising the level. The same values that carried the team this year, hard work, unity, and hunger, will continue to guide the journey. The club thanks the players, coaches, staff, supporters, and community for their effort and support. This season is only one chapter. The work continues, and the future looks bright.</p>
+        <div class="key-callout">🚀 This season is only one chapter. With lessons learned and foundations built, Super Stars FC looks ahead with confidence and ambition.</div>
+      </div>
+
+      <blockquote class="pull-quote blue reveal">
+        <p>"The same values that carried this team this year will carry us further next year. Hard work, unity, and hunger. That never changes."</p>
+        <cite>— Club Director, Super Stars FC</cite>
+      </blockquote>
+
+    </div><!-- /.article-body -->
+
+    <!-- GALLERY -->
+    <div class="gallery-section reveal" id="gallery">
+      <h2>📸 Season Moments</h2>
+      <p>A look back at the moments, matches, and memories that defined the journey.</p>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(0)">
+          <img src="../image12.jpg" alt="Match action">
+          <div class="gallery-caption">Match action — battle in midfield</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(1)">
+          <img src="../IMG_15611.jpeg" alt="Rising player">
+          <div class="gallery-caption">A player making his mark this season</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(2)">
+          <img src="../team out.jpeg" alt="Team Outing">
+          <div class="gallery-caption">Team bonding — unity off the pitch</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(3)">
+          <img src="../0fd4279c-c053-4fd1-9948-58a87c23d14a.jpg" alt="End of Season">
+          <div class="gallery-caption">End-of-season — a campaign to remember</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(4)">
+          <img src="../community event1.jpeg" alt="Community event">
+          <div class="gallery-caption">Connected to the community</div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(5)">
+          <img src="../IMG_1649.jpg" alt="Team huddle">
+          <div class="gallery-caption">Together in every moment</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RELATED -->
+    <div class="related-section reveal">
+      <h3>📰 More from Super Stars FC</h3>
+      <div class="related-grid">
+        <a href="./season-opener.html" class="related-card">
+          <div class="rc-tag">Match Report</div>
+          <h4>Season Opener: Super Stars FC Starts Strong</h4>
+          <p>The first chapter of the season, intensity, purpose, and a packed Omaha crowd.</p>
+        </a>
+        <a href="./clean-sheet-night.html" class="related-card">
+          <div class="rc-tag">Match Report</div>
+          <h4>Defense Shines in Statement Win</h4>
+          <p>A clean sheet performance that showed exactly what this squad can do.</p>
+        </a>
+        <a href="./club-milestone.html" class="related-card">
+          <div class="rc-tag">Club Milestone</div>
+          <h4>Super Stars FC Reach Historic Appearance Record</h4>
+          <p>A milestone that belongs to every person who believed in the vision.</p>
+        </a>
+      </div>
+    </div>
+
+    <!-- COMMENTS -->
+    <div class="comments-section reveal" id="messages">
+      <h3>💬 Fan Messages</h3>
+      <div class="comment-form">
+        <input type="text" id="cmtName" placeholder="Your name *" />
+        <textarea id="cmtText" rows="3" placeholder="Share a message for the squad as the season wraps up..."></textarea>
+        <span id="cmtError" style="color:#e05555;font-size:0.8rem;display:none">Please enter your name and a message.</span>
+        <button class="comment-submit" onclick="submitComment()">Send Message</button>
+      </div>
+      <div class="comments-list" id="commentsList">
+        <div class="no-comments" id="noComments">No messages yet, be the first to send yours to the squad!</div>
+      </div>
+    </div>
+
+  </div><!-- /.main-wrap -->
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox">
+    <button class="lb-close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+    <button class="lb-nav lb-prev" onclick="lbNav(-1)"><i class="fas fa-chevron-left"></i></button>
+    <img id="lb-img" src="" alt="">
+    <button class="lb-nav lb-next" onclick="lbNav(1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="lb-caption" id="lb-caption"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>Super Star FC</h3>
+        <p>Founded June 3, 2025.</p>
+        <p>Building champions on and off the field.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="../bout.html">About Us</a>
+        <a href="../term.html">Terms</a>
+        <a href="../contact.html">Contact</a>
+        <a href="../policy.html">Privacy Policy</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>Email: superstarfc25@gmail.com</p>
+        <p>Phone: +1 (531) 262-1982</p>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/profile.php?id=100077275385711" aria-label="Facebook" class="icon-facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2V12h2.2V9.8c0-2.2 1.3-3.4 3.3-3.4.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 2.9h-1.9v7A10 10 0 0 0 22 12z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/super_starsfc_fc?igsh=MWUyM3IxbHI1Y3p-sOQ==" aria-label="Instagram" class="icon-instagram">
+            <svg viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zm5.8-2.1a1.3 1.3 0 1 1-1.3-1.3 1.3 1.3 0 0 1 1.3 1.3z"/></svg>
+          </a>
+          <a href="https://x.com/SuperStars75843?t=tZZoC1LvPfNGI-BKk15JG4g&S=09" aria-label="Twitter" class="icon-twitter">
+            <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.1.9A5.4 5.4 0 0 0 22.4 1a10.8 10.8 0 0 1-3.4 1.3A5.4 5.4 0 0 0 9.6 7a15.3 15.3 0 0 1-11.1-5.6 5.4 5.4 0 0 0 1.7 7.2A5.3 5.3 0 0 1 .8 8v.1a5.4 5.4 0 0 0 4.3 5.3 5.5 5.5 0 0 1-2.4.1 5.4 5.4 0 0 0 5 3.8A10.8 10.8 0 0 1 0 19.5 15.3 15.3 0 0 0 8.3 22c10 0 15.5-8.3 15.5-15.5v-.7A11 11 0 0 0 23 3z"/></svg>
+          </a>
+          <a href="https://youtube.com/@s.s.f.c?si=fV4gWuc4trgaRfF6" aria-label="YouTube" class="icon-youtube">
+            <svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5h0s-5.6 0-8.5.4c-.4.1-1.3.1-2.1 1C.7 4.6.5 6.2.5 6.2S0 8.1 0 10v2c0 1.9.5 3.8.5 3.8s.2 1.6.9 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.2.4 7.2.4s5.6 0 8.5-.4c.4-.1 1.3-.1 2.1-1 .7-.7.9-2.3.9-2.3s.5-1.9.5-3.8v-2c0-1.9-.5-3.8-.5-3.8zM9.8 14.5V9.5l4.8 2.5-4.8 2.5z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="year"></span> Super Star FC. All rights reserved.</div>
+  </footer>
+
+  <div id="highlight-popup" onclick="shareHighlight()">
+    <i class="fas fa-share-nodes"></i> Share Quote
+  </div>
+
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle" style="color:#3fa96a"></i>
+    <span id="toastMsg">Done!</span>
+  </div>
+
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // PROGRESS BAR + SCROLL TOP
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const total = document.body.scrollHeight - window.innerHeight;
+      document.getElementById('progress-bar').style.width = (scrolled / total * 100) + '%';
+      document.getElementById('scrollTop').classList.toggle('show', scrolled > 300);
+    });
+
+    // SMOOTH SCROLL
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); window.scrollTo({ top: t.offsetTop - 80, behavior: 'smooth' }); }
+      });
+    });
+
+    // REVEAL
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // TIMELINE REVEAL
+    const timelineObserver = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 150);
+          timelineObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.timeline-item').forEach(el => timelineObserver.observe(el));
+
+    // COUNTERS
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.target);
+          if (isNaN(target)) return;
+          let current = 0;
+          const step = target / (1400 / 16);
+          const timer = setInterval(() => {
+            current = Math.min(current + step, target);
+            el.textContent = Math.round(current);
+            if (current >= target) clearInterval(timer);
+          }, 16);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+    // FONT SIZE
+    let fontSize = 1.05;
+    function changeFontSize(dir) {
+      fontSize = Math.min(1.35, Math.max(0.85, fontSize + dir * 0.05));
+      document.documentElement.style.setProperty('--font-size', fontSize + 'rem');
+      showToast('Font size ' + (dir > 0 ? 'increased' : 'decreased'));
+    }
+
+    // LIGHT / DARK
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      document.getElementById('modeToggle').textContent = isLight ? '🌑' : '🌙';
+      localStorage.setItem('ssfc_mode', isLight ? 'light' : 'dark');
+    }
+    if (localStorage.getItem('ssfc_mode') === 'light') {
+      document.body.classList.add('light-mode');
+      document.getElementById('modeToggle').textContent = '🌑';
+    }
+
+    // VIEWS
+    const viewKey = 'ssfc_eos_views';
+    let views = parseInt(localStorage.getItem(viewKey) || '0') + 1;
+    localStorage.setItem(viewKey, views);
+    document.getElementById('viewCount').textContent = views.toLocaleString();
+
+    // LIKES
+    const likeKey = 'ssfc_eos_likes', likedKey = 'ssfc_eos_liked';
+    let likes = parseInt(localStorage.getItem(likeKey) || '22');
+    let liked = localStorage.getItem(likedKey) === 'true';
+    const likeBtn = document.getElementById('likeBtn');
+    const likeCount = document.getElementById('likeCount');
+    likeCount.textContent = likes;
+    if (liked) likeBtn.classList.add('liked');
+
+    function toggleLike() {
+      if (liked) { likes--; liked = false; likeBtn.classList.remove('liked'); }
+      else { likes++; liked = true; likeBtn.classList.add('liked'); showToast('Thanks for the love! ❤️'); }
+      likeCount.textContent = likes;
+      localStorage.setItem(likeKey, likes);
+      localStorage.setItem(likedKey, liked);
+    }
+
+    // SHARE
+    function copyPageLink() {
+      navigator.clipboard.writeText(window.location.href).then(() => showToast('Link copied!'));
+    }
+    function shareTwitter() {
+      const text = encodeURIComponent('Super Stars FC closes out an incredible season. Grind, growth, and belief. 💪 #SuperStarsFC #UPSL');
+      window.open(`https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(window.location.href)}`, '_blank');
+    }
+    function shareFacebook() {
+      window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`, '_blank');
+    }
+
+    // HIGHLIGHT SHARE
+    let highlightedText = '';
+    const popup = document.getElementById('highlight-popup');
+    document.addEventListener('mouseup', () => {
+      const sel = window.getSelection();
+      const text = sel ? sel.toString().trim() : '';
+      if (text.length > 20 && text.length < 280) {
+        highlightedText = text;
+        const range = sel.getRangeAt(0).getBoundingClientRect();
+        popup.style.display = 'flex';
+        popup.style.top = (window.scrollY + range.top - 48) + 'px';
+        popup.style.left = (range.left + range.width/2 - 65) + 'px';
+      } else { popup.style.display = 'none'; }
+    });
+    function shareHighlight() {
+      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent('"' + highlightedText + '" — Super Stars FC')}`, '_blank');
+      popup.style.display = 'none';
+    }
+    document.addEventListener('mousedown', e => { if (e.target !== popup) popup.style.display = 'none'; });
+
+    // LIGHTBOX
+    const galleryImages = [
+      { src: '../image12.jpg',       caption: 'Match action — battle in midfield' },
+      { src: '../IMG_15611.jpeg',    caption: 'A player making his mark this season' },
+      { src: '../team out.jpeg',     caption: 'Team bonding — unity off the pitch' },
+      { src: '../0fd4279c-c053-4fd1-9948-58a87c23d14a.jpg', caption: 'End-of-season — a campaign to remember' },
+      { src: '../community event1.jpeg', caption: 'Connected to the community' },
+      { src: '../IMG_1649.jpg',      caption: 'Together in every moment' }
+    ];
+    let currentLbIndex = 0;
+
+    function openLightbox(index) {
+      currentLbIndex = index;
+      updateLightbox();
+      document.getElementById('lightbox').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function lbNav(dir) {
+      currentLbIndex = (currentLbIndex + dir + galleryImages.length) % galleryImages.length;
+      updateLightbox();
+    }
+
+    function updateLightbox() {
+      const item = galleryImages[currentLbIndex];
+      document.getElementById('lb-img').src = item.src;
+      document.getElementById('lb-img').alt = item.caption;
+      document.getElementById('lb-caption').textContent = item.caption;
+    }
+
+    document.getElementById('lightbox').addEventListener('click', function(e) {
+      if (e.target === this) closeLightbox();
+    });
+
+    document.addEventListener('keydown', e => {
+      const lb = document.getElementById('lightbox');
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') lbNav(-1);
+      if (e.key === 'ArrowRight') lbNav(1);
+    });
+
+    // COMMENTS
+    function renderComments() {
+      const comments = JSON.parse(localStorage.getItem('ssfc_eos_comments') || '[]');
+      const list = document.getElementById('commentsList');
+      list.querySelectorAll('.comment-item').forEach(el => el.remove());
+      const none = document.getElementById('noComments');
+      if (comments.length === 0) { none.style.display = 'block'; return; }
+      none.style.display = 'none';
+      comments.slice().reverse().forEach(c => {
+        const div = document.createElement('div');
+        div.className = 'comment-item';
+        div.innerHTML = `<div class="comment-author">${c.name}</div><div class="comment-date">${c.date}</div><div class="comment-text">${c.text}</div>`;
+        list.appendChild(div);
+      });
+    }
+
+    function submitComment() {
+      const name = document.getElementById('cmtName').value.trim();
+      const text = document.getElementById('cmtText').value.trim();
+      const errEl = document.getElementById('cmtError');
+      if (!name || !text) { errEl.style.display = 'block'; return; }
+      errEl.style.display = 'none';
+      const comments = JSON.parse(localStorage.getItem('ssfc_eos_comments') || '[]');
+      comments.push({ name, text, date: new Date().toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' }) });
+      localStorage.setItem('ssfc_eos_comments', JSON.stringify(comments));
+      document.getElementById('cmtName').value = '';
+      document.getElementById('cmtText').value = '';
+      renderComments();
+      showToast('Message sent to the squad! 🙌');
+    }
+
+    renderComments();
+
+    // TOAST
+    function showToast(msg) {
+      document.getElementById('toastMsg').textContent = msg;
+      const t = document.getElementById('toast');
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+  </script>
+</body>
+</html>

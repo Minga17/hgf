@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Super Star FC — Contact & Join</title>
+  <link rel="shortcut icon" href="image0.jpeg" type="image/jpeg">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #0f1724;
+      --accent-red: #b62a2d;
+      --accent-blue: #1c5da4;
+      --muted: #9aa4b2;
+      font-family: Inter, system-ui, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, var(--bg), #071021);
+      color: #e6eef8;
+      -webkit-font-smoothing: antialiased;
+      padding: 32px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 900px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+      font-weight: 800;
+    }
+
+    .logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    #contact {
+      background: var(--card);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    #contact h2 {
+      color: var(--accent-blue);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #contact label {
+      font-weight: 600;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    #contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      background: #162033;
+      color: #e6eef8;
+      width: 100%;
+    }
+
+    input:focus, textarea:focus {
+      outline: 2px solid var(--accent-blue);
+    }
+
+    #contact-form button {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      border: none;
+      color: #fff;
+      font-weight: 700;
+      padding: 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+    #contact-form button:hover {
+      opacity: 0.85;
+    }
+
+    footer {
+      margin-top: 60px;
+      background: #0a1328;
+      padding: 30px 20px;
+      border-top: 2px solid var(--accent-blue);
+      border-radius: 12px 12px 0 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: var(--accent-blue);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: var(--accent-red);
+    }
+
+    @media(max-width:520px) {
+      body { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="index.html" class="brand">
+        <div class="logo">SS</div>
+        <div>
+          <div style="font-weight:800">Super Star FC</div>
+          <div style="font-size:0.8rem;color:var(--muted)">Official Club</div>
+        </div>
+      </a>
+    </header>
+
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact & Join Super Star FC</h2>
+      <form id="contact-form" action="https://formspree.io/f/mandlynj" method="POST">
+        <label for="name">Full Name</label>
+        <input type="text" name="name" required placeholder="Full name">
+
+        <label for="email">Email Address</label>
+        <input type="email" name="email" required placeholder="you@example.com">
+
+        <label for="message">Message</label>
+        <textarea name="message" rows="4" required placeholder="Tell us about your interest"></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>© Super Stars FC • All Rights Reserved</p>
+    </footer>
+  </div>
+</body>
+</html>

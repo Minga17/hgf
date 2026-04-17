@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Team News | Super Stars FC</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stay up to date with Super Stars FC announcements, match reports, player spotlights, and partnership news.">
+  <link rel="shortcut icon" href="image0.jpeg" type="image/jpeg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: #0f1724;
+      --accent-red: #b62a2d;
+      --accent-blue: #1c5da4;
+      --muted: #9aa4b2;
+      --max-w: 1100px;
+      --radius: 12px;
+      --font-size: 1rem;
+      font-family: Inter, system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: linear-gradient(180deg, var(--bg), #071021);
+      color: #e6eef8;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.light-mode {
+      background: #f0f4fa;
+      color: #1a2233;
+      --bg: #f0f4fa;
+      --card: #ffffff;
+      --muted: #556070;
+    }
+
+    a { color: var(--accent-blue); text-decoration: none; font-weight: 700; }
+    a:hover { color: var(--accent-red); }
+
+    /* ====== PROGRESS BAR ====== */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-red));
+      z-index: 9999;
+      transition: width 0.1s ease;
+    }
+
+    /* ====== HEADER ====== */
+    .site-header {
+      padding: 16px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(11,16,32,0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    body.light-mode .site-header {
+      background: rgba(240,244,250,0.92);
+      border-bottom-color: rgba(0,0,0,0.08);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo {
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 800; font-size: 0.9rem;
+    }
+
+    .header-right { display: flex; align-items: center; gap: 14px; }
+
+    .header-right a {
+      color: var(--muted);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: color 0.2s;
+    }
+
+    .header-right a:hover { color: var(--accent-blue); }
+
+    .cta-btn {
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      color: #fff !important;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-weight: 700 !important;
+      text-decoration: none;
+    }
+
+    .reading-controls { display: flex; align-items: center; gap: 6px; }
+
+    .ctrl-btn {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--muted);
+      width: 32px; height: 32px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.78rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    .ctrl-btn:hover { border-color: var(--accent-blue); color: #e6eef8; }
+    body.light-mode .ctrl-btn { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.1); color: #556070; }
+
+    /* ====== QUOTE BANNER ====== */
+    .qotd-banner {
+      background: linear-gradient(135deg, rgba(28,93,164,0.15), rgba(182,42,45,0.15));
+      border-top: 2px solid var(--accent-blue);
+      border-bottom: 2px solid var(--accent-red);
+      padding: 14px 28px;
+      text-align: center;
+      font-size: 0.88rem;
+      color: #c8d3e0;
+      font-style: italic;
+    }
+
+    body.light-mode .qotd-banner { color: #334155; }
+    .qotd-banner strong { color: var(--accent-blue); font-style: normal; }
+
+    /* ====== MAIN CONTAINER ====== */
+    .container {
+      max-width: var(--max-w);
+      margin: auto;
+      padding: 36px 20px 60px;
+    }
+
+    /* ====== HERO ====== */
+    .page-hero {
+      text-align: center;
+      padding: 48px 20px 36px;
+      position: relative;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(28,93,164,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(28,93,164,0.2);
+      border: 1px solid rgba(28,93,164,0.35);
+      color: #7ab4e8;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(1.9rem, 4.5vw, 2.9rem);
+      color: #e6eef8;
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+
+    body.light-mode .page-hero h1 { color: #1a2233; }
+
+    .page-hero > p {
+      max-width: 580px;
+      margin: 0 auto 24px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+    /* ====== REVEAL ====== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ====== STATS PANEL ====== */
+    .stats-panel {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px 28px;
+      border: 1px solid rgba(255,255,255,0.05);
+      border-top: 3px solid var(--accent-blue);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+      margin-bottom: 32px;
+    }
+
+    .stats-panel h3 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-blue);
+      margin-bottom: 16px;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 14px;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-num {
+      font-size: 1.9rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.68rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    /* ====== TOOLBAR ====== */
+    .page-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 14px 0;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    body.light-mode .page-toolbar { border-color: rgba(0,0,0,0.08); }
+
+    .like-btn {
+      display: flex; align-items: center; gap: 7px;
+      background: var(--card);
+      border: 1.5px solid rgba(255,255,255,0.07);
+      color: var(--muted);
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.85rem; font-weight: 700;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    .like-btn:hover, .like-btn.liked { border-color: var(--accent-red); color: var(--accent-red); }
+
+    .share-group { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .share-btn {
+      display: flex; align-items: center; gap: 6px;
+      background: var(--card);
+      border: 1.5px solid rgba(255,255,255,0.07);
+      color: var(--muted);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.82rem; font-weight: 700;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    .share-btn:hover { border-color: var(--accent-blue); color: #e6eef8; }
+
+    /* ====== SEARCH + FILTERS ====== */
+    .controls-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .search-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .search-wrap i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    #searchInput {
+      width: 100%;
+      background: var(--card);
+      border: 1.5px solid rgba(255,255,255,0.07);
+      border-radius: 8px;
+      color: #e6eef8;
+      padding: 10px 14px 10px 36px;
+      font-size: 0.88rem;
+      font-family: inherit;
+      transition: border-color 0.2s;
+    }
+
+    body.light-mode #searchInput { background: #fff; border-color: rgba(0,0,0,0.1); color: #1a2233; }
+    #searchInput:focus { outline: none; border-color: var(--accent-blue); }
+    #searchInput::placeholder { color: var(--muted); }
+
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-tab {
+      background: var(--card);
+      border: 1.5px solid rgba(255,255,255,0.07);
+      color: var(--muted);
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 700;
+      font-family: inherit;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .filter-tab:hover { border-color: var(--accent-blue); color: #e6eef8; }
+    .filter-tab.active { background: var(--accent-blue); border-color: var(--accent-blue); color: #fff; }
+
+    /* ====== NO RESULTS ====== */
+    #noResults {
+      display: none;
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    /* ====== NEWS GRID ====== */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 22px;
+      margin-bottom: 50px;
+    }
+
+    .news-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.04);
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(24px);
+      position: relative;
+    }
+
+    .news-card.visible { opacity: 1; transform: none; }
+    .news-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.45); border-color: rgba(28,93,164,0.3); }
+
+    body.light-mode .news-card { background: #fff; border-color: rgba(0,0,0,0.06); }
+
+    .card-img-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+    }
+
+    .news-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .news-card:hover img { transform: scale(1.06); }
+
+    .card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(11,16,32,0.88));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+    }
+
+    .news-card:hover .card-overlay { opacity: 1; }
+
+    .read-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      color: #fff;
+      padding: 7px 16px;
+      border-radius: 7px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .read-cta:hover { opacity: 0.85; color: #fff; }
+
+    .card-body { padding: 18px 18px 20px; }
+
+    .card-meta-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .cat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+    }
+
+    .cat-badge.match { background: rgba(28,93,164,0.18); color: #7ab4e8; border: 1px solid rgba(28,93,164,0.25); }
+    .cat-badge.club  { background: rgba(182,42,45,0.12); color: #e07a7c; border: 1px solid rgba(182,42,45,0.2); }
+    .cat-badge.player{ background: rgba(60,140,80,0.15); color: #6ecf8a; border: 1px solid rgba(60,140,80,0.25); }
+    .cat-badge.partner{ background: rgba(180,120,20,0.15); color: #d4a84b; border: 1px solid rgba(180,120,20,0.25); }
+
+    .new-badge {
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: var(--accent-red);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+
+    .card-read-time {
+      font-size: 0.72rem;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .news-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #e6eef8;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    body.light-mode .news-card h3 { color: #1a2233; }
+
+    .news-card h3 a { color: inherit; font-weight: 700; }
+    .news-card h3 a:hover { color: var(--accent-blue); }
+
+    .news-card p {
+      font-size: 0.86rem;
+      color: var(--muted);
+      line-height: 1.6;
+      text-align: left;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .news-card p a { color: var(--muted); font-weight: 400; }
+
+    /* ====== SECTION DIVIDER ====== */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 10px 0 32px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .section-divider::before, .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(255,255,255,0.07);
+    }
+
+    body.light-mode .section-divider::before,
+    body.light-mode .section-divider::after { background: rgba(0,0,0,0.1); }
+
+    /* ====== HIGHLIGHT SHARE ====== */
+    #highlight-popup {
+      position: fixed;
+      display: none;
+      background: #1e3050;
+      border: 1px solid var(--accent-blue);
+      color: #e6eef8;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem; font-weight: 700;
+      cursor: pointer; z-index: 5000;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+      gap: 8px; align-items: center; white-space: nowrap;
+    }
+
+    /* ====== TOAST ====== */
+    .toast {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      background: #1e3050;
+      border: 1px solid var(--accent-blue);
+      color: #e6eef8;
+      padding: 12px 20px;
+      border-radius: 10px;
+      font-size: 0.88rem; font-weight: 600;
+      z-index: 2000;
+      transform: translateY(80px); opacity: 0;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+      display: flex; align-items: center; gap: 10px;
+    }
+
+    .toast.show { transform: translateY(0); opacity: 1; }
+
+    /* ====== SCROLL TOP ====== */
+    .scroll-top {
+      position: fixed;
+      bottom: 28px; left: 28px;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-red));
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; opacity: 0; pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 999; border: none; font-size: 1rem; color: #fff;
+    }
+
+    .scroll-top.show { opacity: 1; pointer-events: all; }
+    .scroll-top:hover { transform: translateY(-3px) scale(1.05); }
+
+    /* ====== FOOTER ====== */
+    .site-footer {
+      background: linear-gradient(180deg, var(--bg), #060a18);
+      color: #e6eef8;
+      padding: 36px 20px 20px;
+      font-size: 14px;
+      border-top-left-radius: var(--radius);
+      border-top-right-radius: var(--radius);
+      margin-top: 40px;
+    }
+
+    .footer-container {
+      max-width: var(--max-w);
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 36px;
+    }
+
+    .footer-brand h3 { color: #fff; margin-bottom: 8px; }
+    .footer-brand p { color: var(--muted); line-height: 1.6; margin: 0 0 4px; }
+
+    .footer-links h4, .footer-contact h4, .footer-social h4 {
+      color: #fff; margin-bottom: 12px; font-size: 15px; position: relative;
+    }
+
+    .footer-links h4::after, .footer-contact h4::after, .footer-social h4::after {
+      content: ""; display: block; width: 34px; height: 2px; margin-top: 6px;
+      background: linear-gradient(90deg, var(--accent-red), var(--accent-blue));
+    }
+
+    .footer-links a {
+      display: block; color: var(--muted); text-decoration: none;
+      margin-bottom: 8px; font-weight: 500; transition: color 0.2s, transform 0.2s;
+    }
+
+    .footer-links a:hover { color: #e6eef8; transform: translateX(4px); }
+    .footer-contact p { margin-bottom: 6px; color: var(--muted); }
+
+    .social-icons a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px; margin-right: 10px;
+      border-radius: 50%; color: var(--muted); text-decoration: none;
+      transition: color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .social-icons a svg { width: 18px; height: 18px; fill: currentColor; }
+
+    .social-icons a:hover {
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-red), var(--accent-blue));
+      transform: translateY(-2px) scale(1.08);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+    }
+
+    .social-icons a.icon-youtube:hover { background: #ff0000; }
+    .social-icons a.icon-facebook:hover { background: #1c5da4; }
+    .social-icons a.icon-twitter:hover { background: #000; }
+
+    .footer-bottom {
+      margin-top: 32px; padding-top: 16px;
+      text-align: center; color: var(--muted); position: relative;
+    }
+
+    .footer-bottom::before {
+      content: ""; position: absolute; top: 0; left: 50%;
+      transform: translateX(-50%); width: 70%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-red), var(--accent-blue), transparent);
+    }
+
+    @media (max-width: 640px) {
+      .header-right a:not(.cta-btn) { display: none; }
+      .news-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="progress-bar"></div>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <a href="#" class="brand">
+      <div class="logo">SS</div>
+      <div>
+        <div style="font-weight:800">Super Star FC</div>
+        <div style="font-size:0.75rem;color:var(--muted)">Official Club</div>
+      </div>
+    </a>
+    <div class="header-right">
+      <div class="reading-controls">
+        <button class="ctrl-btn" onclick="changeFontSize(-1)" title="Decrease text">A-</button>
+        <button class="ctrl-btn" onclick="changeFontSize(1)" title="Increase text">A+</button>
+        <button class="ctrl-btn" id="modeToggle" onclick="toggleMode()" title="Toggle light/dark">🌙</button>
+      </div>
+      <a href="index.html" class="cta-btn">Main</a>
+    </div>
+  </header>
+
+  <!-- QUOTE BANNER -->
+  <div class="qotd-banner">
+    <strong>Super Stars FC:</strong> "Every match, every milestone, every moment, and this is the story of a club built on belief, unity, and hard work." 
+    <p>— Super Stars FC</p>
+  </div>
+
+  <!-- HERO -->
+  <div class="page-hero reveal">
+    <div class="hero-badge"><i class="fas fa-newspaper"></i> Club News Hub</div>
+    <h1>Team News</h1>
+    <p>Stay up to date with Super Stars FC match reports, player spotlights, club milestones, and partnership announcements.</p>
+    <div class="hero-meta">
+      <span><i class="fas fa-location-dot"></i> Omaha, NE</span>
+      <span><i class="fas fa-calendar"></i> Season 2025 - 2026</span>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- STATS PANEL -->
+    <div class="stats-panel reveal">
+      <h3>📊 News at a Glance</h3>
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="stat-num counter" data-target="10">0</div>
+          <div class="stat-label">Articles</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num counter" data-target="4">0</div>
+          <div class="stat-label">Categories</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num counter" data-target="2025">0</div>
+          <div class="stat-label">Season</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num counter" data-target="1">0</div>
+          <div class="stat-label">Partners</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num counter" data-target="1">0</div>
+          <div class="stat-label">Club Identity</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="page-toolbar reveal">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button class="like-btn" id="likeBtn" onclick="toggleLike()">
+          <i class="fas fa-heart"></i> <span id="likeCount">0</span> Likes
+        </button>
+      </div>
+    </div>
+
+    <!-- SEARCH + FILTERS -->
+    <div class="controls-row reveal">
+      <div class="search-wrap">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search articles..." oninput="filterNews()">
+      </div>
+      <div class="filter-tabs">
+        <button class="filter-tab active" data-cat="all" onclick="setFilter(this)">All</button>
+        <button class="filter-tab" data-cat="match" onclick="setFilter(this)">Match Reports</button>
+        <button class="filter-tab" data-cat="club" onclick="setFilter(this)">Club News</button>
+        <button class="filter-tab" data-cat="player" onclick="setFilter(this)">Players</button>
+        <button class="filter-tab" data-cat="partner" onclick="setFilter(this)">Partners</button>
+      </div>
+    </div>
+
+    <div id="noResults">No articles match your search. Try a different keyword or category.</div>
+
+    <!-- NEWS GRID -->
+    <section class="news-grid" id="newsGrid">
+
+      <div class="news-card" data-cat="match" data-title="Season Opener: Super Stars FC Starts Strong" data-keywords="season opener omaha crowd determination">
+        <div class="card-img-wrap">
+          <img src="ssf1.jpg" alt="Season Opener">
+          <div class="card-overlay">
+            <a href="./open.html" class="read-cta"><i class="fas fa-arrow-right"></i> Read Article</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="cat-badge match"><i class="fas fa-futbol"></i> Match Report</span>
+          </div>
+          <h3><a href="./open.html">Season Opener: Super Stars FC Starts Strong</a></h3>
+          <p><a href="./open.html">In front of a packed Omaha crowd, the squad showed determination, teamwork, and hunger from the first whistle, a season statement made in style.</a></p>
+        </div>
+      </div>
+
+      <div class="news-card" data-cat="club" data-title="Behind the Scenes: Super Stars FC Training Season" data-keywords="training behind scenes preparation performance">
+        <div class="card-img-wrap">
+          <img src="image2.jpeg" alt="Training Season">
+          <div class="card-overlay">
+            <a href="./behind-the-scenes.html" class="read-cta"><i class="fas fa-arrow-right"></i> Read Article</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="cat-badge club"><i class="fas fa-star"></i> Club News</span>
+          </div>
+          <h3><a href="./behind-the-scenes.html">Behind the Scenes: Super Stars FC Training Season</a></h3>
+          <p><a href="./behind-the-scenes.html">Preparation is where matches are truly won, long before the whistle blows or the crowd fills the stands. A look inside the work that drives this team.</a></p>
+        </div>
+      </div>
+
+      <div class="news-card" data-cat="match" data-title="Super Stars FC Defensive Performance" data-keywords="clean sheet defense win statement victory">
+        <div class="card-img-wrap">
+          <img src="ssfc0.jpg" alt="Clean Sheet Victory">
+          <div class="card-overlay">
+            <a href="./clean-sheet.html" class="read-cta"><i class="fas fa-arrow-right"></i> Read Article</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="cat-badge match"><i class="fas fa-futbol"></i> Match Report</span>
+          </div>
+          <h3><a href="./clean-sheet.html">Defense Shines in Statement Clean Sheet Win</a></h3>
+          <p><a href="./clean-sheet.html">Super Stars FC delivered one of their most complete and commanding performances of the season, a clean sheet result that sent a message to the league.</a></p>
+        </div>
+      </div>
+
+      <div class="news-card" data-cat="player" data-title="Player Spotlight: Rising Midfielder Making His Mark" data-keywords="player spotlight midfielder rising growth">
+        <div class="card-img-wrap">
+          <img src="PHOTO-2025-09-08-00-27-51.jpg" alt="Player Spotlight">
+          <div class="card-overlay">
+            <a href="./player-spotlight.html" class="read-cta"><i class="fas fa-arrow-right"></i> Read Article</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="cat-badge player"><i class="fas fa-user"></i> Player Spotlight</span>
+          </div>
+          <h3><a href="./player-spotlight.html">Player Spotlight: Rising Midfielder Making His Mark</a></h3>
+          <p><a href="./player-spotlight.html">Every team has that one player whose growth seems to run parallel with the club's own evolution, and this season, that player has made his mark unmistakably.</a></p>
+        </div>
+      </div>
+
+      <div class="news-card" data-cat="club" data-title="Our Home Ground: South High School Stadium" data-keywords="stadium home ground facility south high school community">
+        <div class="card-img-wrap">
+          <img src="stadium.jpeg" alt="Captain's Corner">
+          <div class="card-overlay">
+            <a href="../Stadium.html" class="read-cta"><i class="fas fa-arrow-right"></i> Read Article</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="cat-badge club"><i class="fas fa-star"></i> Club News</span>
+          </div>
+          <h3><a href="../Stadium.html">Our Home Ground: South High School Stadium</a></h3>
+          <p><a href="../Stadium.html">Learn more about the facility that will be hosting Super Stars FC's home matches.</a></p>
+        </div>
+      </div>
+
+      <div class="news-card" data-cat="club" data-title="Captain's Corner: Leadership On and Off the Field" data-keywords="captain leadership armband culture">
+        <div class="card-img-wrap">
+          <img src="ssf7.jpg" alt="Captain's Corner">
+          <div class="card-overlay">
+            <a href="./captains-corner.html" class="read-cta"><i class="fas fa-arrow-right"></i> Read Article</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="cat-badge club"><i class="fas fa-star"></i> Club News</span>
+          </div>
+          <h3><a href="./captains-corner.html">Captain's Corner: Leadership On and Off the Field</a></h3>
+          <p><a href="./captains-corner.html">Leadership at Super Stars FC has never been limited to the weight of the armband, it lives in every training session, every conversation, every decision.</a></p>
+        </div>
+      </div>
+
+      <div class="news-card" data-cat="club" data-title="An End-Of-Season Vibe" data-keywords="end season upsl grind growth reflection">
+        <div class="card-img-wrap">
+          <img src="ssc4.jpg" alt="End of Season">
+          <div class="card-overlay">
+            <a href="./end.html" class="read-cta"><i class="fas fa-arrow-right"></i> Read Article</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="cat-badge club"><i class="fas fa-star"></i> Club News</span>
+          </div>
+          <h3><a href="./end.html">An End-Of-Season Vibe</a></h3>
+          <p><a href="./end.html">Our UPSL squad has closed out a season of grind, growth, resilience, and belief. A look back at everything this campaign meant to the club and its people.</a></p>
+        </div>
+      </div>
+
+      <div class="news-card" data-cat="partner" data-title="WENDÔK Sportswear Official Partnership" data-keywords="wendok sportswear partner kit sponsor community">
+        <div class="card-img-wrap">
+          <img src="WENDOK SPORTSWEAR.jpg" alt="WENDÔK Sportswear">
+          <div class="card-overlay">
+            <a href="./wendok.html" class="read-cta"><i class="fas fa-arrow-right"></i> Read Article</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="cat-badge partner"><i class="fas fa-handshake"></i> Official Partner</span>
+          </div>
+          <h3><a href="./wendok.html">WENDÔK Sportswear | Official Kit Partner</a></h3>
+          <p><a href="./wendok.html">Join us as Super Stars FC teams up with WENDÔK Sportswear, united by football, community, and a shared belief in building futures through sport.</a></p>
+        </div>
+      </div>
+
+      <div class="news-card" data-cat="club" data-title="Captain's Corner: Leadership On and Off the Field" data-keywords="captain leadership armband culture">
+        <div class="card-img-wrap">
+          <img src="./Away Jersey.jpeg" alt="Captain's Corner">
+          <div class="card-overlay">
+            <a href="./jersey.html" class="read-cta"><i class="fas fa-arrow-right"></i> Read Article</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="cat-badge club"><i class="fas fa-star"></i> Club News</span>
+          </div>
+          <h3><a href="./jersey.html">Jersey Reveal: The Kits That Will Define the UPSL Era</a></h3>
+          <p><a href="./jersey.html">Discover the new jerseys that will represent Super Stars FC in the upcoming UPSL season.</a></p>
+        </div>
+      </div>
+
+      <div class="news-card" data-cat="club" data-title="Our Schedule: Home and Away Fixtures" data-keywords="schedule fixtures home away upsl season">
+        <div class="card-img-wrap">
+          <img src="./image0.jpeg" alt="Captain's Corner">
+          <div class="card-overlay">
+            <a href="../games.html" class="read-cta"><i class="fas fa-arrow-right"></i> Read Article</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="card-meta-top">
+            <span class="cat-badge club"><i class="fas fa-star"></i> Club News</span>
+          </div>
+          <h3><a href="../games.html">Our Schedule: Home and Away Fixtures</a></h3>
+          <p><a href="../games.html">Check out our complete schedule for the upcoming UPSL season.</a></p>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="section-divider">⚽</div>
+
+  </div><!-- /.container -->
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <h3>Super Star FC</h3>
+        <p>Founded June 3, 2025.</p>
+        <p>Building champions on and off the field.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="./bout.html">About Us</a>
+        <a href="./term.html">Terms</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./Privacy.html">Privacy Policy</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>Email: superstarfc25@gmail.com</p>
+        <p>Phone: +1 (531) 262-1982</p>
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/profile.php?id=100077275385711" aria-label="Facebook" class="icon-facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2V12h2.2V9.8c0-2.2 1.3-3.4 3.3-3.4.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 2.9h-1.9v7A10 10 0 0 0 22 12z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/super_starsfc_fc?igsh=MWUyM3IxbHI1Y3p-sOQ==" aria-label="Instagram" class="icon-instagram">
+            <svg viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zm5.8-2.1a1.3 1.3 0 1 1-1.3-1.3 1.3 1.3 0 0 1 1.3 1.3z"/></svg>
+          </a>
+          <a href="https://x.com/SuperStars75843?t=tZZoC1LvPfNGI-BKk15JG4g&S=09" aria-label="Twitter" class="icon-twitter">
+            <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.1.9A5.4 5.4 0 0 0 22.4 1a10.8 10.8 0 0 1-3.4 1.3A5.4 5.4 0 0 0 9.6 7a15.3 15.3 0 0 1-11.1-5.6 5.4 5.4 0 0 0 1.7 7.2A5.3 5.3 0 0 1 .8 8v.1a5.4 5.4 0 0 0 4.3 5.3 5.5 5.5 0 0 1-2.4.1 5.4 5.4 0 0 0 5 3.8A10.8 10.8 0 0 1 0 19.5 15.3 15.3 0 0 0 8.3 22c10 0 15.5-8.3 15.5-15.5v-.7A11 11 0 0 0 23 3z"/></svg>
+          </a>
+          <a href="https://youtube.com/@s.s.f.c?si=fV4gWuc4trgaRfF6" aria-label="YouTube" class="icon-youtube">
+            <svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5h0s-5.6 0-8.5.4c-.4.1-1.3.1-2.1 1C.7 4.6.5 6.2.5 6.2S0 8.1 0 10v2c0 1.9.5 3.8.5 3.8s.2 1.6.9 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.2.4 7.2.4s5.6 0 8.5-.4c.4-.1 1.3-.1 2.1-1 .7-.7.9-2.3.9-2.3s.5-1.9.5-3.8v-2c0-1.9-.5-3.8-.5-3.8zM9.8 14.5V9.5l4.8 2.5-4.8 2.5z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© <span id="year"></span> Super Star FC. All rights reserved.</div>
+  </footer>
+
+  <div id="highlight-popup" onclick="shareHighlight()">
+    <i class="fas fa-share-nodes"></i> Share Quote
+  </div>
+
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle" style="color:#3fa96a"></i>
+    <span id="toastMsg">Done!</span>
+  </div>
+
+  <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // PROGRESS BAR + SCROLL TOP
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const total = document.body.scrollHeight - window.innerHeight;
+      document.getElementById('progress-bar').style.width = (scrolled / total * 100) + '%';
+      document.getElementById('scrollTop').classList.toggle('show', scrolled > 300);
+    });
+
+    // REVEAL
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // NEWS CARDS staggered reveal
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 100);
+          cardObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.06 });
+    document.querySelectorAll('.news-card').forEach(el => cardObserver.observe(el));
+
+    // COUNTERS
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.dataset.target);
+          if (isNaN(target)) return;
+          let current = 0;
+          const step = target / (1400 / 16);
+          const timer = setInterval(() => {
+            current = Math.min(current + step, target);
+            el.textContent = Math.round(current);
+            if (current >= target) clearInterval(timer);
+          }, 16);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+    // FONT SIZE
+    let fontSize = 1;
+    function changeFontSize(dir) {
+      fontSize = Math.min(1.3, Math.max(0.82, fontSize + dir * 0.05));
+      document.documentElement.style.setProperty('--font-size', fontSize + 'rem');
+      showToast('Font size ' + (dir > 0 ? 'increased' : 'decreased'));
+    }
+
+    // LIGHT / DARK
+    function toggleMode() {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      document.getElementById('modeToggle').textContent = isLight ? '🌑' : '🌙';
+      localStorage.setItem('ssfc_mode', isLight ? 'light' : 'dark');
+    }
+    if (localStorage.getItem('ssfc_mode') === 'light') {
+      document.body.classList.add('light-mode');
+      document.getElementById('modeToggle').textContent = '🌑';
+    }
+
+    // VIEWS
+    const viewKey = 'ssfc_news_views';
+    let views = parseInt(localStorage.getItem(viewKey) || '0') + 1;
+    localStorage.setItem(viewKey, views);
+    document.getElementById('viewCount').textContent = views.toLocaleString();
+
+    // LIKES
+    const likeKey = 'ssfc_news_likes', likedKey = 'ssfc_news_liked';
+    let likes = parseInt(localStorage.getItem(likeKey) || '18');
+    let liked = localStorage.getItem(likedKey) === 'true';
+    const likeBtn = document.getElementById('likeBtn');
+    const likeCount = document.getElementById('likeCount');
+    likeCount.textContent = likes;
+    if (liked) likeBtn.classList.add('liked');
+
+    function toggleLike() {
+      if (liked) { likes--; liked = false; likeBtn.classList.remove('liked'); }
+      else { likes++; liked = true; likeBtn.classList.add('liked'); showToast('Thanks for the love! ❤️'); }
+      likeCount.textContent = likes;
+      localStorage.setItem(likeKey, likes);
+      localStorage.setItem(likedKey, liked);
+    }
+
+    // HIGHLIGHT SHARE
+    let highlightedText = '';
+    const popup = document.getElementById('highlight-popup');
+    document.addEventListener('mouseup', () => {
+      const sel = window.getSelection();
+      const text = sel ? sel.toString().trim() : '';
+      if (text.length > 20 && text.length < 280) {
+        highlightedText = text;
+        const range = sel.getRangeAt(0).getBoundingClientRect();
+        popup.style.display = 'flex';
+        popup.style.top = (window.scrollY + range.top - 48) + 'px';
+        popup.style.left = (range.left + range.width/2 - 65) + 'px';
+      } else { popup.style.display = 'none'; }
+    });
+    function shareHighlight() {
+      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent('"' + highlightedText + '" — Super Stars FC')}`, '_blank');
+      popup.style.display = 'none';
+    }
+    document.addEventListener('mousedown', e => { if (e.target !== popup) popup.style.display = 'none'; });
+
+    // SEARCH + FILTER
+    let activeFilter = 'all';
+
+    function setFilter(btn) {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      activeFilter = btn.dataset.cat;
+      filterNews();
+    }
+
+    function filterNews() {
+      const query = document.getElementById('searchInput').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.news-card');
+      let visible = 0;
+
+      cards.forEach(card => {
+        const cat = card.dataset.cat;
+        const keywords = (card.dataset.title + ' ' + (card.dataset.keywords || '')).toLowerCase();
+        const catMatch = activeFilter === 'all' || cat === activeFilter;
+        const searchMatch = query === '' || keywords.includes(query);
+
+        if (catMatch && searchMatch) {
+          card.style.display = '';
+          visible++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+      document.getElementById('articleCount').textContent = visible;
+    }
+
+    // TOAST
+    function showToast(msg) {
+      document.getElementById('toastMsg').textContent = msg;
+      const t = document.getElementById('toast');
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+  </script>
+</body>
+</html>

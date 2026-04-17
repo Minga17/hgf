@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="image0.jpeg" type="image/jpeg">
+  <title>Super Stars FC — Stream Access</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem 1rem;
+      background: #07090d;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+    .page-wrap {
+      width: 100%;
+      max-width: 700px;
+    }
+
+    :root {
+      --gold: #f0b429;
+      --gold-dim: #b8891a;
+      --dark: #0a0c10;
+      --card-bg: #11141a;
+      --border: rgba(240,180,41,0.18);
+      --muted: #8a8fa0;
+      --font-cond: 'Arial Narrow', Arial, sans-serif;
+      --green: #1eba6b;
+    }
+
+    .ssfc-wrap {
+      background: linear-gradient(160deg, #0d1017 0%, #0a0c10 60%, #0f120a 100%);
+      border-radius: 18px;
+      padding: 0;
+      overflow: hidden;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      color: #e8eaf2;
+      position: relative;
+    }
+    .ssfc-wrap::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 340px; height: 340px;
+      background: radial-gradient(circle, rgba(240,180,41,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .ssfc-hero {
+      padding: 2.5rem 2rem 1.5rem;
+      text-align: center;
+      position: relative;
+    }
+    .ssfc-eyebrow {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-family: var(--font-cond);
+      font-size: .72rem; letter-spacing: .22em; text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(240,180,41,0.08);
+      border: 0.5px solid var(--border);
+      border-radius: 20px;
+      padding: .3rem .85rem;
+      margin-bottom: 1.1rem;
+    }
+    .live-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #e63946;
+      box-shadow: 0 0 0 0 rgba(230,57,70,.5);
+      animation: pulse-dot 1.4s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(230,57,70,.45); }
+      50%       { box-shadow: 0 0 0 5px rgba(230,57,70,0); }
+    }
+    .ssfc-h1 {
+      font-family: var(--font-cond);
+      font-size: 2.3rem; font-weight: 800;
+      letter-spacing: -.01em; line-height: 1.1;
+      margin: 0 0 .75rem;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .ssfc-h1 span { color: var(--gold); }
+    .ssfc-sub {
+      font-size: .95rem; color: var(--muted);
+      line-height: 1.6; max-width: 480px; margin: 0 auto 1.6rem;
+    }
+
+    /* PERK CARDS */
+    .perks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      padding: 0 2rem 1.5rem;
+    }
+    .perk-card {
+      background: var(--card-bg);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1rem .9rem;
+      display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+      transition: border-color .2s, transform .2s;
+    }
+    .perk-card:hover { border-color: rgba(240,180,41,0.42); transform: translateY(-2px); }
+    .perk-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 17px;
+    }
+    .perk-icon.live { background: rgba(230,57,70,.15); }
+    .perk-icon.vod  { background: rgba(240,180,41,.12); }
+    .perk-icon.hl   { background: rgba(30,186,107,.12); }
+    .perk-icon.bts  { background: rgba(99,131,235,.14); }
+    .perk-icon.stats{ background: rgba(190,100,240,.14); }
+    .perk-icon.ear  { background: rgba(240,180,41,.12); }
+    .perk-title {
+      font-size: .82rem; font-weight: 600;
+      color: #d8dae6; letter-spacing: .01em;
+    }
+    .perk-desc { font-size: .73rem; color: var(--muted); line-height: 1.4; }
+    .badge-free {
+      font-size: .65rem; font-family: var(--font-cond);
+      letter-spacing: .12em; text-transform: uppercase;
+      background: rgba(30,186,107,.15); color: #1eba6b;
+      border: 0.5px solid rgba(30,186,107,.3);
+      border-radius: 4px; padding: 2px 7px;
+      margin-top: auto;
+    }
+
+    /* SIGNUP ZONE */
+    .signup-zone {
+      background: rgba(240,180,41,0.04);
+      border-top: 0.5px solid var(--border);
+      padding: 1.4rem 2rem 1.6rem;
+    }
+    .signup-label {
+      font-size: .8rem; color: var(--muted);
+      margin-bottom: .75rem; text-align: center;
+      letter-spacing: .03em;
+    }
+    .signup-label strong { color: var(--gold); }
+    .nl-row {
+      display: flex; gap: 10px;
+      max-width: 480px; margin: 0 auto;
+    }
+    .nl-input-s {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border: 0.5px solid rgba(240,180,41,0.28);
+      border-radius: 9px;
+      color: #e8eaf2;
+      font-size: .9rem;
+      padding: .65rem 1rem;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .nl-input-s:focus { border-color: var(--gold); }
+    .nl-input-s::placeholder { color: #4a5068; }
+    .nl-btn-s {
+      background: var(--gold);
+      color: #0a0c10;
+      font-weight: 700;
+      font-family: var(--font-cond);
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      font-size: .8rem;
+      border: none; border-radius: 9px;
+      padding: .65rem 1.3rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background .15s, transform .1s;
+    }
+    .nl-btn-s:hover { background: #e8a800; }
+    .nl-btn-s:active { transform: scale(.97); }
+    .fine-print {
+      text-align: center; font-size: .72rem; color: #3e4455;
+      margin-top: .75rem;
+    }
+
+    /* UNLOCK OVERLAY */
+    .unlock-overlay {
+      display: none;
+      position: absolute; inset: 0;
+      background: rgba(10,12,16,0.97);
+      border-radius: 18px;
+      z-index: 10;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      animation: fadeInOverlay .35s ease;
+    }
+    @keyframes fadeInOverlay {
+      from { opacity: 0; transform: scale(.97); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    .unlock-overlay.show { display: flex; }
+    .unlock-badge {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, #1eba6b 0%, #16a55f 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 28px;
+      margin-bottom: 1rem;
+      animation: popIn .4s .1s both cubic-bezier(.34,1.56,.64,1);
+    }
+    @keyframes popIn {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+    .unlock-title {
+      font-family: var(--font-cond);
+      font-size: 2rem; font-weight: 800;
+      text-transform: uppercase;
+      color: #fff; margin-bottom: .3rem;
+    }
+    .unlock-title span { color: var(--green); }
+    .unlock-sub {
+      font-size: .88rem; color: var(--muted);
+      margin-bottom: 1.4rem; line-height: 1.55;
+    }
+    .unlock-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px; width: 100%; max-width: 460px;
+      margin-bottom: 1.4rem;
+    }
+    .ul-item {
+      background: var(--card-bg);
+      border: 0.5px solid var(--border);
+      border-radius: 10px;
+      padding: .7rem .85rem;
+      display: flex; align-items: center; gap: 10px;
+      text-align: left;
+      animation: slideUp .4s both ease;
+    }
+    .ul-item:nth-child(1) { animation-delay: .15s; }
+    .ul-item:nth-child(2) { animation-delay: .22s; }
+    .ul-item:nth-child(3) { animation-delay: .29s; }
+    .ul-item:nth-child(4) { animation-delay: .36s; }
+    .ul-item:nth-child(5) { animation-delay: .43s; }
+    .ul-item:nth-child(6) { animation-delay: .50s; }
+    .ul-item:nth-child(7) { animation-delay: .57s; }
+    .ul-item:nth-child(8) { animation-delay: .64s; }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .ul-check {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: rgba(30,186,107,.18);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-size: 11px; color: var(--green);
+      font-weight: 700;
+    }
+    .ul-text { font-size: .78rem; color: #c8cad8; line-height: 1.3; }
+    .ul-text strong { color: #fff; font-weight: 600; display: block; }
+    .email-display {
+      font-family: var(--font-cond);
+      font-size: .82rem; color: var(--gold);
+      background: rgba(240,180,41,.07);
+      border: 0.5px solid var(--border);
+      border-radius: 20px; padding: .3rem 1rem;
+      margin-bottom: 1rem;
+      animation: slideUp .4s .6s both ease;
+    }
+    .kickoff-cta {
+      background: var(--gold);
+      color: #0a0c10;
+      font-weight: 700;
+      font-family: var(--font-cond);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-size: .85rem;
+      border: none; border-radius: 9px;
+      padding: .7rem 2rem;
+      cursor: pointer;
+      transition: background .15s, transform .1s;
+      animation: slideUp .4s .7s both ease;
+    }
+    .kickoff-cta:hover { background: #e8a800; }
+    .kickoff-cta:active { transform: scale(.97); }
+  </style>
+</head>
+<body>
+  <div class="page-wrap">
+    <div class="ssfc-wrap" id="ssfc">
+
+      <div class="ssfc-hero">
+        <div class="ssfc-eyebrow">
+          <span class="live-dot"></span>
+          Free Access Pass
+        </div>
+        <h2 class="ssfc-h1">Watch Every Match.<br><span>Live &amp; On Demand.</span></h2>
+        <p class="ssfc-sub">
+          Get instant, free access to every Super Stars FC live stream, full match replays, highlight reels, and exclusive behind-the-scenes content — all in one place.
+        </p>
+      </div>
+
+      <div class="perks-grid">
+        <div class="perk-card">
+          <div class="perk-icon live">📺</div>
+          <div class="perk-title">Live Match Stream</div>
+          <div class="perk-desc">Every game broadcast live — no blackouts, no cable required.</div>
+          <div class="badge-free">Included</div>
+        </div>
+        <div class="perk-card">
+          <div class="perk-icon hl">⚡</div>
+          <div class="perk-title">Instant Highlights</div>
+          <div class="perk-desc">Goals, key plays &amp; best moments posted minutes after the final whistle.</div>
+          <div class="badge-free">Included</div>
+        </div>
+        <div class="perk-card">
+          <div class="perk-icon vod">🎬</div>
+          <div class="perk-title">Full Match Replays</div>
+          <div class="perk-desc">Every game in full — rewatch on your schedule, any device.</div>
+          <div class="badge-free">Included</div>
+        </div>
+        <div class="perk-card">
+          <div class="perk-icon bts">🎥</div>
+          <div class="perk-title">Behind the Scenes</div>
+          <div class="perk-desc">Training sessions, locker room footage &amp; player access.</div>
+          <div class="badge-free">Included</div>
+        </div>
+        <div class="perk-card">
+          <div class="perk-icon stats">📊</div>
+          <div class="perk-title">Match Stats &amp; Analysis</div>
+          <div class="perk-desc">Deep stats, heatmaps, and post-match breakdowns.</div>
+          <div class="badge-free">Included</div>
+        </div>
+        <div class="perk-card">
+          <div class="perk-icon ear">🔔</div>
+          <div class="perk-title">Matchday Alerts</div>
+          <div class="perk-desc">Kickoff reminders, live score push notifications &amp; squad news.</div>
+          <div class="badge-free">Included</div>
+        </div>
+      </div>
+
+      <div class="signup-zone">
+        <p class="signup-label"><strong>100% free.</strong> Drop your email to unlock your access pass instantly.</p>
+        <div class="nl-row">
+          <input type="email" class="nl-input-s" placeholder="Your email address" id="sfcEmail" />
+          <button class="nl-btn-s" onclick="sfcSubscribe()">Get Access →</button>
+        </div>
+        <p class="fine-print">No subscription. No credit card. No spam. Unsubscribe anytime.</p>
+      </div>
+
+      <!-- UNLOCK OVERLAY -->
+      <div class="unlock-overlay" id="unlockOverlay">
+        <div class="unlock-badge">✓</div>
+        <div class="unlock-title">Access <span>Unlocked</span></div>
+        <p class="unlock-sub">You're all set. Your free Super Stars FC pass is active.</p>
+        <div class="email-display" id="emailDisplay">your@email.com</div>
+        <div class="unlock-grid">
+          <div class="ul-item"><div class="ul-check">✓</div><div class="ul-text"><strong>Live Streams</strong>Every game, live</div></div>
+          <div class="ul-item"><div class="ul-check">✓</div><div class="ul-text"><strong>Highlight Reels</strong>Mins after full time</div></div>
+          <div class="ul-item"><div class="ul-check">✓</div><div class="ul-text"><strong>Full Replays</strong>Every match, full length</div></div>
+          <div class="ul-item"><div class="ul-check">✓</div><div class="ul-text"><strong>Behind the Scenes</strong>Exclusive access</div></div>
+          <div class="ul-item"><div class="ul-check">✓</div><div class="ul-text"><strong>Match Stats</strong>Deep analytics</div></div>
+          <div class="ul-item"><div class="ul-check">✓</div><div class="ul-text"><strong>Matchday Alerts</strong>Never miss kickoff</div></div>
+          <div class="ul-item"><div class="ul-check">✓</div><div class="ul-text"><strong>Player Interviews</strong>Post-match exclusives</div></div>
+          <div class="ul-item"><div class="ul-check">✓</div><div class="ul-text"><strong>Season Archive</strong>All past matches</div></div>
+        </div>
+        <button class="kickoff-cta" onclick="window.location.href='https://live.veo.co/matches/87336d98-d906-4bf3-b28a-0c70a37e9faa@1776017145014'">Watch Now | All Matches <br/> Here</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function sfcSubscribe() {
+      var email = document.getElementById('sfcEmail').value.trim();
+      if (!email || !email.includes('@')) {
+        document.getElementById('sfcEmail').style.borderColor = '#e63946';
+        document.getElementById('sfcEmail').focus();
+        return;
+      }
+      document.getElementById('emailDisplay').textContent = email;
+      document.getElementById('unlockOverlay').classList.add('show');
+    }
+    document.getElementById('sfcEmail').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') sfcSubscribe();
+    });
+  </script>
+</body>
+</html>

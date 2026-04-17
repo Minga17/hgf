@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+  <meta name="theme-color" content="#0b1020">
+  <title>Official Kit Reveal: New Home & Away Jerseys | Super Stars FC</title>
+  <meta name="description" content="Super Stars FC officially reveals its brand-new Home and Away jerseys for the UPSL — never before worn, debuting at the first Away game in April 2026.">
+  <link rel="shortcut icon" href="image0.jpeg" type="image/jpeg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --bg:#0b1020; --card:#0f1724;
+      --accent-red:#b62a2d; --accent-blue:#1c5da4;
+      --kit-red:#d41f1f; --kit-orange:#e8561a;
+      --muted:#9aa4b2; --max-w:1100px; --radius:12px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:linear-gradient(180deg,var(--bg),#071021);color:#e6eef8;-webkit-font-smoothing:antialiased;line-height:1.6;transition:background .3s,color .3s;font-family:Inter,system-ui,-apple-system,sans-serif}
+    body.light-mode{background:#f0f4fa;color:#1a2233;--bg:#f0f4fa;--card:#ffffff;--muted:#556070}
+    a{color:var(--accent-blue);text-decoration:none;font-weight:700}
+    a:hover{color:var(--accent-red)}
+
+    #progress-bar{position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,var(--accent-blue),var(--accent-red));z-index:9999;transition:width .1s linear}
+
+    /* HEADER */
+    .site-header{padding:15px 28px;display:flex;justify-content:space-between;align-items:center;background:rgba(11,16,32,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.05);position:sticky;top:0;z-index:200}
+    body.light-mode .site-header{background:rgba(240,244,250,.93)}
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:inherit}
+    .logo{width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:.88rem;box-shadow:0 3px 12px rgba(0,0,0,.45)}
+    .header-right{display:flex;align-items:center;gap:14px}
+    .header-right a{color:var(--muted);font-weight:600;font-size:.86rem;transition:color .2s;text-decoration:none}
+    .header-right a:hover{color:var(--accent-blue)}
+    .cta-btn{background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));color:#fff!important;padding:8px 16px;border-radius:8px;font-weight:700!important}
+    .reading-controls{display:flex;gap:5px}
+    .ctrl-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:var(--muted);width:31px;height:31px;border-radius:6px;cursor:pointer;font-size:.76rem;display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:inherit}
+    .ctrl-btn:hover{border-color:var(--accent-blue);color:#e6eef8}
+    body.light-mode .ctrl-btn{background:rgba(0,0,0,.05);border-color:rgba(0,0,0,.1);color:#556070}
+
+    /* BANNER */
+    .qotd-banner{background:linear-gradient(135deg,rgba(28,93,164,.15),rgba(182,42,45,.15));border-top:2px solid var(--accent-blue);border-bottom:2px solid var(--accent-red);padding:13px 28px;text-align:center;font-size:.86rem;color:#c8d3e0;font-style:italic}
+    body.light-mode .qotd-banner{color:#334155}
+    .qotd-banner strong{color:var(--accent-blue);font-style:normal}
+
+    /* HERO */
+    .article-hero{position:relative;height:560px;overflow:hidden;display:flex;align-items:flex-end}
+    .hero-bg{position:absolute;inset:0;background:linear-gradient(135deg,#06101e 0%,#0a1628 45%,#120608 100%)}
+    .hero-fabric{position:absolute;inset:0;opacity:.06;background-image:repeating-linear-gradient(45deg,rgba(28,93,164,.8) 0,rgba(28,93,164,.8) 1px,transparent 0,transparent 50%),repeating-linear-gradient(-45deg,rgba(182,42,45,.8) 0,rgba(182,42,45,.8) 1px,transparent 0,transparent 50%);background-size:8px 8px}
+    .hero-jersey-art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:80px;pointer-events:none}
+    .hero-jersey-wrap{display:flex;flex-direction:column;align-items:center;gap:10px}
+    .hero-jersey-shape{opacity:.2;width:148px;height:186px}
+    .hero-jersey-shape svg{width:100%;height:100%}
+    .hero-kit-label{font-size:.6rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.28);opacity:.6}
+    .hero-glow-l{position:absolute;top:40%;left:22%;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(212,31,31,.22) 0%,transparent 65%);transform:translate(-50%,-50%);pointer-events:none}
+    .hero-glow-r{position:absolute;top:40%;right:22%;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(232,86,26,.18) 0%,transparent 65%);transform:translate(50%,-50%);pointer-events:none}
+    .hero-gradient{position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,16,30,.1) 0%,rgba(6,16,30,.5) 50%,rgba(6,16,30,.97) 100%)}
+    .hero-content{position:relative;z-index:2;width:100%;max-width:var(--max-w);margin:auto;padding:0 28px 44px}
+    .kit-badge{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));color:#fff;font-size:.68rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:5px 16px;border-radius:20px;margin-bottom:14px;animation:pulsebadge 2s infinite}
+    @keyframes pulsebadge{0%,100%{box-shadow:0 0 0 0 rgba(28,93,164,.5)}50%{box-shadow:0 0 0 9px rgba(28,93,164,0)}}
+    .hero-content h1{font-size:clamp(1.7rem,4.5vw,2.85rem);font-weight:900;line-height:1.1;color:#fff;margin-bottom:16px;text-shadow:0 2px 24px rgba(0,0,0,.7);max-width:840px}
+    .hero-meta-row{display:flex;align-items:center;gap:16px;flex-wrap:wrap;font-size:.8rem;color:rgba(255,255,255,.65)}
+    .hero-meta-row span{display:flex;align-items:center;gap:5px}
+    .hero-meta-row .dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.3)}
+
+    /* LAYOUT */
+    .page-wrap{max-width:var(--max-w);margin:auto;padding:0 20px 60px;display:grid;grid-template-columns:1fr 280px;gap:32px;margin-top:36px}
+    @media(max-width:900px){.page-wrap{grid-template-columns:1fr}.sidebar{order:2}}
+    .article-body{min-width:0}
+
+    /* STATS */
+    .stats-panel{background:var(--card);border-radius:var(--radius);padding:20px 24px;border:1px solid rgba(255,255,255,.05);border-top:3px solid var(--accent-blue);box-shadow:0 4px 20px rgba(0,0,0,.35);margin-bottom:32px}
+    body.light-mode .stats-panel{background:#fff;border-color:rgba(0,0,0,.06)}
+    .stats-panel h3{font-size:.72rem;text-transform:uppercase;letter-spacing:2px;color:var(--accent-blue);margin-bottom:16px}
+    .stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    @media(max-width:480px){.stats-row{grid-template-columns:repeat(2,1fr)}}
+    .stat-item{text-align:center}
+    .stat-num{font-size:1.85rem;font-weight:800;background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+    .stat-label{font-size:.67rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
+
+    /* TOOLBAR */
+    .page-toolbar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding:12px 0;margin-bottom:28px;border-bottom:1px solid rgba(255,255,255,.06)}
+    body.light-mode .page-toolbar{border-color:rgba(0,0,0,.08)}
+    .like-btn{display:flex;align-items:center;gap:7px;background:var(--card);border:1.5px solid rgba(255,255,255,.07);color:var(--muted);padding:7px 15px;border-radius:8px;cursor:pointer;font-size:.83rem;font-weight:700;font-family:inherit;transition:all .2s}
+    .like-btn:hover,.like-btn.liked{border-color:var(--accent-red);color:var(--accent-red)}
+    .share-group{display:flex;gap:7px;flex-wrap:wrap}
+    .share-btn{display:flex;align-items:center;gap:5px;background:var(--card);border:1.5px solid rgba(255,255,255,.07);color:var(--muted);padding:7px 13px;border-radius:8px;cursor:pointer;font-size:.8rem;font-weight:700;font-family:inherit;transition:all .2s}
+    .share-btn:hover{border-color:var(--accent-blue);color:#e6eef8}
+
+    /* TOC */
+    .toc{background:var(--card);border-radius:var(--radius);padding:20px 22px;border:1px solid rgba(255,255,255,.05);border-left:4px solid var(--accent-blue);margin-bottom:32px}
+    body.light-mode .toc{background:#fff}
+    .toc h4{font-size:.72rem;text-transform:uppercase;letter-spacing:2px;color:var(--accent-blue);margin-bottom:14px}
+    .toc ol{padding-left:18px}
+    .toc li{margin-bottom:8px}
+    .toc a{color:var(--muted);font-weight:600;font-size:.88rem;transition:color .2s}
+    .toc a:hover,.toc a.active{color:var(--accent-blue)}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* PROSE */
+    .prose{font-size:1rem;line-height:1.8;color:#d0dcea}
+    body.light-mode .prose{color:#2e3d52}
+    .prose h2{font-size:1.45rem;font-weight:800;color:#e6eef8;margin:36px 0 14px;display:flex;align-items:center;gap:10px;scroll-margin-top:90px}
+    body.light-mode .prose h2{color:#1a2233}
+    .prose h2::before{content:'';display:inline-block;width:4px;height:1.1em;background:linear-gradient(180deg,var(--accent-blue),var(--accent-red));border-radius:2px;flex-shrink:0}
+    .prose p{margin-bottom:18px}
+    .prose strong{color:#e6eef8;font-weight:700}
+    body.light-mode .prose strong{color:#1a2233}
+
+    .pull-quote{border-left:4px solid var(--accent-blue);background:rgba(28,93,164,.08);border-radius:0 10px 10px 0;padding:16px 22px;margin:24px 0;font-size:1.05rem;font-style:italic;color:#b8cde4;line-height:1.65}
+    .pull-quote.red{border-left-color:var(--accent-red);background:rgba(182,42,45,.08);color:#e0b0b0}
+    body.light-mode .pull-quote{color:#334155}
+    .pull-quote cite{display:block;margin-top:8px;font-size:.8rem;font-style:normal;color:var(--muted);font-weight:700}
+
+    .callout{background:linear-gradient(135deg,rgba(28,93,164,.12),rgba(28,93,164,.05));border:1px solid rgba(28,93,164,.25);border-radius:var(--radius);padding:16px 20px;margin:20px 0;font-size:.9rem;color:#b8cde4;line-height:1.65}
+    .callout.red{background:linear-gradient(135deg,rgba(182,42,45,.12),rgba(182,42,45,.05));border-color:rgba(182,42,45,.25);color:#e0b0b0}
+    .callout.gold{background:linear-gradient(135deg,rgba(180,130,20,.12),rgba(180,130,20,.05));border-color:rgba(180,130,20,.25);color:#e0c470}
+    .callout.green{background:linear-gradient(135deg,rgba(20,160,80,.12),rgba(20,160,80,.05));border-color:rgba(20,160,80,.28);color:#90e0b0}
+    body.light-mode .callout{color:#2e4a6a}
+    .callout strong{font-weight:800;color:var(--accent-blue)}
+    .callout.red strong{color:var(--accent-red)}
+    .callout.gold strong{color:#c9961a}
+    .callout.green strong{color:#14a050}
+    .callout-icon{font-size:1.1rem;margin-right:6px}
+
+    .section-divider{display:flex;align-items:center;gap:12px;margin:10px 0 28px;color:var(--muted);font-size:1rem}
+    .section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.07)}
+    body.light-mode .section-divider::before,.section-divider::after{background:rgba(0,0,0,.09)}
+
+    /* UPSL DEBUT BANNER */
+    .upsl-debut-box{background:linear-gradient(135deg,rgba(28,93,164,.16),rgba(182,42,45,.12));border:1.5px solid var(--accent-blue);border-radius:var(--radius);padding:20px 22px;margin:24px 0;display:flex;gap:18px;align-items:flex-start}
+    .upsl-debut-icon{font-size:2.2rem;flex-shrink:0;line-height:1}
+    .upsl-debut-box h4{font-size:1rem;font-weight:800;color:#e6eef8;margin-bottom:6px}
+    body.light-mode .upsl-debut-box h4{color:#1a2233}
+    .upsl-debut-box p{font-size:.86rem;color:var(--muted);line-height:1.65}
+    .upsl-debut-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));color:#fff;font-size:.65rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:14px;margin-top:10px}
+
+    /* PREVIOUS KIT CALLOUT */
+    .prev-kit-box{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-left:4px solid var(--muted);border-radius:var(--radius);padding:16px 20px;margin:20px 0;font-size:.88rem;color:var(--muted);line-height:1.65}
+    body.light-mode .prev-kit-box{background:rgba(0,0,0,.03);border-color:rgba(0,0,0,.07)}
+    .prev-kit-box strong{color:#e6eef8;font-weight:700}
+    body.light-mode .prev-kit-box strong{color:#1a2233}
+
+    /* KIT SWITCHER */
+    .kit-switcher{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+    .kit-tab{padding:9px 22px;border-radius:8px;font-size:.86rem;font-weight:700;cursor:pointer;font-family:inherit;transition:all .25s;border:2px solid rgba(255,255,255,.1);background:var(--card);color:var(--muted)}
+    .kit-tab.tab-home{border-color:var(--accent-red);background:linear-gradient(135deg,#8a1010,var(--accent-red));color:#fff}
+    .kit-tab.tab-away{border-color:var(--accent-blue);background:linear-gradient(135deg,var(--accent-blue),#0e3a6e);color:#fff}
+    body.light-mode .kit-tab{background:#f4f7fc;border-color:rgba(0,0,0,.1)}
+
+    /* 3D FLIP CARDS */
+    .kit-cards-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:28px}
+    @media(max-width:560px){.kit-cards-row{grid-template-columns:1fr}}
+    .kit-flip-card{perspective:1200px;height:470px;cursor:pointer;opacity:0;transform:translateY(24px);transition:opacity .5s ease,transform .5s ease}
+    .kit-flip-card.visible{opacity:1;transform:none}
+    .kit-flip-inner{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d}
+    .kit-flip-card:hover .kit-flip-inner{transform:rotateY(180deg)}
+    .kit-front,.kit-back{position:absolute;inset:0;border-radius:var(--radius);backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden}
+    .kit-back{transform:rotateY(180deg)}
+
+    .kit-front.home-front{background:linear-gradient(145deg,#1a0404,#260808,#150303);border:1px solid rgba(212,31,31,.35);display:flex;flex-direction:column;align-items:center;justify-content:center}
+    .kit-front.away-front{background:linear-gradient(145deg,#060f1f,#0a1830,#050d1a);border:1px solid rgba(28,93,164,.3);display:flex;flex-direction:column;align-items:center;justify-content:center}
+
+    .kit-jersey-svg{width:168px;height:218px;margin-bottom:12px;filter:drop-shadow(0 8px 28px rgba(0,0,0,.7))}
+    .kit-front-label{text-align:center;padding:0 16px 10px}
+    .kit-type-tag{font-size:.64rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;margin-bottom:5px}
+    .home-front .kit-type-tag{color:#f08080}
+    .away-front .kit-type-tag{color:#7ab4e8}
+    .kit-front-label h3{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:6px}
+    .kit-front-label p{font-size:.77rem;color:rgba(255,255,255,.5);line-height:1.5}
+    .flip-hint{font-size:.67rem;color:rgba(255,255,255,.3);margin-top:8px;display:flex;align-items:center;justify-content:center;gap:4px}
+    .debut-tag{display:inline-flex;align-items:center;gap:5px;background:rgba(28,93,164,.3);border:1px solid rgba(28,93,164,.5);color:#7ab4e8;font-size:.62rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:3px 10px;border-radius:10px;margin-top:7px}
+    .home-front .debut-tag{background:rgba(182,42,45,.25);border-color:rgba(182,42,45,.4);color:#f08080}
+
+    .kit-back{padding:18px;display:flex;flex-direction:column;gap:7px}
+    .kit-back.home-back{background:linear-gradient(145deg,#1e0404,#2a0808);border:1px solid rgba(212,31,31,.25)}
+    .kit-back.away-back{background:linear-gradient(145deg,#060f1f,#0a1830);border:1px solid rgba(28,93,164,.25)}
+    .kit-back-title{font-size:.72rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:4px}
+    .home-back .kit-back-title{color:#f08080}
+    .away-back .kit-back-title{color:#7ab4e8}
+    .kd-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.81rem}
+    .kd-row:last-of-type{border-bottom:none}
+    .kd-label{color:rgba(255,255,255,.45)}
+    .kd-val{font-weight:700;color:#e6eef8}
+    .swatch-row{display:flex;gap:8px;align-items:center;margin-top:4px;flex-wrap:wrap}
+    .cswatch{width:22px;height:22px;border-radius:50%;border:2px solid rgba(255,255,255,.2);box-shadow:0 2px 6px rgba(0,0,0,.4);cursor:pointer;transition:transform .2s}
+    .cswatch:hover{transform:scale(1.2)}
+    .swatch-label{font-size:.7rem;color:rgba(255,255,255,.45)}
+    .back-cta{display:block;text-align:center;margin-top:auto;background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));color:#fff;padding:9px;border-radius:8px;font-size:.82rem;font-weight:700;transition:opacity .2s}
+    .back-cta:hover{opacity:.85;color:#fff}
+
+    /* SPEC PANEL */
+    .kit-spec-panel{background:var(--card);border-radius:var(--radius);padding:22px 24px;border:1px solid rgba(255,255,255,.05);margin-bottom:32px}
+    body.light-mode .kit-spec-panel{background:#fff}
+    .kit-spec-panel.is-home{border-top:3px solid var(--accent-red)}
+    .kit-spec-panel.is-away{border-top:3px solid var(--accent-blue)}
+    .spec-header{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+    .spec-dot{width:13px;height:13px;border-radius:50%;flex-shrink:0;transition:background .3s}
+    .spec-header h3{font-size:1.05rem;font-weight:800;color:#e6eef8}
+    body.light-mode .spec-header h3{color:#1a2233}
+    .specs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
+    @media(max-width:480px){.specs-grid{grid-template-columns:1fr}}
+    .spec-item{background:rgba(255,255,255,.03);border-radius:8px;padding:12px 14px;border:1px solid rgba(255,255,255,.04)}
+    body.light-mode .spec-item{background:#f4f7fc;border-color:rgba(0,0,0,.05)}
+    .spec-item-label{font-size:.67rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:4px}
+    .spec-item-val{font-size:.91rem;font-weight:700;color:#e6eef8}
+    body.light-mode .spec-item-val{color:#1a2233}
+    .palette-row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .pal-swatch{display:flex;align-items:center;gap:6px}
+    .pal-circle{width:26px;height:26px;border-radius:50%;border:2px solid rgba(255,255,255,.14)}
+    .pal-name{font-size:.74rem;color:var(--muted);font-weight:600}
+
+    /* FEATURES GRID */
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0 28px}
+    @media(max-width:600px){.features-grid{grid-template-columns:1fr 1fr}}
+    .feature-card{background:var(--card);border-radius:var(--radius);padding:18px 16px;border:1px solid rgba(255,255,255,.04);border-top:3px solid var(--accent-blue);transition:transform .25s,box-shadow .25s;opacity:0;transform:translateY(20px)}
+    .feature-card.visible{opacity:1;transform:none}
+    .feature-card:nth-child(even){border-top-color:var(--accent-red)}
+    .feature-card:hover{transform:translateY(-5px);box-shadow:0 12px 28px rgba(0,0,0,.4)}
+    body.light-mode .feature-card{background:#fff;border-color:rgba(0,0,0,.06)}
+    .fc-icon{font-size:1.6rem;margin-bottom:9px;display:block}
+    .feature-card h4{font-size:.9rem;font-weight:700;color:var(--accent-blue);margin-bottom:6px}
+    .feature-card:nth-child(even) h4{color:var(--accent-red)}
+    .feature-card p{font-size:.81rem;color:var(--muted);line-height:1.6}
+
+    /* COMPARISON TABLE */
+    .kit-compare{width:100%;border-collapse:collapse;margin:20px 0 28px;font-size:.86rem}
+    .kit-compare th{padding:11px 14px;text-align:left;font-size:.67rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);border-bottom:2px solid rgba(255,255,255,.08)}
+    body.light-mode .kit-compare th{border-color:rgba(0,0,0,.1)}
+    .kit-compare td{padding:11px 14px;border-bottom:1px solid rgba(255,255,255,.04);color:#d0dcea}
+    body.light-mode .kit-compare td{color:#2e3d52;border-color:rgba(0,0,0,.05)}
+    .kit-compare tr:last-child td{border-bottom:none}
+    .kit-compare tr:hover td{background:rgba(255,255,255,.02)}
+    body.light-mode .kit-compare tr:hover td{background:rgba(0,0,0,.02)}
+    .kit-compare .label-col{color:var(--muted);font-size:.82rem}
+    .home-col{color:#f08080;font-weight:700}
+    .away-col{color:#7ab4e8;font-weight:700}
+
+    /* AFRICA MAP */
+    .africa-highlight{background:linear-gradient(135deg,rgba(28,93,164,.1),rgba(182,42,45,.07));border:1px solid rgba(28,93,164,.22);border-radius:var(--radius);padding:22px;margin:20px 0;display:flex;align-items:flex-start;gap:16px}
+    .africa-icon{font-size:2.2rem;flex-shrink:0;line-height:1}
+    .africa-highlight h4{font-size:.95rem;font-weight:800;color:var(--accent-blue);margin-bottom:6px}
+    body.light-mode .africa-highlight h4{color:var(--accent-blue)}
+    .africa-highlight p{font-size:.84rem;color:var(--muted);line-height:1.65}
+
+    /* WENDÔK BOX */
+    .wendok-box{background:linear-gradient(135deg,rgba(28,93,164,.1),rgba(182,42,45,.07));border:1px solid rgba(28,93,164,.2);border-radius:var(--radius);padding:24px;margin:24px 0}
+    body.light-mode .wendok-box{background:rgba(28,93,164,.04)}
+    .wendok-hd{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+    .wendok-badge{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+    .wendok-hd h3{font-size:1.05rem;font-weight:800;color:#e6eef8;margin-bottom:2px}
+    body.light-mode .wendok-hd h3{color:#1a2233}
+    .wendok-hd p{font-size:.77rem;color:var(--muted)}
+    .wendok-vals{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    @media(max-width:520px){.wendok-vals{grid-template-columns:1fr}}
+    .wv{background:rgba(255,255,255,.04);border-radius:8px;padding:12px 14px}
+    body.light-mode .wv{background:rgba(0,0,0,.04)}
+    .wv-icon{font-size:1.3rem;margin-bottom:6px;display:block}
+    .wv-title{font-size:.82rem;font-weight:700;color:var(--accent-blue);margin-bottom:3px}
+    .wv-desc{font-size:.75rem;color:var(--muted);line-height:1.55}
+
+    /* TIMELINE */
+    .timeline{position:relative;padding-left:28px;margin:24px 0 32px}
+    .timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent-blue),var(--accent-red));border-radius:2px}
+    .tl-item{position:relative;margin-bottom:26px;padding-left:20px;opacity:0;transform:translateX(-14px);transition:opacity .5s ease,transform .5s ease}
+    .tl-item.visible{opacity:1;transform:none}
+    .tl-dot{position:absolute;left:-24px;top:4px;width:14px;height:14px;border-radius:50%;background:var(--accent-blue);border:2px solid var(--bg);box-shadow:0 0 0 3px rgba(28,93,164,.3)}
+    .tl-item.tl-future .tl-dot{background:var(--accent-red);box-shadow:0 0 0 3px rgba(182,42,45,.3);animation:dotpulse 2s infinite}
+    @keyframes dotpulse{0%,100%{box-shadow:0 0 0 3px rgba(182,42,45,.3)}50%{box-shadow:0 0 0 6px rgba(182,42,45,.1)}}
+    .tl-date{font-size:.72rem;font-weight:800;color:var(--accent-blue);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px}
+    .tl-item.tl-future .tl-date{color:var(--accent-red)}
+    .tl-title{font-size:.95rem;font-weight:700;color:#e6eef8;margin-bottom:4px}
+    body.light-mode .tl-title{color:#1a2233}
+    .tl-desc{font-size:.83rem;color:var(--muted);line-height:1.6}
+    .tl-future-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(182,42,45,.18);border:1px solid rgba(182,42,45,.35);color:#f08080;font-size:.62rem;font-weight:800;padding:3px 9px;border-radius:10px;margin-top:6px;letter-spacing:1.5px;text-transform:uppercase}
+
+    /* REACTIONS */
+    .reactions-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0 28px}
+    @media(max-width:540px){.reactions-grid{grid-template-columns:1fr}}
+    .reaction-card{background:var(--card);border-radius:var(--radius);padding:18px;border:1px solid rgba(255,255,255,.05);border-left:3px solid var(--accent-blue);opacity:0;transform:translateY(16px);transition:opacity .45s ease,transform .45s ease}
+    .reaction-card:nth-child(even){border-left-color:var(--accent-red)}
+    .reaction-card.visible{opacity:1;transform:none}
+    body.light-mode .reaction-card{background:#fff}
+    .rc-quote{font-size:.87rem;font-style:italic;color:var(--muted);line-height:1.65;margin-bottom:12px}
+    body.light-mode .rc-quote{color:#334155}
+    .rc-player{display:flex;align-items:center;gap:9px}
+    .rc-avatar{width:36px;height:36px;border-radius:50%;flex-shrink:0;object-fit:cover;border:2px solid var(--accent-blue);background:linear-gradient(135deg,var(--accent-blue),var(--accent-red))}
+    .reaction-card:nth-child(even) .rc-avatar{border-color:var(--accent-red)}
+    .rc-name{font-size:.84rem;font-weight:700;color:#e6eef8}
+    body.light-mode .rc-name{color:#1a2233}
+    .rc-role{font-size:.72rem;color:var(--muted)}
+
+    /* GALLERY */
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0 32px}
+    @media(max-width:540px){.gallery-grid{grid-template-columns:1fr 1fr}}
+    .gallery-item{aspect-ratio:4/3;border-radius:8px;overflow:hidden;cursor:pointer;position:relative;opacity:0;transform:scale(.95);transition:opacity .4s ease,transform .4s ease}
+    .gallery-item.visible{opacity:1;transform:none}
+    .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease;display:block;background:#0c1322}
+    .gallery-item:hover img{transform:scale(1.08)}
+    .gal-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;font-size:.78rem;color:var(--muted);background:rgba(11,16,32,.9);padding:10px;text-align:center}
+    .gal-placeholder i{font-size:1.7rem;opacity:.35}
+    .gallery-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(7,16,33,.85));opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:10px}
+    .gallery-item:hover .gallery-overlay{opacity:1}
+    .gallery-overlay span{font-size:.74rem;color:#fff;font-weight:700;display:flex;align-items:center;gap:5px}
+
+    /* LIGHTBOX */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.94);z-index:9100;display:none;align-items:center;justify-content:center;padding:20px}
+    .lightbox.active{display:flex}
+    .lightbox-inner{position:relative;max-width:900px;width:100%;text-align:center}
+    .lightbox-img{max-width:100%;max-height:75vh;border-radius:10px;box-shadow:0 20px 60px rgba(0,0,0,.8);display:block;margin:auto;background:#0c1322;min-height:200px;object-fit:contain}
+    .lb-close{position:absolute;top:-16px;right:-16px;width:36px;height:36px;border-radius:50%;background:var(--accent-red);border:none;color:#fff;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s;font-family:inherit}
+    .lb-close:hover{transform:scale(1.1)}
+    .lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:#fff;width:40px;height:40px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1rem;transition:background .2s;font-family:inherit}
+    .lb-nav:hover{background:rgba(255,255,255,.2)}
+    .lb-prev{left:-50px}.lb-next{right:-50px}
+    @media(max-width:700px){.lb-prev{left:0}.lb-next{right:0}}
+    .lb-caption{color:rgba(255,255,255,.65);font-size:.82rem;margin-top:12px}
+    .lb-counter{color:rgba(255,255,255,.4);font-size:.75rem;margin-top:5px}
+
+    /* ORDER */
+    .order-section{background:linear-gradient(135deg,rgba(28,93,164,.1),rgba(182,42,45,.07));border:1px solid rgba(28,93,164,.2);border-radius:var(--radius);padding:24px;margin:24px 0 28px}
+    body.light-mode .order-section{background:rgba(28,93,164,.04)}
+    .order-section h3{font-size:1rem;font-weight:800;color:var(--accent-blue);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+    .order-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+    @media(max-width:520px){.order-steps{grid-template-columns:1fr}}
+    .order-step{text-align:center}
+    .os-num{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));color:#fff;font-weight:800;font-size:.9rem;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+    .os-title{font-size:.85rem;font-weight:700;color:#e6eef8;margin-bottom:5px}
+    body.light-mode .os-title{color:#1a2233}
+    .os-desc{font-size:.76rem;color:var(--muted);line-height:1.55}
+    .order-ctas{display:flex;gap:12px;flex-wrap:wrap}
+    .order-cta{display:inline-flex;align-items:center;gap:7px;background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));color:#fff;padding:11px 26px;border-radius:9px;font-size:.88rem;font-weight:700;transition:opacity .2s}
+    .order-cta:hover{opacity:.85;color:#fff}
+    .order-cta-outline{display:inline-flex;align-items:center;gap:7px;background:var(--card);border:1.5px solid rgba(255,255,255,.1);color:var(--muted);padding:11px 22px;border-radius:9px;font-size:.88rem;font-weight:700;transition:all .2s}
+    .order-cta-outline:hover{border-color:var(--accent-blue);color:#e6eef8}
+    body.light-mode .order-cta-outline{background:#f4f7fc;border-color:rgba(0,0,0,.1)}
+
+    /* COMMENTS */
+    .comments-section{margin-top:36px}
+    .comments-section h3{font-size:1.1rem;font-weight:800;color:#e6eef8;margin-bottom:18px;display:flex;align-items:center;gap:8px}
+    body.light-mode .comments-section h3{color:#1a2233}
+    .comment-form{background:var(--card);border-radius:var(--radius);padding:20px;border:1px solid rgba(255,255,255,.05);margin-bottom:22px}
+    body.light-mode .comment-form{background:#fff}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+    @media(max-width:500px){.form-row{grid-template-columns:1fr}}
+    .cf-input{width:100%;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.08);border-radius:8px;color:#e6eef8;padding:10px 14px;font-size:.86rem;font-family:inherit;transition:border-color .2s}
+    body.light-mode .cf-input{background:#f4f7fc;border-color:rgba(0,0,0,.1);color:#1a2233}
+    .cf-input:focus{outline:none;border-color:var(--accent-blue)}
+    .cf-input::placeholder{color:var(--muted)}
+    .cf-textarea{resize:vertical;min-height:90px}
+    .cf-submit{background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));color:#fff;border:none;padding:10px 24px;border-radius:8px;font-size:.86rem;font-weight:700;cursor:pointer;font-family:inherit;transition:opacity .2s;display:inline-flex;align-items:center;gap:7px}
+    .cf-submit:hover{opacity:.85}
+    .comment-list{display:flex;flex-direction:column;gap:14px}
+    .comment-item{background:var(--card);border-radius:var(--radius);padding:16px 18px;border:1px solid rgba(255,255,255,.04)}
+    body.light-mode .comment-item{background:#fff}
+    .comment-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:10px}
+    .comment-author{font-weight:700;font-size:.88rem;color:var(--accent-blue)}
+    .comment-date{font-size:.74rem;color:var(--muted)}
+    .comment-text{font-size:.86rem;color:var(--muted);line-height:1.6}
+    body.light-mode .comment-text{color:#334155}
+    .no-comments{text-align:center;color:var(--muted);font-size:.9rem;padding:24px}
+
+    /* RELATED */
+    .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+    @media(max-width:640px){.related-grid{grid-template-columns:1fr}}
+    .related-card{background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid rgba(255,255,255,.04);text-decoration:none;color:inherit;display:block;transition:transform .25s,box-shadow .25s,border-color .25s}
+    .related-card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,.4);border-color:rgba(28,93,164,.25);color:inherit}
+    body.light-mode .related-card{background:#fff}
+    .related-card img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#0c1322}
+    .related-card-body{padding:13px 14px}
+    .rc-tag{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--accent-blue);margin-bottom:5px}
+    .rc-title{font-size:.9rem;font-weight:700;color:#e6eef8;line-height:1.35}
+    body.light-mode .rc-title{color:#1a2233}
+
+    /* SIDEBAR */
+    .sidebar{display:flex;flex-direction:column;gap:20px}
+    .sidebar-card{background:var(--card);border-radius:var(--radius);padding:18px;border:1px solid rgba(255,255,255,.05);border-top:3px solid var(--accent-blue)}
+    .sidebar-card.red-top{border-top-color:var(--accent-red)}
+    body.light-mode .sidebar-card{background:#fff;border-color:rgba(0,0,0,.06)}
+    .sidebar-card h4{font-size:.72rem;text-transform:uppercase;letter-spacing:2px;color:var(--accent-blue);margin-bottom:14px}
+    .sidebar-card.red-top h4{color:var(--accent-red)}
+    .qf-item{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:.83rem}
+    body.light-mode .qf-item{border-color:rgba(0,0,0,.06)}
+    .qf-item:last-child{border-bottom:none}
+    .qf-label{color:var(--muted)}
+    .qf-value{font-weight:700;color:#e6eef8}
+    body.light-mode .qf-value{color:#1a2233}
+    .sidebar-share-btns{display:flex;flex-direction:column;gap:8px}
+    .ssb{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:var(--muted);padding:9px 14px;border-radius:8px;cursor:pointer;font-size:.83rem;font-weight:700;font-family:inherit;transition:all .2s;width:100%}
+    .ssb:hover{border-color:var(--accent-blue);color:#e6eef8}
+    body.light-mode .ssb{background:#f4f7fc;border-color:rgba(0,0,0,.08)}
+    .nm-row{display:flex;justify-content:space-between;font-size:.82rem;margin-bottom:8px}
+    .nm-row span:first-child{color:var(--muted)}
+    .nm-row span:last-child{font-weight:700;color:#e6eef8}
+    body.light-mode .nm-row span:last-child{color:#1a2233}
+    .nm-cta{display:block;text-align:center;margin-top:12px;background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));color:#fff;padding:9px;border-radius:8px;font-size:.83rem;font-weight:700}
+    .nm-cta:hover{opacity:.85;color:#fff}
+
+    /* COUNTDOWN */
+    .debut-countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+    .dc-item{background:rgba(255,255,255,.04);border:1px solid rgba(28,93,164,.2);border-radius:8px;padding:10px 6px;text-align:center}
+    body.light-mode .dc-item{background:#f4f7fc}
+    .dc-num{font-size:1.5rem;font-weight:800;background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+    .dc-label{font-size:.6rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-top:3px}
+
+    /* FLOAT SHARE */
+    .float-share{position:fixed;left:16px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;z-index:90}
+    .fs-btn{width:40px;height:40px;border-radius:50%;background:var(--card);border:1.5px solid rgba(255,255,255,.07);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.88rem;transition:all .2s;font-family:inherit;box-shadow:0 2px 10px rgba(0,0,0,.3)}
+    .fs-btn:hover{border-color:var(--accent-blue);color:#e6eef8;transform:scale(1.1)}
+    @media(max-width:1300px){.float-share{display:none}}
+
+    #highlight-popup{position:fixed;display:none;background:#1e3050;border:1px solid var(--accent-blue);color:#e6eef8;padding:8px 14px;border-radius:8px;font-size:.8rem;font-weight:700;cursor:pointer;z-index:5000;box-shadow:0 4px 16px rgba(0,0,0,.5);gap:8px;align-items:center;white-space:nowrap}
+    .toast{position:fixed;bottom:28px;right:28px;background:#1e3050;border:1px solid var(--accent-blue);color:#e6eef8;padding:12px 20px;border-radius:10px;font-size:.86rem;font-weight:600;z-index:2000;transform:translateY(80px);opacity:0;transition:transform .35s ease,opacity .35s ease;display:flex;align-items:center;gap:10px}
+    .toast.show{transform:translateY(0);opacity:1}
+    .scroll-top{position:fixed;bottom:28px;left:28px;width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;z-index:999;border:none;font-size:1rem;color:#fff}
+    .scroll-top.show{opacity:1;pointer-events:all}
+    .scroll-top:hover{transform:translateY(-3px) scale(1.05)}
+
+    /* FOOTER */
+    .site-footer{background:linear-gradient(180deg,var(--bg),#060a18);color:#e6eef8;padding:36px 20px 20px;font-size:14px;border-top-left-radius:var(--radius);border-top-right-radius:var(--radius);margin-top:40px}
+    .footer-container{max-width:var(--max-w);margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:36px}
+    .footer-brand h3{color:#fff;margin-bottom:8px}
+    .footer-brand p{color:var(--muted);line-height:1.6;margin:0 0 4px}
+    .footer-links h4,.footer-contact h4,.footer-social h4{color:#fff;margin-bottom:12px;font-size:15px;position:relative}
+    .footer-links h4::after,.footer-contact h4::after,.footer-social h4::after{content:"";display:block;width:34px;height:2px;margin-top:6px;background:linear-gradient(90deg,var(--accent-red),var(--accent-blue))}
+    .footer-links a{display:block;color:var(--muted);text-decoration:none;margin-bottom:8px;font-weight:500;transition:color .2s,transform .2s}
+    .footer-links a:hover{color:#e6eef8;transform:translateX(4px)}
+    .footer-contact p{margin-bottom:6px;color:var(--muted)}
+    .social-icons a{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;margin-right:10px;border-radius:50%;color:var(--muted);text-decoration:none;transition:color .2s,background .2s,transform .2s,box-shadow .2s}
+    .social-icons a svg{width:18px;height:18px;fill:currentColor}
+    .social-icons a:hover{color:#fff;background:linear-gradient(135deg,var(--accent-red),var(--accent-blue));transform:translateY(-2px) scale(1.08);box-shadow:0 6px 18px rgba(0,0,0,.35)}
+    .footer-bottom{margin-top:32px;padding-top:16px;text-align:center;color:var(--muted);position:relative}
+    .footer-bottom::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:70%;height:1px;background:linear-gradient(90deg,transparent,var(--accent-red),var(--accent-blue),transparent)}
+    @media(max-width:640px){.header-right a:not(.cta-btn){display:none}}
+  </style>
+</head>
+<body>
+
+<div id="progress-bar"></div>
+
+<header class="site-header">
+  <a href="#" class="brand">
+    <div class="logo">SS</div>
+    <div>
+      <div style="font-weight:800">Super Star FC</div>
+      <div style="font-size:.74rem;color:var(--muted)">Official Club</div>
+    </div>
+  </a>
+  <div class="header-right">
+    <a href="./new.html">News</a>
+    <a href="./matches.html">Matches</a>
+    <a href="./roster.html">Roster</a>
+    <div class="reading-controls">
+      <button class="ctrl-btn" onclick="changeFontSize(-1)">A-</button>
+      <button class="ctrl-btn" onclick="changeFontSize(1)">A+</button>
+      <button class="ctrl-btn" id="modeToggle" onclick="toggleMode()">🌙</button>
+    </div>
+    <a href="index.html" class="cta-btn">Main</a>
+  </div>
+</header>
+
+<div class="qotd-banner">
+  <strong>Coming April 2026 | UPSL Debut:</strong> "These jerseys haven't touched a pitch yet. The first time they do, it will be at an Away game in the UPSL. That moment is everything." — Super Stars FC
+</div>
+
+<!-- HERO -->
+<div class="article-hero">
+  <div class="hero-bg">
+    <div class="hero-fabric"></div>
+    <div class="hero-jersey-art">
+      <!-- HOME KIT: Red body, white sleeves, black streaks -->
+      <div class="hero-jersey-wrap">
+        <div class="hero-jersey-shape">
+          <svg viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40 10 L8 52 L34 62 L34 192 L126 192 L126 62 L152 52 L120 10 L100 26 Q80 37 60 26 Z" fill="rgba(212,31,31,.78)" stroke="rgba(255,255,255,.28)" stroke-width="2"/>
+            <path d="M34 62 L8 52 L40 10 L60 26" fill="rgba(255,255,255,.7)" stroke="rgba(212,31,31,.25)" stroke-width="1"/>
+            <path d="M126 62 L152 52 L120 10 L100 26" fill="rgba(255,255,255,.7)" stroke="rgba(212,31,31,.25)" stroke-width="1"/>
+            <line x1="58" y1="68" x2="52" y2="192" stroke="rgba(0,0,0,.5)" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="72" y1="65" x2="68" y2="192" stroke="rgba(0,0,0,.35)" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="86" y1="63" x2="86" y2="192" stroke="rgba(0,0,0,.5)" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="100" y1="65" x2="104" y2="192" stroke="rgba(0,0,0,.35)" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="114" y1="68" x2="120" y2="192" stroke="rgba(0,0,0,.5)" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="hero-kit-label">Home Kit</span>
+      </div>
+      <!-- AWAY KIT: White body, orange trim, Africa map hint -->
+      <div class="hero-jersey-wrap">
+        <div class="hero-jersey-shape">
+          <svg viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M40 10 L8 52 L34 62 L34 192 L126 192 L126 62 L152 52 L120 10 L100 26 Q80 37 60 26 Z" fill="rgba(255,255,255,.65)" stroke="rgba(232,86,26,.45)" stroke-width="2"/>
+            <path d="M34 62 L8 52 L40 10 L60 26" fill="rgba(232,86,26,.8)" stroke="rgba(200,60,10,.3)" stroke-width="1"/>
+            <path d="M126 62 L152 52 L120 10 L100 26" fill="rgba(232,86,26,.8)" stroke="rgba(200,60,10,.3)" stroke-width="1"/>
+            <path d="M60 26 Q80 37 100 26 L98 33 Q80 43 62 33 Z" fill="rgba(232,86,26,.85)"/>
+            <rect x="34" y="182" width="92" height="10" fill="rgba(232,86,26,.7)" rx="1"/>
+            <path d="M74 112 Q70 118 68 128 Q66 140 70 150 Q74 158 80 162 Q86 158 90 148 Q94 137 92 125 Q89 114 83 110 Q78 107 74 112 Z" fill="none" stroke="rgba(0,0,0,.3)" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <span class="hero-kit-label">Away Kit</span>
+      </div>
+    </div>
+    <div class="hero-glow-l"></div>
+    <div class="hero-glow-r"></div>
+  </div>
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <div class="kit-badge"><i class="fas fa-shirt"></i> Official Kit Reveal | UPSL Season 2026</div>
+    <h1>Never Worn, Never Seen: Super Stars FC Unveils the Kits That Will Define the UPSL Era</h1>
+    <div class="hero-meta-row">
+      <span><i class="fas fa-calendar"></i> March 2026</span>
+      <div class="dot"></div>
+      <span><i class="fas fa-user"></i> Super Stars FC Staff</span>
+      <div class="dot"></div>
+      <span><i class="fas fa-clock"></i> 10 min read</span>
+      <div class="dot"></div>
+      <span><i class="fas fa-eye"></i> <span id="viewCount">–</span> views</span>
+      <div class="dot"></div>
+      <span><i class="fas fa-tag"></i> Official Announcement</span>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE WRAP -->
+<div class="page-wrap">
+<main class="article-body">
+
+  <!-- STATS -->
+  <div class="stats-panel reveal">
+    <h3>🎽 New Kit Collection | At a Glance</h3>
+    <div class="stats-row">
+      <div class="stat-item"><div class="stat-num counter" data-target="2">0</div><div class="stat-label">New Kits</div></div>
+      <div class="stat-item"><div class="stat-num counter" data-target="0">0</div><div class="stat-label">Times Worn</div></div>
+      <div class="stat-item"><div class="stat-num counter" data-target="16">0</div><div class="stat-label">Players Ready</div></div>
+      <div class="stat-item"><div class="stat-num counter" data-target="7">0</div><div class="stat-label">Games in Old Kit</div></div>
+      <div class="stat-item"><div class="stat-num counter" data-target="2026">0</div><div class="stat-label">UPSL Debut Year</div></div>
+      <div class="stat-item"><div class="stat-num counter" data-target="1">0</div><div class="stat-label">April Away Debut</div></div>
+    </div>
+  </div>
+
+  <!-- TOOLBAR -->
+  <div class="page-toolbar reveal">
+    <button class="like-btn" id="likeBtn" onclick="toggleLike()">
+      <i class="fas fa-heart"></i> <span id="likeCount">0</span> Likes
+    </button>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc reveal">
+    <h4><i class="fas fa-list"></i> &nbsp;Table of Contents</h4>
+    <ol>
+      <li><a href="#reveal" class="toc-link">The Official Reveal</a></li>
+      <li><a href="#old-kit" class="toc-link">The Kit That Came Before</a></li>
+      <li><a href="#kits" class="toc-link">Home & Away Kit Showcase</a></li>
+      <li><a href="#design" class="toc-link">Design & Color Breakdown</a></li>
+      <li><a href="#africa" class="toc-link">The Africa Map | Identity & Meaning</a></li>
+      <li><a href="#upsl" class="toc-link">The UPSL Debut | April Away Game</a></li>
+      <li><a href="#wendok" class="toc-link">WENDÔK & BLOOM Partnerships</a></li>
+      <li><a href="#timeline" class="toc-link">Kit Journey Timeline</a></li>
+      <li><a href="#reactions" class="toc-link">Player Reactions</a></li>
+      <li><a href="#gallery" class="toc-link">Photo Gallery</a></li>
+      <li><a href="#order" class="toc-link">How to Get Your Kit</a></li>
+    </ol>
+  </div>
+
+  <!-- PROSE -->
+  <div class="prose">
+
+    <h2 id="reveal">The Official Reveal</h2>
+    <p>As of today, Super Stars FC's brand-new Home and Away jerseys are officially public, and they have not touched a single pitch yet. These kits have been designed, produced, and delivered, but every stitch is still fresh. <strong>Not one game has been played in them.</strong> They were announced recently by the club, and this article is the full story behind what they are, where they came from, and what they mean for the next chapter of Super Stars FC.</p>
+    <div class="pull-quote">
+      "These aren't just new jerseys. They are the kits that Super Stars FC will step into the UPSL wearing for the first time. Every player on this squad knows what that means, and they cannot wait."
+      <cite>— Club Director, Super Stars FC</cite>
+    </div>
+    <p>The Season 2025 – 26 kit collection consists of two jerseys designed and produced by <strong>SQUAD SUPPLY</strong>: a <strong>Home kit in Bright Red</strong>: bold body with black diagonal streak lines, white sleeves, and "SUPER STARS FC" across the chest, and an <strong>Away kit in White</strong> with red trim, an Africa map printed on the back, the <strong>BLOOM colorful logo</strong>, and "OMAHA" on the side. Both carry the Super Stars FC crest and represent a major evolution for the club.</p>
+    <div class="callout green">
+      <span class="callout-icon">🆕</span>
+      <strong>Brand New | Never Worn:</strong> These kits were just officially revealed by the club. They will make their on-pitch debut at the first UPSL Away game in April 2026. Until then, they exist only as an announcement and a promise.
+    </div>
+    <div class="section-divider">⬅️</div>
+
+    <h2 id="old-kit">The Kit That Came Before</h2>
+    <p>Before these new jerseys, Super Stars FC played all <strong>7 competitive matches</strong> of their debut season in their original kit, a simple but unmistakable combination that served the club through every win, draw, and defeat in their first ever campaign.</p>
+    <div class="prev-kit-box">
+      <strong>Original Super Stars FC Kit (Season 2025 | All 7 Games):</strong> Red + Black. That was the kit worn through every match of the club's debut UPSL run, from the opening win against Togoless SA on August 16, through to the final recorded result. It is the kit the squad built their early identity in, and it will always hold a special place in the club's history.
+    </div>
+    <p>The <strong>red and black </strong> served as the club's identity through a debut season that included 3 wins, 1 draw, 21 goals scored, and some unforgettable moments, like Jackson's hat-trick in the opening match, Minga's 90+1' winner against Omaha Elites, John's eight goals in seven games. All of that history was made in the original kit.</p>
+    <div class="pull-quote red">
+      "The original kit took us through our first season. Every goal, every win, every hard moment, that was in red and black. These new kits are for the next chapter. A bigger stage. A new league."
+      <cite>— Club Director, Super Stars FC</cite>
+    </div>
+    <p>Now, with the UPSL era beginning, the club steps forward with a new identity, more professional, more detailed, more meaningful. The new kits were built for this exact moment.</p>
+    <div class="callout">
+      <span class="callout-icon">📊</span>
+      <strong>Season 2025 in the Original Kit:</strong> 7 games played, 3 wins, 1 draw, 3 losses, 21 goals scored, 19 conceded. That record belongs to the red and black. Everything in the UPSL belongs to what comes next.
+    </div>
+    <div class="section-divider">🎽</div>
+
+    <h2 id="kits">Home & Away Kit Showcase</h2>
+    <p>Hover over each kit card to flip it and reveal the full design specifications. Use the selector below to explore each jersey's color breakdown, materials, and design details.</p>
+
+    <div class="kit-switcher reveal">
+      <button class="kit-tab tab-home" id="btnHome" onclick="switchKit('home')">
+        <i class="fas fa-house"></i> Home Kit | Bright Red
+      </button>
+      <button class="kit-tab" id="btnAway" onclick="switchKit('away')">
+        <i class="fas fa-plane"></i> Away Kit | White 
+      </button>
+    </div>
+
+    <!-- FLIP CARDS -->
+    <div class="kit-cards-row">
+
+      <!-- HOME -->
+      <div class="kit-flip-card" id="homeFlip">
+        <div class="kit-flip-inner">
+          <div class="kit-front home-front">
+            <svg class="kit-jersey-svg" viewBox="0 0 160 230" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="hbody" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#d41f1f"/>
+                  <stop offset="100%" style="stop-color:#9a1010"/>
+                </linearGradient>
+              </defs>
+              <path d="M42 12 L8 54 L34 66 L34 218 L126 218 L126 66 L152 54 L118 12 L100 28 Q80 42 60 28 Z" fill="url(#hbody)" stroke="rgba(255,255,255,.18)" stroke-width="1.5"/>
+              <path d="M34 66 L8 54 L42 12 L60 28" fill="rgba(255,255,255,.9)" stroke="rgba(212,31,31,.25)" stroke-width="1"/>
+              <path d="M126 66 L152 54 L118 12 L100 28" fill="rgba(255,255,255,.9)" stroke="rgba(212,31,31,.25)" stroke-width="1"/>
+              <path d="M60 28 Q80 42 100 28 L98 36 Q80 48 62 36 Z" fill="rgba(165,12,12,.9)" stroke="rgba(255,255,255,.18)" stroke-width="1"/>
+              <line x1="52" y1="72" x2="46" y2="218" stroke="rgba(0,0,0,.55)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="65" y1="68" x2="62" y2="218" stroke="rgba(0,0,0,.38)" stroke-width="3" stroke-linecap="round"/>
+              <line x1="80" y1="66" x2="80" y2="218" stroke="rgba(0,0,0,.55)" stroke-width="4" stroke-linecap="round"/>
+              <line x1="95" y1="68" x2="98" y2="218" stroke="rgba(0,0,0,.38)" stroke-width="3" stroke-linecap="round"/>
+              <line x1="108" y1="72" x2="114" y2="218" stroke="rgba(0,0,0,.55)" stroke-width="4" stroke-linecap="round"/>
+              <text x="80" y="90" text-anchor="middle" font-size="8.5" font-weight="900" fill="rgba(255,255,255,.92)" font-family="Arial" letter-spacing="1.2">SUPER STARS FC</text>
+              <circle cx="108" cy="54" r="11" fill="rgba(255,255,255,.12)" stroke="rgba(255,255,255,.4)" stroke-width="1.5"/>
+              <circle cx="108" cy="54" r="6" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="1"/>
+              <text x="80" y="155" text-anchor="middle" font-size="44" font-weight="900" fill="rgba(255,255,255,.14)" font-family="Arial">15</text>
+            </svg>
+            <div class="kit-front-label">
+              <div class="kit-type-tag">Home Kit</div>
+              <h3>Bright Red &amp; White</h3>
+              <p>Bold red body, black diagonal streaks, white sleeves, "SUPER STARS FC" across the chest.</p>
+              <div class="debut-tag"><i class="fas fa-clock"></i> Debuts April 2026 | UPSL</div>
+              <div class="flip-hint" style="margin-top:6px"><i class="fas fa-rotate"></i> Hover to reveal specs</div>
+            </div>
+          </div>
+          <div class="kit-back home-back">
+            <div class="kit-back-title">Home Kit | Full Specs</div>
+            <div class="kd-row"><span class="kd-label">Body Color</span><span class="kd-val">Bright Red</span></div>
+            <div class="kd-row"><span class="kd-label">Sleeves</span><span class="kd-val">White</span></div>
+            <div class="kd-row"><span class="kd-label">Pattern</span><span class="kd-val">Black Diagonal Streaks</span></div>
+            <div class="kd-row"><span class="kd-label">Chest Text</span><span class="kd-val">"SUPER STARS FC"</span></div>
+            <div class="kd-row"><span class="kd-label">Numbers</span><span class="kd-val">White | Front &amp; Back</span></div>
+            <div class="kd-row"><span class="kd-label">Crest</span><span class="kd-val">Upper Right Chest</span></div>
+            <div class="kd-row"><span class="kd-label">Shorts</span><span class="kd-val">Red with SS Crest</span></div>
+            <div class="kd-row"><span class="kd-label">Status</span><span class="kd-val" style="color:#90e0b0">Never Worn | April Debut</span></div>
+            <div class="kd-row"><span class="kd-label">Manufacturer</span><span class="kd-val">SQUAD SUPPLY</span></div>
+            <div style="margin-top:8px">
+              <div class="swatch-row">
+                <div class="cswatch" style="background:#d41f1f" title="Bright Red"></div>
+                <div class="cswatch" style="background:#fff;border-color:#bbb" title="White Sleeves"></div>
+                <div class="cswatch" style="background:#111" title="Black Streaks"></div>
+                <span class="swatch-label">Home palette</span>
+              </div>
+            </div>
+            <a href="#" class="back-cta">Get Your Home Kit →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- AWAY -->
+      <div class="kit-flip-card" id="awayFlip" style="transition-delay:.15s">
+        <div class="kit-flip-inner">
+          <div class="kit-front away-front">
+            <svg class="kit-jersey-svg" viewBox="0 0 160 230" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M42 12 L8 54 L34 66 L34 218 L126 218 L126 66 L152 54 L118 12 L100 28 Q80 42 60 28 Z" fill="rgba(255,255,255,.93)" stroke="rgba(232,86,26,.4)" stroke-width="1.5"/>
+              <path d="M34 66 L8 54 L42 12 L60 28" fill="rgba(232,86,26,.88)" stroke="rgba(200,60,10,.35)" stroke-width="1"/>
+              <path d="M126 66 L152 54 L118 12 L100 28" fill="rgba(232,86,26,.88)" stroke="rgba(200,60,10,.35)" stroke-width="1"/>
+              <path d="M60 28 Q80 42 100 28 L98 36 Q80 48 62 36 Z" fill="rgba(232,86,26,.92)"/>
+              <rect x="34" y="208" width="92" height="10" fill="rgba(232,86,26,.8)" rx="1"/>
+              <line x1="50" y1="70" x2="50" y2="208" stroke="rgba(200,200,200,.25)" stroke-width="1"/>
+              <line x1="65" y1="70" x2="65" y2="208" stroke="rgba(200,200,200,.25)" stroke-width="1"/>
+              <line x1="80" y1="70" x2="80" y2="208" stroke="rgba(200,200,200,.25)" stroke-width="1"/>
+              <line x1="95" y1="70" x2="95" y2="208" stroke="rgba(200,200,200,.25)" stroke-width="1"/>
+              <line x1="110" y1="70" x2="110" y2="208" stroke="rgba(200,200,200,.25)" stroke-width="1"/>
+              <circle cx="104" cy="52" r="12" fill="rgba(232,86,26,.18)" stroke="rgba(232,86,26,.55)" stroke-width="1.5"/>
+              <circle cx="104" cy="52" r="6" fill="none" stroke="rgba(232,86,26,.65)" stroke-width="1"/>
+              <!-- Africa map outline on body -->
+              <path d="M72 108 Q68 114 66 124 Q64 136 68 146 Q72 155 76 160 Q80 164 84 160 Q90 152 92 141 Q94 129 90 118 Q86 108 80 105 Q76 103 72 108 Z" fill="none" stroke="rgba(0,0,0,.28)" stroke-width="1.8"/>
+              <text x="80" y="198" text-anchor="middle" font-size="7" font-weight="900" fill="rgba(232,86,26,.65)" font-family="Arial" letter-spacing="2">BLOOM</text>
+              <text x="120" y="158" text-anchor="middle" font-size="6" font-weight="800" fill="rgba(232,86,26,.5)" font-family="Arial" transform="rotate(90,120,148)">OMAHA</text>
+            </svg>
+            <div class="kit-front-label">
+              <div class="kit-type-tag">Away Kit</div>
+              <h3>White &amp; Red</h3>
+              <p>White body, red trim, Africa map on the back, BLOOM, "OMAHA" side print.</p>
+              <div class="debut-tag" style="background:rgba(28,93,164,.28);border-color:rgba(28,93,164,.45);color:#7ab4e8"><i class="fas fa-plane"></i> First Away Game | April 2026</div>
+              <div class="flip-hint" style="margin-top:6px"><i class="fas fa-rotate"></i> Hover to reveal specs</div>
+            </div>
+          </div>
+          <div class="kit-back away-back">
+            <div class="kit-back-title">Away Kit | Full Specs</div>
+            <div class="kd-row"><span class="kd-label">Body Color</span><span class="kd-val">White</span></div>
+            <div class="kd-row"><span class="kd-label">Trim</span><span class="kd-val">Red (Collar, Cuffs, Hem)</span></div>
+            <div class="kd-row"><span class="kd-label">Back Number</span><span class="kd-val">Large Red </span></div>
+            <div class="kd-row"><span class="kd-label">Back Design</span><span class="kd-val">Africa Map Outline</span></div>
+            <div class="kd-row"><span class="kd-label">Back Sponsor</span><span class="kd-val">BLOOM (Full Color)</span></div>
+            <div class="kd-row"><span class="kd-label">Side Print</span><span class="kd-val">"OMAHA" in Red</span></div>
+            <div class="kd-row"><span class="kd-label">Crest</span><span class="kd-val">Upper Right Chest</span></div>
+            <div class="kd-row"><span class="kd-label">Status</span><span class="kd-val" style="color:#90e0b0">Never Worn | April Debut</span></div>
+            <div class="kd-row"><span class="kd-label">Manufacturer</span><span class="kd-val">SQUAD SUPPLY</span></div>
+            <div style="margin-top:8px">
+              <div class="swatch-row">
+                <div class="cswatch" style="background:#fff;border-color:#bbb" title="White"></div>
+                <div class="cswatch" style="background:#e8561a" title="Red Trim"></div>
+                <div class="cswatch" style="background:#d41f1f" title="Red Numbers"></div>
+                <span class="swatch-label">Away palette</span>
+              </div>
+            </div>
+            <a href="#" class="back-cta">Get Your Away Kit →</a>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.kit-cards-row -->
+
+    <!-- SPEC PANEL -->
+    <div class="kit-spec-panel is-home reveal" id="specPanel">
+      <div class="spec-header">
+        <div class="spec-dot" id="specDot" style="background:var(--accent-red)"></div>
+        <h3 id="specTitle">Home Kit | Bright Red</h3>
+      </div>
+      <div class="specs-grid" id="specGrid">
+        <div class="spec-item"><div class="spec-item-label">Body Color</div><div class="spec-item-val">Bright Red</div></div>
+        <div class="spec-item"><div class="spec-item-label">Sleeves</div><div class="spec-item-val">White</div></div>
+        <div class="spec-item"><div class="spec-item-label">Pattern</div><div class="spec-item-val">Black Diagonal Streaks</div></div>
+        <div class="spec-item"><div class="spec-item-label">Chest Text</div><div class="spec-item-val">"SUPER STARS FC"</div></div>
+        <div class="spec-item"><div class="spec-item-label">Numbers</div><div class="spec-item-val">White</div></div>
+        <div class="spec-item"><div class="spec-item-label">Manufacturer</div><div class="spec-item-val">SQUAD SUPPLY</div></div>
+      </div>
+      <div class="palette-row" id="specPalette">
+        <div class="pal-swatch"><div class="pal-circle" style="background:#d41f1f"></div><span class="pal-name">Bright Red</span></div>
+        <div class="pal-swatch"><div class="pal-circle" style="background:#fff;border-color:rgba(0,0,0,.15)"></div><span class="pal-name">White</span></div>
+        <div class="pal-swatch"><div class="pal-circle" style="background:#111"></div><span class="pal-name">Black Pattern</span></div>
+      </div>
+    </div>
+
+    <!-- COMPARISON TABLE -->
+    <div class="reveal" style="overflow-x:auto;margin-bottom:28px">
+      <table class="kit-compare">
+        <thead>
+          <tr>
+            <th>Detail</th>
+            <th class="home-col">🔴 Home Kit</th>
+            <th class="away-col">⚪ Away Kit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="label-col">Body Color</td><td class="home-col">Bright Red</td><td class="away-col">White</td></tr>
+          <tr><td class="label-col">Sleeves / Trim</td><td class="home-col">White Sleeves</td><td class="away-col">Red Trim</td></tr>
+          <tr><td class="label-col">Pattern</td><td class="home-col">Black Diagonal Streaks</td><td class="away-col">Subtle Vertical Lines</td></tr>
+          <tr><td class="label-col">Chest</td><td class="home-col">"SUPER STARS FC" — White</td><td class="away-col">Clean / Crest Only</td></tr>
+          <tr><td class="label-col">Back Design</td><td class="home-col">White Squad Number</td><td class="away-col">Number + Africa Map + BLOOM</td></tr>
+          <tr><td class="label-col">Side Print</td><td class="home-col">—</td><td class="away-col">"OMAHA" in Red</td></tr>
+          <tr><td class="label-col">Shorts</td><td class="home-col">Red with SS Crest</td><td class="away-col">White / Red Stripe</td></tr>
+          <tr><td class="label-col">First Use</td><td class="home-col">Home UPSL Match TBD</td><td class="away-col">Away Game | April 2026</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section-divider">🎨</div>
+
+    <h2 id="design">Design & Color Breakdown</h2>
+    <p>Both kits were designed from scratch to serve as the visual identity of Super Stars FC in the UPSL, a higher level of football, and a higher level of presentation to match. Every element was intentional.</p>
+    <div class="pull-quote red">
+      "Red at home. White on the road. We wanted two kits that look completely different from each other but tell the same story when you put them side by side. That's Super Stars FC."
+      <cite>— Club Director, Super Stars FC</cite>
+    </div>
+    <p>The <strong>home kit</strong> is striking from across a stadium. The bright red body is broken up by sharp, bold black diagonal streak lines that run the full length of the jersey, a dynamic pattern that mirrors the attacking energy of a team that scored 21 goals in just 7 matches in their debut season. White sleeves contrast cleanly against the red body. <strong>"SUPER STARS FC"</strong> is printed across the chest in white, no front sponsor, just the club's name taking centre stage.</p>
+    <p>The <strong>away kit</strong> shifts registers entirely, a clean white base with vibrant red on the collar, sleeve cuffs, and bottom hem. Light vertical texture lines run the body. The front is composed and professional. The back is where the kit becomes something deeper: a bold squad number in red, the outline of the <strong>African continent</strong> beneath it, and the <strong>BLOOM full color logo</strong> at the base. The word <strong>"OMAHA"</strong> is printed in red on the side.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="fc-icon">🔴</span>
+        <h4>Bright Red Body</h4>
+        <p>The home kit color: the color of fire, passion, and South High School Stadium under the lights. Red has always been a Super Stars FC color and now it headlines the new era.</p>
+      </div>
+      <div class="feature-card">
+        <span class="fc-icon">⚫</span>
+        <h4>Black Streak Pattern</h4>
+        <p>Bold diagonal black streaks run the full length of the home jersey body, aggressive, dynamic, and a visual representation of the speed this squad plays with.</p>
+      </div>
+      <div class="feature-card">
+        <span class="fc-icon">⚪</span>
+        <h4>White Sleeves & Text</h4>
+        <p>White sleeves and "SUPER STARS FC" text in white across the chest, clean contrast that makes the home kit pop and puts the club name front and centre, partner free.</p>
+      </div>
+      <div class="feature-card">
+        <span class="fc-icon">🔴</span>
+        <h4>Red Trim (Away)</h4>
+        <p>Vibrant red on the away kit's collar, cuffs, and hem, energetic and distinct. On the road in the UPSL, Super Stars FC will stand out immediately.</p>
+      </div>
+      <div class="feature-card">
+        <span class="fc-icon">🌍</span>
+        <h4>Africa Map (Away Back)</h4>
+        <p>The continent of Africa outlined on the back of the away jersey; a powerful, permanent statement of the cultural identity and heritage at the heart of Super Stars FC.</p>
+      </div>
+      <div class="feature-card">
+        <span class="fc-icon">🌺</span>
+        <h4>BLOOM Back Sponsor</h4>
+        <p>The vibrant BLOOM logo at the base of the away jersey back, representing the club's community roots in Omaha and the partnership that puts those values on display.</p>
+      </div>
+    </div>
+
+    <div class="section-divider">🌍</div>
+
+    <h2 id="africa">The Africa Map | Identity & Meaning</h2>
+    <p>Of everything on both new kits, the most talked about detail since the club posted the reveal is the <strong>outline of the African continent</strong> printed on the back of the away jersey. It is the design element that makes this kit unlike anything else in the UPSL.</p>
+    <div class="africa-highlight reveal">
+      <div class="africa-icon">🌍</div>
+      <div>
+        <h4>A Symbol of Heritage Worn on Every Away Match</h4>
+        <p>Super Stars FC was built by and for a community with deep African roots: players, supporters, and staff who carry that identity with them into every match. The map on the back of the away jersey doesn't whisper that. It says it loudly, visually, and permanently. When this squad runs out in white and red at an away ground in the UPSL for the first time in April, opponents and spectators will see exactly who Super Stars FC are and where they come from.</p>
+      </div>
+    </div>
+    <div class="pull-quote">
+      "We put the Africa map on that jersey because it belongs there. Our roots aren't something we set aside when we play football, they're the reason we play. That kit carries our whole story."
+      <cite>— Club Director, Super Stars FC</cite>
+    </div>
+    <p>Beneath the number and the map, the <strong>BLOOM full color logo</strong> sits at the base of the back, a vibrant, recognizable design that anchors the away kit in Omaha's community. The combination of the Africa map and BLOOM together on the same jersey back makes this one of the most meaningful kits in the UPSL.</p>
+    <div class="callout">
+      <span class="callout-icon">📍</span>
+      <strong>"OMAHA" Side Print:</strong> Red "OMAHA" text on the side of the away jersey, wherever Super Stars FC travel in the UPSL, they carry the city with them. That's not incidental. That's a declaration.
+    </div>
+
+    <div class="section-divider">🏟️</div>
+
+    <h2 id="upsl">The UPSL Debut | First Away Game, April 2026</h2>
+    <p>These kits were built for a specific purpose: <strong>the UPSL</strong>. After a debut season in their original red and black kit, Super Stars FC are stepping up to the United Premier Soccer League, a national amateur competition and one of the largest soccer leagues in the United States. This is a significant leap, and these kits are the visual marker of that leap.</p>
+    <div class="upsl-debut-box reveal">
+      <div class="upsl-debut-icon">⚽</div>
+      <div>
+        <h4>UPSL Debut | Away Game, April 2026</h4>
+        <p>The first time either of these kits is worn in a competitive match will be at Super Stars FC's first ever UPSL Away game in April 2026. The Away kit, white with red trim, Africa map on the back, BLOOM at the base, will be the jersey that writes the first chapter of the club's UPSL history. That moment is months away, and it is already anticipated by every player on the squad.</p>
+        <div class="upsl-debut-badge"><i class="fas fa-rocket"></i> UPSL Era Begins April 2026</div>
+      </div>
+    </div>
+    <p>The <strong>Home kit</strong> will make its debut at the first UPSL home game at South High School Stadium, date 12/04/2026. That will be the moment South High School Stadium sees the new red and black streak jersey for the first time, under the lights, in a competitive UPSL fixture. Both debuts are still to come. Both are already legendary in the making.</p>
+    <div class="callout red">
+      <span class="callout-icon">📅</span>
+      <strong>First UPSL Away Game | April 2026:</strong> The Away kit (white, Africa map, BLOOM) makes its competitive debut. Super Stars FC will step onto a UPSL pitch for the first time wearing jerseys that have never seen a match before. That is the moment everything was designed for.
+    </div>
+    <p>Super Stars FC's move to the UPSL represents everything the club has been building toward since their founding in June 2025. In under a year, a brand new football club from Omaha has gone from formation to competing in a national league, and doing so in kits that represent who they are at every level: the football, the city, and the heritage.</p>
+    <div class="callout gold">
+      <span class="callout-icon">🏆</span>
+      <strong>What is the UPSL?</strong> The United Premier Soccer League is one of the largest amateur soccer leagues in the United States, with clubs competing across regional conferences. Super Stars FC's entry into the UPSL marks their arrival on the national stage.
+    </div>
+
+    <div class="section-divider">🤝</div>
+
+    <h2 id="squad-supply-bloom">The SQUAD SUPPLY & BLOOM Partnerships</h2>
+    <p>These kits exist because of two partnerships, <strong>SQUAD SUPPLY</strong>, who designed and manufactured both jerseys, and <strong>BLOOM</strong>, whose colorful logo is featured as the back partner on the away kit and whose partnership with the club runs deeper than a logo.</p>
+    <div class="squad-box reveal">
+      <div class="squad-hd">
+        <div class="squad-badge">🎽</div>
+        <div>
+          <h3>SQUAD SUPPLY | Official Kit Manufacturer</h3>
+          <p>Designing and producing the official Super Stars FC UPSL matchday jerseys</p>
+        </div>
+      </div>
+      <div class="squad-vals">
+        <div class="wv">
+          <span class="wv-icon">⚡</span>
+          <div class="wv-title">Professional Kits</div>
+          <div class="wv-desc">SQUAD SUPPLY took the club's identity and translated it into two complete professional jerseys ready for UPSL competition, a major upgrade from the debut season kit.</div>
+        </div>
+        <div class="wv">
+          <span class="wv-icon">🌍</span>
+          <div class="wv-title">Cultural Respect</div>
+          <div class="wv-desc">Working with Super Stars FC, SQUAD SUPPLY ensured the Africa map on the away jersey was incorporated with authenticity and the pride it deserves, not as a gimmick but as identity.</div>
+        </div>
+        <div class="wv">
+          <span class="wv-icon">🏙️</span>
+          <div class="wv-title">Omaha Identity</div>
+          <div class="wv-desc">From the "OMAHA" side print to the BLOOM, SQUAD SUPPLY helped build kits that are unmistakably tied to the city Super Stars FC calls home.</div>
+        </div>
+      </div>
+    </div>
+    <div class="callout red">
+      <span class="callout-icon">🌺</span>
+      <strong>BLOOM | Official (Away Kit):</strong> The BLOOM full color logo on the away jersey back is more than a partnership, it is a statement of alignment. BLOOM's mission of community growth and Super Stars FC's values run in the same direction. <a href="#">BLOOM </a>.
+    </div>
+
+    <div class="section-divider">⏱️</div>
+
+    <h2 id="timeline">Kit Journey | From Brief to UPSL Debut</h2>
+    <p>The full story of how these kits went from a creative brief to a club announcement, and what comes next:</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Season 2025 — All 7 Games</div>
+        <div class="tl-title">Original Kit: Red & Black</div>
+        <div class="tl-desc">Super Stars FC compete in their debut season, all 7 games played in the original red and black kit. 3 wins, 1 draw, 21 goals, and a platform to build from. The history made in that kit will never be erased.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Early 2026 — UPSL Confirmation</div>
+        <div class="tl-title">Club Confirmed for the UPSL</div>
+        <div class="tl-desc">Super Stars FC earn their place in the UPSL: a national stage that demands a professional presentation. The decision is made: a new kit collection is needed for this new era.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Early 2026 — Creative Brief</div>
+        <div class="tl-title">WENDÔK Brief Is Set</div>
+        <div class="tl-desc">Super Stars FC and WENDÔK Sportswear align on the creative direction: red at home, white away, the Africa map as a central element, BLOOM as away back sponsor, "OMAHA" side print. Two kits that tell the full story of the club.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">Early 2026 — Design & Production</div>
+        <div class="tl-title">Kits Designed, Produced & Delivered</div>
+        <div class="tl-desc">The diagonal black streak pattern and white sleeves are confirmed for the home kit. The Africa map placement, BLOOM logo, and red trim lock in for the away. Both kits are produced and delivered to the club | fresh, never worn.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">February 2026 — Official Reveal</div>
+        <div class="tl-title">Club Posts the Official Announcement</div>
+        <div class="tl-desc">Super Stars FC officially reveal both kits to the public for the first time. Zero games played in them. The reveal is the moment supporters get their first real look at the jerseys that will carry the club into the UPSL.</div>
+      </div>
+      <div class="tl-item tl-future">
+        <div class="tl-dot"></div>
+        <div class="tl-date">April 2026 — UPSL Away Game</div>
+        <div class="tl-title">The Kits See a Pitch for the First Time</div>
+        <div class="tl-desc">Super Stars FC play their first-ever UPSL Away game. The away kit: white, red trim, Africa map, BLOOM, is worn competitively for the first time in the club's history. Everything was designed for this moment.</div>
+        <div class="tl-future-badge"><i class="fas fa-clock"></i> Coming April 2026</div>
+      </div>
+    </div>
+
+    <div class="section-divider">🗣️</div>
+
+    <h2 id="reactions">Player Reactions</h2>
+    <p>The squad got their first look at the new kits when the club officially revealed them. Here is what four of Super Stars FC's key players had to say, all looking ahead to the UPSL debut:</p>
+    <div class="reactions-grid">
+      <div class="reaction-card">
+        <div class="rc-quote">"I've been waiting to see this kit since we knew the UPSL was coming. Red body, black streaks, white sleeves, that home kit looks like a proper football club. I cannot wait to score in it."</div>
+        <div class="rc-player">
+          <img class="rc-avatar" src="photos/john1.jpeg" alt="John" onerror="this.src='';this.style.background='linear-gradient(135deg,#1c5da4,#b62a2d)'">
+          <div><div class="rc-name">John</div><div class="rc-role">Forward | Top Scorer, 10 Goals in 7 Games</div></div>
+        </div>
+      </div>
+      <div class="reaction-card">
+        <div class="rc-quote">"The Africa map on the away kit, that hit different. We've never had something like that on a jersey before. When we run out in that away kit for the first time in April, I'll be proud of every detail."</div>
+        <div class="rc-player">
+          <img class="rc-avatar" src="photos/jackson1.jpeg" alt="Jackson" onerror="this.src='';this.style.background='linear-gradient(135deg,#b62a2d,#1c5da4)'">
+          <div><div class="rc-name">Jackson</div><div class="rc-role">Defender | Hat-trick vs Togoless SA</div></div>
+        </div>
+      </div>
+      <div class="reaction-card">
+        <div class="rc-quote">"Seven games in the old kit. Good memories. But these new kits? They're built for a bigger stage. The UPSL is where we belong. I'm ready to wear this badge at that level."</div>
+        <div class="rc-player">
+          <img class="rc-avatar" src="photos/minga1.jpeg" alt="Minga" onerror="this.src='';this.style.background='linear-gradient(135deg,#1c5da4,#0a1628)'">
+          <div><div class="rc-name">Minga</div><div class="rc-role">Midfielder | 3 Goals, incl. 90+1' Winner</div></div>
+        </div>
+      </div>
+      <div class="reaction-card">
+        <div class="rc-quote">"As goalkeeper I see the full picture, my whole team in front of me. When I see them step out in those red kits at South High School Stadium for our first UPSL home game, that is going to be a moment."</div>
+        <div class="rc-player">
+          <img class="rc-avatar" src="photos/joshua1.jpeg" alt="Joshua" onerror="this.src='';this.style.background='linear-gradient(135deg,#b62a2d,#0a1628)'">
+          <div><div class="rc-name">Joshua</div><div class="rc-role">Goalkeeper | #1, 3 Appearances</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider">📸</div>
+
+    <h2 id="gallery">Photo Gallery</h2>
+    <p>The first official photos of the Super Stars FC UPSL kits: released as part of the club's official announcement. These are kit reveal images; no match photos in these kits exist yet.</p>
+    <div class="gallery-grid">
+      <div class="gallery-item" onclick="openLightbox(0)">
+        <img src="./Home.jpeg" alt="Home Kit" onerror="this.parentElement.innerHTML='<div class=\'gal-placeholder\'><i class=\'fas fa-shirt\'></i><span>Home Kit | Red &amp; Black Streaks</span></div>'">
+        <div class="gallery-overlay"><span><i class="fas fa-expand"></i> Home Kit Reveal</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(1)">
+        <img src="./Away Jersey.jpeg" alt="Away Kit Back" onerror="this.parentElement.innerHTML='<div class=\'gal-placeholder\'><i class=\'fas fa-shirt\'></i><span>Away Kit | Africa Map Back</span></div>'">
+        <div class="gallery-overlay"><span><i class="fas fa-expand"></i> Away Kit | Back</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(2)">
+        <img src="./Away.jpeg" alt="Away Kit Front" onerror="this.parentElement.innerHTML='<div class=\'gal-placeholder\'><i class=\'fas fa-shirt\'></i><span>Away Kit | White &amp; Red</span></div>'">
+        <div class="gallery-overlay"><span><i class="fas fa-expand"></i> Away Kit | Front</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(3)">
+        <img src="./ssfc0.jpg" alt="Match action" onerror="this.parentElement.innerHTML='<div class=\'gal-placeholder\'><i class=\'fas fa-futbol\'></i><span>Season 2025 Action (Original Kit)</span></div>'">
+        <div class="gallery-overlay"><span><i class="fas fa-expand"></i> Season 2025</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(4)">
+        <img src="./ssc10.jpg" alt="The Squad" onerror="this.parentElement.innerHTML='<div class=\'gal-placeholder\'><i class=\'fas fa-users\'></i><span>The Squad | 2025</span></div>'">
+        <div class="gallery-overlay"><span><i class="fas fa-expand"></i> The Squad</span></div>
+      </div>
+      <div class="gallery-item" onclick="openLightbox(5)">
+        <img src="./ssf1.jpg" alt="Benson Stadium" onerror="this.parentElement.innerHTML='<div class=\'gal-placeholder\'><i class=\'fas fa-building\'></i><span>Benson Stadium</span></div>'">
+        <div class="gallery-overlay"><span><i class="fas fa-expand"></i> Benson Stadium</span></div>
+      </div>
+    </div>
+
+    <div class="section-divider">🛒</div>
+
+    <h2 id="order">How to Get Your Kit</h2>
+    <p>The new Home and Away jerseys are available to supporters right now — before they've even been worn on a pitch. Order yours and be wearing it before the UPSL debut in April:</p>
+    <div class="order-section reveal">
+      <h3><i class="fas fa-shopping-bag"></i> Ordering Your Official Kit</h3>
+      <div class="order-steps">
+        <div class="order-step">
+          <div class="os-num">1</div>
+          <div class="os-title">Contact the Club</div>
+          <div class="os-desc">Email superstarfc25@gmail.com or call +1 (531) 262-1982 to place your order directly.</div>
+        </div>
+        <div class="order-step">
+          <div class="os-num">2</div>
+          <div class="os-title">Choose Your Kit</div>
+          <div class="os-desc">Home (Red & Black Streaks), Away (White & Orange), or both. Provide your size and optional number/name.</div>
+        </div>
+        <div class="order-step">
+          <div class="os-num">3</div>
+          <div class="os-title">Ready for the Debut</div>
+          <div class="os-desc">Collect at Benson Stadium or arrange delivery. Be wearing it when the UPSL era begins in April.</div>
+        </div>
+      </div>
+      <div class="order-ctas">
+        <a href="#" class="order-cta"><i class="fas fa-envelope"></i> Order via Email</a>
+        <a href="./matches.html" class="order-cta-outline"><i class="fas fa-calendar"></i> Upcoming Fixtures</a>
+      </div>
+    </div>
+    <div class="callout">
+      <span class="callout-icon">📦</span>
+      <strong>Available Now:</strong> Both kits available in all sizes. Custom name and number printing on request. Order before April to be ready for the UPSL Away debut. All proceeds support the Super Stars FC UPSL campaign.
+    </div>
+
+  </div><!-- /.prose -->
+
+  <div class="section-divider reveal">💬</div>
+  <div class="comments-section reveal">
+    <h3><i class="fas fa-comments" style="color:var(--accent-blue)"></i> Community Comments</h3>
+    <div class="comment-form">
+      <div class="form-row">
+        <input type="text" id="commentName" class="cf-input" placeholder="Your name">
+        <input type="text" id="commentCity" class="cf-input" placeholder="City (optional)">
+      </div>
+      <textarea id="commentText" class="cf-input cf-textarea" placeholder="What do you think of the new kits? Excited for the UPSL debut?" style="margin-bottom:12px;display:block;width:100%"></textarea>
+      <button class="cf-submit" onclick="submitComment()"><i class="fas fa-paper-plane"></i> Post Comment</button>
+    </div>
+    <div class="comment-list" id="commentList">
+      <div class="no-comments" id="noComments">Be the first to share your reaction to the new kit reveal.</div>
+    </div>
+  </div>
+
+  <div class="section-divider reveal">📰</div>
+  <div class="reveal">
+    <div style="font-size:1.1rem;font-weight:800;color:#e6eef8;margin-bottom:16px;display:flex;align-items:center;gap:10px;">
+      <span style="display:inline-block;width:4px;height:1.1em;background:linear-gradient(180deg,var(--accent-blue),var(--accent-red));border-radius:2px"></span>
+      Related Articles
+    </div>
+    <div class="related-grid">
+      <a href="./stadium.html" class="related-card">
+        <img src="ssf1.jpg" alt="Stadium" onerror="this.style.height='80px';this.style.background='#0f1724';this.removeAttribute('src')">
+        <div class="related-card-body"><div class="rc-tag">Club News</div><div class="rc-title">Official Stadium Announcement — Benson Stadium</div></div>
+      </a>
+      <a href="./wendok.html" class="related-card">
+        <img src="./WENDOK SPORTSWEAR.jpg" alt="WENDÔK" onerror="this.style.height='80px';this.style.background='#0f1724';this.removeAttribute('src')">
+        <div class="related-card-body"><div class="rc-tag">Official Partner</div><div class="rc-title">WENDÔK Sportswear — Full Kit Partnership Story</div></div>
+      </a>
+      <a href="./roster.html" class="related-card">
+        <img src="ssf7.jpg" alt="Roster" onerror="this.style.height='80px';this.style.background='#0f1724';this.removeAttribute('src')">
+        <div class="related-card-body"><div class="rc-tag">Squad</div><div class="rc-title">Meet the Players Who'll Debut These Kits in April</div></div>
+      </a>
+    </div>
+  </div>
+
+</main>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-card reveal">
+    <h4><i class="fas fa-bolt"></i> Kit Quick Facts</h4>
+    <div class="qf-item"><span class="qf-label">Home Body</span><span class="qf-value" style="color:#f08080">Bright Red</span></div>
+    <div class="qf-item"><span class="qf-label">Home Sleeves</span><span class="qf-value">White</span></div>
+    <div class="qf-item"><span class="qf-label">Home Pattern</span><span class="qf-value">Black Diagonal Streaks</span></div>
+    <div class="qf-item"><span class="qf-label">Away Body</span><span class="qf-value">White</span></div>
+    <div class="qf-item"><span class="qf-label">Away Trim</span><span class="qf-value" style="color:#f08080">Red</span></div>
+    <div class="qf-item"><span class="qf-label">Away Back</span><span class="qf-value">Africa Map + BLOOM</span></div>
+    <div class="qf-item"><span class="qf-label">Side Print</span><span class="qf-value">"OMAHA"</span></div>
+    <div class="qf-item"><span class="qf-label">Kit Maker</span><span class="qf-value">SQUAD SUPPLY</span></div>
+    <div class="qf-item"><span class="qf-label">Times Worn</span><span class="qf-value" style="color:#90e0b0">Never</span></div>
+    <div class="qf-item"><span class="qf-label">Debut</span><span class="qf-value" style="color:#7ab4e8">April 2026 Away</span></div>
+    <div class="qf-item"><span class="qf-label">League</span><span class="qf-value">UPSL</span></div>
+  </div>
+
+  <div class="sidebar-card red-top reveal">
+    <h4><i class="fas fa-trophy"></i> UPSL Debut</h4>
+    <div class="nm-row"><span>First Game</span><span>Away Match</span></div>
+    <div class="nm-row"><span>Month</span><span>April 2026</span></div>
+    <div class="nm-row"><span>Kit Worn</span><span>Away (White)</span></div>
+    <div class="nm-row"><span>League</span><span>UPSL</span></div>
+    <a href="./matches.html" class="nm-cta">View All Fixtures →</a>
+  </div>
+
+  <div class="sidebar-card reveal">
+    <h4><i class="fas fa-history"></i> Previous Kit Record</h4>
+    <p style="font-size:.75rem;color:var(--muted);margin-bottom:10px;line-height:1.5">Season 2025 </p>
+    <div class="qf-item"><span class="qf-label">Games Played</span><span class="qf-value">7</span></div>
+    <div class="qf-item"><span class="qf-label">Won</span><span class="qf-value" style="color:#5dd68a">3</span></div>
+    <div class="qf-item"><span class="qf-label">Drawn</span><span class="qf-value" style="color:#e0b84a">1</span></div>
+    <div class="qf-item"><span class="qf-label">Goals Scored</span><span class="qf-value">26</span></div>
+    <div class="qf-item"><span class="qf-label">Top Scorer</span><span class="qf-value">John (10)</span></div>
+  </div>
+
+  <div class="sidebar-card red-top reveal">
+    <h4><i class="fas fa-handshake"></i> Official Partners</h4>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <a href="#" style="display:flex;align-items:center;gap:8px;font-size:.84rem;color:var(--muted);font-weight:600;padding:8px 10px;background:rgba(255,255,255,.04);border-radius:7px;transition:color .2s" onmouseover="this.style.color='#7ab4e8'" onmouseout="this.style.color=''">
+        <i class="fas fa-star" style="color:var(--accent-blue)"></i> BLOOM
+      </a>
+      <a href="./wendok.html" style="display:flex;align-items:center;gap:8px;font-size:.84rem;color:var(--muted);font-weight:600;padding:8px 10px;background:rgba(255,255,255,.04);border-radius:7px;transition:color .2s" onmouseover="this.style.color='#f08080'" onmouseout="this.style.color=''">
+        <i class="fas fa-ball" style="color:var(--accent-red)"></i> WENDÔK Sportswear
+      </a>
+      <a href="#" style="display:flex;align-items:center;gap:8px;font-size:.84rem;color:var(--muted);font-weight:600;padding:8px 10px;background:rgba(255,255,255,.04);border-radius:7px;transition:color .2s" onmouseover="this.style.color='#f08080'" onmouseout="this.style.color=''">
+        <i class="fas fa-shirt" style="color:var(--accent-red)"></i> SQUAD SUPPLY
+      </a>
+      <a href="./Partners.html" style="display:block;text-align:center;font-size:.8rem;color:var(--accent-blue);font-weight:700;margin-top:4px">All Partners →</a>
+    </div>
+  </div>
+
+  <div class="sidebar-card reveal">
+    <h4><i class="fas fa-shirt"></i> Get the Kit Now</h4>
+    <p style="font-size:.8rem;color:var(--muted);margin-bottom:12px;line-height:1.6">Order before the UPSL debut in April. Be wearing the new kit when history is made.</p>
+    <a href="#" style="display:block;text-align:center;background:linear-gradient(135deg,var(--accent-blue),var(--accent-red));color:#fff;padding:10px;border-radius:8px;font-size:.83rem;font-weight:700">Order Your Kit →</a>
+  </div>
+</aside>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lb-close" onclick="closeLightbox()">✕</button>
+    <button class="lb-nav lb-prev" onclick="navLightbox(-1)"><i class="fas fa-chevron-left"></i></button>
+    <img class="lightbox-img" id="lbImg" src="" alt="">
+    <button class="lb-nav lb-next" onclick="navLightbox(1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="lb-caption" id="lbCaption"></div>
+    <div class="lb-counter" id="lbCounter"></div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-brand"><h3>Super Star FC</h3><p>Founded June 3, 2025.</p><p>Building champions on and off the field.</p></div>
+    <div class="footer-links"><h4>Quick Links</h4><a href="./bout.html">About Us</a><a href="./term.html">Terms</a><a href="./contact.html">Contact</a><a href="./Privacy.html">Privacy Policy</a></div>
+    <div class="footer-contact"><h4>Contact</h4><p>Email: superstarfc25@gmail.com</p><p>Phone: +1 (531) 262-1982</p></div>
+    <div class="footer-social"><h4>Follow Us</h4>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/profile.php?id=100077275385711"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2V12h2.2V9.8c0-2.2 1.3-3.4 3.3-3.4.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 2.9h-1.9v7A10 10 0 0 0 22 12z"/></svg></a>
+        <a href="https://www.instagram.com/super_starsfc_fc"><svg viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5zm0 2A3.5 3.5 0 1 1 8.5 13 3.5 3.5 0 0 1 12 9.5zm5.8-2.1a1.3 1.3 0 1 1-1.3-1.3 1.3 1.3 0 0 1 1.3 1.3z"/></svg></a>
+        <a href="https://x.com/SuperStars75843"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.1.9A5.4 5.4 0 0 0 22.4 1a10.8 10.8 0 0 1-3.4 1.3A5.4 5.4 0 0 0 9.6 7a15.3 15.3 0 0 1-11.1-5.6 5.4 5.4 0 0 0 1.7 7.2A5.3 5.3 0 0 1 .8 8v.1a5.4 5.4 0 0 0 4.3 5.3 5.5 5.5 0 0 1-2.4.1 5.4 5.4 0 0 0 5 3.8A10.8 10.8 0 0 1 0 19.5 15.3 15.3 0 0 0 8.3 22c10 0 15.5-8.3 15.5-15.5v-.7A11 11 0 0 0 23 3z"/></svg></a>
+        <a href="https://youtube.com/@s.s.f.c?si=fV4gWuc4trgaRfF6"><svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5s-5.6 0-8.5.4c-.4.1-1.3.1-2.1 1C.7 4.6.5 6.2.5 6.2S0 8.1 0 10v2c0 1.9.5 3.8.5 3.8s.2 1.6.9 2.3c.8.9 1.9.9 2.4 1 1.7.2 7.2.4 7.2.4s5.6 0 8.5-.4c.4-.1 1.3-.1 2.1-1 .7-.7.9-2.3.9-2.3s.5-1.9.5-3.8v-2c0-1.9-.5-3.8-.5-3.8zM9.8 14.5V9.5l4.8 2.5-4.8 2.5z"/></svg></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">© <span id="year"></span> Super Star FC. All rights reserved.</div>
+</footer>
+
+<div id="highlight-popup" onclick="shareHighlight()"><i class="fas fa-share-nodes"></i> Share Quote</div>
+<div class="toast" id="toast"><i class="fas fa-check-circle" style="color:#3fa96a"></i><span id="toastMsg">Done!</span></div>
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-chevron-up"></i></button>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  window.addEventListener('scroll',()=>{
+    const pct=window.scrollY/(document.body.scrollHeight-window.innerHeight)*100;
+    document.getElementById('progress-bar').style.width=pct+'%';
+    document.getElementById('scrollTop').classList.toggle('show',window.scrollY>400);
+    updateActiveTOC();
+  });
+
+  const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');ro.unobserve(x.target)}})},{threshold:.07});
+  document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+  [['.feature-card',110],['.gallery-item',80],['.tl-item',150],['.reaction-card',120],['.kit-flip-card',150]].forEach(([sel,delay])=>{
+    const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('visible'),i*delay);obs.unobserve(e.target)}})},{threshold:.06});
+    document.querySelectorAll(sel).forEach(el=>obs.observe(el));
+  });
+
+  const cto=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const el=e.target,target=parseInt(el.dataset.target);if(isNaN(target))return;let cur=0;const step=target/(1400/16);const t=setInterval(()=>{cur=Math.min(cur+step,target);el.textContent=Math.round(cur).toLocaleString();if(cur>=target)clearInterval(t)},16);cto.unobserve(el)}})},{threshold:.5});
+  document.querySelectorAll('.counter').forEach(el=>cto.observe(el));
+
+  const kitData={
+    home:{
+      title:'Home Kit — Bright Red',dotColor:'var(--accent-red)',panelClass:'is-home',
+      specs:[['Body Color','Bright Red'],['Sleeves','White'],['Pattern','Black Diagonal Streaks'],['Chest Text','"SUPER STARS FC"'],['Numbers','White — Front & Back'],['Manufacturer','SQUAD SUPPLYS']],
+      palette:[{bg:'#d41f1f',name:'Bright Red'},{bg:'#fff',name:'White Sleeves',border:'rgba(0,0,0,.15)'},{bg:'#111',name:'Black Pattern'}]
+    },
+    away:{
+      title:'Away Kit — White & Red',dotColor:'var(--accent-blue)',panelClass:'is-away',
+      specs:[['Body Color','White'],['Trim','Red (Collar, Cuffs, Hem)'],['Back Number','Large Red'],['Back Design','Africa Map + BLOOM Logo'],['Side Print','"OMAHA" in Red'],['Manufacturer','SQUAD SUPPLYS']],
+      palette:[{bg:'#fff',name:'White',border:'rgba(0,0,0,.15)'},{bg:'#d41f1f',name:'Red Trim'},{bg:'#e8561a',name:'Red Numbers'}]
+    }
+  };
+  function switchKit(kit){
+    const d=kitData[kit];
+    document.getElementById('btnHome').className='kit-tab'+(kit==='home'?' tab-home':'');
+    document.getElementById('btnAway').className='kit-tab'+(kit==='away'?' tab-away':'');
+    const panel=document.getElementById('specPanel');
+    panel.className='kit-spec-panel reveal visible '+d.panelClass;
+    document.getElementById('specTitle').textContent=d.title;
+    document.getElementById('specDot').style.background=d.dotColor;
+    document.getElementById('specGrid').innerHTML=d.specs.map(([l,v])=>`<div class="spec-item"><div class="spec-item-label">${l}</div><div class="spec-item-val">${v}</div></div>`).join('');
+    document.getElementById('specPalette').innerHTML=d.palette.map(p=>`<div class="pal-swatch"><div class="pal-circle" style="background:${p.bg}${p.border?';border-color:'+p.border:''}"></div><span class="pal-name">${p.name}</span></div>`).join('');
+  }
+
+  let fontSize=1;
+  function changeFontSize(dir){fontSize=Math.min(1.3,Math.max(.82,fontSize+dir*.05));document.documentElement.style.fontSize=fontSize+'rem';showToast('Font size '+(dir>0?'increased':'decreased'));}
+  function toggleMode(){document.body.classList.toggle('light-mode');const l=document.body.classList.contains('light-mode');document.getElementById('modeToggle').textContent=l?'🌑':'🌙';localStorage.setItem('ssfc_mode',l?'light':'dark');}
+  if(localStorage.getItem('ssfc_mode')==='light'){document.body.classList.add('light-mode');document.getElementById('modeToggle').textContent='🌑';}
+
+  const vk='ssfc_jersey_views2';
+  let views=parseInt(localStorage.getItem(vk)||'0')+1;
+  localStorage.setItem(vk,views);
+  document.getElementById('viewCount').textContent=views.toLocaleString();
+
+  const lk='ssfc_jersey_likes2',lkd='ssfc_jersey_liked2';
+  let likes=parseInt(localStorage.getItem(lk)||'72'),liked=localStorage.getItem(lkd)==='true';
+  const likeBtn=document.getElementById('likeBtn'),likeCount=document.getElementById('likeCount'),likeFloatBtn=document.getElementById('likeFloatBtn');
+  likeCount.textContent=likes;
+  if(liked){likeBtn.classList.add('liked');likeFloatBtn.style.color='var(--accent-red)';}
+  function toggleLike(){if(liked){likes--;liked=false;likeBtn.classList.remove('liked');likeFloatBtn.style.color='';}else{likes++;liked=true;likeBtn.classList.add('liked');likeFloatBtn.style.color='var(--accent-red)';showToast('Thanks for the love! ❤️');}likeCount.textContent=likes;localStorage.setItem(lk,likes);localStorage.setItem(lkd,liked);}
+
+  const sections=['reveal','old-kit','kits','design','africa','upsl','wendok','timeline','reactions','gallery','order'];
+  function updateActiveTOC(){let cur='';sections.forEach(id=>{const el=document.getElementById(id);if(el&&el.getBoundingClientRect().top<120)cur=id;});document.querySelectorAll('.toc-link').forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));}
+  document.querySelectorAll('.toc-link').forEach(l=>{l.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(l.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
+
+  const galleryImgs=[
+    {src:'./Home.jpeg',caption:'Home Kit Reveal | Bright Red, Black Diagonal Streaks, White Sleeves'},
+    {src:'./Away Jersey.jpeg',caption:'Away Kit (Back) | Africa Map Outline + BLOOM Logo'},
+    {src:'./Away.jpeg',caption:'Away Kit (Front) | White with Red Trim'},
+    {src:'./ssfc0.jpg',caption:'Season 2025 action | played in the original Red Top, Black Bottom kit'},
+    {src:'./ssc10.jpg',caption:'The Super Stars FC squad | Season 2025'},
+    {src:'./ssf1.jpg',caption:'Benson Stadium | Home of Super Stars FC'},
+  ];
+  let curImg=0;
+  function openLightbox(i){curImg=i;renderLB();document.getElementById('lightbox').classList.add('active');document.body.style.overflow='hidden';}
+  function closeLightbox(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow='';}
+  function navLightbox(d){curImg=(curImg+d+galleryImgs.length)%galleryImgs.length;renderLB();}
+  function renderLB(){const item=galleryImgs[curImg];document.getElementById('lbImg').src=item.src;document.getElementById('lbCaption').textContent=item.caption;document.getElementById('lbCounter').textContent=(curImg+1)+' / '+galleryImgs.length;}
+  document.getElementById('lightbox').addEventListener('click',e=>{if(e.target===document.getElementById('lightbox'))closeLightbox();});
+  document.addEventListener('keydown',e=>{if(document.getElementById('lightbox').classList.contains('active')){if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft')navLightbox(-1);if(e.key==='ArrowRight')navLightbox(1);}});
+
+  const CK='ssfc_jersey_comments2';
+  function loadComments(){const stored=JSON.parse(localStorage.getItem(CK)||'[]');const list=document.getElementById('commentList');const none=document.getElementById('noComments');if(!stored.length){none.style.display='block';return;}none.style.display='none';list.innerHTML='';[...stored].reverse().forEach(c=>{const div=document.createElement('div');div.className='comment-item';div.innerHTML=`<div class="comment-header"><span class="comment-author"><i class="fas fa-user-circle"></i> ${c.name}${c.city?' · '+c.city:''}</span><span class="comment-date">${c.date}</span></div><div class="comment-text">${c.text}</div>`;list.appendChild(div);});}
+  function submitComment(){const name=document.getElementById('commentName').value.trim(),city=document.getElementById('commentCity').value.trim(),text=document.getElementById('commentText').value.trim();if(!name||!text){showToast('Please enter your name and a comment.');return;}const stored=JSON.parse(localStorage.getItem(CK)||'[]');stored.push({name,city,text,date:new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})});localStorage.setItem(CK,JSON.stringify(stored));document.getElementById('commentName').value='';document.getElementById('commentCity').value='';document.getElementById('commentText').value='';loadComments();showToast('Comment posted! 💬');}
+  loadComments();
+
+  let highlightedText='';const popup=document.getElementById('highlight-popup');
+  document.addEventListener('mouseup',()=>{const sel=window.getSelection(),text=sel?sel.toString().trim():'';if(text.length>20&&text.length<280){highlightedText=text;const r=sel.getRangeAt(0).getBoundingClientRect();popup.style.display='flex';popup.style.top=(window.scrollY+r.top-48)+'px';popup.style.left=(r.left+r.width/2-65)+'px';}else popup.style.display='none';});
+  function shareHighlight(){window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent('"'+highlightedText+'" — Super Stars FC')}`,'_blank');popup.style.display='none';}
+  document.addEventListener('mousedown',e=>{if(e.target!==popup)popup.style.display='none';});
+
+  function showToast(msg){document.getElementById('toastMsg').textContent=msg;const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+</script>
+</body>
+</html>
